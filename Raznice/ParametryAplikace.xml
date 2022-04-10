@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<parametry>
+  <parametr nazev="aplikace" hodnota="Raznice" />
+  <parametr nazev="tisk_z_pole_prijmeni" hodnota="1" />
+</parametry>
