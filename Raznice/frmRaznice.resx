@@ -127,7 +127,7 @@
   <data name="btnReconnect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATZSURBVFhH7ZbrT5tlGMb5DzRTP00/mC2L2ZiJ+kHmxoJk
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATZSURBVFhH7ZbrT5tlGMb5DzRTP00/mC2L2ZiJ+kHmxoJk
         04FbVAZGDpvKgI3BxkAOTcu6UgpyGqxMMiisHEVWaAdFzqFuNkUgYIYsZG66RBM1mmjiIX6YkUuue33f
         lFMZW+cn7+TJ+7Z9el+/53ru537fIEZb/1XIzT2GucOF+qHZdf3Hb7xUMIbYlp9gGPhlzaTFVicuXfsT
         5vF/kNF+MzAQieeGsM0wJxDanh/9Jo0qGYZl4g/03oJAZNtuBwZin2kYW403BCK361u/SV8wjKNp6i/Y
@@ -285,22 +285,6 @@
         KlouVtkAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnStartFromFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAGdJREFUOE/NjV0OwCAIg7n/qbiZGzgTFVrcnvYl9acUEELbdIw33Mei4VuAkTW4
-        zDM9fwgLlQNONtDMTwaQQFV3ygF2928O2oL8QFNVl7275SA/ZYSWAZMgtLgRslnz7FX1wOuGj4hchjh8
-        jfb/XbEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLoadFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAGVJREFUOE/NjFEKwCAMQ3t0b96RtNtKGVvmjwbCU/HFtoq3/oq7o0gQb2IZSn3k
-        i/BC58D75yfCozxTTsQZF/MxdJ7ONaBInSnHgCpV1gFEkirhZBlJqoSTZSSpE17o99pMl8bsADabbMev
-        MOF/AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="cmdOdeznacitVse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -348,6 +332,14 @@
         LLXfLvTSTV9dvM/Hkxx7HD3fA8fUHiljtT0rpL66R4J7z7rmsisdO/mzi9z41c3DEzRIoTNtvOmJs8+4
         5c0v/fj6e5tMDN3xw91A4BGDo4GCbP44oNo+lz2yrW1ubyNI6/7xP6rd4GRPo9nOHgI1YijkggIhGs6G
         BjSnAS1w+cugy1bIwha68IUwnElAAAA7
+</value>
+  </data>
+  <data name="cmdVyrazit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAGdJREFUOE/NjV0OwCAIg7n/qbiZGzgTFVrcnvYl9acUEELbdIw33Mei4VuAkTW4
+        zDM9fwgLlQNONtDMTwaQQFV3ygF2928O2oL8QFNVl7275SA/ZYSWAZMgtLgRslnz7FX1wOuGj4hchjh8
+        jfb/XbEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="cmdOtevritPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -412,10 +404,7 @@
   <metadata name="Id_Cispod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="OpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>307, 17</value>
-  </metadata>
-  <data name="cmdVyrazit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnStartFromFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAGdJREFUOE/NjV0OwCAIg7n/qbiZGzgTFVrcnvYl9acUEELbdIw33Mei4VuAkTW4
@@ -423,6 +412,17 @@
         jfb/XbEAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnLoadFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAGVJREFUOE/NjFEKwCAMQ3t0b96RtNtKGVvmjwbCU/HFtoq3/oq7o0gQb2IZSn3k
+        i/BC58D75yfCozxTTsQZF/MxdJ7ONaBInSnHgCpV1gFEkirhZBlJqoSTZSSpE17o99pMl8bsADabbMev
+        MOF/AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="OpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>307, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>45</value>
   </metadata>

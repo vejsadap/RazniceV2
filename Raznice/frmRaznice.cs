@@ -1,5 +1,4 @@
-﻿#define NODLL
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -185,222 +184,8 @@ namespace Raznice
         }
 
         /// <summary>
-        /// vrati sebrazne stavy zarizeni, chyb atd
+        /// Vyrazeni N dozimetru (postupna TAB2) nebo ze souboru (ze souboru TAB3)
         /// </summary>
-        public Vlastnosti.popisStavuRaznice DejPopisStavu()
-        {
-            Vlastnosti.popisStavuRaznice popisStavu = new Vlastnosti.popisStavuRaznice();
-            int nStatus = -1;
-            int nInfo = -1;
-            int nError = -1;
-            popisStavu.stavText = "";
-            try
-            {
-                if (ReadStatus(ref nStatus))
-                {
-                    popisStavu.nStatusId = nStatus;
-                    switch (nStatus)
-                    {
-                        case 0:
-                            popisStavu.nStatusText = "řízení vypnuto";                            
-                            break;
-                        case 1: 
-                            popisStavu.nStatusText = "řízení zapnuto";
-                            break;
-                        case 2: 
-                            popisStavu.nStatusText = "automatika zapnuta";
-                            break;
-                        case 3: 
-                            popisStavu.nStatusText = "automatika zapnuta a zařízení připraven pro nový příkaz od PC";
-                            break;
-                        case 4: 
-                            popisStavu.nStatusText = "chybně zadané parametry, musí se sepnout Reset pro akceptaci chyby";
-                            break;
-                        case 5: 
-                            popisStavu.nStatusText = "chyba";
-                            break;
-                        default:
-                            popisStavu.nStatusText = "nedefinováno";
-                            break;
-                    }
-                }
-
-                if (ReadInfo(ref nInfo))                    
-                {
-                    popisStavu.nInfoId = nInfo;
-                    switch (nInfo)
-                    {
-                        case 0:
-                            popisStavu.nInfoText = "Automatický provoz je vypnutý";
-                            break;
-                        case 1:
-                            popisStavu.nInfoText = "Probíhá základní nastavení";
-                            break;
-                        case 2:
-                            popisStavu.nInfoText = "Připraven, čeká na příkaz od PC";
-                            break;
-                        case 3:
-                            popisStavu.nInfoText = "Kontrola příkazu od PC";
-                            break;
-                        case 4:
-                            popisStavu.nInfoText = "Zakládání dílu";
-                            break;
-                        case 5:
-                            popisStavu.nInfoText = "Přesun k zakládání";
-                            break;
-                        case 6:
-                            popisStavu.nInfoText = "Přesun ke kameře";
-                            break;
-                        case 7:
-                            popisStavu.nInfoText = "Kontrola orientace";
-                            break;
-                        case 8:
-                            popisStavu.nInfoText = "Přesun do zmetkovníku";
-                            break;
-                        case 9:
-                            popisStavu.nInfoText = "Přesun k tiskárně";
-                            break;
-                        case 10:
-                            popisStavu.nInfoText = "Tisk";
-                            break;
-                        case 11:
-                            popisStavu.nInfoText = "Přesun k razníku";
-                            break;
-                        case 12:
-                            popisStavu.nInfoText = "Ražení";
-                            break;
-                        case 13:
-                            popisStavu.nInfoText = "Přesun do zásobníku OK dílů";
-                            break;
-                        case 14:
-                            popisStavu.nInfoText = "HOTOVO, přesun do základní polohy";
-                            break;
-                        case 15:
-                            popisStavu.nInfoText = "Řízení vypnuto";
-                            break;
-                        default:
-                            popisStavu.nInfoText = "nedefinováno";
-                            break;
-
-                    }
-                }
-
-                if (ReadError(ref nError))
-                {
-                    popisStavu.nErrorId = nError;
-                    switch (nError)
-                    {
-                        case 0:
-                            popisStavu.nErrorText = "Procesorová jednotka zastavena";
-                            break;
-                        case 8:
-                            popisStavu.nErrorText = "Řízení vypnuto";
-                            break;
-                        case 9:
-                            popisStavu.nErrorText = "Ochrany přemostěny";
-                            break;
-                        case 10:
-                            popisStavu.nErrorText = "ESTOP zmáčknut";
-                            break;
-                        case 11:
-                            popisStavu.nErrorText = "Kryt zařízení otevřen";
-                            break;
-                        case 12:
-                            popisStavu.nErrorText = "Nízký tlak";
-                            break;
-                        case 15:
-                            popisStavu.nErrorText = "Nedojel válec – přesun malého založeného dílu z fronty do zařízení (Z20, S10, S11)";
-                            break;
-                        case 16:
-                            popisStavu.nErrorText = "Nedojel válec – přesun velkého založeného dílu z fronty do zařízení (Z21, S12, S13)";
-                            break;
-                        case 17:
-                            popisStavu.nErrorText = "Nedojel válec – zdvih fronty malých OK dílů (Z22, S14, S15)";
-                            break;
-                        case 18:
-                            popisStavu.nErrorText = "Nedojel válec – zdvih fronty velkých OK dílů (Z23, S20, S21)";
-                            break;
-                        case 19:
-                            popisStavu.nErrorText = "Nedojel válec – zdvih vyhazovače NOK dílů (Z24, S22, S23)";
-                            break;
-                        case 20:
-                            popisStavu.nErrorText = "Nedojel válec – vyhazovač NOK dílů (Z25, S24, S25)";
-                            break;
-                        case 21:
-                            popisStavu.nErrorText = "Nedojel válec – otočení tiskové hlavy (Z31, S30, S31)";
-                            break;
-                        case 23:
-                            popisStavu.nErrorText = "Chybně zadané jméno";
-                            break;
-                        case 24:
-                            popisStavu.nErrorText = "Chybně zadané os. číslo";
-                            break;
-                        case 25:
-                            popisStavu.nErrorText = "Chyba v zakládání malého dílu, nezaložen";
-                            break;
-                        case 26:
-                            popisStavu.nErrorText = "Chyba v zakládání velkého dílu, nezaložen";
-                            break;
-                        case 27:
-                            popisStavu.nErrorText = "Vstupní zásobních malých dílů prázdný";
-                            break;
-                        case 28:
-                            popisStavu.nErrorText = "Vstupní zásobních velkých dílů prázdný";
-                            break;
-                        case 29:
-                            popisStavu.nErrorText = "Výstupní zásobních malých dílů plný";
-                            break;
-                        case 30:
-                            popisStavu.nErrorText = "Výstupní zásobních velkých dílů plný";
-                            break;
-                        case 31:
-                            popisStavu.nErrorText = "Chybně zadaný čárový kód";
-                            break;
-                        case 32:
-                            popisStavu.nErrorText = "Chybně zadaný ražený kód";
-                            break;
-                        case 33:
-                            popisStavu.nErrorText = "Chyba v komunikaci s tiskárnou";
-                            break;
-                        case 34:
-                            popisStavu.nErrorText = "Chyba v komunikaci s razníkem";
-                            break;
-                        case 35:
-                            popisStavu.nErrorText = "Zakládání nastavení nedokončeno";
-                            break;
-                        case 36:
-                            popisStavu.nErrorText = "Chyba portálu";
-                            break;
-                        case 37:
-                            popisStavu.nErrorText = "Vložte cartridge CART1 do tiskárny";
-                            break;
-                        case 38:
-                            popisStavu.nErrorText = "Vložte cartridge CART2 do tiskárny";
-                            break;
-                        case 39:
-                            popisStavu.nErrorText = "Vyjměte cartridge z tiskárny";
-                            break;
-                        default:
-                            popisStavu.nErrorText = "nedefinováno";
-                            break;
-
-                    }
-                }
-
-                popisStavu.stavText = "Status: " + (popisStavu.nStatusText == String.Empty ? "?" : popisStavu.nStatusText) +
-                                        ", Info: " + (popisStavu.nInfoText == String.Empty ? "?" : popisStavu.nInfoText) +
-                                        ", Error: " + (popisStavu.nErrorText == String.Empty ? "?" : popisStavu.nErrorText)
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Chyba během volání DejPopisStavu() "+ ex.Message.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("DejPopisStavu(), chyba během volání " + ex.Message.ToString(), false, "Error", formRaz);
-            }
-
-            return popisStavu;
-        }
-
         public void StartN()
         {
             Vlastnosti.popisStavuRaznice popisStavuRaznice = new Vlastnosti.popisStavuRaznice(); 
@@ -422,7 +207,7 @@ namespace Raznice
             }
 
             popisStavuRaznice = DejPopisStavu();
-            if ((popisStavuRaznice.nStatusId == 5) || (popisStavuRaznice.nStatusId == 0)) //chyba, řízení vypnuto
+            if (popisStavuRaznice.nStatusId != 3) //chyba, řízení vypnuto
             {
                 MessageBox.Show("Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Globalni.Nastroje.LogMessage("Init(), Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
@@ -974,6 +759,11 @@ namespace Raznice
                 Globalni.Nastroje.LogMessage("Start", false, "Information", formRaz);
                 if (!Init())
                 {
+                    // pokud neprojde Init() nema smysel se ptat dal ..
+                    //Vlastnosti.popisStavuRaznice popisStavuRaznice;
+                    //popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    //popisStavuRaznice = DejPopisStavu();
+
                     MessageBox.Show("Chyba při inicializování komunikace s PLC", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Globalni.Nastroje.LogMessage("Chyba při inicializování komunikace s PLC", false, "Error", formRaz);
                     //this.Close();
@@ -994,8 +784,8 @@ namespace Raznice
             }
             catch
             {
-                MessageBox.Show("Nebyla nalezena knihovna Raznice.dll", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("Nebyla nalezena knihovna Raznice.dll", false, "Error", formRaz);
+                MessageBox.Show("Nebyla nalezena knihovna RazniceV2.dll", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("Nebyla nalezena knihovna RazniceV2.dll", false, "Error", formRaz);
                 this.Close();
             }
         }
@@ -1250,6 +1040,7 @@ namespace Raznice
 
         private void btnStartFromFile_Click(object sender, EventArgs e)
         {
+            // razeni dle textaku
             DozFile = true;
             StartN();
         }
@@ -1323,22 +1114,9 @@ namespace Raznice
             timer1.Enabled = true;
         }
 
-        private void btnUp_Click(object sender, EventArgs e)
-        {
-            bool ok = PistonUp();
-            if (!ok) { MessageBox.Show("Raznice není připravena", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
+        
 
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            bool ok = PistonDown();
-            if (!ok) { MessageBox.Show("Raznice není připravena", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
-        private void btnEject_Click(object sender, EventArgs e)
-        {
-            Eject();
-        }
+        
 
         private void btnReconnect_ButtonClick(object sender, EventArgs e)
         {
@@ -1349,12 +1127,12 @@ namespace Raznice
 
         private void btnClearInput_Click(object sender, EventArgs e)
         {
-            ClearInput();
+            
         }
 
-#endregion
+        #endregion
 
-#region Timery
+        #region Timery
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -2298,6 +2076,17 @@ namespace Raznice
             return vysledek;
         }
 
+        /// <summary>
+        /// Vypsani udaju z razeneho zaznamu na obrazovku
+        /// </summary>
+        /// <param name="Tisk_radek_1"></param>
+        /// <param name="Tisk_radek_2"></param>
+        /// <param name="Tisk_Prijmeni"></param>
+        /// <param name="Tisk_cod"></param>
+        /// <param name="Tisk_slob"></param>
+        /// <param name="Tisk_rok"></param>
+        /// <param name="Tisk_mesic"></param>
+        /// <returns></returns>
         public bool NastavPopisDoz(string Tisk_radek_1 /*05019017*/, string Tisk_radek_2, string Tisk_Prijmeni, string Tisk_cod, string Tisk_slob, string Tisk_rok, string Tisk_mesic)        
         {
             // 05.04.2016 doplneno tisk COD do eanu, zmena eanu z EAN8 na EAN13
@@ -2410,6 +2199,12 @@ namespace Raznice
             return vysledek;
         }
 
+        /// <summary>
+        /// Vyrazeni na raznici a tisk 
+        /// </summary>
+        /// <param name="Tisk_radek_1"></param>
+        /// <param name="Tisk_radek_2"></param>
+        /// <returns></returns>
         public bool NaRazitDoz(string Tisk_radek_1, string Tisk_radek_2)
         {
             // vyrazeni a tisk jednoho dozimetru
@@ -2520,7 +2315,224 @@ namespace Raznice
 
 
             return (vysledek && jaktisk);
+        }        /// <summary>
+                 /// vrati sebrazne stavy zarizeni, chyb atd
+                 /// </summary>
+        public Vlastnosti.popisStavuRaznice DejPopisStavu()
+        {
+            Vlastnosti.popisStavuRaznice popisStavu = new Vlastnosti.popisStavuRaznice();
+            int nStatus = -1;
+            int nInfo = -1;
+            int nError = -1;
+            popisStavu.stavText = "";
+            try
+            {
+                if (ReadStatus(ref nStatus))
+                {
+                    popisStavu.nStatusId = nStatus;
+                    switch (nStatus)
+                    {
+                        case 0:
+                            popisStavu.nStatusText = "řízení vypnuto";
+                            break;
+                        case 1:
+                            popisStavu.nStatusText = "řízení zapnuto";
+                            break;
+                        case 2:
+                            popisStavu.nStatusText = "automatika zapnuta";
+                            break;
+                        case 3:
+                            popisStavu.nStatusText = "automatika zapnuta a zařízení připraven pro nový příkaz od PC";
+                            break;
+                        case 4:
+                            popisStavu.nStatusText = "chybně zadané parametry, musí se sepnout Reset pro akceptaci chyby";
+                            break;
+                        case 5:
+                            popisStavu.nStatusText = "chyba";
+                            break;
+                        default:
+                            popisStavu.nStatusText = "nedefinováno";
+                            break;
+                    }
+                }
+
+                if (ReadInfo(ref nInfo))
+                {
+                    popisStavu.nInfoId = nInfo;
+                    switch (nInfo)
+                    {
+                        case 0:
+                            popisStavu.nInfoText = "Automatický provoz je vypnutý";
+                            break;
+                        case 1:
+                            popisStavu.nInfoText = "Probíhá základní nastavení";
+                            break;
+                        case 2:
+                            popisStavu.nInfoText = "Připraven, čeká na příkaz od PC";
+                            break;
+                        case 3:
+                            popisStavu.nInfoText = "Kontrola příkazu od PC";
+                            break;
+                        case 4:
+                            popisStavu.nInfoText = "Zakládání dílu";
+                            break;
+                        case 5:
+                            popisStavu.nInfoText = "Přesun k zakládání";
+                            break;
+                        case 6:
+                            popisStavu.nInfoText = "Přesun ke kameře";
+                            break;
+                        case 7:
+                            popisStavu.nInfoText = "Kontrola orientace";
+                            break;
+                        case 8:
+                            popisStavu.nInfoText = "Přesun do zmetkovníku";
+                            break;
+                        case 9:
+                            popisStavu.nInfoText = "Přesun k tiskárně";
+                            break;
+                        case 10:
+                            popisStavu.nInfoText = "Tisk";
+                            break;
+                        case 11:
+                            popisStavu.nInfoText = "Přesun k razníku";
+                            break;
+                        case 12:
+                            popisStavu.nInfoText = "Ražení";
+                            break;
+                        case 13:
+                            popisStavu.nInfoText = "Přesun do zásobníku OK dílů";
+                            break;
+                        case 14:
+                            popisStavu.nInfoText = "HOTOVO, přesun do základní polohy";
+                            break;
+                        case 15:
+                            popisStavu.nInfoText = "Řízení vypnuto";
+                            break;
+                        default:
+                            popisStavu.nInfoText = "nedefinováno";
+                            break;
+
+                    }
+                }
+
+                if (ReadError(ref nError))
+                {
+                    popisStavu.nErrorId = nError;
+                    switch (nError)
+                    {
+                        case 0:
+                            popisStavu.nErrorText = "Procesorová jednotka zastavena";
+                            break;
+                        case 8:
+                            popisStavu.nErrorText = "Řízení vypnuto";
+                            break;
+                        case 9:
+                            popisStavu.nErrorText = "Ochrany přemostěny";
+                            break;
+                        case 10:
+                            popisStavu.nErrorText = "ESTOP zmáčknut";
+                            break;
+                        case 11:
+                            popisStavu.nErrorText = "Kryt zařízení otevřen";
+                            break;
+                        case 12:
+                            popisStavu.nErrorText = "Nízký tlak";
+                            break;
+                        case 15:
+                            popisStavu.nErrorText = "Nedojel válec – přesun malého založeného dílu z fronty do zařízení (Z20, S10, S11)";
+                            break;
+                        case 16:
+                            popisStavu.nErrorText = "Nedojel válec – přesun velkého založeného dílu z fronty do zařízení (Z21, S12, S13)";
+                            break;
+                        case 17:
+                            popisStavu.nErrorText = "Nedojel válec – zdvih fronty malých OK dílů (Z22, S14, S15)";
+                            break;
+                        case 18:
+                            popisStavu.nErrorText = "Nedojel válec – zdvih fronty velkých OK dílů (Z23, S20, S21)";
+                            break;
+                        case 19:
+                            popisStavu.nErrorText = "Nedojel válec – zdvih vyhazovače NOK dílů (Z24, S22, S23)";
+                            break;
+                        case 20:
+                            popisStavu.nErrorText = "Nedojel válec – vyhazovač NOK dílů (Z25, S24, S25)";
+                            break;
+                        case 21:
+                            popisStavu.nErrorText = "Nedojel válec – otočení tiskové hlavy (Z31, S30, S31)";
+                            break;
+                        case 23:
+                            popisStavu.nErrorText = "Chybně zadané jméno";
+                            break;
+                        case 24:
+                            popisStavu.nErrorText = "Chybně zadané os. číslo";
+                            break;
+                        case 25:
+                            popisStavu.nErrorText = "Chyba v zakládání malého dílu, nezaložen";
+                            break;
+                        case 26:
+                            popisStavu.nErrorText = "Chyba v zakládání velkého dílu, nezaložen";
+                            break;
+                        case 27:
+                            popisStavu.nErrorText = "Vstupní zásobních malých dílů prázdný";
+                            break;
+                        case 28:
+                            popisStavu.nErrorText = "Vstupní zásobních velkých dílů prázdný";
+                            break;
+                        case 29:
+                            popisStavu.nErrorText = "Výstupní zásobních malých dílů plný";
+                            break;
+                        case 30:
+                            popisStavu.nErrorText = "Výstupní zásobních velkých dílů plný";
+                            break;
+                        case 31:
+                            popisStavu.nErrorText = "Chybně zadaný čárový kód";
+                            break;
+                        case 32:
+                            popisStavu.nErrorText = "Chybně zadaný ražený kód";
+                            break;
+                        case 33:
+                            popisStavu.nErrorText = "Chyba v komunikaci s tiskárnou";
+                            break;
+                        case 34:
+                            popisStavu.nErrorText = "Chyba v komunikaci s razníkem";
+                            break;
+                        case 35:
+                            popisStavu.nErrorText = "Zakládání nastavení nedokončeno";
+                            break;
+                        case 36:
+                            popisStavu.nErrorText = "Chyba portálu";
+                            break;
+                        case 37:
+                            popisStavu.nErrorText = "Vložte cartridge CART1 do tiskárny";
+                            break;
+                        case 38:
+                            popisStavu.nErrorText = "Vložte cartridge CART2 do tiskárny";
+                            break;
+                        case 39:
+                            popisStavu.nErrorText = "Vyjměte cartridge z tiskárny";
+                            break;
+                        default:
+                            popisStavu.nErrorText = "nedefinováno";
+                            break;
+
+                    }
+                }
+
+                popisStavu.stavText = "Status: " + (popisStavu.nStatusText == String.Empty ? "?" : popisStavu.nStatusText) +
+                                        ", Info: " + (popisStavu.nInfoText == String.Empty ? "?" : popisStavu.nInfoText) +
+                                        ", Error: " + (popisStavu.nErrorText == String.Empty ? "?" : popisStavu.nErrorText);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Chyba během volání DejPopisStavu() " + ex.Message.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("DejPopisStavu(), chyba během volání " + ex.Message.ToString(), false, "Error", formRaz);
+            }
+
+            return popisStavu;
         }
+
+
 
         private void cmdVyrazit_Click(object sender, EventArgs e)
         {
@@ -2546,21 +2558,12 @@ namespace Raznice
                 return;
             }
 
-            bool ready = false;
-            bool ok = IsReady(ref ready);
-            if (!ok)
+            if (!Init())
             {
                 lblStatus.Text = "Chyba komunikace";
                 Globalni.Nastroje.LogMessage("cmdVyrazit_Click, Chyba komunikace", false, "Error", formRaz);
-            }
-            if (!ready)
-            {
-                MessageBox.Show("Raznice není připravena", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("cmdVyrazit_Click, Raznice není připravena", false, "Error", formRaz);
                 return;
             }
-
-
 
             int id_cispod = Int32.Parse(dataGridView2[indexOf(dataGridView2, "Id_Cispod_doz"), 0].Value.ToString());
             Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), dbFileName: " + dbFileName.ToString(), false, "Information", formRaz);
@@ -2756,43 +2759,12 @@ namespace Raznice
 
         private void btnMask_Click_1(object sender, EventArgs e)
         {
-            bool ok = Mask(txtMask.Text, txtMask.Text.Length);
-            if (!ok) 
-            {
-                Globalni.Nastroje.LogMessage("btnMask_Click_1, Chyba komunikace, txtMask: " + txtMask.Text.ToString(), false, "Error", formRaz);
-                MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); 
-            }
+            
         }
 
         private void btnSetIP_Click_1(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
-            string[] ip = txtIP.Text.Split('.');
-            byte[] ipb;
-            ipb = new byte[4];
-
-            try
-            {
-                ipb[0] = Convert.ToByte(ip[0]);
-                ipb[1] = Convert.ToByte(ip[1]);
-                ipb[2] = Convert.ToByte(ip[2]);
-                ipb[3] = Convert.ToByte(ip[3]);
-            }
-            catch
-            {
-                Globalni.Nastroje.LogMessage("btnSetIP_Click_1, Špatně zadaná IP adresa, txtIP: " + txtIP.Text.ToString(), false, "Error", formRaz);
-                MessageBox.Show("Špatně zadaná IP adresa", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            bool ok = SetIP(ipb[0], ipb[1], ipb[2], ipb[3]);
-            if (!ok) 
-            {
-                Globalni.Nastroje.LogMessage("btnSetIP_Click_1, Chyba komunikace, txtIP: " + txtIP.Text.ToString(), false, "Error", formRaz);
-                MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); 
-            }
-
-
-            timer1.Enabled = true;
+            
         }
 
         private void Cekej(int seconds)
