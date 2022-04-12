@@ -531,7 +531,7 @@ namespace Raznice
             nError = 0;
             return true;
         }
-        public bool ReadFinishOK(ref bool lOK)
+        public bool ReadFinishOK(ref int lOK)
         {
             lOK = true;
             return true;
@@ -719,9 +719,6 @@ namespace Raznice
             try
             {
                 this.Text = this.Text + " [" + (Vlastnosti.allowEdit == true ? "Administrator" : "Uživatel")+ "]";
-
-                this.btnSetIP.Enabled = Vlastnosti.allowEdit;
-                this.btnMask.Enabled = Vlastnosti.allowEdit;
 
                 // jinak se gridview presosa
                 dataGridView1.AutoGenerateColumns = false;
@@ -2326,8 +2323,9 @@ namespace Raznice
         public bool NaRazitDozV2(string Tisk_radek_1, string Tisk_radek_2, int typeDoz)
         {
             // vyrazeni a tisk jednoho dozimetru
-            bool vysledek = false;
-            bool jakTisk = false;
+            bool vysledekSendText = false;
+            bool vysledekFinish = false;
+            bool jakSendText = false;
             int i = 0;
 
             bool ready = false;
@@ -2341,6 +2339,9 @@ namespace Raznice
             string numDoz = "";  // cislo dozimetru 
             string namePrint = "";
             string personalNoPrint = "";
+            Vlastnosti.popisStavuRaznice popisStavuRaznice = null;
+            int lOk = 0;
+            int koleckoFinish = 0;
 
 
             if (chkRazitDozimetryTab.Checked == true)
@@ -2349,8 +2350,17 @@ namespace Raznice
                 while (!konecRazeni)
                 {
                     kolikrat++;
-                    Globalni.Nastroje.LogMessage("NaRazitDoz(), kolikrat: " + kolikrat.ToString() + "x ", false, "Information", formRaz);
+                    vysledekSendText = true;
 
+                    Globalni.Nastroje.LogMessage("NaRazitDozV2(), kolikrat: " + kolikrat.ToString() + "x ", false, "Information", formRaz);
+
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    if ((popisStavuRaznice.nStatusId != 3)) //neni chyba, neni řízení vypnuto
+                    {
+                        Cekej(1);
+                        continue;
+                    }
 
                     // a zkola ven ?
                     if (kolikrat > 6)
@@ -2361,6 +2371,7 @@ namespace Raznice
                     numZdroj = lblStitekTiskEan.Text.ToString().Trim();  // EAN  
                     numDoz = lblDozimetrRazba.Text.ToString().Trim();    // cislo dozimetru 
 
+                    // jmeno a cislo
                     var rows = nameZdroj.Split(' ');
                     if (rows != null)
                     {
@@ -2368,104 +2379,169 @@ namespace Raznice
                         namePrint = rows[1];
                     }
 
-                    if (SendType(typeDoz))
-                        if (SendTextName(namePrint, namePrint.Length))
-                            if (SendTextPersonalNo(personalNoPrint, personalNoPrint.Length))
-                                if (SendTextBarCode(numZdroj, numZdroj.Length))
-                                    if (SendTextRazNo(numDoz, numDoz.Length))
-                                        jakTisk = true;
-
-                    if (jakTisk == true)
+                    #region metody SendText
+                    jakSendText = true;
+                    if (!SendType(typeDoz))
                     {
+                        popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                        popisStavuRaznice = DejPopisStavu();
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, SendType(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        jakSendText = false;
                     }
-
-
-
-
-
-                        // otestuju si, zda se da vubec razit film
-                        // 1. je ukoncena razba?
-                        bool ok = IsDone(ref done, ref Err, ref Mark);
-                    if (!ok)
+                    if (!SendTextName(namePrint, namePrint.Length))
                     {
-                        Globalni.Nastroje.LogMessage("NaRazitDoz(), IsDone: Ztráta spojení s raznicí", false, "Error", formRaz);
-                        Cekej(5);
+                        popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                        popisStavuRaznice = DejPopisStavu();
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextName(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        jakSendText = false;
+                    }
+                    if (!SendTextPersonalNo(personalNoPrint, personalNoPrint.Length))
+                    {
+                        popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                        popisStavuRaznice = DejPopisStavu();
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextPersonalNo(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        jakSendText = false;
+                    }
+                    if (!SendTextBarCode(numZdroj, numZdroj.Length))
+                    {
+                        popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                        popisStavuRaznice = DejPopisStavu();
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextBarCode(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        jakSendText = false;
+                    }
+                    if (!SendTextRazNo(numDoz, numDoz.Length))
+                    {
+                        popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                        popisStavuRaznice = DejPopisStavu();
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextRazNo(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        jakSendText = false;
+                    }
+                    #endregion
+
+                    // v pripade neuspechu volani dilcich metod SendText* jdu na zacatek while
+                    if (!jakSendText)
+                    {
+                        vysledekSendText = false;
+                        Cekej(1);
                         continue;
                     }
 
-                    if (done == true)
+                    if (!Start())
                     {
-                        // 2. je vse ready, pripraveno k dalsi razbe?
-                        ok = IsReady(ref ready);
-                        if (!ok)
+                        popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                        popisStavuRaznice = DejPopisStavu();
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, Start(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        vysledekSendText = false;
+                        Cekej(1);
+                        continue;
+                    }
+
+                    Cekej(1);
+
+                    // v pripade stavu nStatusId == 4 se vola Reset() a znovu
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+
+                    if (popisStavuRaznice.nStatusId == 4)
+                    {
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2, po Start() nStatusId == 4: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+
+                        if (!Reset())
                         {
-                            Globalni.Nastroje.LogMessage("NaRazitDoz(), IsReady: Chyba komunikace", false, "Error", formRaz);
-                            Cekej(5);
+                            popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                            popisStavuRaznice = DejPopisStavu();
+                            Globalni.Nastroje.LogMessage("NaRazitDozV2, Reset(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+
+                            vysledekSendText = false;
+                            konecRazeni = true;
+                            break; // a ven z cyklu: while (!vysledek)
+                        }
+
+                        Cekej(1);
+                        continue;
+                    }
+                } // while (!konecRazeni)
+
+                if (vysledekSendText)
+                {
+                    // tady uz mam naslapnuto na uspech, cekam az dojede film na konec ...
+                    while (koleckoFinish <= 3)
+                    {
+                        Cekej(2);
+                        vysledekFinish = true;
+
+                        lOk = 0;
+                        if (!ReadFinishOK(ref lOk))
+                        {
+                            popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                            popisStavuRaznice = DejPopisStavu();
+                            Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                            vysledekFinish = false;
+                            koleckoFinish++;
                             continue;
                         }
 
-                        if (ready == true)
+                        if (lOk == 0)
                         {
-                            Globalni.Nastroje.LogMessage("NaRazitDoz(), StartText(lblDozimetrRazba.Text, lblDozimetrRazba.Text.Length): " + lblDozimetrRazba.Text.ToString(), false, "Information", formRaz);
-                            vysledek = StartText(lblDozimetrRazba.Text, lblDozimetrRazba.Text.Length);
-                        }
+                            // jeste neni konec tisku v raznici ...
+                            popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                            popisStavuRaznice = DejPopisStavu();
 
-                        if (vysledek == true)
-                            konecRazeni = true;
-
-                        while (!vysledek)
-                        {
-                            vysledek = StartText(lblDozimetrRazba.Text, lblDozimetrRazba.Text.Length);
-                            i++;
-                            if (i > 3)
+                            // pokud je bez chyby, znovu
+                            if (popisStavuRaznice.nStatusId == 5)
                             {
-                                Globalni.Nastroje.LogMessage("NaRazitDoz(), while (!vysledek), Ztráta spojení s raznicí: " + i.ToString() + "x ", false, "Error", formRaz);
-                                vysledek = false;
-                                konecRazeni = true;
-                                break; // a ven z cyklu: while (!vysledek)
-                            }
-                            Cekej(5);
+                                Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK: lOk=0, popisStavuRaznice.nStatusId == 5: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
 
+                                // ctu error, ten ale mam uz nacteny
+                                Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK: lOk=0, popisStavuRaznice.nErroId: " + popisStavuRaznice.nErrorId.ToString() + " -" + popisStavuRaznice.nErrorText.ToString(), false, "Error", formRaz);
+                                vysledekFinish = false;
+                                break; // z cyklu: while(koleckoFinish <= 3) 
+                            }
+                            else
+                            {
+                                // neni chyba, tak znovu
+                                Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK: lOk=0, popisStavuRaznice: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+
+                                // tady jako co?
+                                // je to OK, ale co kdyz se opakuje porad? Radsi nastavime neuspech, na zacatku by se melo nastavit na uspech
+                                // pokud je ale kolecek hodne, spadne do chyby ...
+                                vysledekFinish = false;
+                                koleckoFinish++;
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            // je finis OK, mam narazeno a vytisklo, jdu ven
+                            Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK: lOk=1, popisStavuRaznice: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                            break;
                         }
 
-                    }
-
-                    Cekej(5);
-                } // while (!konecRazeni)
-            }
-            else
-                vysledek = true;
-
-
-            if (vysledek == true)
-            {
-                if (chkTiskSouborTab.Checked == true)
-                {
-                    string nameZdroj = lblStitekTisk.Text.ToString().Trim();    // Stitek horni
-                    string numZdroj = lblStitekTiskEan.Text.ToString().Trim();  // EAN  
-
-
-                    Globalni.Nastroje.LogMessage("NaRazitDoz(), Tisk(nameZdroj, numZdroj, false): " + nameZdroj.ToString() + ", " + numZdroj.ToString(), false, "Information", formRaz);
-                    jaktisk = Tisk(nameZdroj, numZdroj, false, false);
-
-                    if (jaktisk != true)
-                    {
-                        Globalni.Nastroje.LogMessage("NaRazitDoz(), Chyba při tisku, Tisk(nameZdroj, numZdroj, false): " + nameZdroj.ToString() + ", " + numZdroj.ToString(), false, "Error", formRaz);
-                    }
-
+                    } //while(koleckoFinish <= 3)
                 }
-                else
-                    jaktisk = true;
+
+
             }
             else
             {
-                toolStripStatusLabel.Text = "Chyba při ražení filmu";
-                Globalni.Nastroje.LogMessage("NaRazitDoz(), Chyba při ražení filmu, vysledek StartText() == false: " + lblDozimetrRazba.Text.ToString(), false, "Error", formRaz);
+                vysledekSendText = true;
+                vysledekFinish = true;
+            }
+
+
+            if (vysledekSendText && vysledekFinish)
+            {
+                ;
+            }
+            else
+            {
+                toolStripStatusLabel.Text = "Chyba při ražení filmu: " + popisStavuRaznice.stavText.ToString();
+                Globalni.Nastroje.LogMessage("NaRazitDozV2(), Chyba při ražení filmu, popisStavuRaznice: " + popisStavuRaznice.stavText.ToString() + ", doz: " + lblDozimetrRazba.Text.ToString(), false, "Error", formRaz);
             }
 
 
 
-            return (vysledek && jaktisk);
+            return (vysledekSendText && vysledekFinish);
         }
 
         /// <summary>
