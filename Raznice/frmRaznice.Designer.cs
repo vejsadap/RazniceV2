@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRaznice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -195,22 +195,21 @@
             this.lblMark,
             this.btnReconnect,
             this.toolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 760);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 613);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1160, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 16);
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // lblMark
             // 
             this.lblMark.Name = "lblMark";
-            this.lblMark.Size = new System.Drawing.Size(0, 16);
+            this.lblMark.Size = new System.Drawing.Size(0, 17);
             // 
             // btnReconnect
             // 
@@ -227,16 +226,15 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // chkReady
             // 
             this.chkReady.AutoSize = true;
             this.chkReady.Enabled = false;
-            this.chkReady.Location = new System.Drawing.Point(28, 23);
-            this.chkReady.Margin = new System.Windows.Forms.Padding(4);
+            this.chkReady.Location = new System.Drawing.Point(21, 19);
             this.chkReady.Name = "chkReady";
-            this.chkReady.Size = new System.Drawing.Size(141, 20);
+            this.chkReady.Size = new System.Drawing.Size(115, 17);
             this.chkReady.TabIndex = 17;
             this.chkReady.Text = "připraveno k ražbě";
             this.chkReady.UseVisualStyleBackColor = true;
@@ -245,10 +243,9 @@
             // 
             this.chkDone.AutoSize = true;
             this.chkDone.Enabled = false;
-            this.chkDone.Location = new System.Drawing.Point(28, 52);
-            this.chkDone.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDone.Location = new System.Drawing.Point(21, 42);
             this.chkDone.Name = "chkDone";
-            this.chkDone.Size = new System.Drawing.Size(134, 20);
+            this.chkDone.Size = new System.Drawing.Size(109, 17);
             this.chkDone.TabIndex = 18;
             this.chkDone.Text = "ražba dokončena";
             this.chkDone.UseVisualStyleBackColor = true;
@@ -262,11 +259,9 @@
             // 
             this.groupBox1.Controls.Add(this.chkReady);
             this.groupBox1.Controls.Add(this.chkDone);
-            this.groupBox1.Location = new System.Drawing.Point(956, 57);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(717, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(204, 95);
+            this.groupBox1.Size = new System.Drawing.Size(153, 77);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stav raznice";
@@ -275,10 +270,9 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(933, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(700, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 52);
+            this.pictureBox1.Size = new System.Drawing.Size(153, 42);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -286,11 +280,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnStop);
-            this.groupBox2.Location = new System.Drawing.Point(956, 159);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(717, 129);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(204, 310);
+            this.groupBox2.Size = new System.Drawing.Size(153, 252);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manuální ovládání";
@@ -300,10 +292,9 @@
             this.btnStop.BackColor = System.Drawing.Color.Red;
             this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnStop.ForeColor = System.Drawing.Color.White;
-            this.btnStop.Location = new System.Drawing.Point(24, 23);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStop.Location = new System.Drawing.Point(18, 19);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(149, 47);
+            this.btnStop.Size = new System.Drawing.Size(112, 38);
             this.btnStop.TabIndex = 33;
             this.btnStop.Text = "STOP";
             this.btnStop.UseVisualStyleBackColor = false;
@@ -314,22 +305,19 @@
             this.groupBox4.Controls.Add(this.txtSarze);
             this.groupBox4.Controls.Add(this.lblSarze);
             this.groupBox4.Controls.Add(this.tabControl1);
-            this.groupBox4.Location = new System.Drawing.Point(0, 57);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Location = new System.Drawing.Point(0, 46);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(932, 697);
+            this.groupBox4.Size = new System.Drawing.Size(699, 566);
             this.groupBox4.TabIndex = 29;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Ražba";
             // 
             // txtSarze
             // 
-            this.txtSarze.Location = new System.Drawing.Point(88, 20);
-            this.txtSarze.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSarze.Location = new System.Drawing.Point(66, 16);
             this.txtSarze.Mask = "?";
             this.txtSarze.Name = "txtSarze";
-            this.txtSarze.Size = new System.Drawing.Size(27, 22);
+            this.txtSarze.Size = new System.Drawing.Size(21, 20);
             this.txtSarze.TabIndex = 55;
             this.txtSarze.Text = "A";
             this.txtSarze.LostFocus += new System.EventHandler(this.txtSarze_LostFocus);
@@ -337,10 +325,9 @@
             // lblSarze
             // 
             this.lblSarze.AutoSize = true;
-            this.lblSarze.Location = new System.Drawing.Point(11, 25);
-            this.lblSarze.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSarze.Location = new System.Drawing.Point(8, 20);
             this.lblSarze.Name = "lblSarze";
-            this.lblSarze.Size = new System.Drawing.Size(75, 16);
+            this.lblSarze.Size = new System.Drawing.Size(61, 13);
             this.lblSarze.TabIndex = 54;
             this.lblSarze.Text = "Šarže filmu:";
             // 
@@ -351,11 +338,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(8, 52);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(6, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(916, 638);
+            this.tabControl1.Size = new System.Drawing.Size(687, 518);
             this.tabControl1.TabIndex = 34;
             // 
             // tabPage3
@@ -377,11 +363,10 @@
             this.tabPage3.Controls.Add(this.dataGridView2);
             this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Controls.Add(this.groupBox7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(908, 609);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Size = new System.Drawing.Size(679, 492);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Z tabulky";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -390,10 +375,9 @@
             // 
             this.cmdOdeznacitVse.Image = ((System.Drawing.Image)(resources.GetObject("cmdOdeznacitVse.Image")));
             this.cmdOdeznacitVse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOdeznacitVse.Location = new System.Drawing.Point(765, 464);
-            this.cmdOdeznacitVse.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdOdeznacitVse.Location = new System.Drawing.Point(574, 377);
             this.cmdOdeznacitVse.Name = "cmdOdeznacitVse";
-            this.cmdOdeznacitVse.Size = new System.Drawing.Size(128, 34);
+            this.cmdOdeznacitVse.Size = new System.Drawing.Size(96, 28);
             this.cmdOdeznacitVse.TabIndex = 74;
             this.cmdOdeznacitVse.Text = "Odeznačit";
             this.cmdOdeznacitVse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -404,10 +388,9 @@
             // 
             this.cmdOznacitVse.Image = ((System.Drawing.Image)(resources.GetObject("cmdOznacitVse.Image")));
             this.cmdOznacitVse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOznacitVse.Location = new System.Drawing.Point(765, 428);
-            this.cmdOznacitVse.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdOznacitVse.Location = new System.Drawing.Point(574, 348);
             this.cmdOznacitVse.Name = "cmdOznacitVse";
-            this.cmdOznacitVse.Size = new System.Drawing.Size(128, 34);
+            this.cmdOznacitVse.Size = new System.Drawing.Size(96, 28);
             this.cmdOznacitVse.TabIndex = 73;
             this.cmdOznacitVse.Text = "Označit vše";
             this.cmdOznacitVse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -416,10 +399,9 @@
             // 
             // chkPtatSePredRazbou
             // 
-            this.chkPtatSePredRazbou.Location = new System.Drawing.Point(772, 348);
-            this.chkPtatSePredRazbou.Margin = new System.Windows.Forms.Padding(4);
+            this.chkPtatSePredRazbou.Location = new System.Drawing.Point(579, 283);
             this.chkPtatSePredRazbou.Name = "chkPtatSePredRazbou";
-            this.chkPtatSePredRazbou.Size = new System.Drawing.Size(112, 42);
+            this.chkPtatSePredRazbou.Size = new System.Drawing.Size(84, 34);
             this.chkPtatSePredRazbou.TabIndex = 72;
             this.chkPtatSePredRazbou.Text = "ptát se před ražením";
             this.chkPtatSePredRazbou.UseVisualStyleBackColor = true;
@@ -427,20 +409,18 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(765, 261);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(574, 212);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 16);
+            this.label17.Size = new System.Drawing.Size(54, 13);
             this.label17.TabIndex = 70;
             this.label17.Text = "Vyraženo:";
             // 
             // lblVyrazenoTab
             // 
             this.lblVyrazenoTab.AutoSize = true;
-            this.lblVyrazenoTab.Location = new System.Drawing.Point(845, 261);
-            this.lblVyrazenoTab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVyrazenoTab.Location = new System.Drawing.Point(634, 212);
             this.lblVyrazenoTab.Name = "lblVyrazenoTab";
-            this.lblVyrazenoTab.Size = new System.Drawing.Size(14, 16);
+            this.lblVyrazenoTab.Size = new System.Drawing.Size(13, 13);
             this.lblVyrazenoTab.TabIndex = 71;
             this.lblVyrazenoTab.Text = "0";
             // 
@@ -449,10 +429,9 @@
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(776, 106);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(582, 86);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(95, 34);
+            this.pictureBox3.Size = new System.Drawing.Size(71, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 69;
             this.pictureBox3.TabStop = false;
@@ -461,10 +440,9 @@
             // 
             this.lblEANPopis_radek_2.BackColor = System.Drawing.Color.White;
             this.lblEANPopis_radek_2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblEANPopis_radek_2.Location = new System.Drawing.Point(757, 82);
-            this.lblEANPopis_radek_2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEANPopis_radek_2.Location = new System.Drawing.Point(568, 67);
             this.lblEANPopis_radek_2.Name = "lblEANPopis_radek_2";
-            this.lblEANPopis_radek_2.Size = new System.Drawing.Size(132, 22);
+            this.lblEANPopis_radek_2.Size = new System.Drawing.Size(99, 18);
             this.lblEANPopis_radek_2.TabIndex = 68;
             this.lblEANPopis_radek_2.Text = "Horak";
             this.lblEANPopis_radek_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -473,10 +451,9 @@
             // 
             this.lblDozPopis_radek_1.BackColor = System.Drawing.Color.White;
             this.lblDozPopis_radek_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDozPopis_radek_1.Location = new System.Drawing.Point(759, 164);
-            this.lblDozPopis_radek_1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozPopis_radek_1.Location = new System.Drawing.Point(569, 133);
             this.lblDozPopis_radek_1.Name = "lblDozPopis_radek_1";
-            this.lblDozPopis_radek_1.Size = new System.Drawing.Size(132, 22);
+            this.lblDozPopis_radek_1.Size = new System.Drawing.Size(99, 18);
             this.lblDozPopis_radek_1.TabIndex = 67;
             this.lblDozPopis_radek_1.Text = "04373123";
             this.lblDozPopis_radek_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -485,10 +462,9 @@
             // 
             this.lblEANPopis_radek_1.BackColor = System.Drawing.Color.White;
             this.lblEANPopis_radek_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblEANPopis_radek_1.Location = new System.Drawing.Point(749, 58);
-            this.lblEANPopis_radek_1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEANPopis_radek_1.Location = new System.Drawing.Point(562, 47);
             this.lblEANPopis_radek_1.Name = "lblEANPopis_radek_1";
-            this.lblEANPopis_radek_1.Size = new System.Drawing.Size(149, 22);
+            this.lblEANPopis_radek_1.Size = new System.Drawing.Size(112, 18);
             this.lblEANPopis_radek_1.TabIndex = 66;
             this.lblEANPopis_radek_1.Text = "1D_04_373/1_123";
             this.lblEANPopis_radek_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -498,10 +474,9 @@
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(745, 53);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(559, 43);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(155, 137);
+            this.pictureBox2.Size = new System.Drawing.Size(117, 112);
             this.pictureBox2.TabIndex = 65;
             this.pictureBox2.TabStop = false;
             // 
@@ -510,10 +485,9 @@
             this.chkRazitDozimetryTab.AutoSize = true;
             this.chkRazitDozimetryTab.Checked = true;
             this.chkRazitDozimetryTab.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRazitDozimetryTab.Location = new System.Drawing.Point(772, 298);
-            this.chkRazitDozimetryTab.Margin = new System.Windows.Forms.Padding(4);
+            this.chkRazitDozimetryTab.Location = new System.Drawing.Point(579, 242);
             this.chkRazitDozimetryTab.Name = "chkRazitDozimetryTab";
-            this.chkRazitDozimetryTab.Size = new System.Drawing.Size(114, 20);
+            this.chkRazitDozimetryTab.Size = new System.Drawing.Size(92, 17);
             this.chkRazitDozimetryTab.TabIndex = 60;
             this.chkRazitDozimetryTab.Text = "razit dozimetry";
             this.chkRazitDozimetryTab.UseVisualStyleBackColor = true;
@@ -523,22 +497,22 @@
             this.chkTiskSouborTab.AutoSize = true;
             this.chkTiskSouborTab.Checked = true;
             this.chkTiskSouborTab.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTiskSouborTab.Location = new System.Drawing.Point(772, 320);
-            this.chkTiskSouborTab.Margin = new System.Windows.Forms.Padding(4);
+            this.chkTiskSouborTab.Enabled = false;
+            this.chkTiskSouborTab.Location = new System.Drawing.Point(579, 260);
             this.chkTiskSouborTab.Name = "chkTiskSouborTab";
-            this.chkTiskSouborTab.Size = new System.Drawing.Size(100, 20);
+            this.chkTiskSouborTab.Size = new System.Drawing.Size(82, 17);
             this.chkTiskSouborTab.TabIndex = 59;
             this.chkTiskSouborTab.Text = "tisk popisků";
             this.chkTiskSouborTab.UseVisualStyleBackColor = true;
+            this.chkTiskSouborTab.Visible = false;
             // 
             // cmdVyrazit
             // 
             this.cmdVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdVyrazit.Image")));
             this.cmdVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdVyrazit.Location = new System.Drawing.Point(765, 203);
-            this.cmdVyrazit.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdVyrazit.Location = new System.Drawing.Point(574, 165);
             this.cmdVyrazit.Name = "cmdVyrazit";
-            this.cmdVyrazit.Size = new System.Drawing.Size(128, 34);
+            this.cmdVyrazit.Size = new System.Drawing.Size(96, 28);
             this.cmdVyrazit.TabIndex = 6;
             this.cmdVyrazit.Text = "Vyrazit ";
             this.cmdVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -549,10 +523,9 @@
             // 
             this.cmdOtevritPlan.Image = ((System.Drawing.Image)(resources.GetObject("cmdOtevritPlan.Image")));
             this.cmdOtevritPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOtevritPlan.Location = new System.Drawing.Point(432, 7);
-            this.cmdOtevritPlan.Margin = new System.Windows.Forms.Padding(4);
+            this.cmdOtevritPlan.Location = new System.Drawing.Point(324, 6);
             this.cmdOtevritPlan.Name = "cmdOtevritPlan";
-            this.cmdOtevritPlan.Size = new System.Drawing.Size(127, 34);
+            this.cmdOtevritPlan.Size = new System.Drawing.Size(95, 28);
             this.cmdOtevritPlan.TabIndex = 5;
             this.cmdOtevritPlan.Text = "Otevřít plán";
             this.cmdOtevritPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -563,16 +536,16 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle41.BackColor = System.Drawing.Color.Lime;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Lime;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -587,28 +560,27 @@
             this.SLOB,
             this.RP_ROK,
             this.RP_MESIC});
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle43;
-            this.dataGridView2.Location = new System.Drawing.Point(8, 203);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 165);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(748, 395);
+            this.dataGridView2.Size = new System.Drawing.Size(561, 321);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -720,16 +692,16 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle45;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cpd,
@@ -738,29 +710,28 @@
             this.Zpracovano,
             this.Nacist,
             this.Id_Cispod});
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle47;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 7);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(416, 186);
+            this.dataGridView1.Size = new System.Drawing.Size(312, 151);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -827,11 +798,9 @@
             this.groupBox7.Controls.Add(this.lblDozNumTab_bezCOD);
             this.groupBox7.Controls.Add(this.label20);
             this.groupBox7.Controls.Add(this.lblDozPopisTab);
-            this.groupBox7.Location = new System.Drawing.Point(432, 43);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Location = new System.Drawing.Point(324, 35);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox7.Size = new System.Drawing.Size(473, 153);
+            this.groupBox7.Size = new System.Drawing.Size(355, 124);
             this.groupBox7.TabIndex = 75;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Dozimetr";
@@ -839,60 +808,54 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(13, 97);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label25.Location = new System.Drawing.Point(10, 79);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(81, 16);
+            this.label25.Size = new System.Drawing.Size(67, 13);
             this.label25.TabIndex = 70;
             this.label25.Text = "Tisk EAN13:";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 74);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(10, 60);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(70, 16);
+            this.label24.Size = new System.Drawing.Size(60, 13);
             this.label24.TabIndex = 69;
             this.label24.Text = "Tisk štítek:";
             // 
             // lblStitekTiskEan
             // 
             this.lblStitekTiskEan.AutoSize = true;
-            this.lblStitekTiskEan.Location = new System.Drawing.Point(119, 97);
-            this.lblStitekTiskEan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStitekTiskEan.Location = new System.Drawing.Point(89, 79);
             this.lblStitekTiskEan.Name = "lblStitekTiskEan";
-            this.lblStitekTiskEan.Size = new System.Drawing.Size(11, 16);
+            this.lblStitekTiskEan.Size = new System.Drawing.Size(10, 13);
             this.lblStitekTiskEan.TabIndex = 68;
             this.lblStitekTiskEan.Text = "-";
             // 
             // lblStitekTisk
             // 
             this.lblStitekTisk.AutoSize = true;
-            this.lblStitekTisk.Location = new System.Drawing.Point(119, 74);
-            this.lblStitekTisk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStitekTisk.Location = new System.Drawing.Point(89, 60);
             this.lblStitekTisk.Name = "lblStitekTisk";
-            this.lblStitekTisk.Size = new System.Drawing.Size(11, 16);
+            this.lblStitekTisk.Size = new System.Drawing.Size(10, 13);
             this.lblStitekTisk.TabIndex = 67;
             this.lblStitekTisk.Text = "-";
             // 
             // lblDozimetrRazba
             // 
             this.lblDozimetrRazba.AutoSize = true;
-            this.lblDozimetrRazba.Location = new System.Drawing.Point(119, 46);
-            this.lblDozimetrRazba.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozimetrRazba.Location = new System.Drawing.Point(89, 37);
             this.lblDozimetrRazba.Name = "lblDozimetrRazba";
-            this.lblDozimetrRazba.Size = new System.Drawing.Size(11, 16);
+            this.lblDozimetrRazba.Size = new System.Drawing.Size(10, 13);
             this.lblDozimetrRazba.TabIndex = 66;
             this.lblDozimetrRazba.Text = "-";
             // 
             // lblDozNumTab_bezCOD
             // 
             this.lblDozNumTab_bezCOD.AutoSize = true;
-            this.lblDozNumTab_bezCOD.Location = new System.Drawing.Point(127, 118);
-            this.lblDozNumTab_bezCOD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozNumTab_bezCOD.Location = new System.Drawing.Point(95, 96);
             this.lblDozNumTab_bezCOD.Name = "lblDozNumTab_bezCOD";
-            this.lblDozNumTab_bezCOD.Size = new System.Drawing.Size(11, 16);
+            this.lblDozNumTab_bezCOD.Size = new System.Drawing.Size(10, 13);
             this.lblDozNumTab_bezCOD.TabIndex = 65;
             this.lblDozNumTab_bezCOD.Text = "-";
             this.lblDozNumTab_bezCOD.Visible = false;
@@ -900,20 +863,18 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 46);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(10, 37);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(101, 16);
+            this.label20.Size = new System.Drawing.Size(82, 13);
             this.label20.TabIndex = 61;
             this.label20.Text = "Číslo dozimetru:";
             // 
             // lblDozPopisTab
             // 
             this.lblDozPopisTab.AutoSize = true;
-            this.lblDozPopisTab.Location = new System.Drawing.Point(127, 66);
-            this.lblDozPopisTab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozPopisTab.Location = new System.Drawing.Point(95, 54);
             this.lblDozPopisTab.Name = "lblDozPopisTab";
-            this.lblDozPopisTab.Size = new System.Drawing.Size(0, 16);
+            this.lblDozPopisTab.Size = new System.Drawing.Size(0, 13);
             this.lblDozPopisTab.TabIndex = 64;
             // 
             // tabPage1
@@ -925,11 +886,10 @@
             this.tabPage1.Controls.Add(this.txtCount);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.lblCount);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(908, 609);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(679, 492);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Postupná";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -937,10 +897,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(255, 431);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(191, 350);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 16);
+            this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 42;
             this.label5.Text = "Počet dozimetrů:";
             this.label5.Visible = false;
@@ -960,11 +919,9 @@
             this.groupBox10.Controls.Add(this.btnPrint);
             this.groupBox10.Controls.Add(this.label13);
             this.groupBox10.Controls.Add(this.txtJmeno);
-            this.groupBox10.Location = new System.Drawing.Point(8, 217);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox10.Location = new System.Drawing.Point(6, 176);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox10.Size = new System.Drawing.Size(889, 123);
+            this.groupBox10.Size = new System.Drawing.Size(667, 100);
             this.groupBox10.TabIndex = 61;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Tisk štítku dozimetru";
@@ -972,103 +929,92 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(516, 36);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label28.Location = new System.Drawing.Point(387, 29);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(48, 16);
+            this.label28.Size = new System.Drawing.Size(38, 13);
             this.label28.TabIndex = 73;
             this.label28.Text = "Jméno";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(357, 36);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Location = new System.Drawing.Point(268, 29);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(136, 16);
+            this.label27.Size = new System.Drawing.Size(111, 13);
             this.label27.TabIndex = 72;
             this.label27.Text = "Podnik/Odd/Dozimetr";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(259, 36);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label26.Location = new System.Drawing.Point(194, 29);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(72, 16);
+            this.label26.Size = new System.Drawing.Size(62, 13);
             this.label26.TabIndex = 71;
             this.label26.Text = "Měsíc/Rok";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(205, 36);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(154, 29);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 16);
+            this.label18.Size = new System.Drawing.Size(43, 13);
             this.label18.TabIndex = 62;
             this.label18.Text = "Období";
             // 
             // txtDozimetr
             // 
-            this.txtDozimetr.Location = new System.Drawing.Point(448, 55);
-            this.txtDozimetr.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDozimetr.Location = new System.Drawing.Point(336, 45);
             this.txtDozimetr.Name = "txtDozimetr";
-            this.txtDozimetr.Size = new System.Drawing.Size(48, 22);
+            this.txtDozimetr.Size = new System.Drawing.Size(37, 20);
             this.txtDozimetr.TabIndex = 70;
             this.txtDozimetr.Text = "320";
             // 
             // txtOddeleni
             // 
-            this.txtOddeleni.Location = new System.Drawing.Point(417, 55);
-            this.txtOddeleni.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOddeleni.Location = new System.Drawing.Point(313, 45);
             this.txtOddeleni.Name = "txtOddeleni";
-            this.txtOddeleni.Size = new System.Drawing.Size(23, 22);
+            this.txtOddeleni.Size = new System.Drawing.Size(18, 20);
             this.txtOddeleni.TabIndex = 69;
             this.txtOddeleni.Text = "9";
             // 
             // txtPodnik
             // 
-            this.txtPodnik.Location = new System.Drawing.Point(361, 55);
-            this.txtPodnik.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPodnik.Location = new System.Drawing.Point(271, 45);
             this.txtPodnik.Name = "txtPodnik";
-            this.txtPodnik.Size = new System.Drawing.Size(48, 22);
+            this.txtPodnik.Size = new System.Drawing.Size(37, 20);
             this.txtPodnik.TabIndex = 68;
             this.txtPodnik.Text = "320";
             // 
             // txtRok
             // 
-            this.txtRok.Location = new System.Drawing.Point(307, 55);
-            this.txtRok.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRok.Location = new System.Drawing.Point(230, 45);
             this.txtRok.Name = "txtRok";
-            this.txtRok.Size = new System.Drawing.Size(35, 22);
+            this.txtRok.Size = new System.Drawing.Size(27, 20);
             this.txtRok.TabIndex = 67;
             this.txtRok.Text = "16";
             // 
             // txtMesic
             // 
-            this.txtMesic.Location = new System.Drawing.Point(263, 55);
-            this.txtMesic.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMesic.Location = new System.Drawing.Point(197, 45);
             this.txtMesic.Name = "txtMesic";
-            this.txtMesic.Size = new System.Drawing.Size(35, 22);
+            this.txtMesic.Size = new System.Drawing.Size(27, 20);
             this.txtMesic.TabIndex = 66;
             this.txtMesic.Text = "05";
             // 
             // txtObdobi
             // 
-            this.txtObdobi.Location = new System.Drawing.Point(209, 55);
-            this.txtObdobi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtObdobi.Location = new System.Drawing.Point(157, 45);
             this.txtObdobi.Name = "txtObdobi";
-            this.txtObdobi.Size = new System.Drawing.Size(23, 22);
+            this.txtObdobi.Size = new System.Drawing.Size(18, 20);
             this.txtObdobi.TabIndex = 65;
             this.txtObdobi.Text = "3";
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(677, 52);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrint.Location = new System.Drawing.Point(508, 42);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(149, 30);
+            this.btnPrint.Size = new System.Drawing.Size(112, 24);
             this.btnPrint.TabIndex = 61;
             this.btnPrint.Text = "Tisk popisku";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -1077,28 +1023,25 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(32, 59);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(24, 48);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 16);
+            this.label13.Size = new System.Drawing.Size(124, 13);
             this.label13.TabIndex = 64;
             this.label13.Text = "Text na štítek dozimetru:";
             // 
             // txtJmeno
             // 
-            this.txtJmeno.Location = new System.Drawing.Point(520, 55);
-            this.txtJmeno.Margin = new System.Windows.Forms.Padding(4);
+            this.txtJmeno.Location = new System.Drawing.Point(390, 45);
             this.txtJmeno.Name = "txtJmeno";
-            this.txtJmeno.Size = new System.Drawing.Size(132, 22);
+            this.txtJmeno.Size = new System.Drawing.Size(100, 20);
             this.txtJmeno.TabIndex = 63;
             this.txtJmeno.Text = "Vejsada";
             // 
             // btnStarN
             // 
-            this.btnStarN.Location = new System.Drawing.Point(87, 423);
-            this.btnStarN.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStarN.Location = new System.Drawing.Point(65, 344);
             this.btnStarN.Name = "btnStarN";
-            this.btnStarN.Size = new System.Drawing.Size(149, 30);
+            this.btnStarN.Size = new System.Drawing.Size(112, 24);
             this.btnStarN.TabIndex = 37;
             this.btnStarN.Text = "Vyrazit N dozimetrů";
             this.btnStarN.UseVisualStyleBackColor = true;
@@ -1111,21 +1054,18 @@
             this.groupBox5.Controls.Add(this.txtText);
             this.groupBox5.Controls.Add(this.btnStart);
             this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Location = new System.Drawing.Point(8, 7);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Size = new System.Drawing.Size(889, 202);
+            this.groupBox5.Size = new System.Drawing.Size(667, 164);
             this.groupBox5.TabIndex = 51;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Postupné ražení dozimetrů";
             // 
             // btnSendText
             // 
-            this.btnSendText.Location = new System.Drawing.Point(349, 52);
-            this.btnSendText.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSendText.Location = new System.Drawing.Point(262, 42);
             this.btnSendText.Name = "btnSendText";
-            this.btnSendText.Size = new System.Drawing.Size(115, 30);
+            this.btnSendText.Size = new System.Drawing.Size(86, 24);
             this.btnSendText.TabIndex = 36;
             this.btnSendText.Text = "Poslat text";
             this.btnSendText.UseVisualStyleBackColor = true;
@@ -1133,19 +1073,17 @@
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(208, 52);
-            this.txtText.Margin = new System.Windows.Forms.Padding(4);
+            this.txtText.Location = new System.Drawing.Point(156, 42);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(132, 22);
+            this.txtText.Size = new System.Drawing.Size(100, 20);
             this.txtText.TabIndex = 35;
             this.txtText.Text = "05019002";
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(36, 112);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStart.Location = new System.Drawing.Point(27, 91);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(149, 30);
+            this.btnStart.Size = new System.Drawing.Size(112, 24);
             this.btnStart.TabIndex = 34;
             this.btnStart.Text = "Vyrazit dozimetr";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -1154,19 +1092,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(24, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 16);
+            this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 41;
             this.label1.Text = "Číslo dozimetru:";
             // 
             // txtCount
             // 
-            this.txtCount.Location = new System.Drawing.Point(377, 428);
-            this.txtCount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCount.Location = new System.Drawing.Point(283, 348);
             this.txtCount.Name = "txtCount";
-            this.txtCount.Size = new System.Drawing.Size(55, 22);
+            this.txtCount.Size = new System.Drawing.Size(42, 20);
             this.txtCount.TabIndex = 38;
             this.txtCount.Text = "1";
             this.txtCount.Visible = false;
@@ -1174,10 +1110,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(441, 431);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(331, 350);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 39;
             this.label2.Text = "Vyraženo:";
             this.label2.Visible = false;
@@ -1185,10 +1120,9 @@
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(521, 431);
-            this.lblCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCount.Location = new System.Drawing.Point(391, 350);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(14, 16);
+            this.lblCount.Size = new System.Drawing.Size(13, 13);
             this.lblCount.TabIndex = 40;
             this.lblCount.Text = "0";
             this.lblCount.Visible = false;
@@ -1196,11 +1130,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(908, 609);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(679, 492);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ze souboru";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1226,11 +1159,9 @@
             this.groupBox6.Controls.Add(this.chkTiskSoubor);
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.lblDozPopis);
-            this.groupBox6.Location = new System.Drawing.Point(8, 11);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Location = new System.Drawing.Point(6, 9);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(889, 270);
+            this.groupBox6.Size = new System.Drawing.Size(667, 219);
             this.groupBox6.TabIndex = 61;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Ražení dozimetrů pomocí textového souboru";
@@ -1239,10 +1170,9 @@
             // 
             this.btnStartFromFile.Image = ((System.Drawing.Image)(resources.GetObject("btnStartFromFile.Image")));
             this.btnStartFromFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStartFromFile.Location = new System.Drawing.Point(25, 144);
-            this.btnStartFromFile.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStartFromFile.Location = new System.Drawing.Point(19, 117);
             this.btnStartFromFile.Name = "btnStartFromFile";
-            this.btnStartFromFile.Size = new System.Drawing.Size(163, 34);
+            this.btnStartFromFile.Size = new System.Drawing.Size(122, 28);
             this.btnStartFromFile.TabIndex = 42;
             this.btnStartFromFile.Text = "Vyrazit ze souboru";
             this.btnStartFromFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1253,10 +1183,9 @@
             // 
             this.btnLoadFile.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadFile.Image")));
             this.btnLoadFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoadFile.Location = new System.Drawing.Point(576, 144);
-            this.btnLoadFile.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoadFile.Location = new System.Drawing.Point(432, 117);
             this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(89, 34);
+            this.btnLoadFile.Size = new System.Drawing.Size(67, 28);
             this.btnLoadFile.TabIndex = 44;
             this.btnLoadFile.Text = "Otevřít";
             this.btnLoadFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1266,50 +1195,45 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(25, 66);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Location = new System.Drawing.Point(19, 54);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(212, 16);
+            this.label29.Size = new System.Drawing.Size(177, 13);
             this.label29.TabIndex = 62;
             this.label29.Text = "Text štítku následujícího dozimetru:";
             // 
             // lblDozPopisEAN
             // 
             this.lblDozPopisEAN.AutoSize = true;
-            this.lblDozPopisEAN.Location = new System.Drawing.Point(271, 97);
-            this.lblDozPopisEAN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozPopisEAN.Location = new System.Drawing.Point(203, 79);
             this.lblDozPopisEAN.Name = "lblDozPopisEAN";
-            this.lblDozPopisEAN.Size = new System.Drawing.Size(11, 16);
+            this.lblDozPopisEAN.Size = new System.Drawing.Size(10, 13);
             this.lblDozPopisEAN.TabIndex = 61;
             this.lblDozPopisEAN.Text = "-";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(745, 156);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(559, 127);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 16);
+            this.label16.Size = new System.Drawing.Size(45, 13);
             this.label16.TabIndex = 59;
             this.label16.Text = "Celkem:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(25, 97);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(19, 79);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(210, 16);
+            this.label12.Size = new System.Drawing.Size(172, 13);
             this.label12.TabIndex = 49;
             this.label12.Text = "Text EAN následujícího dozimetru:";
             // 
             // lblCelkem
             // 
             this.lblCelkem.AutoSize = true;
-            this.lblCelkem.Location = new System.Drawing.Point(825, 156);
-            this.lblCelkem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCelkem.Location = new System.Drawing.Point(619, 127);
             this.lblCelkem.Name = "lblCelkem";
-            this.lblCelkem.Size = new System.Drawing.Size(14, 16);
+            this.lblCelkem.Size = new System.Drawing.Size(13, 13);
             this.lblCelkem.TabIndex = 60;
             this.lblCelkem.Text = "0";
             // 
@@ -1318,85 +1242,76 @@
             this.chkRazitDozimetry.AutoSize = true;
             this.chkRazitDozimetry.Checked = true;
             this.chkRazitDozimetry.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRazitDozimetry.Location = new System.Drawing.Point(195, 207);
-            this.chkRazitDozimetry.Margin = new System.Windows.Forms.Padding(4);
+            this.chkRazitDozimetry.Location = new System.Drawing.Point(146, 168);
             this.chkRazitDozimetry.Name = "chkRazitDozimetry";
-            this.chkRazitDozimetry.Size = new System.Drawing.Size(114, 20);
+            this.chkRazitDozimetry.Size = new System.Drawing.Size(92, 17);
             this.chkRazitDozimetry.TabIndex = 58;
             this.chkRazitDozimetry.Text = "razit dozimetry";
             this.chkRazitDozimetry.UseVisualStyleBackColor = true;
             // 
             // txtFile
             // 
-            this.txtFile.Location = new System.Drawing.Point(193, 148);
-            this.txtFile.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFile.Location = new System.Drawing.Point(145, 120);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(373, 22);
+            this.txtFile.Size = new System.Drawing.Size(281, 20);
             this.txtFile.TabIndex = 43;
             // 
             // txtRazitDoz
             // 
-            this.txtRazitDoz.Location = new System.Drawing.Point(440, 176);
-            this.txtRazitDoz.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRazitDoz.Location = new System.Drawing.Point(330, 143);
             this.txtRazitDoz.Name = "txtRazitDoz";
-            this.txtRazitDoz.Size = new System.Drawing.Size(52, 22);
+            this.txtRazitDoz.Size = new System.Drawing.Size(40, 20);
             this.txtRazitDoz.TabIndex = 56;
             // 
             // txtRazitOdDoz
             // 
-            this.txtRazitOdDoz.Location = new System.Drawing.Point(195, 177);
-            this.txtRazitOdDoz.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRazitOdDoz.Location = new System.Drawing.Point(146, 144);
             this.txtRazitOdDoz.Name = "txtRazitOdDoz";
-            this.txtRazitOdDoz.Size = new System.Drawing.Size(97, 22);
+            this.txtRazitOdDoz.Size = new System.Drawing.Size(74, 20);
             this.txtRazitOdDoz.TabIndex = 57;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(25, 34);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(19, 28);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(183, 16);
+            this.label10.Size = new System.Drawing.Size(150, 13);
             this.label10.TabIndex = 45;
             this.label10.Text = "Číslo následujícího dozimetru:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(319, 180);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(239, 146);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(106, 16);
+            this.label15.Size = new System.Drawing.Size(86, 13);
             this.label15.TabIndex = 56;
             this.label15.Text = "Počet dozimetrů:";
             // 
             // lblDozNum
             // 
             this.lblDozNum.AutoSize = true;
-            this.lblDozNum.Location = new System.Drawing.Point(271, 34);
-            this.lblDozNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozNum.Location = new System.Drawing.Point(203, 28);
             this.lblDozNum.Name = "lblDozNum";
-            this.lblDozNum.Size = new System.Drawing.Size(11, 16);
+            this.lblDozNum.Size = new System.Drawing.Size(10, 13);
             this.lblDozNum.TabIndex = 46;
             this.lblDozNum.Text = "-";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(61, 181);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(46, 147);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(117, 16);
+            this.label14.Size = new System.Drawing.Size(94, 13);
             this.label14.TabIndex = 54;
             this.label14.Text = "Razit od dozimetru";
             // 
             // lblCount2
             // 
             this.lblCount2.AutoSize = true;
-            this.lblCount2.Location = new System.Drawing.Point(825, 138);
-            this.lblCount2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCount2.Location = new System.Drawing.Point(619, 112);
             this.lblCount2.Name = "lblCount2";
-            this.lblCount2.Size = new System.Drawing.Size(14, 16);
+            this.lblCount2.Size = new System.Drawing.Size(13, 13);
             this.lblCount2.TabIndex = 48;
             this.lblCount2.Text = "0";
             // 
@@ -1405,10 +1320,9 @@
             this.chkTiskSoubor.AutoSize = true;
             this.chkTiskSoubor.Checked = true;
             this.chkTiskSoubor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTiskSoubor.Location = new System.Drawing.Point(195, 229);
-            this.chkTiskSoubor.Margin = new System.Windows.Forms.Padding(4);
+            this.chkTiskSoubor.Location = new System.Drawing.Point(146, 186);
             this.chkTiskSoubor.Name = "chkTiskSoubor";
-            this.chkTiskSoubor.Size = new System.Drawing.Size(100, 20);
+            this.chkTiskSoubor.Size = new System.Drawing.Size(82, 17);
             this.chkTiskSoubor.TabIndex = 51;
             this.chkTiskSoubor.Text = "tisk popisků";
             this.chkTiskSoubor.UseVisualStyleBackColor = true;
@@ -1416,20 +1330,18 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(745, 138);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(559, 112);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 16);
+            this.label11.Size = new System.Drawing.Size(54, 13);
             this.label11.TabIndex = 47;
             this.label11.Text = "Vyraženo:";
             // 
             // lblDozPopis
             // 
             this.lblDozPopis.AutoSize = true;
-            this.lblDozPopis.Location = new System.Drawing.Point(271, 66);
-            this.lblDozPopis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDozPopis.Location = new System.Drawing.Point(203, 54);
             this.lblDozPopis.Name = "lblDozPopis";
-            this.lblDozPopis.Size = new System.Drawing.Size(11, 16);
+            this.lblDozPopis.Size = new System.Drawing.Size(10, 13);
             this.lblDozPopis.TabIndex = 50;
             this.lblDozPopis.Text = "-";
             // 
@@ -1437,11 +1349,10 @@
             // 
             this.tabPage4.Controls.Add(this.listBoxLog);
             this.tabPage4.Controls.Add(this.groupBox8);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(908, 609);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Size = new System.Drawing.Size(679, 492);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1449,20 +1360,16 @@
             // listBoxLog
             // 
             this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.ItemHeight = 16;
-            this.listBoxLog.Location = new System.Drawing.Point(16, 22);
-            this.listBoxLog.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxLog.Location = new System.Drawing.Point(12, 18);
             this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(872, 580);
+            this.listBoxLog.Size = new System.Drawing.Size(655, 472);
             this.listBoxLog.TabIndex = 29;
             // 
             // groupBox8
             // 
-            this.groupBox8.Location = new System.Drawing.Point(8, 4);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Location = new System.Drawing.Point(6, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Size = new System.Drawing.Size(889, 601);
+            this.groupBox8.Size = new System.Drawing.Size(667, 488);
             this.groupBox8.TabIndex = 30;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Log";
@@ -1470,10 +1377,9 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.groupBox9);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(908, 609);
+            this.tabPage5.Size = new System.Drawing.Size(679, 492);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Tisk";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1488,11 +1394,9 @@
             this.groupBox9.Controls.Add(this.btTiskEAN);
             this.groupBox9.Controls.Add(this.txtTextEAN);
             this.groupBox9.Controls.Add(this.label21);
-            this.groupBox9.Location = new System.Drawing.Point(8, 7);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox9.Location = new System.Drawing.Point(6, 6);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox9.Size = new System.Drawing.Size(717, 242);
+            this.groupBox9.Size = new System.Drawing.Size(538, 197);
             this.groupBox9.TabIndex = 52;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Tisk";
@@ -1500,57 +1404,51 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(276, 66);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(207, 54);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(308, 16);
+            this.label23.Size = new System.Drawing.Size(252, 13);
             this.label23.TabIndex = 53;
             this.label23.Text = "(zdroj pro text štítku, mezera v textu odděluje řádek)";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(276, 36);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(207, 29);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(124, 16);
+            this.label22.Size = new System.Drawing.Size(99, 13);
             this.label22.TabIndex = 52;
             this.label22.Text = "(zdroj pro EAN kód)";
             // 
             // cbEAN
             // 
             this.cbEAN.FormattingEnabled = true;
-            this.cbEAN.Location = new System.Drawing.Point(135, 116);
-            this.cbEAN.Margin = new System.Windows.Forms.Padding(4);
+            this.cbEAN.Location = new System.Drawing.Point(101, 94);
             this.cbEAN.Name = "cbEAN";
-            this.cbEAN.Size = new System.Drawing.Size(160, 24);
+            this.cbEAN.Size = new System.Drawing.Size(121, 21);
             this.cbEAN.TabIndex = 51;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(21, 66);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(16, 54);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(97, 16);
+            this.label19.Size = new System.Drawing.Size(79, 13);
             this.label19.TabIndex = 50;
             this.label19.Text = "Text dozimetru:";
             // 
             // txtTextDozimetruEAN
             // 
-            this.txtTextDozimetruEAN.Location = new System.Drawing.Point(135, 68);
-            this.txtTextDozimetruEAN.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTextDozimetruEAN.Location = new System.Drawing.Point(101, 55);
             this.txtTextDozimetruEAN.Name = "txtTextDozimetruEAN";
-            this.txtTextDozimetruEAN.Size = new System.Drawing.Size(132, 22);
+            this.txtTextDozimetruEAN.Size = new System.Drawing.Size(100, 20);
             this.txtTextDozimetruEAN.TabIndex = 44;
             this.txtTextDozimetruEAN.Text = "1A Vejsada";
             // 
             // btTiskEAN
             // 
-            this.btTiskEAN.Location = new System.Drawing.Point(304, 112);
-            this.btTiskEAN.Margin = new System.Windows.Forms.Padding(4);
+            this.btTiskEAN.Location = new System.Drawing.Point(228, 91);
             this.btTiskEAN.Name = "btTiskEAN";
-            this.btTiskEAN.Size = new System.Drawing.Size(149, 30);
+            this.btTiskEAN.Size = new System.Drawing.Size(112, 24);
             this.btTiskEAN.TabIndex = 43;
             this.btTiskEAN.Text = "Tisk popisku";
             this.btTiskEAN.UseVisualStyleBackColor = true;
@@ -1558,20 +1456,18 @@
             // 
             // txtTextEAN
             // 
-            this.txtTextEAN.Location = new System.Drawing.Point(135, 36);
-            this.txtTextEAN.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTextEAN.Location = new System.Drawing.Point(101, 29);
             this.txtTextEAN.Name = "txtTextEAN";
-            this.txtTextEAN.Size = new System.Drawing.Size(132, 22);
+            this.txtTextEAN.Size = new System.Drawing.Size(100, 20);
             this.txtTextEAN.TabIndex = 35;
             this.txtTextEAN.Text = "05019002";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(17, 38);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(13, 31);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(101, 16);
+            this.label21.Size = new System.Drawing.Size(82, 13);
             this.label21.TabIndex = 41;
             this.label21.Text = "Číslo dozimetru:";
             // 
@@ -1579,19 +1475,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(7, 1);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(5, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(402, 54);
+            this.label6.Size = new System.Drawing.Size(320, 42);
             this.label6.TabIndex = 30;
             this.label6.Text = "Raznice na dozimetry";
             // 
             // frmRaznice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1160, 782);
+            this.ClientSize = new System.Drawing.Size(870, 635);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox4);
@@ -1600,7 +1495,6 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRaznice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ovládání raznice";
