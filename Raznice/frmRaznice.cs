@@ -343,7 +343,7 @@ namespace Raznice
                         string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
 
                         // nastavi se vse potrebne
-                        if (SetTiskV2(typeDoz:2, txt, nameZdroj, nameZdrojEAN, false, true))
+                        if (SetTiskV2(typeDoz:txtTyp.Text.ToString(), txt, nameZdroj, nameZdrojEAN, false, true))
                         {
                         }
                         
@@ -431,61 +431,63 @@ namespace Raznice
 
 #if DLL
    
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
         static extern bool Init();
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
         static extern bool Ping();
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
         static extern bool Start();
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool Reset(ref bool Status);
+        static extern bool Reset();
 
         //////////////////////
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool ReadStatus(ref int nStatus);
+        static extern bool ReadStatus(ref short nStatus);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool ReadInfo(ref int nInfo);
+        static extern bool ReadInfo(ref short nInfo);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool ReadError(ref int nError);
+        static extern bool ReadError(ref short nError);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool ReadFinishOK(ref int lOK);
+        static extern bool ReadFinishOK(ref bool lOK);
 
         //////////////////////
+        //static extern bool SendType(int nType);
+        //static extern bool SendType(char nType);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool SendType([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen);
+        static extern bool SendType([MarshalAs(UnmanagedType.LPWStr)] string txt);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool SendTextName([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen);
+        static extern bool SendTextName([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool SendTextPersonalNo([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen);
+        static extern bool SendTextPersonalNo([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool SendTextBarCode([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen);
+        static extern bool SendTextBarCode([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen);
 
-        [DllImport("RazniceV2.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport("RazniceV2.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
-        static extern bool SendTextRazNo([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen);
+        static extern bool SendTextRazNo([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen);
 #else
 
         //simulace fci z Raznice.dll
@@ -531,19 +533,19 @@ namespace Raznice
             nError = 0;
             return true;
         }
-        public bool ReadFinishOK(ref int lOK)
+        public bool ReadFinishOK(ref bool lOK)
         {
             lOK = true;
             return true;
         }
         ////////////////////////////
 
-        public bool SendType(int typ)
+        public bool SendType([MarshalAs(UnmanagedType.LPWStr)] string typ)
         {
             return true;
         }
 
-        public bool SendTextName([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen)
+        public bool SendTextName([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen)
         {
             //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             Globalni.Nastroje.LogMessage("SendTextName:" + txt.Trim(), false, "Information", formRaz);
@@ -554,7 +556,7 @@ namespace Raznice
             return (r < 0.5 ? false : true);
         }
 
-        public bool SendTextPersonalNo([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen)
+        public bool SendTextPersonalNo([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen)
         {
             //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             Globalni.Nastroje.LogMessage("SendPersonalNo:" + txt.Trim(), false, "Information", formRaz);
@@ -565,7 +567,7 @@ namespace Raznice
             return (r < 0.5 ? false : true);
         }
 
-        public bool SendTextBarCode([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen)
+        public bool SendTextBarCode([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen)
         {
             //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             Globalni.Nastroje.LogMessage("SendTextBarCode:" + txt.Trim(), false, "Information", formRaz);
@@ -576,7 +578,7 @@ namespace Raznice
             return (r < 0.5 ? false : true);
         }
 
-        public bool SendTextRazNo([MarshalAs(UnmanagedType.LPStr)] string txt, int nLen)
+        public bool SendTextRazNo([MarshalAs(UnmanagedType.LPWStr)] string txt, int nLen)
         {
             //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             Globalni.Nastroje.LogMessage("SendTextRazNo:" + txt.Trim(), false, "Information", formRaz);
@@ -587,86 +589,203 @@ namespace Raznice
             return (r < 0.5 ? false : true);
         }
 
+
+        #region stare fce
+        //simulace fci z Raznice.dll
+
+        public bool IsReady(ref bool Status)
+        {
+            Status = true;
+            return true;
+        }
+
+        public bool IsDone(ref bool done, ref int Err, ref int Mark)
+        {
+            done = true;
+            Err = 0;
+            Mark = 0;
+            return true;
+        }
+
+
+        public bool StartText([MarshalAs(UnmanagedType.LPStr)] string text, int len)
+        {
+            //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Globalni.Nastroje.LogMessage("StartText:" + text.Trim(), false, "Information", formRaz);
+            //return true;
+            Random random = new Random();
+            double r = random.NextDouble();
+            //int a = (int)r;
+            return (r < 0.5 ? false : true);
+        }
+
+        public bool Run()
+        {
+            return true;
+        }
+
+        public bool Stop()
+        {
+            return true;
+        }
+
+        public bool SendText([MarshalAs(UnmanagedType.LPStr)] string text, int len)
+        {
+            //MessageBox.Show("SendText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Globalni.Nastroje.LogMessage("SendText:" + text.Trim(), false, "Information", formRaz);
+            return true;
+        }
+
+        public bool Mask([MarshalAs(UnmanagedType.LPStr)] string text, int len)
+        {
+            Globalni.Nastroje.LogMessage("Mask:" + text.Trim(), false, "Information", formRaz);
+            return true;
+        }
+
+        public bool PrintCode39([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
+        {
+            return true;
+        }
+
+        public bool PrintEAN8([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
+        {
+            //MessageBox.Show("PrintEAN8:" + name.Trim() + ", " + number.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Globalni.Nastroje.LogMessage("PrintEAN8:" + name.Trim() + ", " + number.Trim(), false, "Information", formRaz);
+            return true;
+        }
+
+        public bool PrintEAN13([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
+        {
+            //MessageBox.Show("PrintEAN13:" + name.Trim() + ", " + number.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Globalni.Nastroje.LogMessage("PrintEAN13:" + name.Trim() + ", " + number.Trim(), false, "Information", formRaz);
+            return true;
+        }
+
+        public bool SetIP(byte IP1, byte IP2, byte IP3, byte IP4)
+        {
+            byte[] IPs;
+            IPs = new byte[4];
+            IPs[0] = IP1;
+            IPs[1] = IP2;
+            IPs[2] = IP3;
+            IPs[3] = IP4;
+
+            /*
+            string strIPs = "";
+            strIPs = Encoding.GetEncoding("windows-1250").GetString(IPs);
+            */
+
+            Globalni.Nastroje.LogMessage("SetIP: " + IP1.ToString() + "." + IP2.ToString() + "." + IP3.ToString() + "." + IP4.ToString(), false, "Information", formRaz);
+            return true;
+        }
+
+        public bool PistonUp()
+        {
+            return true;
+        }
+
+        public bool PistonDown()
+        {
+            return true;
+        }
+
+        public bool Eject()
+        {
+            return true;
+        }
+
+        public bool ClearInput()
+        {
+            return true;
+        }
+
+        public void Disconnect()
+        {
+
+        }
+        #endregion
+
+
 #endif
 
-//#if DLL
-   
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool Init();
+        //#if DLL
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool InitIP(byte IP1, byte IP2, byte IP3, byte IP4);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool Init();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool IsReady(ref bool Status);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool InitIP(byte IP1, byte IP2, byte IP3, byte IP4);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool IsDone(ref bool done, ref int Err, ref int Mark);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool IsReady(ref bool Status);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool Start();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool IsDone(ref bool done, ref int Err, ref int Mark);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool StartText([MarshalAs(UnmanagedType.LPStr)] string text, int len);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool Start();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool Run();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool StartText([MarshalAs(UnmanagedType.LPStr)] string text, int len);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool Stop();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool Run();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)] 
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool SendText([MarshalAs(UnmanagedType.LPStr)] string text, int len);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool Stop();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool Mask([MarshalAs(UnmanagedType.LPStr)] string text, int len);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)] 
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool SendText([MarshalAs(UnmanagedType.LPStr)] string text, int len);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool PrintCode39([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool Mask([MarshalAs(UnmanagedType.LPStr)] string text, int len);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]            
-//        static extern bool PrintEAN8([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool PrintCode39([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]            
-//        static extern bool PrintEAN13([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]            
+        //        static extern bool PrintEAN8([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool SetIP(byte IP1, byte IP2, byte IP3, byte IP4);
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]            
+        //        static extern bool PrintEAN13([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool PistonUp();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool SetIP(byte IP1, byte IP2, byte IP3, byte IP4);
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool PistonDown();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool PistonUp();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool Eject();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool PistonDown();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern bool ClearInput();
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool Eject();
 
-//        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-//        [return: MarshalAs(UnmanagedType.I1)]
-//        static extern void Disconnect();
-//#endif
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern bool ClearInput();
+
+        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        //        [return: MarshalAs(UnmanagedType.I1)]
+        //        static extern void Disconnect();
+        //#endif
 
         #endregion
 
@@ -767,6 +886,13 @@ namespace Raznice
                 }
                 else
                 {
+                    Vlastnosti.popisStavuRaznice popisStavuRaznice;
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    if ((popisStavuRaznice.nStatusId == 3)) //zařízení zapnuto
+                        this.chkReady.Checked = true;
+                    else
+                        MessageBox.Show("Load Init(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     txtRazitDoz.Text = "";
                     txtRazitDoz.PromptChar = ' ';
@@ -794,7 +920,7 @@ namespace Raznice
             timer2.Enabled = false;
             try
             {
-                Disconnect();
+                //Disconnect();
             }
             catch (Exception ex)
             {
@@ -810,7 +936,7 @@ namespace Raznice
 
 #endregion
 
-#region Ovladaci_prvky
+        #region Ovladaci_prvky
 
         private void EnablingR(bool ready)
         {
@@ -822,17 +948,17 @@ namespace Raznice
             // zalozka Z tabulky
             cmdVyrazit.Enabled = ready;
             // nastaveni masky - ready + prava
-            btnMask.Enabled = Vlastnosti.allowEdit && ready;
+            //btnMask.Enabled = Vlastnosti.allowEdit && ready;
         }
 
         private void EnablingD(bool ready)
         {
-            btnUp.Enabled = ready;
-            btnDown.Enabled = ready;
+            //btnUp.Enabled = ready;
+            //btnDown.Enabled = ready;
             chkDone.Checked = ready;
             btnLoadFile.Enabled = ready;
             // nastaveni IP - ready + prava
-            btnSetIP.Enabled = Vlastnosti.allowEdit && ready;
+            //btnSetIP.Enabled = Vlastnosti.allowEdit && ready;
         }
 
         private void STPbtn(bool stop)
@@ -849,161 +975,209 @@ namespace Raznice
             }
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Tab "postupna", Kontrola, zda je vse vyplneno
+        /// </summary>
+        /// <returns></returns>
+        private bool Kontrola()
         {
-            //Vyrazit dozimetr
-            if (txtSarze.Text == String.Empty)
-            {
-                MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            //04373423
-            if (txtText.Text.Length != 8)
-            {
-                MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-            //string txt = InsertSpace(txtText.Text);
             string txt = txtText.Text.Trim();
 
-            bool ok = StartText(txt, txt.Length);
-            if (!ok) 
-            {
-                MessageBox.Show("Raznice není připravena", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-
-
-
-        }
-
-        private void btnSendText_Click(object sender, EventArgs e)
-        {
-            //Poslat text
-            if (txtSarze.Text == String.Empty)
-            {
-                MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //04373423
-            if (txtText.Text.Length != 8)
-            {
-                MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            //string txt = InsertSpace(txtText.Text);
-            string txt = txtText.Text.Trim();
-
-            bool ok = SendText(txt, txt.Length);
-            if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            // Tisk
-            string cislo_ean = "";
-            string popisek_stitku = "";
-
-#region kontrola
+            #region kontrola
 
             if (txtSarze.Text == String.Empty)
             {
                 MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSarze.Focus();
-                return;
+                return false;
+
+            }
+
+            if (txtTyp.Text == String.Empty)
+            {
+                MessageBox.Show("Typ filmu není zadán", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return false;
+
+            }
+            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3")
+            {
+                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return false;
+
+            }
+            int nTyp = 0;
+            if (!int.TryParse(txtTyp.Text, out nTyp))
+            {
+                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return false;
 
             }
 
             // kontrola vyplneni
+
+            if (txt == String.Empty)
+            {
+                MessageBox.Show("Číslo dozimetru (ražené číslo) musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtText.Focus();
+                return false;
+            }
+
+            if (((txt.Length != 8) && (nTyp == 2)) || ((txt.Length != 8) && (nTyp == 3)))
+            {
+                MessageBox.Show("Číslo dozimetru (ražené číslo) musí být 8 znaků pro typ 2, 3.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtText.Focus();
+                return false;
+            }
+            if ((txt.Length != 6) && (nTyp == 1))
+            {
+                MessageBox.Show("Číslo dozimetru (ražené číslo) musí být 6 znaků pro typ 1.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtText.Focus();
+                return false;
+            }
+
             if (txtObdobi.Text == String.Empty)
             {
                 MessageBox.Show("Číslo období musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtObdobi.Focus();
-                return;
+                return false;
             }
             if (txtMesic.Text == String.Empty)
             {
                 MessageBox.Show("Číslo měsíce musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMesic.Focus();
-                return;
+                return false;
             }
             if (txtRok.Text == String.Empty)
             {
                 MessageBox.Show("Číslo roku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtRok.Focus();
-                return;
+                return false;
             }
             if (txtPodnik.Text == String.Empty)
             {
                 MessageBox.Show("Číslo podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPodnik.Focus();
-                return;
+                return false;
             }
             if (txtOddeleni.Text == String.Empty)
             {
                 MessageBox.Show("Číslo oddělení podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtOddeleni.Focus();
-                return;
+                return false;
             }
             if (txtDozimetr.Text == String.Empty)
             {
                 MessageBox.Show("Číslo dozimetru musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtDozimetr.Focus();
-                return;
+                return false;
             }
 
-//          if (txtJmeno.Text == String.Empty)
-//          {
-//              MessageBox.Show("Jméno musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-//              return;
-//          }
+            //          if (txtJmeno.Text == String.Empty)
+            //          {
+            //              MessageBox.Show("Jméno musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //              return;
+            //          }
 
-            int numero =  0;
+            int numero = 0;
             // kotrola na delku
-            if ((txtObdobi.Text.Length != 1) || !(int.TryParse(txtObdobi.Text, out numero) ))
+            if ((txtObdobi.Text.Length != 1) || !(int.TryParse(txtObdobi.Text, out numero)))
             {
                 MessageBox.Show("Číslo období musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtObdobi.Focus();
-                return;
+                return false;
             }
-            if ((txtMesic.Text.Length != 2) || !(int.TryParse(txtMesic.Text, out numero) ))
+            if ((txtMesic.Text.Length != 2) || !(int.TryParse(txtMesic.Text, out numero)))
             {
                 MessageBox.Show("Číslo měsíce musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMesic.Focus();
-                return;
+                return false;
             }
             if ((txtRok.Text.Length != 2) || !(int.TryParse(txtRok.Text, out numero)))
             {
                 MessageBox.Show("Číslo roku musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtRok.Focus();
-                return;
+                return false;
             }
             if ((txtPodnik.Text.Length != 3) || !(int.TryParse(txtPodnik.Text, out numero)))
             {
                 MessageBox.Show("Číslo podniku musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPodnik.Focus();
-                return;
+                return false;
             }
             if ((txtOddeleni.Text.Length != 1) || !(int.TryParse(txtOddeleni.Text, out numero)))
             {
                 MessageBox.Show("Číslo oddělení podniku musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtOddeleni.Focus();
-                return;
+                return false;
             }
             if ((txtDozimetr.Text.Length != 3) || !(int.TryParse(txtDozimetr.Text, out numero)))
             {
                 MessageBox.Show("Číslo dozimetru musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtDozimetr.Focus();
+                return false;
+            }
+
+
+            if ((txtJmeno.Text == String.Empty))
+            {
+                MessageBox.Show("Jméno musí být uvedeno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtJmeno.Focus();
+                return false;
+            }
+            if ((txtJmeno.Text.Length > 14))
+            {
+                MessageBox.Show("Jméno nesmí být delší než 14 znaků.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtJmeno.Focus();
+                return false;
+            }
+
+            #endregion
+
+            return true;
+        }
+
+        /// <summary>
+        /// Tab "postupna", Vyrazit dozimetr 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStart_Click(object sender, EventArgs e)
+        {            
+            Vlastnosti.popisStavuRaznice popisStavuRaznice;
+            if (!Init())
+            {
+                MessageBox.Show("chyba Init()", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("chyba Init()", false, "Error", formRaz);
                 return;
             }
 
-#endregion
+            popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+            popisStavuRaznice = DejPopisStavu();
+            if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
+            {
+                MessageBox.Show("nStatusId: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("nStatusId: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                return;
+            }
+
+            //string txt = InsertSpace(txtText.Text);
+            string txt = txtText.Text.Trim();
+
+            // Tisk
+            string cislo_ean = "";
+            string popisek_stitku = "";
+
+            // kontrola vyplneni udaju na tab "postupna"
+            if (!Kontrola())
+                return;
+
             // 1 06 16 130 2 203
 
             // 1A_06_130/2_203
-            popisek_stitku = txtObdobi.Text.Trim() + txtSarze.Text.Trim() +  '_' + // 1A
+            popisek_stitku = txtObdobi.Text.Trim() + txtSarze.Text.Trim() + '_' + // 1A
                              txtMesic.Text.Trim() + '_' + //  06
                              txtPodnik.Text.Trim() + "/" + txtOddeleni.Text.Trim() + '_' + // 130/2
                              txtDozimetr.Text.Trim();   // 203
@@ -1017,23 +1191,284 @@ namespace Raznice
                              txtPodnik.Text.Trim() + txtOddeleni.Text.Trim() + // 1302
                              txtDozimetr.Text.Trim();   // 203
 
+
+
+
             // tisk popisku z tab. Postupna 
-            Tisk(popisek_stitku, cislo_ean, true, false);
+            // nastavi se vse potrebne
+            int kolecko = 1;
+            while (kolecko <= 3)
+            {
+                popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                popisStavuRaznice = DejPopisStavu();
+                if ((popisStavuRaznice.nStatusId != 3)) //neni chyba, neni řízení vypnuto
+                {
+                    MessageBox.Show("nStatusId: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Globalni.Nastroje.LogMessage("nStatusId: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+
+                    Cekej(2);
+                    kolecko++;
+                    continue;
+                }
+
+                if (!SetTiskV2(nTyp.ToString() /*2*/, txt, popisek_stitku, cislo_ean, false, true))
+                {
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+
+                    MessageBox.Show("SetTiskV2: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Globalni.Nastroje.LogMessage("SetTiskV2: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                }
+
+                if (!Start())
+                {
+                    MessageBox.Show("chyba Start()", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Globalni.Nastroje.LogMessage("chyba Start()", false, "Error", formRaz);
+                }
+
+                Cekej(1);
+
+                popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                popisStavuRaznice = DejPopisStavu();
+
+                if (popisStavuRaznice.nStatusId == 4)
+                {
+                    MessageBox.Show("po SetTiskV2 nStatusId == 4: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Globalni.Nastroje.LogMessage("po SetTiskV2 nStatusId == 4: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+
+                    if (!Reset())
+                    {
+                        MessageBox.Show("chyba pri Reset()", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Globalni.Nastroje.LogMessage("chyba pri Reset()", false, "Error", formRaz);
+                    }
+
+                    Cekej(1);
+                    kolecko++;
+                    continue;
+                }
+                else
+                {
+                    // koncim cyklus sem ok a jdu do finise
+                    break;
+                }
+            }
+
+            int koleckoFinish = 0;
+            while (koleckoFinish <= 3)
+            {
+                Cekej(2);
+                bool lOk = false;
+                if (!ReadFinishOK(ref lOk))
+                {
+                    MessageBox.Show("chyba pri ReadFinishOK()", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Globalni.Nastroje.LogMessage("chyba pri ReadFinishOK()", false, "Error", formRaz);
+                }
+
+                if (lOk == false)
+                {
+
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+
+                    // pokud je bez chyby, znovu
+                    if (popisStavuRaznice.nStatusId == 5)
+                    {
+                        MessageBox.Show("po !lOk popisStavuRaznice.nStatusId == 5: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Globalni.Nastroje.LogMessage("po !lOk popisStavuRaznice.nStatusId == 5: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+
+                        // ctu error, ten ale mam uz nacteny
+                        MessageBox.Show("po !lOk popisStavuRaznice.nErroId: " + popisStavuRaznice.nErrorId.ToString() + " -" + popisStavuRaznice.nErrorText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Globalni.Nastroje.LogMessage("po !lOk popisStavuRaznice.nErroId: " + popisStavuRaznice.nErrorId.ToString() + " -" + popisStavuRaznice.nErrorText.ToString(), false, "Error", formRaz);
+
+                        // KONCIM
+                        break;
+                    }
+                    else
+                    {
+                        Globalni.Nastroje.LogMessage("po !lOk popisStavuRaznice: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        koleckoFinish++;
+                        continue;
+                    }
+                }
+                else
+                {
+                    // je finis OK, mam narazeno a vytisklo, jdu ven
+                    Globalni.Nastroje.LogMessage("po lOk popisStavuRaznice: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                    break;
+                }
+
+
+            }
 
         }
 
+        /// <summary>
+        /// Z tab "postupna", Vyrazit N dozimetrů
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStarN_Click(object sender, EventArgs e)
         {
-            // Vyrazit N dozimetrů
-            if (txtText.Text.Length != 8)
-            {
-                MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //if (txtText.Text.Length != 8)
+            //{
+            //    MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            // kontrola vyplneni udaju na tab "postupna"
+            if (!Kontrola())
                 return;
-            }
 
             DozFile = false;
             StartN();
         }
+
+        private void btnSendText_Click(object sender, EventArgs e)
+        {
+            ////Poslat text
+            //if (txtSarze.Text == String.Empty)
+            //{
+            //    MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            ////04373423
+            //if (txtText.Text.Length != 8)
+            //{
+            //    MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            ////string txt = InsertSpace(txtText.Text);
+            //string txt = txtText.Text.Trim();
+
+            //bool ok = SendText(txt, txt.Length);
+            //if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+//            // Tisk
+//            string cislo_ean = "";
+//            string popisek_stitku = "";
+
+//#region kontrola
+
+//            if (txtSarze.Text == String.Empty)
+//            {
+//                MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtSarze.Focus();
+//                return;
+
+//            }
+
+//            // kontrola vyplneni
+//            if (txtObdobi.Text == String.Empty)
+//            {
+//                MessageBox.Show("Číslo období musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtObdobi.Focus();
+//                return;
+//            }
+//            if (txtMesic.Text == String.Empty)
+//            {
+//                MessageBox.Show("Číslo měsíce musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtMesic.Focus();
+//                return;
+//            }
+//            if (txtRok.Text == String.Empty)
+//            {
+//                MessageBox.Show("Číslo roku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtRok.Focus();
+//                return;
+//            }
+//            if (txtPodnik.Text == String.Empty)
+//            {
+//                MessageBox.Show("Číslo podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtPodnik.Focus();
+//                return;
+//            }
+//            if (txtOddeleni.Text == String.Empty)
+//            {
+//                MessageBox.Show("Číslo oddělení podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtOddeleni.Focus();
+//                return;
+//            }
+//            if (txtDozimetr.Text == String.Empty)
+//            {
+//                MessageBox.Show("Číslo dozimetru musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtDozimetr.Focus();
+//                return;
+//            }
+
+////          if (txtJmeno.Text == String.Empty)
+////          {
+////              MessageBox.Show("Jméno musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+////              return;
+////          }
+
+//            int numero =  0;
+//            // kotrola na delku
+//            if ((txtObdobi.Text.Length != 1) || !(int.TryParse(txtObdobi.Text, out numero) ))
+//            {
+//                MessageBox.Show("Číslo období musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtObdobi.Focus();
+//                return;
+//            }
+//            if ((txtMesic.Text.Length != 2) || !(int.TryParse(txtMesic.Text, out numero) ))
+//            {
+//                MessageBox.Show("Číslo měsíce musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtMesic.Focus();
+//                return;
+//            }
+//            if ((txtRok.Text.Length != 2) || !(int.TryParse(txtRok.Text, out numero)))
+//            {
+//                MessageBox.Show("Číslo roku musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtRok.Focus();
+//                return;
+//            }
+//            if ((txtPodnik.Text.Length != 3) || !(int.TryParse(txtPodnik.Text, out numero)))
+//            {
+//                MessageBox.Show("Číslo podniku musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtPodnik.Focus();
+//                return;
+//            }
+//            if ((txtOddeleni.Text.Length != 1) || !(int.TryParse(txtOddeleni.Text, out numero)))
+//            {
+//                MessageBox.Show("Číslo oddělení podniku musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtOddeleni.Focus();
+//                return;
+//            }
+//            if ((txtDozimetr.Text.Length != 3) || !(int.TryParse(txtDozimetr.Text, out numero)))
+//            {
+//                MessageBox.Show("Číslo dozimetru musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                txtDozimetr.Focus();
+//                return;
+//            }
+
+//#endregion
+//            // 1 06 16 130 2 203
+
+//            // 1A_06_130/2_203
+//            popisek_stitku = txtObdobi.Text.Trim() + txtSarze.Text.Trim() +  '_' + // 1A
+//                             txtMesic.Text.Trim() + '_' + //  06
+//                             txtPodnik.Text.Trim() + "/" + txtOddeleni.Text.Trim() + '_' + // 130/2
+//                             txtDozimetr.Text.Trim();   // 203
+//            // Vachata
+//            popisek_stitku = popisek_stitku + " " + txtJmeno.Text.Trim();
+
+//            // 106151302203
+//            cislo_ean = txtObdobi.Text.Trim() + // 1
+//                             txtMesic.Text.Trim() + // 06  
+//                             txtRok.Text.Trim() + // 15
+//                             txtPodnik.Text.Trim() + txtOddeleni.Text.Trim() + // 1302
+//                             txtDozimetr.Text.Trim();   // 203
+
+//            // tisk popisku z tab. Postupna 
+//            Tisk(popisek_stitku, cislo_ean, true, false);
+
+        }
+
+
 
         private void btnStartFromFile_Click(object sender, EventArgs e)
         {
@@ -1081,31 +1516,31 @@ namespace Raznice
 
         private void btnMask_Click(object sender, EventArgs e)
         {
-            bool ok = Mask(txtMask.Text, txtMask.Text.Length);
+            bool ok = false; // Mask(txtMask.Text, txtMask.Text.Length);
             if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void btnSetIP_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            string[] ip = txtIP.Text.Split('.');
-            byte[] ipb;
-            ipb = new byte[4];
+            //string[] ip = txtIP.Text.Split('.');
+            //byte[] ipb;
+            //ipb = new byte[4];
 
-            try
-            {
-                ipb[0] = Convert.ToByte(ip[0]);
-                ipb[1] = Convert.ToByte(ip[1]);
-                ipb[2] = Convert.ToByte(ip[2]);
-                ipb[3] = Convert.ToByte(ip[3]);
-            }
-            catch
-            {
-                MessageBox.Show("Špatně zadaná IP adresa", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    ipb[0] = Convert.ToByte(ip[0]);
+            //    ipb[1] = Convert.ToByte(ip[1]);
+            //    ipb[2] = Convert.ToByte(ip[2]);
+            //    ipb[3] = Convert.ToByte(ip[3]);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Špatně zadaná IP adresa", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
-            bool ok = SetIP(ipb[0], ipb[1], ipb[2], ipb[3]);
-            if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            //bool ok = SetIP(ipb[0], ipb[1], ipb[2], ipb[3]);
+            //if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
 
             timer1.Enabled = true;
@@ -1184,7 +1619,12 @@ namespace Raznice
             }
 
             ok = IsReady(ref ready);
-            if (timer2.Enabled) { EnablingR(false); } else EnablingR(ready);
+            if (timer2.Enabled)
+            { 
+                EnablingR(false); 
+            } else 
+                EnablingR(ready);
+
             if (!ok) 
             { 
                 lblStatus.Text = "Chyba komunikace";
@@ -1351,14 +1791,14 @@ namespace Raznice
             }
         }
 
-#endregion
+        #endregion
 
         private void txtSarze_LostFocus(object sender, EventArgs e)
         {
             txtSarze.Text = txtSarze.Text.ToUpper();
         }
 
-#region Charset
+        #region Charset
 
         public static byte[] StringToByteArray(string hex)
         {
@@ -1462,13 +1902,15 @@ namespace Raznice
         /// <param name="hlasitChybu"></param>
         /// <param name="VolnyTisk"></param>
         /// <returns></returns>
-        private bool SetTiskV2(int typeDoz /*1,2,3*/, string txt_DozNum /*11001003*/, string popisek_stitek /*1A_06_130/2_203 Michlova*/, string cislo_ean /*106151302203*/, bool hlasitChybu, bool VolnyTisk)
+        private bool SetTiskV2(string typeDoz /*1,2,3*/, string txt_DozNum /*11001003*/, string popisek_stitek /*1A_06_130/2_203 Michlova*/, string cislo_ean /*106151302203*/, bool hlasitChybu, bool VolnyTisk)
         {
             bool jakTisk = false;
             string nameZdroj = "";
             string numZdroj = "";
             string namePrint = "";
             string personalNoPrint = "";
+            bool jakSendText = false;
+            Vlastnosti.popisStavuRaznice popisStavuRaznice = null;
 
             //1A Michlova
             //050190002
@@ -1484,8 +1926,8 @@ namespace Raznice
                 var rows = nameZdroj.Split(' ');
                 if (rows != null)
                 {
-                    personalNoPrint = rows[1];
-                    namePrint = rows[2];
+                    personalNoPrint = rows[0];
+                    namePrint = rows[1];
                 }
 
                 if (!VolnyTisk)
@@ -1494,7 +1936,7 @@ namespace Raznice
                         MessageBox.Show("Číslo pro konstrukci EAN kódu: '" + numZdroj.ToString() + "' musí být dlouhé 12 znaků.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     if (numZdroj.Length != 12)
                     {
-                        Globalni.Nastroje.LogMessage("Tisk PrintEAN13, Číslo pro konstrukci EAN kódu musí být dlouhé 12 znaků, numZdroj:" + numZdroj.ToString(), false, "Error", formRaz);
+                        Globalni.Nastroje.LogMessage("SetTiskV2, Číslo pro konstrukci EAN kódu musí být dlouhé 12 znaků, numZdroj:" + numZdroj.ToString(), false, "Error", formRaz);
                         return false;
                     }
 
@@ -1504,7 +1946,7 @@ namespace Raznice
                     // pokud je mensi, doplnim na 15 pozice - je mozne tisknout jen cislo dozimetru beze jmena
                     if (nameZdroj.Length < 15)
                     {
-                        Globalni.Nastroje.LogMessage("Tisk PrintEAN13, Text štítku dozimetru musí být minimálně 15 naků dlouhý., numZdroj:" + nameZdroj.ToString(), false, "Warning", formRaz);
+                        Globalni.Nastroje.LogMessage("SetTiskV2, Text štítku dozimetru musí být minimálně 15 naků dlouhý., numZdroj:" + nameZdroj.ToString(), false, "Warning", formRaz);
                         nameZdroj = nameZdroj.PadLeft(15, '0');
                     }
                 }
@@ -1521,29 +1963,74 @@ namespace Raznice
                     nameZdroj = nameZdroj.Substring(0, 30);
 
 
-                Globalni.Nastroje.LogMessage("Tisk PrintEAN13 num:" + numZdroj.ToString() + ", name: " + nameZdroj.ToString(), false, "Information", formRaz);
+                Globalni.Nastroje.LogMessage("SetTiskV2 SendTextName:" + namePrint.ToString() + ", SendTextPersonalNo: " + personalNoPrint.ToString() + ", SendTextBarCode: " + numZdroj.ToString() + ", SendTextRazNo: " + txt_DozNum.ToString(), false, "Information", formRaz);
                 //jakTisk = PrintEAN13(numZdroj, numZdroj.Length, nameZdroj, nameZdroj.Length);
 
-                if (SendType(typeDoz))
-                    if (SendTextName(namePrint, namePrint.Length))
-                        if (SendPersonalNo(personalNoPrint, personalNoPrint.Length))
-                            if (SendTextBarCode(numZdroj, numZdroj.Length))
-                                if (SendTextRazNo(txt_DozNum, txt_DozNum.Length))
-                                    jakTisk = true;
+                //if (SendType(typeDoz))
+                //    if (SendTextName(namePrint, namePrint.Length))
+                //        if (SendTextPersonalNo(personalNoPrint, personalNoPrint.Length))
+                //            if (SendTextBarCode(numZdroj, numZdroj.Length))
+                //                if (SendTextRazNo(txt_DozNum, txt_DozNum.Length))
+                //                    jakTisk = true;
 
-                if (jakTisk == true)
+                #region metody SendText
+                jakSendText = true;
+                //char cType = char.Parse(typeDoz.ToString());
+                //if (!SendType(cType)
+                if (!SendType(typeDoz.ToString() /*cType*/))
                 {
-                    lblStatus.Text = "Tisk EAN13 ok";
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    Globalni.Nastroje.LogMessage("NaRazitDozV2, SendType(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                    jakSendText = false;
+                }
+                if (!SendTextName(namePrint, namePrint.Length))
+                {
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextName(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                    jakSendText = false;
+                }
+                if (!SendTextPersonalNo(personalNoPrint, personalNoPrint.Length))
+                {
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextPersonalNo(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                    jakSendText = false;
+                }
+                if (!SendTextBarCode(numZdroj, numZdroj.Length))
+                {
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextBarCode(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                    jakSendText = false;
+                }
+                if (!SendTextRazNo(txt_DozNum, txt_DozNum.Length))
+                {
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    Globalni.Nastroje.LogMessage("NaRazitDozV2, SendTextRazNo(): chyba, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                    jakSendText = false;
+                }
+                #endregion
+
+                if (jakSendText == true)
+                {
+                    jakTisk = true;
+                    lblStatus.Text = "Tisk ok";
                     //toolStripStatusLabel.Text = "Tisk EAN13 ok";
                 }
                 else
                 {
-                    lblStatus.Text = "Chyba tisku EAN13";
-                    toolStripStatusLabel.Text = "Chyba tisku EAN13";
+                    jakTisk = false;
+                    lblStatus.Text = "Chyba SetTiskV2";
+                    toolStripStatusLabel.Text = "Chyba SetTiskV2";
                     if (hlasitChybu)
-                        MessageBox.Show("Chyba tisku EAN13", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Chyba SetTiskV2", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                Globalni.Nastroje.LogMessage("Tisk PrintEAN13 " + lblStatus.Text, false, "Information", formRaz);
+                Globalni.Nastroje.LogMessage("SetTiskV2 " + lblStatus.Text, false, "Information", formRaz);
+                MessageBox.Show("SetTiskV2 SendTextName:" + namePrint.ToString() + ", SendTextPersonalNo: " + personalNoPrint.ToString() + ", SendTextBarCode: " + numZdroj.ToString() + ", SendTextRazNo: " + txt_DozNum.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             catch (Exception ex)
             {
@@ -2197,7 +2684,7 @@ namespace Raznice
         }
 
         /// <summary>
-        /// Vyrazeni na raznici a tisk 
+        /// Vyrazeni na raznici a tisk (puvodni)
         /// </summary>
         /// <param name="Tisk_radek_1"></param>
         /// <param name="Tisk_radek_2"></param>
@@ -2320,18 +2807,13 @@ namespace Raznice
         /// <param name="Tisk_radek_1"></param>
         /// <param name="Tisk_radek_2"></param>
         /// <returns></returns>
-        public bool NaRazitDozV2(string Tisk_radek_1, string Tisk_radek_2, int typeDoz)
+        public bool NaRazitDozV2(string Tisk_radek_1, string Tisk_radek_2, string typeDoz /*1,2,3*/)
         {
             // vyrazeni a tisk jednoho dozimetru
             bool vysledekSendText = false;
             bool vysledekFinish = false;
             bool jakSendText = false;
-            int i = 0;
 
-            bool ready = false;
-            bool done = false;
-            int Err = 0;
-            int Mark = 0;
             int kolikrat = 0;
             bool konecRazeni = false;
             string nameZdroj = ""; // Stitek horni
@@ -2340,7 +2822,7 @@ namespace Raznice
             string namePrint = "";
             string personalNoPrint = "";
             Vlastnosti.popisStavuRaznice popisStavuRaznice = null;
-            int lOk = 0;
+            bool lOk = false;
             int koleckoFinish = 0;
 
 
@@ -2381,7 +2863,7 @@ namespace Raznice
 
                     #region metody SendText
                     jakSendText = true;
-                    if (!SendType(typeDoz))
+                    if (!SendType(typeDoz.ToString()))
                     {
                         popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
                         popisStavuRaznice = DejPopisStavu();
@@ -2470,7 +2952,7 @@ namespace Raznice
                         Cekej(2);
                         vysledekFinish = true;
 
-                        lOk = 0;
+                        lOk = false;
                         if (!ReadFinishOK(ref lOk))
                         {
                             popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
@@ -2481,7 +2963,7 @@ namespace Raznice
                             continue;
                         }
 
-                        if (lOk == 0)
+                        if (lOk == false)
                         {
                             // jeste neni konec tisku v raznici ...
                             popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
@@ -2763,6 +3245,11 @@ namespace Raznice
 
 
 
+        /// <summary>
+        /// Vyrazeni dozimetru z raziciho planu pres "Vyrazit"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param> 
         private void cmdVyrazit_Click(object sender, EventArgs e)
         {
             bool dorazka = false;
@@ -2851,9 +3338,9 @@ namespace Raznice
 
 
                     NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
-   
+
                     // poslu na raznici a do tisku
-                    vysledekRaz = NaRazitDoz(Tisk_radek_1, Tisk_radek_2);
+                    vysledekRaz = NaRazitDozV2(Tisk_radek_1, Tisk_radek_2, txtTyp.Text.ToString());
 
                     if (!vysledekRaz)
                     {
@@ -3092,7 +3579,6 @@ namespace Raznice
 
 
         }
-
 
 
     }
