@@ -518,19 +518,19 @@ namespace Raznice
         ////////////////////////////        
         public bool ReadStatus(ref int nStatus)
         {
-            nStatus = 0;
+            nStatus = 3;
             return true;
         }
 
         public bool ReadInfo(ref int nInfo)
         {
-            nInfo = 0;
+            nInfo = 2;
             return true;
         }
 
         public bool ReadError(ref int nError)
         {
-            nError = 0;
+            nError = 10;
             return true;
         }
         public bool ReadFinishOK(ref bool lOK)
@@ -590,7 +590,7 @@ namespace Raznice
         }
 
 
-        #region stare fce
+        #region stare fce, jen aby to nervalo zatim
         //simulace fci z Raznice.dll
 
         public bool IsReady(ref bool Status)
@@ -708,85 +708,6 @@ namespace Raznice
 
 #endif
 
-        //#if DLL
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool Init();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool InitIP(byte IP1, byte IP2, byte IP3, byte IP4);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool IsReady(ref bool Status);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool IsDone(ref bool done, ref int Err, ref int Mark);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool Start();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool StartText([MarshalAs(UnmanagedType.LPStr)] string text, int len);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool Run();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool Stop();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)] 
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool SendText([MarshalAs(UnmanagedType.LPStr)] string text, int len);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool Mask([MarshalAs(UnmanagedType.LPStr)] string text, int len);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool PrintCode39([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]            
-        //        static extern bool PrintEAN8([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]            
-        //        static extern bool PrintEAN13([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool SetIP(byte IP1, byte IP2, byte IP3, byte IP4);
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool PistonUp();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool PistonDown();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool Eject();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern bool ClearInput();
-
-        //        [DllImport("Raznice.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        //        [return: MarshalAs(UnmanagedType.I1)]
-        //        static extern void Disconnect();
-        //#endif
-
         #endregion
 
         #region Formular
@@ -867,11 +788,6 @@ namespace Raznice
                 toolTip1.SetToolTip(this.lblEANPopis_radek_2, (tisk_z_pole_prijmeni == true ? "Kontrukce pro štítek dozimetru z pole 'Příjmení'" : "Kontrukce pro štítek dozimetru z pole 'Tisk řádek_2'"));
 
 
-                cbEAN.Items.Add(new Item("EAN13", 2));
-                cbEAN.Items.Add(new Item("EAN8", 1));                
-                cbEAN.Items.Add(new Item("EAN39", 3));
-                cbEAN.SelectedIndex = 0;
-
                 Globalni.Nastroje.LogMessage("Start", false, "Information", formRaz);
                 if (!Init())
                 {
@@ -892,7 +808,10 @@ namespace Raznice
                     if ((popisStavuRaznice.nStatusId == 3)) //zařízení zapnuto
                         this.chkReady.Checked = true;
                     else
+                    {
+                        this.chkReady.Checked = false;
                         MessageBox.Show("Load Init(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     txtRazitDoz.Text = "";
                     txtRazitDoz.PromptChar = ' ';
@@ -934,13 +853,13 @@ namespace Raznice
            
         } 
 
-#endregion
+        #endregion
 
         #region Ovladaci_prvky
 
         private void EnablingR(bool ready)
         {
-            btnSendText.Enabled = ready;
+            //btnSendText.Enabled = ready;
             btnStart.Enabled = ready;
             btnStarN.Enabled = ready;
             btnStartFromFile.Enabled = ready;            
@@ -961,19 +880,7 @@ namespace Raznice
             //btnSetIP.Enabled = Vlastnosti.allowEdit && ready;
         }
 
-        private void STPbtn(bool stop)
-        {
-            if (stop)
-            {
-                btnStop.Text = "STOP";
-                btnStop.BackColor = Color.Red;
-            }
-            else
-            {
-                btnStop.Text = "RUN";
-                btnStop.BackColor = Color.Green;
-            }
-        }
+  
 
         /// <summary>
         /// Tab "postupna", Kontrola, zda je vse vyplneno
@@ -1197,6 +1104,7 @@ namespace Raznice
             // tisk popisku z tab. Postupna 
             // nastavi se vse potrebne
             int kolecko = 1;
+            string nTyp = txtTyp.Text;
             while (kolecko <= 3)
             {
                 popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
@@ -1324,28 +1232,9 @@ namespace Raznice
             StartN();
         }
 
-        private void btnSendText_Click(object sender, EventArgs e)
-        {
-            ////Poslat text
-            //if (txtSarze.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+  
 
-            ////04373423
-            //if (txtText.Text.Length != 8)
-            //{
-            //    MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            ////string txt = InsertSpace(txtText.Text);
-            //string txt = txtText.Text.Trim();
-
-            //bool ok = SendText(txt, txt.Length);
-            //if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
+        [Obsolete]
         private void btnPrint_Click(object sender, EventArgs e)
         {
 //            // Tisk
@@ -1470,26 +1359,23 @@ namespace Raznice
 
 
 
+        /// <summary>
+        /// z tab "ze souboru" Vyrazit ze souboru
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStartFromFile_Click(object sender, EventArgs e)
         {
             // razeni dle textaku
             DozFile = true;
             StartN();
         }
-        
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-#if DLL
-            if (btnStop.Text == "STOP") { Stop(); }
-            else { Run(); }
-#else
-            //simulace fci z Raznice.dll
-            timer2.Enabled = false;
-            EnablingR(true);
 
-#endif
-        }
-
+        /// <summary>
+        /// z tab "ze souboru" Otevrit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
             //OpenDialog.InitialDirectory = "./.";
@@ -1514,12 +1400,42 @@ namespace Raznice
             else MessageBox.Show("Soubor se nepodařilo načíst", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+#if DLL
+            if (btnStop.Text == "STOP") { Stop(); }
+            else { Run(); }
+#else
+            //simulace fci z Raznice.dll
+            timer2.Enabled = false;
+            EnablingR(true);
+
+#endif
+        }
+
+        private void STPbtn(bool stop)
+        {
+            if (stop)
+            {
+                btnStop.Text = "STOP";
+                btnStop.BackColor = Color.Red;
+            }
+            else
+            {
+                btnStop.Text = "RUN";
+                btnStop.BackColor = Color.Green;
+            }
+        }
+
+        [Obsolete]
         private void btnMask_Click(object sender, EventArgs e)
         {
             bool ok = false; // Mask(txtMask.Text, txtMask.Text.Length);
             if (!ok) { MessageBox.Show("Chyba komunikace", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
+        [Obsolete]
         private void btnSetIP_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
@@ -1893,8 +1809,9 @@ namespace Raznice
 
         #endregion
 
+        #region funkce z tab postupna a volny
         /// <summary>
-        /// Nastaveni textu pro razbu a potisk 
+        /// Nastaveni textu pro razbu V2 a potisk, neni pro plan 
         /// </summary>
         /// <param name="txt_DozNum"></param>
         /// <param name="popisek_stitek"></param>
@@ -2108,6 +2025,9 @@ namespace Raznice
             return jakTisk;
         }
 
+        #endregion
+
+        #region funkce z tab plan
         private int indexOf(DataGridView dgv, string name) 
         {
             int index = 0;
@@ -2942,7 +2862,13 @@ namespace Raznice
                         Cekej(1);
                         continue;
                     }
-                } // while (!konecRazeni)
+                    else
+                    if (popisStavuRaznice.nStatusId == 3)
+                    {
+                        break;
+                    }
+
+                    } // while (!konecRazeni)
 
                 if (vysledekSendText)
                 {
@@ -3243,8 +3169,6 @@ namespace Raznice
             return popisStavu;
         }
 
-
-
         /// <summary>
         /// Vyrazeni dozimetru z raziciho planu pres "Vyrazit"
         /// </summary>
@@ -3473,7 +3397,7 @@ namespace Raznice
                 row.Cells[indexOf(dataGridView2, "Zpracovano_doz")].Value = 0;
             }
         }
-
+        #endregion
         private void Cekej(int seconds)
         {
             Globalni.Nastroje.LogMessage("Cekej, seconds: " + seconds.ToString(), false, "Information", formRaz);
@@ -3485,100 +3409,6 @@ namespace Raznice
     
         }
 
-        private void btTiskEAN_Click(object sender, EventArgs e)
-        {
-
-            bool jakTisk = false;
-            bool hlasitChybu = true;
-            string name = "";
-            string num = "";
-            string nameZdroj = "";
-            string numZdroj = "";
-            string namePrvniRadek = ""; // 2A_MM_PPP_DDD
-            string nameDruhyRadek = ""; // Vejsada
-
-            //1A Michlova
-            //05019001
-
-            // 2A_MM_PPP_DDD
-            // Vejsada
-            // 0PPPDDD
-
-            numZdroj = txtTextEAN.Text.Trim();
-            nameZdroj = txtTextDozimetruEAN.Text.Trim();
-
-            if ((numZdroj.Length == 0) && (hlasitChybu))
-                MessageBox.Show("Pole 'Číslo dozimetru' musí být zadáno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            if (numZdroj.Length == 0)
-            {
-                Globalni.Nastroje.LogMessage("Tisk PrintEAN, Pole 'Číslo dozimetru' musí být zadáno, numZdroj:" + numZdroj.ToString(), false, "Error", formRaz);
-                return;
-            }
-
-            if ((nameZdroj.Length < 4) && (hlasitChybu))
-                MessageBox.Show("Pole 'Text dozimetru' musí být minimálně 4 znaky.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            // pokud je mensi, doplnim na 4 pozice - je mozne tisknout jen cislo dozimetru beze jmena
-            if (nameZdroj.Length < 4)
-            {
-                Globalni.Nastroje.LogMessage("Tisk PrintEAN, Pole 'Text dozimetru' musí být minimálně 4 znaky., numZdroj:" + nameZdroj.ToString(), false, "Warning", formRaz);
-                nameZdroj = nameZdroj.PadLeft(4);
-            }
-
-            //namePrvniRadek = nameZdroj.Substring(0, 2) + '_' + numZdroj.Substring(0, 2) + '_' + numZdroj.Substring(2, 3) + '_' + numZdroj.Substring(5, 3);   // 2A_MM_PPP_DDD
-            //nameDruhyRadek = nameZdroj.Substring(3, nameZdroj.Length - 3);
-
-            //namePrvniRadek = namePrvniRadek.Replace(" ", "");
-            //nameDruhyRadek = nameDruhyRadek.Replace(" ", "");
-
-            //num = '0' + numZdroj.Substring(2, 6);
-            //name = namePrvniRadek + " " + nameDruhyRadek;
-            num = numZdroj;
-            name = nameZdroj;
-
-            if (name.Length > 30)
-                name = name.Substring(0, 30);
-
-            //PrintCode39(num, num.Length, name, name.Length);
-            // tenhle se pouiva: PrintEAN8(num, num.Length, name, name.Length);
-
-
-            
-
-            Item itm = (Item)cbEAN.SelectedItem;
-
-            lblStatus.Text = "Tisk "+itm.Name+" ...";
-            Globalni.Nastroje.LogMessage("Tisk Print"+itm.Name+" num:" + num.ToString() + ", name: " + name.ToString(), false, "Information", formRaz);
-
-            switch (itm.Value)
-            {
-                case 1:
-                    jakTisk = PrintEAN8(num, num.Length, name, name.Length);
-                    break;
-                case 2:
-                    jakTisk = PrintEAN13(num, num.Length, name, name.Length);
-                    break;
-                case 3:
-                    jakTisk = PrintCode39(num, num.Length, name, name.Length);
-                    break;
-                default:
-                    return ;
-            }
-
-            if (jakTisk == true)
-            {
-                lblStatus.Text = "Tisk " + itm.Name + " ok";
-            }
-            else
-            {
-                lblStatus.Text = "Chyba tisku "+ itm.Name ;
-                toolStripStatusLabel.Text = "Chyba tisku"+ itm.Name;
-                Globalni.Nastroje.LogMessage("Tisk Print" + itm.Name + " num:" + num.ToString() + ", name: " + name.ToString(), false, "Error", formRaz);
-                if (hlasitChybu)
-                    MessageBox.Show("Chyba tisku "+ itm.Name, Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
 
 
     }
