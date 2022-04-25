@@ -150,6 +150,17 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.cbStatut = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbInfo = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbError = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbInit = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cbFinishOK = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -168,6 +179,7 @@
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -270,7 +282,7 @@
             this.groupBox2.Controls.Add(this.btnStop);
             this.groupBox2.Location = new System.Drawing.Point(762, 132);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(153, 252);
+            this.groupBox2.Size = new System.Drawing.Size(153, 139);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Manuální ovládání";
@@ -1304,12 +1316,14 @@
             this.chkTiskSoubor.AutoSize = true;
             this.chkTiskSoubor.Checked = true;
             this.chkTiskSoubor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTiskSoubor.Enabled = false;
             this.chkTiskSoubor.Location = new System.Drawing.Point(146, 186);
             this.chkTiskSoubor.Name = "chkTiskSoubor";
             this.chkTiskSoubor.Size = new System.Drawing.Size(82, 17);
             this.chkTiskSoubor.TabIndex = 51;
             this.chkTiskSoubor.Text = "tisk popisků";
             this.chkTiskSoubor.UseVisualStyleBackColor = true;
+            this.chkTiskSoubor.Visible = false;
             // 
             // label11
             // 
@@ -1368,6 +1382,114 @@
             this.label6.TabIndex = 30;
             this.label6.Text = "Raznice na dozimetry V2";
             // 
+            // cbStatut
+            // 
+            this.cbStatut.DropDownWidth = 242;
+            this.cbStatut.FormattingEnabled = true;
+            this.cbStatut.Location = new System.Drawing.Point(19, 74);
+            this.cbStatut.Name = "cbStatut";
+            this.cbStatut.Size = new System.Drawing.Size(121, 21);
+            this.cbStatut.TabIndex = 31;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "Statut:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 98);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Info:";
+            // 
+            // cbInfo
+            // 
+            this.cbInfo.DropDownWidth = 242;
+            this.cbInfo.FormattingEnabled = true;
+            this.cbInfo.Location = new System.Drawing.Point(19, 114);
+            this.cbInfo.Name = "cbInfo";
+            this.cbInfo.Size = new System.Drawing.Size(121, 21);
+            this.cbInfo.TabIndex = 61;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(19, 138);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 64;
+            this.label8.Text = "Error:";
+            // 
+            // cbError
+            // 
+            this.cbError.DropDownWidth = 242;
+            this.cbError.FormattingEnabled = true;
+            this.cbError.Location = new System.Drawing.Point(19, 154);
+            this.cbError.Name = "cbError";
+            this.cbError.Size = new System.Drawing.Size(121, 21);
+            this.cbError.TabIndex = 63;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(24, 13);
+            this.label9.TabIndex = 66;
+            this.label9.Text = "Init:";
+            // 
+            // cbInit
+            // 
+            this.cbInit.DropDownWidth = 121;
+            this.cbInit.FormattingEnabled = true;
+            this.cbInit.Location = new System.Drawing.Point(19, 34);
+            this.cbInit.Name = "cbInit";
+            this.cbInit.Size = new System.Drawing.Size(121, 21);
+            this.cbInit.TabIndex = 65;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(19, 178);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(52, 13);
+            this.label19.TabIndex = 68;
+            this.label19.Text = "FinishOK:";
+            // 
+            // cbFinishOK
+            // 
+            this.cbFinishOK.FormattingEnabled = true;
+            this.cbFinishOK.Location = new System.Drawing.Point(19, 194);
+            this.cbFinishOK.Name = "cbFinishOK";
+            this.cbFinishOK.Size = new System.Drawing.Size(121, 21);
+            this.cbFinishOK.TabIndex = 67;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.cbInfo);
+            this.groupBox3.Controls.Add(this.cbFinishOK);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.cbError);
+            this.groupBox3.Controls.Add(this.cbInit);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.cbStatut);
+            this.groupBox3.Location = new System.Drawing.Point(767, 385);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(153, 227);
+            this.groupBox3.TabIndex = 34;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Simulace ovládání";
+            // 
             // frmRaznice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1380,6 +1502,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRaznice";
@@ -1414,6 +1537,8 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1533,6 +1658,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SLOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn RP_ROK;
         private System.Windows.Forms.DataGridViewTextBoxColumn RP_MESIC;
+        private System.Windows.Forms.ComboBox cbStatut;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbInfo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbError;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbInit;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cbFinishOK;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 
