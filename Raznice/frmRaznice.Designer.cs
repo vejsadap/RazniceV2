@@ -103,19 +103,6 @@
             this.lblDozPopisTab = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtDozimetr = new System.Windows.Forms.TextBox();
-            this.txtOddeleni = new System.Windows.Forms.TextBox();
-            this.txtPodnik = new System.Windows.Forms.TextBox();
-            this.txtRok = new System.Windows.Forms.TextBox();
-            this.txtMesic = new System.Windows.Forms.TextBox();
-            this.txtObdobi = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtJmeno = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStarN = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -161,6 +148,18 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cbFinishOK = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtJmeno = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtObdobi = new System.Windows.Forms.TextBox();
+            this.txtMesic = new System.Windows.Forms.TextBox();
+            this.txtRok = new System.Windows.Forms.TextBox();
+            this.txtPodnik = new System.Windows.Forms.TextBox();
+            this.txtOddeleni = new System.Windows.Forms.TextBox();
+            this.txtDozimetr = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -174,7 +173,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -898,8 +896,6 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.groupBox10);
-            this.tabPage1.Controls.Add(this.btnStart);
             this.tabPage1.Controls.Add(this.btnStarN);
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.txtCount);
@@ -923,131 +919,9 @@
             this.label5.Text = "Počet dozimetrů:";
             this.label5.Visible = false;
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label28);
-            this.groupBox10.Controls.Add(this.label27);
-            this.groupBox10.Controls.Add(this.label26);
-            this.groupBox10.Controls.Add(this.label18);
-            this.groupBox10.Controls.Add(this.txtDozimetr);
-            this.groupBox10.Controls.Add(this.txtOddeleni);
-            this.groupBox10.Controls.Add(this.txtPodnik);
-            this.groupBox10.Controls.Add(this.txtRok);
-            this.groupBox10.Controls.Add(this.txtMesic);
-            this.groupBox10.Controls.Add(this.txtObdobi);
-            this.groupBox10.Controls.Add(this.label13);
-            this.groupBox10.Controls.Add(this.txtJmeno);
-            this.groupBox10.Location = new System.Drawing.Point(6, 176);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(667, 100);
-            this.groupBox10.TabIndex = 61;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Tisk štítku dozimetru";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(387, 29);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 13);
-            this.label28.TabIndex = 73;
-            this.label28.Text = "Jméno";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(268, 29);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(111, 13);
-            this.label27.TabIndex = 72;
-            this.label27.Text = "Podnik/Odd/Dozimetr";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(194, 29);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(62, 13);
-            this.label26.TabIndex = 71;
-            this.label26.Text = "Měsíc/Rok";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(154, 29);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 13);
-            this.label18.TabIndex = 62;
-            this.label18.Text = "Období";
-            // 
-            // txtDozimetr
-            // 
-            this.txtDozimetr.Location = new System.Drawing.Point(336, 45);
-            this.txtDozimetr.Name = "txtDozimetr";
-            this.txtDozimetr.Size = new System.Drawing.Size(37, 20);
-            this.txtDozimetr.TabIndex = 70;
-            this.txtDozimetr.Text = "320";
-            // 
-            // txtOddeleni
-            // 
-            this.txtOddeleni.Location = new System.Drawing.Point(313, 45);
-            this.txtOddeleni.Name = "txtOddeleni";
-            this.txtOddeleni.Size = new System.Drawing.Size(18, 20);
-            this.txtOddeleni.TabIndex = 69;
-            this.txtOddeleni.Text = "9";
-            // 
-            // txtPodnik
-            // 
-            this.txtPodnik.Location = new System.Drawing.Point(271, 45);
-            this.txtPodnik.Name = "txtPodnik";
-            this.txtPodnik.Size = new System.Drawing.Size(37, 20);
-            this.txtPodnik.TabIndex = 68;
-            this.txtPodnik.Text = "320";
-            // 
-            // txtRok
-            // 
-            this.txtRok.Location = new System.Drawing.Point(230, 45);
-            this.txtRok.Name = "txtRok";
-            this.txtRok.Size = new System.Drawing.Size(27, 20);
-            this.txtRok.TabIndex = 67;
-            this.txtRok.Text = "16";
-            // 
-            // txtMesic
-            // 
-            this.txtMesic.Location = new System.Drawing.Point(197, 45);
-            this.txtMesic.Name = "txtMesic";
-            this.txtMesic.Size = new System.Drawing.Size(27, 20);
-            this.txtMesic.TabIndex = 66;
-            this.txtMesic.Text = "05";
-            // 
-            // txtObdobi
-            // 
-            this.txtObdobi.Location = new System.Drawing.Point(157, 45);
-            this.txtObdobi.Name = "txtObdobi";
-            this.txtObdobi.Size = new System.Drawing.Size(18, 20);
-            this.txtObdobi.TabIndex = 65;
-            this.txtObdobi.Text = "3";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(24, 48);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 13);
-            this.label13.TabIndex = 64;
-            this.label13.Text = "Text na štítek dozimetru:";
-            // 
-            // txtJmeno
-            // 
-            this.txtJmeno.Location = new System.Drawing.Point(390, 45);
-            this.txtJmeno.Name = "txtJmeno";
-            this.txtJmeno.Size = new System.Drawing.Size(100, 20);
-            this.txtJmeno.TabIndex = 63;
-            this.txtJmeno.Text = "Vejsada";
-            // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(65, 292);
+            this.btnStart.Location = new System.Drawing.Point(155, 154);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(112, 24);
             this.btnStart.TabIndex = 34;
@@ -1068,11 +942,24 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.btnStart);
             this.groupBox5.Controls.Add(this.txtText);
             this.groupBox5.Controls.Add(this.label1);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.txtJmeno);
+            this.groupBox5.Controls.Add(this.txtObdobi);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.txtMesic);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.txtRok);
+            this.groupBox5.Controls.Add(this.txtPodnik);
+            this.groupBox5.Controls.Add(this.txtDozimetr);
+            this.groupBox5.Controls.Add(this.txtOddeleni);
             this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(667, 164);
+            this.groupBox5.Size = new System.Drawing.Size(672, 194);
             this.groupBox5.TabIndex = 51;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Postupné ražení dozimetrů";
@@ -1102,6 +989,7 @@
             this.txtCount.TabIndex = 38;
             this.txtCount.Text = "1";
             this.txtCount.Visible = false;
+            this.txtCount.WordWrap = false;
             // 
             // label2
             // 
@@ -1490,6 +1378,107 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Simulace ovládání";
             // 
+            // txtJmeno
+            // 
+            this.txtJmeno.Location = new System.Drawing.Point(388, 95);
+            this.txtJmeno.Name = "txtJmeno";
+            this.txtJmeno.Size = new System.Drawing.Size(100, 20);
+            this.txtJmeno.TabIndex = 63;
+            this.txtJmeno.Text = "Vejsada";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(22, 98);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(124, 13);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Text na štítek dozimetru:";
+            // 
+            // txtObdobi
+            // 
+            this.txtObdobi.Location = new System.Drawing.Point(155, 95);
+            this.txtObdobi.Name = "txtObdobi";
+            this.txtObdobi.Size = new System.Drawing.Size(18, 20);
+            this.txtObdobi.TabIndex = 65;
+            this.txtObdobi.Text = "3";
+            // 
+            // txtMesic
+            // 
+            this.txtMesic.Location = new System.Drawing.Point(195, 95);
+            this.txtMesic.Name = "txtMesic";
+            this.txtMesic.Size = new System.Drawing.Size(27, 20);
+            this.txtMesic.TabIndex = 66;
+            this.txtMesic.Text = "05";
+            // 
+            // txtRok
+            // 
+            this.txtRok.Location = new System.Drawing.Point(228, 95);
+            this.txtRok.Name = "txtRok";
+            this.txtRok.Size = new System.Drawing.Size(27, 20);
+            this.txtRok.TabIndex = 67;
+            this.txtRok.Text = "16";
+            // 
+            // txtPodnik
+            // 
+            this.txtPodnik.Location = new System.Drawing.Point(269, 95);
+            this.txtPodnik.Name = "txtPodnik";
+            this.txtPodnik.Size = new System.Drawing.Size(37, 20);
+            this.txtPodnik.TabIndex = 68;
+            this.txtPodnik.Text = "320";
+            // 
+            // txtOddeleni
+            // 
+            this.txtOddeleni.Location = new System.Drawing.Point(311, 95);
+            this.txtOddeleni.Name = "txtOddeleni";
+            this.txtOddeleni.Size = new System.Drawing.Size(18, 20);
+            this.txtOddeleni.TabIndex = 69;
+            this.txtOddeleni.Text = "9";
+            // 
+            // txtDozimetr
+            // 
+            this.txtDozimetr.Location = new System.Drawing.Point(334, 95);
+            this.txtDozimetr.Name = "txtDozimetr";
+            this.txtDozimetr.Size = new System.Drawing.Size(37, 20);
+            this.txtDozimetr.TabIndex = 70;
+            this.txtDozimetr.Text = "320";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(152, 79);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.TabIndex = 62;
+            this.label18.Text = "Období";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(192, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(62, 13);
+            this.label26.TabIndex = 71;
+            this.label26.Text = "Měsíc/Rok";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(266, 79);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(111, 13);
+            this.label27.TabIndex = 72;
+            this.label27.Text = "Podnik/Odd/Dozimetr";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(385, 79);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.TabIndex = 73;
+            this.label28.Text = "Jméno";
+            // 
             // frmRaznice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1529,8 +1518,6 @@
             this.groupBox7.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1620,19 +1607,6 @@
         private System.Windows.Forms.Label lblDozimetrRazba;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtDozimetr;
-        private System.Windows.Forms.TextBox txtOddeleni;
-        private System.Windows.Forms.TextBox txtPodnik;
-        private System.Windows.Forms.TextBox txtRok;
-        private System.Windows.Forms.TextBox txtMesic;
-        private System.Windows.Forms.TextBox txtObdobi;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtJmeno;
         private System.Windows.Forms.Label lblDozPopisEAN;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button btnLoadFile;
@@ -1669,6 +1643,18 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cbFinishOK;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtJmeno;
+        private System.Windows.Forms.TextBox txtObdobi;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtMesic;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtRok;
+        private System.Windows.Forms.TextBox txtPodnik;
+        private System.Windows.Forms.TextBox txtDozimetr;
+        private System.Windows.Forms.TextBox txtOddeleni;
     }
 }
 
