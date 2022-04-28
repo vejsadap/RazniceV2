@@ -259,7 +259,7 @@ namespace Raznice
             }
             else
             {
-                // bez soboru TAB2
+                // bez souboru TAB2
                 try
                 {
                     DozNum = Convert.ToInt32(txtText.Text);
@@ -343,11 +343,8 @@ namespace Raznice
                         string nameZdroj = lblDozPopis.Text.ToString().Trim();
                         string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
 
-                        // nastavi se vse potrebne
-                        if (SetTiskV2(typeDoz:txtTyp.Text.ToString(), txt, nameZdroj, nameZdrojEAN, false, true))
-                        {
-                        }
-                        
+                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
+
 
 
                     }
@@ -360,9 +357,15 @@ namespace Raznice
             }
             else
             {
+                // toto je obsolete, vubec se neposti varianta VyrazitN dozimetru z TAB2
+                #region Obsolete VyrazitN dozimetru z TAB2
                 // tisk prvniho
-                ok = StartText(txt, txt.Length);
-                if (!ok) 
+                // ok = StartText(txt, txt.Length);
+
+                // poslu na raznici a do tisku
+                // parametry tady nepouzivam, hodnoty si zjistim az v telu procedury
+                bool vysledekRaz = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
+                if (!vysledekRaz) 
                 { 
                     lblStatus.Text = "Chyba komunikace";
                     Globalni.Nastroje.LogMessage("StartN(), lblStatus.Text: " + lblStatus.Text.ToString(), false, "Error", formRaz);
@@ -373,6 +376,7 @@ namespace Raznice
                     // spustim cyklus pro dozimetry - at nactenych ze souboru nebo ze zalozky 1
                     timer2.Enabled = true;
                 }
+                #endregion
             }
         }
 
@@ -1307,6 +1311,7 @@ namespace Raznice
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        [Obsolete]
         private void btnStarN_Click(object sender, EventArgs e)
         {
 
@@ -1490,7 +1495,7 @@ namespace Raznice
         }
 
         /// <summary>
-        /// Nabira dozimetry ze seznamu souboru TAB3 nebo postupne pridava poradi TAB2
+        /// Nabira dozimetry ze seznamu souboru TAB3, jednotlive z TAB2 se uz netiskne
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
