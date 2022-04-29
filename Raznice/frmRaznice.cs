@@ -186,6 +186,7 @@ namespace Raznice
         /// <summary>
         /// Vyrazeni N dozimetru (postupna TAB2) nebo ze souboru (ze souboru TAB3)
         /// </summary>
+        [Obsolete]
         public void StartN()
         {
             Vlastnosti.popisStavuRaznice popisStavuRaznice = new Vlastnosti.popisStavuRaznice(); 
@@ -351,7 +352,12 @@ namespace Raznice
                     else
                         vysledek = true;
 
-
+                    // tisk dalsich dozimetru pres timer
+                    if (vysledek == true)
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        timer2.Enabled = true;
+                    }
                     #endregion
                 }
             }
@@ -378,6 +384,164 @@ namespace Raznice
                 }
                 #endregion
             }
+        }
+
+        /// <summary>
+        /// Vyrazeni dozimetru ze souboru TAB3 
+        /// </summary>
+        public void StartNV2()
+        {
+            Vlastnosti.popisStavuRaznice popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+
+            if (txtSarze.Text.Replace(" ", "") == String.Empty)
+            {
+                MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("StartN(), Šarže filmu není zadána", false, "Error", formRaz);
+                return;
+            }
+
+            bool ok = Init();
+            if (!ok)
+            {
+                popisStavuRaznice = DejPopisStavu();
+
+                lblStatus.Text = "Chyba komunikace: " + popisStavuRaznice.stavText.ToString();
+                Globalni.Nastroje.LogMessage("Init(), Chyba komunikace: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+            }
+
+            popisStavuRaznice = DejPopisStavu();
+            if (popisStavuRaznice.nStatusId != 3) //chyba, řízení vypnuto
+            {
+                MessageBox.Show("Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("Init(), Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                return;
+            }
+
+            string txt = "";
+            DozCount = 0;
+            lblCount.Text = "0";
+            lblCount2.Text = "0";
+
+            // razba ze souboru TAB3 a nebo bez TAB2
+            if (DozFile)
+            {
+                // ze souboru TAB3
+                DozStr = LoadFile(txtFile.Text);    // 05019017;1 Vachata
+
+                if (!(DozStr == null))
+                {
+                    int locDozPozice = 0;
+
+                    // vynulovat vstupy
+                    lblCount2.Text = "0";
+
+
+                    // tiskne se vse nebo jenom podmnozina 
+                    if (txtRazitOdDoz.Text.Trim().Length > 0)
+                        if (JeTamCisloDozimetru(txtRazitOdDoz.Text.Replace(" ", "").Trim()))
+                        {
+                            locDozPozice = DozPozice - 1;
+                            if (locDozPozice < 0)
+                                locDozPozice = 0;
+                        }
+                        else
+                            return;
+
+
+                    RozeberDozStr(locDozPozice);
+                    DozMaxCount = DozStr.Length;
+                    txt = lblDozNum.Text;
+
+                }
+                else
+                {
+                    MessageBox.Show("Nelze načíst soubor", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Globalni.Nastroje.LogMessage("StartN(), Nelze načíst soubor: " + txtFile.Text.ToString(), false, "Error", formRaz);
+                    return;
+                }
+            }
+
+            // prvni doz, dalsi se resi pres timer2 ...
+            if (DozFile)
+            {
+                // razeni pres soubor TAB3
+                bool vysledek = false;
+                bool jaktisk = false;
+
+                // tiskne se vse nebo jenom podmnozina ?
+                if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0))
+                {
+                    // podmnozina
+                    // tisknu az z timeru2
+                    System.Threading.Thread.Sleep(1000);
+                    timer2.Enabled = true;
+                }
+                else
+                {
+                    // tiskne se vse ze souboru
+                    // ponovu se nastavi co tisknout a posle se na razbu kde se zaroven i tiskne
+                    #region razbaV2 s tiskem dozimetru NEW
+
+                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+                    popisStavuRaznice = DejPopisStavu();
+                    if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
+                    {
+                        MessageBox.Show("StartN(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Globalni.Nastroje.LogMessage("StartN(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                        vysledek = false;
+                    }
+
+                    if (chkRazitDozimetry.Checked == true)
+                    {
+                        Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
+
+
+                        //string numZdroj = lblDozNum.Text.ToString().Trim();
+                        string nameZdroj = lblDozPopis.Text.ToString().Trim();
+                        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
+
+                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
+
+
+
+                    }
+                    else
+                        vysledek = true;
+
+                    // tisk dalsich dozimetru pres timer
+                    if (vysledek == true)
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        timer2.Enabled = true;
+                    }
+                    #endregion
+                }
+            }
+            #region old
+            //else
+            //{
+            //    // toto je obsolete, vubec se neposti varianta VyrazitN dozimetru z TAB2
+            //    #region Obsolete VyrazitN dozimetru z TAB2
+            //    // tisk prvniho
+            //    // ok = StartText(txt, txt.Length);
+
+            //    // poslu na raznici a do tisku
+            //    // parametry tady nepouzivam, hodnoty si zjistim az v telu procedury
+            //    bool vysledekRaz = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
+            //    if (!vysledekRaz)
+            //    {
+            //        lblStatus.Text = "Chyba komunikace";
+            //        Globalni.Nastroje.LogMessage("StartN(), lblStatus.Text: " + lblStatus.Text.ToString(), false, "Error", formRaz);
+
+            //    }
+            //    else
+            //    {
+            //        // spustim cyklus pro dozimetry - at nactenych ze souboru nebo ze zalozky 1
+            //        timer2.Enabled = true;
+            //    }
+            //    #endregion
+            //}
+            #endregion
         }
 
         public string ErrString(int Err)
@@ -2715,7 +2879,7 @@ namespace Raznice
             int koleckoFinish = 0;
 
 
-            if (chkRazitDozimetryTab.Checked == true)
+            if (chkRazitDozimetryTab.Checked == true || chkRazitDozimetry.Checked == true) // na TAB a TAB3
             {
                 // pokus nekolikrat za sebou
                 while (!konecRazeni)
@@ -2747,7 +2911,7 @@ namespace Raznice
                     }
                     else
                     {
-                        // postupny TAB2 nebo soubor TAB3
+                        // postupny TAB2 nebo soubor TAB3, bere se z parametru
                         nameZdroj = txt_nameZdroj.ToString().Trim();    // Stitek horni
                         numZdroj = txt_numZdroj.ToString().Trim();  // EAN  
                         numDoz = txt_numDoz.ToString().Trim();    // cislo dozimetru 
