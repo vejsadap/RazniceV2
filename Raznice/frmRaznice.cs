@@ -17,16 +17,42 @@ namespace Raznice
     
     public partial class frmRaznice : Form
     {
+        /// <summary>
+        /// počet vyražených dozimetrů
+        /// </summary>
         int DozCount;               // počet vyražených dozimetrů
-        int DozMaxCount;            // počet dozimetrů, které se mají orazit
-        int DozNum;                 // číslo dozimetru
+
+        /// <summary>
+        /// počet dozimetrů, které se mají orazit
+        /// </summary>
+        int DozMaxCount;            // počet dozimetrů, které se mají orazit        
+
+        /// <summary>
+        /// pole čísel dozimetrů
+        /// </summary>
         string[] DozStr;            // pole čísel dozimetrů
+
+        /// <summary>
+        /// indikace druhu ražení
+        /// </summary>
         bool DozFile;               // indikace druhu ražení
+
+        /// <summary>
+        /// od ktere pozice - radku v souboru se ma razit
+        /// </summary>
         int DozPozice;              // od ktere pozice - radku v souboru se ma razit
-        int DozVyrazeno;            // pocitadlo vyrazenych doz v pripade razeni od - do
+
+
+        /// <summary>
+        /// jmeno dbf souboru s razicim planem
+        /// </summary>
         string dbFileName = "";     // jmeno dbf souboru s razicim planem
+
         frmRaznice formRaz;         // nastaveny object formu ve Form_Load pro parametr zasilani LogMessage
         bool tisk_z_pole_prijmeni;  // jake pole (prijmeni nebo Tisk_2) z tabulky se pouzije pro tisk stitku
+
+        int DozNum;                 // číslo dozimetru
+        int DozVyrazeno;            // pocitadlo vyrazenych doz v pripade razeni od - do
 
 
         private class Item
@@ -83,6 +109,10 @@ namespace Raznice
             return strSarze;
         }
 
+        /// <summary>
+        /// Podle pozice v parametru vypise na form cislo doz, popis doz, EAN
+        /// </summary>
+        /// <param name="index"> index pole souboru</param>
         private void RozeberDozStr(int index)
         {
 
@@ -217,7 +247,6 @@ namespace Raznice
 
             string txt = "";
             DozCount = 0;
-            lblCount.Text = "0";
             lblCount2.Text = "0";            
 
             // razba ze souboru TAB3 a nebo bez TAB2
@@ -261,18 +290,6 @@ namespace Raznice
             else
             {
                 // bez souboru TAB2
-                try
-                {
-                    DozNum = Convert.ToInt32(txtText.Text);
-                    DozMaxCount = Convert.ToInt32(txtCount.Text);
-                }
-                catch 
-                {
-                    MessageBox.Show("Číslo je ve špatném formátu", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Globalni.Nastroje.LogMessage("StartN(), Číslo je ve špatném formátu", false, "Error", formRaz);
-                    return; 
-                }
-                txt = InsertSpace(DozNum.ToString());
             }
 
             // prvni doz, dalsi se resi pres timer2 ...
@@ -393,12 +410,36 @@ namespace Raznice
         {
             Vlastnosti.popisStavuRaznice popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
 
+            #region Kontrola
             if (txtSarze.Text.Replace(" ", "") == String.Empty)
             {
                 MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("StartN(), Šarže filmu není zadána", false, "Error", formRaz);
+                Globalni.Nastroje.LogMessage("StartNV2(), Šarže filmu není zadána", false, "Error", formRaz);
                 return;
             }
+            if (txtTyp.Text == String.Empty)
+            {
+                MessageBox.Show("Typ filmu není zadán", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return;
+
+            }
+            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3")
+            {
+                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return;
+
+            }
+            int nTyp = 0;
+            if (!int.TryParse(txtTyp.Text, out nTyp))
+            {
+                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return;
+
+            }
+            #endregion
 
             bool ok = Init();
             if (!ok)
@@ -406,22 +447,23 @@ namespace Raznice
                 popisStavuRaznice = DejPopisStavu();
 
                 lblStatus.Text = "Chyba komunikace: " + popisStavuRaznice.stavText.ToString();
-                Globalni.Nastroje.LogMessage("Init(), Chyba komunikace: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                Globalni.Nastroje.LogMessage("StartNV2() Init, Chyba komunikace: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
             }
 
             popisStavuRaznice = DejPopisStavu();
             if (popisStavuRaznice.nStatusId != 3) //chyba, řízení vypnuto
             {
                 MessageBox.Show("Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("Init(), Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                Globalni.Nastroje.LogMessage("StartNV2() Init, Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
                 return;
             }
 
-            string txt = "";
+            //string txt = "";
             DozCount = 0;
-            lblCount.Text = "0";
+            DozVyrazeno = 0;
             lblCount2.Text = "0";
-
+            bool konec = false;
+            int err = 0;
             // razba ze souboru TAB3 a nebo bez TAB2
             if (DozFile)
             {
@@ -450,98 +492,170 @@ namespace Raznice
 
                     RozeberDozStr(locDozPozice);
                     DozMaxCount = DozStr.Length;
-                    txt = lblDozNum.Text;
+
+                    if (lblDozNum.Text == String.Empty || lblDozPopis.Text == String.Empty || lblDozPopisEAN.Text == String.Empty)
+                    {
+                        MessageBox.Show("Nelze řádně dekódovat obsah ze souboru, špatný soubor?", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Globalni.Nastroje.LogMessage("StartNV2(), Nelze řádně dekódovat obsah ze souboru, špatný soubor?: " + txtFile.Text.ToString(), false, "Error", formRaz);
+                        return;
+                    }
 
                 }
                 else
                 {
                     MessageBox.Show("Nelze načíst soubor", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Globalni.Nastroje.LogMessage("StartN(), Nelze načíst soubor: " + txtFile.Text.ToString(), false, "Error", formRaz);
+                    Globalni.Nastroje.LogMessage("StartNV2(), Nelze načíst soubor: " + txtFile.Text.ToString(), false, "Error", formRaz);
                     return;
                 }
             }
 
             // prvni doz, dalsi se resi pres timer2 ...
-            if (DozFile)
+            #region nepodstatne
+//            if (DozFile)
+//            {
+//                // razeni pres soubor TAB3
+//                bool vysledek = false;
+//                bool jaktisk = false;
+
+//                // tiskne se vse nebo jenom podmnozina ?
+//                if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0))
+//                {
+//                    // podmnozina
+//                    // tisknu az z timeru2
+//                    System.Threading.Thread.Sleep(1000);
+////                    timer2.Enabled = true;
+//                }
+//                else
+//                {
+//                    // tiskne se vse ze souboru
+//                    // ponovu se nastavi co tisknout a posle se na razbu kde se zaroven i tiskne
+//                    #region razbaV2 s tiskem dozimetru NEW
+
+//                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+//                    popisStavuRaznice = DejPopisStavu();
+//                    if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
+//                    {
+//                        MessageBox.Show("StartN(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+//                        Globalni.Nastroje.LogMessage("StartN(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+//                        vysledek = false;
+//                    }
+
+//                    if (chkRazitDozimetry.Checked == true)
+//                    {
+//                        Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
+
+
+//                        //string numZdroj = lblDozNum.Text.ToString().Trim();
+//                        string nameZdroj = lblDozPopis.Text.ToString().Trim();
+//                        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
+
+//                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
+
+
+
+//                    }
+//                    else
+//                        vysledek = true;
+
+//                    // tisk dalsich dozimetru pres timer
+//                    if (vysledek == true)
+//                    {
+//                        System.Threading.Thread.Sleep(1000);
+// //                       timer2.Enabled = true;
+//                    }
+//                    #endregion
+//                }
+//            }
+            #endregion
+            while (!konec)
             {
-                // razeni pres soubor TAB3
-                bool vysledek = false;
-                bool jaktisk = false;
+                
+
+// --- timer
+                DozCount += 1;
 
                 // tiskne se vse nebo jenom podmnozina ?
-                if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0))
+                if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0)
+                    &&
+                        (!((DozCount >= DozPozice)
+                        &&
+                        //(DozCount <= (DozPozice + int.Parse(txtRazitDoz.Text.Replace(" ", "").Trim()) - 1))))
+                        //(DozCount <= (DozPozice + int.Parse(txtRazitDoz.Text.Replace(" ", "").Trim()) + 1))))
+                        (DozCount <= (DozPozice + int.Parse(txtRazitDoz.Text.Replace(" ", "").Trim())))))
+                    )
                 {
-                    // podmnozina
-                    // tisknu az z timeru2
-                    System.Threading.Thread.Sleep(1000);
-                    timer2.Enabled = true;
+                    if ((err > 0) || (DozCount >= DozMaxCount))
+                    {
+                        // timer2.Enabled = false;
+                        konec = true;
+                        //return;
+                        break;
+                    }
+                    // vynechavam razeni, nejsem v intervalu
+                    lblStatus.Text = "Skip dozimetru";
+                    Globalni.Nastroje.LogMessage("StartNV2(), Skip dozimetru", false, "Information", formRaz);
+                    //return;
+                    continue;
                 }
                 else
                 {
-                    // tiskne se vse ze souboru
-                    // ponovu se nastavi co tisknout a posle se na razbu kde se zaroven i tiskne
-                    #region razbaV2 s tiskem dozimetru NEW
-
-                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
-                    popisStavuRaznice = DejPopisStavu();
-                    if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
-                    {
-                        MessageBox.Show("StartN(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Globalni.Nastroje.LogMessage("StartN(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
-                        vysledek = false;
-                    }
-
-                    if (chkRazitDozimetry.Checked == true)
-                    {
-                        Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
-
-
-                        //string numZdroj = lblDozNum.Text.ToString().Trim();
-                        string nameZdroj = lblDozPopis.Text.ToString().Trim();
-                        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
-
-                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
-
-
-
-                    }
-                    else
-                        vysledek = true;
-
-                    // tisk dalsich dozimetru pres timer
-                    if (vysledek == true)
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                        timer2.Enabled = true;
-                    }
-                    #endregion
+                    DozVyrazeno += 1;
                 }
-            }
-            #region old
-            //else
-            //{
-            //    // toto je obsolete, vubec se neposti varianta VyrazitN dozimetru z TAB2
-            //    #region Obsolete VyrazitN dozimetru z TAB2
-            //    // tisk prvniho
-            //    // ok = StartText(txt, txt.Length);
 
-            //    // poslu na raznici a do tisku
-            //    // parametry tady nepouzivam, hodnoty si zjistim az v telu procedury
-            //    bool vysledekRaz = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
-            //    if (!vysledekRaz)
-            //    {
-            //        lblStatus.Text = "Chyba komunikace";
-            //        Globalni.Nastroje.LogMessage("StartN(), lblStatus.Text: " + lblStatus.Text.ToString(), false, "Error", formRaz);
+                lblCount2.Text = DozCount.ToString();
 
-            //    }
-            //    else
-            //    {
-            //        // spustim cyklus pro dozimetry - at nactenych ze souboru nebo ze zalozky 1
-            //        timer2.Enabled = true;
-            //    }
-            //    #endregion
-            //}
-            #endregion
+
+                if (DozCount < DozStr.Length)
+                {
+                    RozeberDozStr(index: DozCount);
+                }
+                else
+                {
+                    RozeberDozStr(index: 0);
+                }
+
+                if ((err > 0) || (DozCount >= DozMaxCount))
+                {
+                    //                timer2.Enabled = false;
+                    //return;
+                    konec = true;
+                    break;
+                }
+
+
+                //RozeberDozStr(index: DozCount);
+                string numZdroj = lblDozNum.Text.ToString().Trim();
+                string nameZdroj = lblDozPopis.Text.ToString().Trim();
+                string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
+
+                //pokud je zadano omezeni intervalu dozimetru k tisku
+
+                int i = 0;
+                bool vysledek = false;
+                // priznak, ze se ma vubec provadet razeni
+                if (chkRazitDozimetry.Checked == true)
+                {
+                    Globalni.Nastroje.LogMessage("StartNV2() NaRazitDozV2 txt_numDoz: " + numZdroj.ToString(), false, "Information", formRaz);
+
+                    vysledek = NaRazitDozV2(txt_numDoz: numZdroj, txt_nameZdroj: nameZdroj, txt_numZdroj: nameZdrojEAN, typeDoz: txtTyp.Text.ToString());
+
+                }
+                else
+                    vysledek = true;
+
+                if (!vysledek)
+                {
+                    konec = true;
+                    break;
+                }
+
+            } // end while (konec)
+
+ 
+
+            // --- timer end
+
+   
         }
 
         public string ErrString(int Err)
@@ -1113,11 +1227,10 @@ namespace Raznice
         /// Nastaveni Ready a zacatku nejakeho razeni
         /// </summary>
         /// <param name="ready"></param>
-        private void EnablingR(bool ready)
+        private void EnablingReady(bool ready)
         {
             //btnSendText.Enabled = ready;
             btnStart.Enabled = ready;
-            btnStarN.Enabled = ready;
             btnStartFromFile.Enabled = ready;            
             chkReady.Checked = ready;
             // zalozka Z tabulky
@@ -1130,7 +1243,7 @@ namespace Raznice
         /// Nastaveni Done - hotovo a zpristupneni tl. nacist soubor
         /// </summary>
         /// <param name="ready"></param>
-        private void EnablingD(bool ready)
+        private void EnablingDone(bool ready)
         {
             //btnUp.Enabled = ready;
             //btnDown.Enabled = ready;
@@ -1330,6 +1443,8 @@ namespace Raznice
                 return;
             }
 
+           
+
             //string txt = InsertSpace(txtText.Text);
             string txt = txtText.Text.Trim();
 
@@ -1358,9 +1473,15 @@ namespace Raznice
                              txtPodnik.Text.Trim() + txtOddeleni.Text.Trim() + // 1302
                              txtDozimetr.Text.Trim();   // 203
 
+            // nastavim si, protoze v NaRazitDozV2 se dle toho ridi, zda vubec vyrazit a tady to chci bezpecne
+            bool checkedRazeni = chkRazitDozimetry.Checked;
+            chkRazitDozimetry.Checked = true;
+            bool vysledek = NaRazitDozV2(txt, popisek_stitku,  cislo_ean, txtTyp.Text.ToString());
+            chkRazitDozimetry.Checked = checkedRazeni;
 
+            return;
 
-
+            #region primarne definovany postup razeni v Trebici 
             // tisk popisku z tab. Postupna 
             // nastavi se vse potrebne
             int kolecko = 1;
@@ -1467,31 +1588,10 @@ namespace Raznice
 
 
             }
-
+            #endregion
         }
 
-        /// <summary>
-        /// Z tab2 "postupna", Vyrazit N dozimetrů
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        [Obsolete]
-        private void btnStarN_Click(object sender, EventArgs e)
-        {
 
-            //if (txtText.Text.Length != 8)
-            //{
-            //    MessageBox.Show("Číslo dozimetru musí být 8 znaků MMPPPDDD [např. 04373123].", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            // kontrola vyplneni udaju na tab "postupna"
-            if (!Kontrola())
-                return;
-
-            DozFile = false;
-            StartN();
-        }
 
 
         /// <summary>
@@ -1503,7 +1603,7 @@ namespace Raznice
         {
             // razeni dle textaku
             DozFile = true;
-            StartN();
+            StartNV2();
         }
 
         /// <summary>
@@ -1544,11 +1644,15 @@ namespace Raznice
 #else
             //simulace fci z Raznice.dll
             timer2.Enabled = false;
-            EnablingR(true);
+            EnablingReady(true);
 
 #endif
         }
 
+        /// <summary>
+        /// Prestaveni tl. STOP/RUN
+        /// </summary>
+        /// <param name="stop"></param>
         private void STPbtn(bool stop)
         {
             if (stop)
@@ -1563,6 +1667,11 @@ namespace Raznice
             }
         }
         
+        /// <summary>
+        /// Na strip pasu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReconnect_ButtonClick(object sender, EventArgs e)
         {
             btnStop.Enabled = true;
@@ -1570,9 +1679,9 @@ namespace Raznice
             btnReconnect.Visible = false;
         }
 
-#endregion
+        #endregion
 
-#region Timery
+        #region Timery
 
         /// <summary>
         /// Sleduje stav raznice
@@ -1589,7 +1698,15 @@ namespace Raznice
             popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
             popisStavuRaznice = DejPopisStavu();
 
-            ok = (popisStavuRaznice.nStatusId == 3);
+            // v pripade, ze nezjistim stav
+            if (popisStavuRaznice.nStatusId == -1 || popisStavuRaznice.nErrorId == -1 || popisStavuRaznice.nInfoId == -1)
+            {
+                // neznamy stav
+                ok = false;
+            }
+            else
+                ok = true;
+            //ok = (popisStavuRaznice.nStatusId == 3);
 
             //bool ok = IsDone(ref done, ref Err, ref Mark);
             if (!ok)
@@ -1599,63 +1716,70 @@ namespace Raznice
                 timer1.Enabled = false;
                 btnStop.Enabled = false;
                 btnReconnect.Visible = true;
-                EnablingD(false); 
-                EnablingR(false); 
+                EnablingDone(false); 
+                EnablingReady(false); 
                 return;
             }
-            else
-            {
-                done = (popisStavuRaznice.nStatusId == 3);
-                if (timer2.Enabled) 
-                { 
-                    EnablingD(false); 
-                } 
-                else 
-                    EnablingD(done);
+            #region vyhodnoceni orazeni posledniho dozimetru
+            //else
+            //{
+            //    done = (popisStavuRaznice.nStatusId == 3);
+            //    if (timer2.Enabled) 
+            //    { 
+            //        EnablingDone(false); 
+            //    } 
+            //    else 
+            //        EnablingDone(done);
 
-                Err = (popisStavuRaznice.nErrorId);
-                if (Err > 0)
-                {
-                    STPbtn(false);
-                    lblStatus.Text = "Error: " + ErrString(Err);
+            //    Err = (popisStavuRaznice.nErrorId);
+            //    if (Err > 0)
+            //    {
+            //        STPbtn(false);
+            //        lblStatus.Text = "Error: " + popisStavuRaznice.nErrorText;
 
-                    //switch (Mark)
-                    //{
-                    //    case 0:
-                    //        lblMark.Text = "- Poslední dozimetr neoražen";                            
-                    //        break;
-                    //    case 1:
-                    //        lblMark.Text = "- Poslední dozimetr oražen";
-                    //        break;
-                    //    case 2:
-                    //        lblMark.Text = "- Nelze zjistit, je li poslední dozimetr oražen správně";
-                    //        break;
-                    //}
-                    lblMark.Text = popisStavuRaznice.nErrorText;
-                    Globalni.Nastroje.LogMessage("timer1_Tick, lblStatus.Text " + lblStatus.Text.ToString() + ", lblMark.Text: " + lblMark.Text.ToString(), false, "Error", formRaz);
-                }
-                else
-                {
-                    STPbtn(true);
-                    lblStatus.Text = "";
-                    lblMark.Text = "";
-                }
-            }
+            //        //switch (Mark)
+            //        //{
+            //        //    case 0:
+            //        //        lblMark.Text = "- Poslední dozimetr neoražen";                            
+            //        //        break;
+            //        //    case 1:
+            //        //        lblMark.Text = "- Poslední dozimetr oražen";
+            //        //        break;
+            //        //    case 2:
+            //        //        lblMark.Text = "- Nelze zjistit, je li poslední dozimetr oražen správně";
+            //        //        break;
+            //        //}
+            //        lblMark.Text = popisStavuRaznice.nErrorText;
+            //        Globalni.Nastroje.LogMessage("timer1_Tick, lblStatus.Text " + lblStatus.Text.ToString() + ", lblMark.Text: " + lblMark.Text.ToString(), false, "Error", formRaz);
+            //    }
+            //    else
+            //    {
+            //        STPbtn(true);
+            //        lblStatus.Text = "";
+            //        lblMark.Text = "";
+            //    }
+            //}
+            #endregion
 
             //ok = IsReady(ref ready);
             ok = (popisStavuRaznice.nStatusId == 3);
             ready = (popisStavuRaznice.nStatusId == 3);
+
+            lblStatus.Text = popisStavuRaznice.stavText.ToString();
+
             if (timer2.Enabled)
             { 
-                EnablingR(false); 
+                EnablingReady(false); 
             } else 
-                EnablingR(ready);
+                EnablingReady(ready);
 
             if (!ok) 
             { 
                 lblStatus.Text = "Chyba komunikace";
                 Globalni.Nastroje.LogMessage("timer1_Tick, lblStatus.Text " + lblStatus.Text.ToString(), false, "Error", formRaz);
             }
+      
+
         }
 
         /// <summary>
@@ -1663,6 +1787,7 @@ namespace Raznice
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        [Obsolete]
         private void timer2_Tick(object sender, EventArgs e)
         {
             string txtDoz = "";
@@ -1742,10 +1867,10 @@ namespace Raznice
                     }
 #endregion
                     else
-#region Jednotlive
+#region Jednotlive - nepouziva se
                     {
+                        // nepouziva se
                         DozNum += 1;
-                        lblCount.Text = DozCount.ToString();
                         txtText.Text = DozNum.ToString();
                     }
 #endregion
@@ -1768,6 +1893,7 @@ namespace Raznice
                 }
                 else
                 {
+                    // nepouziva se
                     txtDoz = InsertSpace(DozNum.ToString());
                 }
 
@@ -2854,11 +2980,14 @@ namespace Raznice
             return (vysledek && jaktisk);
         }
 
+
         /// <summary>
         /// Vyrazeni dozimetru na razniciV2 a tisk 
         /// </summary>
-        /// <param name="Tisk_radek_1"></param>
-        /// <param name="Tisk_radek_2"></param>
+        /// <param name="txt_numDoz"> Cislo dozimetru </param>
+        /// <param name="txt_nameZdroj"> Stitek horni popisek</param>
+        /// <param name="txt_numZdroj"> EAN</param>
+        /// <param name="typeDoz"> Typ dozimetru</param>
         /// <returns></returns>
         public bool NaRazitDozV2(string txt_numDoz /*cislo dozimetru*/, string txt_nameZdroj /*popisek stitek*/, string txt_numZdroj /*EAN*/,  string typeDoz /*1,2,3*/)
         {
@@ -3132,6 +3261,7 @@ namespace Raznice
                             break;
                         default:
                             popisStavu.nStatusText = "nedefinováno";
+                            nStatus = -1;
                             break;
                     }
                 }
@@ -3191,6 +3321,7 @@ namespace Raznice
                             break;
                         default:
                             popisStavu.nInfoText = "nedefinováno";
+                            popisStavu.nInfoId = -1;
                             break;
 
                     }
@@ -3293,6 +3424,7 @@ namespace Raznice
                             break;
                         default:
                             popisStavu.nErrorText = "nedefinováno";
+                            popisStavu.nErrorId = -1;
                             break;
 
                     }
