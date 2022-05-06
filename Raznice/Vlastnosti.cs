@@ -34,6 +34,9 @@ namespace Raznice
             public string nInfoText { get; set; }
             public int nErrorId { get; set; }
             public string nErrorText { get; set; }
+            /// <summary>
+            /// Slozeny text Status+Info+Error
+            /// </summary>
             public string stavText { get; set; }
         }
 

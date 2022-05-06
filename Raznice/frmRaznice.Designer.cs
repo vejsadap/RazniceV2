@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRaznice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -102,15 +102,22 @@
             this.label20 = new System.Windows.Forms.Label();
             this.lblDozPopisTab = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.btnStarN = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
             this.txtText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCount = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblCount = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtJmeno = new System.Windows.Forms.TextBox();
+            this.txtObdobi = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtMesic = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtRok = new System.Windows.Forms.TextBox();
+            this.txtPodnik = new System.Windows.Forms.TextBox();
+            this.txtDozimetr = new System.Windows.Forms.TextBox();
+            this.txtOddeleni = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnStartFromFile = new System.Windows.Forms.Button();
@@ -148,18 +155,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cbFinishOK = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtJmeno = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtObdobi = new System.Windows.Forms.TextBox();
-            this.txtMesic = new System.Windows.Forms.TextBox();
-            this.txtRok = new System.Windows.Forms.TextBox();
-            this.txtPodnik = new System.Windows.Forms.TextBox();
-            this.txtOddeleni = new System.Windows.Forms.TextBox();
-            this.txtDozimetr = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -553,16 +548,16 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Lime;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -577,25 +572,25 @@
             this.SLOB,
             this.RP_ROK,
             this.RP_MESIC});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Location = new System.Drawing.Point(6, 165);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(614, 321);
             this.dataGridView2.TabIndex = 4;
@@ -708,16 +703,16 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cpd,
@@ -726,26 +721,26 @@
             this.Zpracovano,
             this.Nacist,
             this.Id_Cispod});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(339, 151);
             this.dataGridView1.TabIndex = 3;
@@ -895,12 +890,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.btnStarN);
             this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.txtCount);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.lblCount);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -908,37 +898,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Postupná";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(191, 350);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Počet dozimetrů:";
-            this.label5.Visible = false;
-            // 
-            // btnStart
-            // 
-            this.btnStart.Location = new System.Drawing.Point(155, 154);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(112, 24);
-            this.btnStart.TabIndex = 34;
-            this.btnStart.Text = "Vyrazit dozimetr";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // btnStarN
-            // 
-            this.btnStarN.Location = new System.Drawing.Point(65, 344);
-            this.btnStarN.Name = "btnStarN";
-            this.btnStarN.Size = new System.Drawing.Size(112, 24);
-            this.btnStarN.TabIndex = 37;
-            this.btnStarN.Text = "Vyrazit N dozimetrů";
-            this.btnStarN.UseVisualStyleBackColor = true;
-            this.btnStarN.Visible = false;
-            this.btnStarN.Click += new System.EventHandler(this.btnStarN_Click);
             // 
             // groupBox5
             // 
@@ -964,6 +923,25 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Postupné ražení dozimetrů";
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(385, 79);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.TabIndex = 73;
+            this.label28.Text = "Jméno";
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(155, 154);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(112, 24);
+            this.btnStart.TabIndex = 34;
+            this.btnStart.Text = "Vyrazit dozimetr";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
             // txtText
             // 
             this.txtText.Location = new System.Drawing.Point(156, 42);
@@ -981,35 +959,97 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Číslo dozimetru:";
             // 
-            // txtCount
+            // label27
             // 
-            this.txtCount.Location = new System.Drawing.Point(283, 348);
-            this.txtCount.Name = "txtCount";
-            this.txtCount.Size = new System.Drawing.Size(42, 20);
-            this.txtCount.TabIndex = 38;
-            this.txtCount.Text = "1";
-            this.txtCount.Visible = false;
-            this.txtCount.WordWrap = false;
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(266, 79);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(111, 13);
+            this.label27.TabIndex = 72;
+            this.label27.Text = "Podnik/Odd/Dozimetr";
             // 
-            // label2
+            // txtJmeno
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(331, 350);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "Vyraženo:";
-            this.label2.Visible = false;
+            this.txtJmeno.Location = new System.Drawing.Point(388, 95);
+            this.txtJmeno.Name = "txtJmeno";
+            this.txtJmeno.Size = new System.Drawing.Size(100, 20);
+            this.txtJmeno.TabIndex = 63;
+            this.txtJmeno.Text = "Vejsada";
             // 
-            // lblCount
+            // txtObdobi
             // 
-            this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(391, 350);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(13, 13);
-            this.lblCount.TabIndex = 40;
-            this.lblCount.Text = "0";
-            this.lblCount.Visible = false;
+            this.txtObdobi.Location = new System.Drawing.Point(155, 95);
+            this.txtObdobi.Name = "txtObdobi";
+            this.txtObdobi.Size = new System.Drawing.Size(18, 20);
+            this.txtObdobi.TabIndex = 65;
+            this.txtObdobi.Text = "3";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(192, 79);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(62, 13);
+            this.label26.TabIndex = 71;
+            this.label26.Text = "Měsíc/Rok";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(22, 98);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(124, 13);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Text na štítek dozimetru:";
+            // 
+            // txtMesic
+            // 
+            this.txtMesic.Location = new System.Drawing.Point(195, 95);
+            this.txtMesic.Name = "txtMesic";
+            this.txtMesic.Size = new System.Drawing.Size(27, 20);
+            this.txtMesic.TabIndex = 66;
+            this.txtMesic.Text = "05";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(152, 79);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.TabIndex = 62;
+            this.label18.Text = "Období";
+            // 
+            // txtRok
+            // 
+            this.txtRok.Location = new System.Drawing.Point(228, 95);
+            this.txtRok.Name = "txtRok";
+            this.txtRok.Size = new System.Drawing.Size(27, 20);
+            this.txtRok.TabIndex = 67;
+            this.txtRok.Text = "16";
+            // 
+            // txtPodnik
+            // 
+            this.txtPodnik.Location = new System.Drawing.Point(269, 95);
+            this.txtPodnik.Name = "txtPodnik";
+            this.txtPodnik.Size = new System.Drawing.Size(37, 20);
+            this.txtPodnik.TabIndex = 68;
+            this.txtPodnik.Text = "320";
+            // 
+            // txtDozimetr
+            // 
+            this.txtDozimetr.Location = new System.Drawing.Point(334, 95);
+            this.txtDozimetr.Name = "txtDozimetr";
+            this.txtDozimetr.Size = new System.Drawing.Size(37, 20);
+            this.txtDozimetr.TabIndex = 70;
+            this.txtDozimetr.Text = "320";
+            // 
+            // txtOddeleni
+            // 
+            this.txtOddeleni.Location = new System.Drawing.Point(311, 95);
+            this.txtOddeleni.Name = "txtOddeleni";
+            this.txtOddeleni.Size = new System.Drawing.Size(18, 20);
+            this.txtOddeleni.TabIndex = 69;
+            this.txtOddeleni.Text = "9";
             // 
             // tabPage2
             // 
@@ -1378,107 +1418,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Simulace ovládání";
             // 
-            // txtJmeno
-            // 
-            this.txtJmeno.Location = new System.Drawing.Point(388, 95);
-            this.txtJmeno.Name = "txtJmeno";
-            this.txtJmeno.Size = new System.Drawing.Size(100, 20);
-            this.txtJmeno.TabIndex = 63;
-            this.txtJmeno.Text = "Vejsada";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(22, 98);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 13);
-            this.label13.TabIndex = 64;
-            this.label13.Text = "Text na štítek dozimetru:";
-            // 
-            // txtObdobi
-            // 
-            this.txtObdobi.Location = new System.Drawing.Point(155, 95);
-            this.txtObdobi.Name = "txtObdobi";
-            this.txtObdobi.Size = new System.Drawing.Size(18, 20);
-            this.txtObdobi.TabIndex = 65;
-            this.txtObdobi.Text = "3";
-            // 
-            // txtMesic
-            // 
-            this.txtMesic.Location = new System.Drawing.Point(195, 95);
-            this.txtMesic.Name = "txtMesic";
-            this.txtMesic.Size = new System.Drawing.Size(27, 20);
-            this.txtMesic.TabIndex = 66;
-            this.txtMesic.Text = "05";
-            // 
-            // txtRok
-            // 
-            this.txtRok.Location = new System.Drawing.Point(228, 95);
-            this.txtRok.Name = "txtRok";
-            this.txtRok.Size = new System.Drawing.Size(27, 20);
-            this.txtRok.TabIndex = 67;
-            this.txtRok.Text = "16";
-            // 
-            // txtPodnik
-            // 
-            this.txtPodnik.Location = new System.Drawing.Point(269, 95);
-            this.txtPodnik.Name = "txtPodnik";
-            this.txtPodnik.Size = new System.Drawing.Size(37, 20);
-            this.txtPodnik.TabIndex = 68;
-            this.txtPodnik.Text = "320";
-            // 
-            // txtOddeleni
-            // 
-            this.txtOddeleni.Location = new System.Drawing.Point(311, 95);
-            this.txtOddeleni.Name = "txtOddeleni";
-            this.txtOddeleni.Size = new System.Drawing.Size(18, 20);
-            this.txtOddeleni.TabIndex = 69;
-            this.txtOddeleni.Text = "9";
-            // 
-            // txtDozimetr
-            // 
-            this.txtDozimetr.Location = new System.Drawing.Point(334, 95);
-            this.txtDozimetr.Name = "txtDozimetr";
-            this.txtDozimetr.Size = new System.Drawing.Size(37, 20);
-            this.txtDozimetr.TabIndex = 70;
-            this.txtDozimetr.Text = "320";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(152, 79);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 13);
-            this.label18.TabIndex = 62;
-            this.label18.Text = "Období";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(192, 79);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(62, 13);
-            this.label26.TabIndex = 71;
-            this.label26.Text = "Měsíc/Rok";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(266, 79);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(111, 13);
-            this.label27.TabIndex = 72;
-            this.label27.Text = "Podnik/Odd/Dozimetr";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(385, 79);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 13);
-            this.label28.TabIndex = 73;
-            this.label28.Text = "Jméno";
-            // 
             // frmRaznice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1517,7 +1456,6 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1550,14 +1488,9 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TextBox txtText;
-        private System.Windows.Forms.Button btnStarN;
-        private System.Windows.Forms.TextBox txtCount;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblCount2;
