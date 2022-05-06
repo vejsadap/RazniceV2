@@ -1125,7 +1125,7 @@ namespace Raznice
                 cbInfo.Items.Add(new Item("Řízení vypnuto", 15));
                 cbInfo.SelectedIndex = 14;
 
-                cbError.Items.Add(new Item("Bez chyby", 0));
+                cbError.Items.Add(new Item("Procesorová jednotka zastavena", 0));
                 cbError.Items.Add(new Item("Řízení vypnuto", 8));
                 cbError.Items.Add(new Item("Ochrany přemostěny", 9));
                 cbError.Items.Add(new Item("ESTOP zmáčknut", 10));
