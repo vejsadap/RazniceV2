@@ -54,6 +54,11 @@ namespace Raznice
         int DozNum;                 // číslo dozimetru
         int DozVyrazeno;            // pocitadlo vyrazenych doz v pripade razeni od - do
 
+        /// <summary>
+        /// je proces razeni?
+        /// </summary>
+        bool vProcesuRazeni = false;
+
 
         private class Item
         {
@@ -448,7 +453,9 @@ namespace Raznice
 
                 lblStatus.Text = "Chyba komunikace: " + popisStavuRaznice.stavText.ToString();
                 Globalni.Nastroje.LogMessage("StartNV2() Init, Chyba komunikace: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                chkReady.Checked = false;
             }
+            chkReady.Checked = true;
 
             popisStavuRaznice = DejPopisStavu();
             if (popisStavuRaznice.nStatusId != 3) //chyba, řízení vypnuto
@@ -511,65 +518,73 @@ namespace Raznice
 
             // prvni doz, dalsi se resi pres timer2 ...
             #region nepodstatne
-//            if (DozFile)
-//            {
-//                // razeni pres soubor TAB3
-//                bool vysledek = false;
-//                bool jaktisk = false;
+            //            if (DozFile)
+            //            {
+            //                // razeni pres soubor TAB3
+            //                bool vysledek = false;
+            //                bool jaktisk = false;
 
-//                // tiskne se vse nebo jenom podmnozina ?
-//                if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0))
-//                {
-//                    // podmnozina
-//                    // tisknu az z timeru2
-//                    System.Threading.Thread.Sleep(1000);
-////                    timer2.Enabled = true;
-//                }
-//                else
-//                {
-//                    // tiskne se vse ze souboru
-//                    // ponovu se nastavi co tisknout a posle se na razbu kde se zaroven i tiskne
-//                    #region razbaV2 s tiskem dozimetru NEW
+            //                // tiskne se vse nebo jenom podmnozina ?
+            //                if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0))
+            //                {
+            //                    // podmnozina
+            //                    // tisknu az z timeru2
+            //                    System.Threading.Thread.Sleep(1000);
+            ////                    timer2.Enabled = true;
+            //                }
+            //                else
+            //                {
+            //                    // tiskne se vse ze souboru
+            //                    // ponovu se nastavi co tisknout a posle se na razbu kde se zaroven i tiskne
+            //                    #region razbaV2 s tiskem dozimetru NEW
 
-//                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
-//                    popisStavuRaznice = DejPopisStavu();
-//                    if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
-//                    {
-//                        MessageBox.Show("StartN(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-//                        Globalni.Nastroje.LogMessage("StartN(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
-//                        vysledek = false;
-//                    }
+            //                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
+            //                    popisStavuRaznice = DejPopisStavu();
+            //                    if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
+            //                    {
+            //                        MessageBox.Show("StartN(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //                        Globalni.Nastroje.LogMessage("StartN(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+            //                        vysledek = false;
+            //                    }
 
-//                    if (chkRazitDozimetry.Checked == true)
-//                    {
-//                        Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
-
-
-//                        //string numZdroj = lblDozNum.Text.ToString().Trim();
-//                        string nameZdroj = lblDozPopis.Text.ToString().Trim();
-//                        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
-
-//                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
+            //                    if (chkRazitDozimetry.Checked == true)
+            //                    {
+            //                        Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
 
 
+            //                        //string numZdroj = lblDozNum.Text.ToString().Trim();
+            //                        string nameZdroj = lblDozPopis.Text.ToString().Trim();
+            //                        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
 
-//                    }
-//                    else
-//                        vysledek = true;
+            //                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
 
-//                    // tisk dalsich dozimetru pres timer
-//                    if (vysledek == true)
-//                    {
-//                        System.Threading.Thread.Sleep(1000);
-// //                       timer2.Enabled = true;
-//                    }
-//                    #endregion
-//                }
-//            }
+
+
+            //                    }
+            //                    else
+            //                        vysledek = true;
+
+            //                    // tisk dalsich dozimetru pres timer
+            //                    if (vysledek == true)
+            //                    {
+            //                        System.Threading.Thread.Sleep(1000);
+            // //                       timer2.Enabled = true;
+            //                    }
+            //                    #endregion
+            //                }
+            //            }
             #endregion
+
+            vProcesuRazeni = true;
+            EnablingDone(false);
             while (!konec)
             {
-                
+                // v pripade, ze se zmackne STOP 
+                if (!vProcesuRazeni)
+                {
+                    konec = true;
+                    break;
+                }
 
 // --- timer
                 DozCount += 1;
@@ -589,6 +604,7 @@ namespace Raznice
                         // timer2.Enabled = false;
                         konec = true;
                         //return;
+                        vProcesuRazeni = false;
                         break;
                     }
                     // vynechavam razeni, nejsem v intervalu
@@ -619,6 +635,7 @@ namespace Raznice
                     //                timer2.Enabled = false;
                     //return;
                     konec = true;
+                    vProcesuRazeni = false;
                     break;
                 }
 
@@ -646,16 +663,20 @@ namespace Raznice
                 if (!vysledek)
                 {
                     konec = true;
+                    vProcesuRazeni = false;
                     break;
                 }
 
             } // end while (konec)
 
- 
+            vProcesuRazeni = false;
+            DozFile = false;
+            EnablingDone(true);
+
 
             // --- timer end
 
-   
+
         }
 
         public string ErrString(int Err)
@@ -922,6 +943,8 @@ namespace Raznice
 
         public bool Stop()
         {
+            // tohle se pouziva 
+
             return true;
         }
 
@@ -1165,6 +1188,7 @@ namespace Raznice
                     MessageBox.Show("Chyba při inicializování komunikace s PLC", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Globalni.Nastroje.LogMessage("Chyba při inicializování komunikace s PLC", false, "Error", formRaz);
                     //this.Close();
+                    chkReady.Checked = false;
                 }
                 else
                 {
@@ -1172,10 +1196,11 @@ namespace Raznice
                     popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
                     popisStavuRaznice = DejPopisStavu();
                     if ((popisStavuRaznice.nStatusId == 3)) //zařízení zapnuto
-                        this.chkReady.Checked = true;
+                        //this.chkReady.Checked = true;
+                        ;
                     else
                     {
-                        this.chkReady.Checked = false;
+                        //this.chkReady.Checked = false;
                         MessageBox.Show("Load Init(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
@@ -1185,9 +1210,10 @@ namespace Raznice
 
                     txtRazitOdDoz.Text = "";
                     txtRazitOdDoz.PromptChar = ' ';
-                    txtRazitOdDoz.Mask = "00 000 000";
+                    //txtRazitOdDoz.Mask = "00 000 000";
 
                     timer1.Enabled = true;
+                    this.chkReady.Checked = true;
                 }
             }
             catch
@@ -1232,7 +1258,7 @@ namespace Raznice
             //btnSendText.Enabled = ready;
             btnStart.Enabled = ready;
             btnStartFromFile.Enabled = ready;            
-            chkReady.Checked = ready;
+            //chkReady.Checked = ready;
             // zalozka Z tabulky
             cmdVyrazit.Enabled = ready;
             // nastaveni masky - ready + prava
@@ -1249,6 +1275,7 @@ namespace Raznice
             //btnDown.Enabled = ready;
             chkDone.Checked = ready;
             btnLoadFile.Enabled = ready;
+            //cmdOtevritPlan.Enabled = ready;
             // nastaveni IP - ready + prava
             //btnSetIP.Enabled = Vlastnosti.allowEdit && ready;
         }
@@ -1431,8 +1458,10 @@ namespace Raznice
             {
                 MessageBox.Show("chyba Init()", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Globalni.Nastroje.LogMessage("chyba Init()", false, "Error", formRaz);
+                chkReady.Checked = false;
                 return;
             }
+            chkReady.Checked = true;
 
             popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
             popisStavuRaznice = DejPopisStavu();
@@ -1476,11 +1505,12 @@ namespace Raznice
             // nastavim si, protoze v NaRazitDozV2 se dle toho ridi, zda vubec vyrazit a tady to chci bezpecne
             bool checkedRazeni = chkRazitDozimetry.Checked;
             chkRazitDozimetry.Checked = true;
+
             bool vysledek = NaRazitDozV2(txt, popisek_stitku,  cislo_ean, txtTyp.Text.ToString());
             chkRazitDozimetry.Checked = checkedRazeni;
 
             return;
-
+            ///////////////////////////////////////////
             #region primarne definovany postup razeni v Trebici 
             // tisk popisku z tab. Postupna 
             // nastavi se vse potrebne
@@ -1639,12 +1669,35 @@ namespace Raznice
         private void btnStop_Click(object sender, EventArgs e)
         {
 #if DLL
-            if (btnStop.Text == "STOP") { Stop(); }
-            else { Run(); }
+            //if (btnStop.Text == "STOP") { Stop(); }
+            //else { Run(); }
+
+            if (btnStop.Text == "STOP") 
+            { 
+                //Stop();
+                vProcesuRazeni = false;
+                EnablingReady(true);
+            }
+            else 
+            { 
+                //Run(); 
+            }
 #else
             //simulace fci z Raznice.dll
-            timer2.Enabled = false;
-            EnablingReady(true);
+            //timer2.Enabled = false;
+            //vProcesuRazeni = false;
+            //EnablingReady(true);
+
+            if (btnStop.Text == "STOP") 
+            { 
+                //Stop();
+                vProcesuRazeni = false;
+                EnablingReady(true);
+            }
+            else 
+            { 
+                //Run(); 
+            }
 
 #endif
         }
@@ -1699,6 +1752,7 @@ namespace Raznice
             popisStavuRaznice = DejPopisStavu();
 
             // v pripade, ze nezjistim stav
+            #region nelze zjistit stav raznice
             if (popisStavuRaznice.nStatusId == -1 || popisStavuRaznice.nErrorId == -1 || popisStavuRaznice.nInfoId == -1)
             {
                 // neznamy stav
@@ -1706,21 +1760,23 @@ namespace Raznice
             }
             else
                 ok = true;
-            //ok = (popisStavuRaznice.nStatusId == 3);
-
-            //bool ok = IsDone(ref done, ref Err, ref Mark);
+            // neni-li mozne zjistit stav raznice
             if (!ok)
             {
                 STPbtn(true);
-                lblStatus.Text = "Chyba komunikace";
+                lblStatus.Text = "Chyba komunikace, nelze zjistit stav";
                 timer1.Enabled = false;
                 btnStop.Enabled = false;
                 btnReconnect.Visible = true;
-                EnablingDone(false); 
-                EnablingReady(false); 
+                EnablingDone(false); /*false*/
+                EnablingReady(false);
+                Globalni.Nastroje.LogMessage("timer1_Tick, lblStatus.Text " + lblStatus.Text.ToString(), false, "Error", formRaz);
+
                 return;
             }
-            #region vyhodnoceni orazeni posledniho dozimetru
+            #endregion
+
+            #region OLD vyhodnoceni orazeni posledniho dozimetru
             //else
             //{
             //    done = (popisStavuRaznice.nStatusId == 3);
@@ -1761,25 +1817,38 @@ namespace Raznice
             //}
             #endregion
 
-            //ok = IsReady(ref ready);
-            ok = (popisStavuRaznice.nStatusId == 3);
-            ready = (popisStavuRaznice.nStatusId == 3);
-
             lblStatus.Text = popisStavuRaznice.stavText.ToString();
 
-            if (timer2.Enabled)
+            // umoznim pokracovat v cyklu razeni, mel bych mit nastaveno kde jsem bud v dbf nebo v poctu dozimetru DozCount
+            if (popisStavuRaznice.nStatusId == 5)
+            {
+                // zpristupnim STOP
+                STPbtn(true);
+            }
+
+            ready = (popisStavuRaznice.nStatusId == 3);
+
+            
+
+            if (vProcesuRazeni) /*(timer2.Enabled)*/
             { 
                 EnablingReady(false); 
             } else 
                 EnablingReady(ready);
 
-            if (!ok) 
-            { 
-                lblStatus.Text = "Chyba komunikace";
-                Globalni.Nastroje.LogMessage("timer1_Tick, lblStatus.Text " + lblStatus.Text.ToString(), false, "Error", formRaz);
-            }
-      
+              
+        }
 
+        /// <summary>
+        /// Vrati, zda jsou vsechny dozimetry, co se maji razit, vyrazeny
+        /// </summary>
+        /// <returns></returns>
+        private bool vseVyrazeno()
+        {
+            if ((DozCount >= DozMaxCount) || (DozCount == 0))
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -3193,7 +3262,7 @@ namespace Raznice
                         else
                         {
                             // je finis OK, mam narazeno a vytisklo, jdu ven
-                            Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK: lOk=1, popisStavuRaznice: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
+                            Globalni.Nastroje.LogMessage("NaRazitDozV2, ReadFinishOK: lOk=1, popisStavuRaznice: " + popisStavuRaznice.stavText.ToString(), false, "Information", formRaz);
                             break;
                         }
 
@@ -3327,107 +3396,116 @@ namespace Raznice
                     }
                 }
 
-                if (ReadError(ref nError))
+                // jedine v pripade statusu chyba ma smysle cist chybu
+                if (popisStavu.nStatusId == 5)
                 {
-                    popisStavu.nErrorId = nError;
-                    switch (nError)
+                    if (ReadError(ref nError))
                     {
-                        case 0:
-                            popisStavu.nErrorText = "Procesorová jednotka zastavena";
-                            break;
-                        case 8:
-                            popisStavu.nErrorText = "Řízení vypnuto";
-                            break;
-                        case 9:
-                            popisStavu.nErrorText = "Ochrany přemostěny";
-                            break;
-                        case 10:
-                            popisStavu.nErrorText = "ESTOP zmáčknut";
-                            break;
-                        case 11:
-                            popisStavu.nErrorText = "Kryt zařízení otevřen";
-                            break;
-                        case 12:
-                            popisStavu.nErrorText = "Nízký tlak";
-                            break;
-                        case 15:
-                            popisStavu.nErrorText = "Nedojel válec – přesun malého založeného dílu z fronty do zařízení (Z20, S10, S11)";
-                            break;
-                        case 16:
-                            popisStavu.nErrorText = "Nedojel válec – přesun velkého založeného dílu z fronty do zařízení (Z21, S12, S13)";
-                            break;
-                        case 17:
-                            popisStavu.nErrorText = "Nedojel válec – zdvih fronty malých OK dílů (Z22, S14, S15)";
-                            break;
-                        case 18:
-                            popisStavu.nErrorText = "Nedojel válec – zdvih fronty velkých OK dílů (Z23, S20, S21)";
-                            break;
-                        case 19:
-                            popisStavu.nErrorText = "Nedojel válec – zdvih vyhazovače NOK dílů (Z24, S22, S23)";
-                            break;
-                        case 20:
-                            popisStavu.nErrorText = "Nedojel válec – vyhazovač NOK dílů (Z25, S24, S25)";
-                            break;
-                        case 21:
-                            popisStavu.nErrorText = "Nedojel válec – otočení tiskové hlavy (Z31, S30, S31)";
-                            break;
-                        case 23:
-                            popisStavu.nErrorText = "Chybně zadané jméno";
-                            break;
-                        case 24:
-                            popisStavu.nErrorText = "Chybně zadané os. číslo";
-                            break;
-                        case 25:
-                            popisStavu.nErrorText = "Chyba v zakládání malého dílu, nezaložen";
-                            break;
-                        case 26:
-                            popisStavu.nErrorText = "Chyba v zakládání velkého dílu, nezaložen";
-                            break;
-                        case 27:
-                            popisStavu.nErrorText = "Vstupní zásobních malých dílů prázdný";
-                            break;
-                        case 28:
-                            popisStavu.nErrorText = "Vstupní zásobních velkých dílů prázdný";
-                            break;
-                        case 29:
-                            popisStavu.nErrorText = "Výstupní zásobních malých dílů plný";
-                            break;
-                        case 30:
-                            popisStavu.nErrorText = "Výstupní zásobních velkých dílů plný";
-                            break;
-                        case 31:
-                            popisStavu.nErrorText = "Chybně zadaný čárový kód";
-                            break;
-                        case 32:
-                            popisStavu.nErrorText = "Chybně zadaný ražený kód";
-                            break;
-                        case 33:
-                            popisStavu.nErrorText = "Chyba v komunikaci s tiskárnou";
-                            break;
-                        case 34:
-                            popisStavu.nErrorText = "Chyba v komunikaci s razníkem";
-                            break;
-                        case 35:
-                            popisStavu.nErrorText = "Zakládání nastavení nedokončeno";
-                            break;
-                        case 36:
-                            popisStavu.nErrorText = "Chyba portálu";
-                            break;
-                        case 37:
-                            popisStavu.nErrorText = "Vložte cartridge CART1 do tiskárny";
-                            break;
-                        case 38:
-                            popisStavu.nErrorText = "Vložte cartridge CART2 do tiskárny";
-                            break;
-                        case 39:
-                            popisStavu.nErrorText = "Vyjměte cartridge z tiskárny";
-                            break;
-                        default:
-                            popisStavu.nErrorText = "nedefinováno";
-                            popisStavu.nErrorId = -1;
-                            break;
+                        popisStavu.nErrorId = nError;
+                        switch (nError)
+                        {
+                            case 0:
+                                popisStavu.nErrorText = "Procesorová jednotka zastavena";
+                                break;
+                            case 8:
+                                popisStavu.nErrorText = "Řízení vypnuto";
+                                break;
+                            case 9:
+                                popisStavu.nErrorText = "Ochrany přemostěny";
+                                break;
+                            case 10:
+                                popisStavu.nErrorText = "ESTOP zmáčknut";
+                                break;
+                            case 11:
+                                popisStavu.nErrorText = "Kryt zařízení otevřen";
+                                break;
+                            case 12:
+                                popisStavu.nErrorText = "Nízký tlak";
+                                break;
+                            case 15:
+                                popisStavu.nErrorText = "Nedojel válec – přesun malého založeného dílu z fronty do zařízení (Z20, S10, S11)";
+                                break;
+                            case 16:
+                                popisStavu.nErrorText = "Nedojel válec – přesun velkého založeného dílu z fronty do zařízení (Z21, S12, S13)";
+                                break;
+                            case 17:
+                                popisStavu.nErrorText = "Nedojel válec – zdvih fronty malých OK dílů (Z22, S14, S15)";
+                                break;
+                            case 18:
+                                popisStavu.nErrorText = "Nedojel válec – zdvih fronty velkých OK dílů (Z23, S20, S21)";
+                                break;
+                            case 19:
+                                popisStavu.nErrorText = "Nedojel válec – zdvih vyhazovače NOK dílů (Z24, S22, S23)";
+                                break;
+                            case 20:
+                                popisStavu.nErrorText = "Nedojel válec – vyhazovač NOK dílů (Z25, S24, S25)";
+                                break;
+                            case 21:
+                                popisStavu.nErrorText = "Nedojel válec – otočení tiskové hlavy (Z31, S30, S31)";
+                                break;
+                            case 23:
+                                popisStavu.nErrorText = "Chybně zadané jméno";
+                                break;
+                            case 24:
+                                popisStavu.nErrorText = "Chybně zadané os. číslo";
+                                break;
+                            case 25:
+                                popisStavu.nErrorText = "Chyba v zakládání malého dílu, nezaložen";
+                                break;
+                            case 26:
+                                popisStavu.nErrorText = "Chyba v zakládání velkého dílu, nezaložen";
+                                break;
+                            case 27:
+                                popisStavu.nErrorText = "Vstupní zásobních malých dílů prázdný";
+                                break;
+                            case 28:
+                                popisStavu.nErrorText = "Vstupní zásobních velkých dílů prázdný";
+                                break;
+                            case 29:
+                                popisStavu.nErrorText = "Výstupní zásobních malých dílů plný";
+                                break;
+                            case 30:
+                                popisStavu.nErrorText = "Výstupní zásobních velkých dílů plný";
+                                break;
+                            case 31:
+                                popisStavu.nErrorText = "Chybně zadaný čárový kód";
+                                break;
+                            case 32:
+                                popisStavu.nErrorText = "Chybně zadaný ražený kód";
+                                break;
+                            case 33:
+                                popisStavu.nErrorText = "Chyba v komunikaci s tiskárnou";
+                                break;
+                            case 34:
+                                popisStavu.nErrorText = "Chyba v komunikaci s razníkem";
+                                break;
+                            case 35:
+                                popisStavu.nErrorText = "Zakládání nastavení nedokončeno";
+                                break;
+                            case 36:
+                                popisStavu.nErrorText = "Chyba portálu";
+                                break;
+                            case 37:
+                                popisStavu.nErrorText = "Vložte cartridge CART1 do tiskárny";
+                                break;
+                            case 38:
+                                popisStavu.nErrorText = "Vložte cartridge CART2 do tiskárny";
+                                break;
+                            case 39:
+                                popisStavu.nErrorText = "Vyjměte cartridge z tiskárny";
+                                break;
+                            default:
+                                popisStavu.nErrorText = "nedefinováno";
+                                popisStavu.nErrorId = -1;
+                                break;
 
+                        }
                     }
+                }
+                else
+                {
+                    popisStavu.nErrorId = -100;
+                    popisStavu.nErrorText = "Bez chyby";
                 }
 
                 popisStavu.stavText = "Status: " + (popisStavu.nStatusText == String.Empty ? "?" : popisStavu.nStatusText) +
@@ -3477,12 +3555,16 @@ namespace Raznice
             {
                 lblStatus.Text = "Chyba komunikace";
                 Globalni.Nastroje.LogMessage("cmdVyrazit_Click, Chyba komunikace", false, "Error", formRaz);
+                chkReady.Checked = false;
                 return;
             }
+            chkReady.Checked = true;
 
             int id_cispod = Int32.Parse(dataGridView2[indexOf(dataGridView2, "Id_Cispod_doz"), 0].Value.ToString());
             Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), dbFileName: " + dbFileName.ToString(), false, "Information", formRaz);
             Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), id_cispod: " + id_cispod.ToString(), false, "Information", formRaz);
+
+            vProcesuRazeni = true;
 
             // cyklus pres vsechny oznacene filmy k razeni
             foreach (DataGridViewRow row in dataGridView2.Rows)
@@ -3509,6 +3591,7 @@ namespace Raznice
                                 }
                             case DialogResult.No:
                                 {
+                                    vProcesuRazeni = false;
                                     return;
                                     //break;
                                 }
@@ -3546,6 +3629,7 @@ namespace Raznice
                     {
                         MessageBox.Show("Chyba při ražení dozimetru [" + Tisk_radek_1.TrimEnd() + "] - cyklus ražení byl ukončen.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Globalni.Nastroje.LogMessage("cmdVyrazit_Click, Chyba při ražení dozimetru [" + Tisk_radek_1.TrimEnd() + "] - cyklus ražení byl ukončen.", false, "Error", formRaz);
+                        vProcesuRazeni = false;
                         return;
                     }
 
@@ -3616,6 +3700,8 @@ namespace Raznice
 
             dataGridView2.Rows[rowindexDoz].Selected = true;
             dataGridView2.CurrentCell = dataGridView2.Rows[rowindexDoz].Cells[0];
+
+            vProcesuRazeni = false;
         }
 
         private void NastavDataGrid(DataGridView dgv)

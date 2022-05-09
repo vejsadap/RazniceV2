@@ -1182,7 +1182,7 @@
             // 
             // txtRazitDoz
             // 
-            this.txtRazitDoz.Location = new System.Drawing.Point(330, 143);
+            this.txtRazitDoz.Location = new System.Drawing.Point(352, 144);
             this.txtRazitDoz.Name = "txtRazitDoz";
             this.txtRazitDoz.Size = new System.Drawing.Size(40, 20);
             this.txtRazitDoz.TabIndex = 56;
@@ -1191,7 +1191,7 @@
             // 
             this.txtRazitOdDoz.Location = new System.Drawing.Point(146, 144);
             this.txtRazitOdDoz.Name = "txtRazitOdDoz";
-            this.txtRazitOdDoz.Size = new System.Drawing.Size(74, 20);
+            this.txtRazitOdDoz.Size = new System.Drawing.Size(92, 20);
             this.txtRazitOdDoz.TabIndex = 57;
             // 
             // label10
@@ -1206,7 +1206,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(239, 146);
+            this.label15.Location = new System.Drawing.Point(266, 147);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 13);
             this.label15.TabIndex = 56;
