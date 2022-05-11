@@ -3405,6 +3405,9 @@ namespace Raznice
                         switch (nError)
                         {
                             case 0:
+                                popisStavu.nErrorText = "Bez chyby";
+                                break;
+                            case 1:
                                 popisStavu.nErrorText = "Procesorová jednotka zastavena";
                                 break;
                             case 8:
@@ -3504,7 +3507,7 @@ namespace Raznice
                 }
                 else
                 {
-                    popisStavu.nErrorId = -100;
+                    popisStavu.nErrorId = 0;
                     popisStavu.nErrorText = "Bez chyby";
                 }
 
