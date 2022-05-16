@@ -218,195 +218,7 @@ namespace Raznice
             return JeTam;
         }
 
-        /// <summary>
-        /// Vyrazeni N dozimetru (postupna TAB2) nebo ze souboru (ze souboru TAB3)
-        /// </summary>
-        [Obsolete]
-        public void StartN()
-        {
-            Vlastnosti.popisStavuRaznice popisStavuRaznice = new Vlastnosti.popisStavuRaznice(); 
 
-            if (txtSarze.Text.Replace(" ", "") == String.Empty)
-            {
-                MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("StartN(), Šarže filmu není zadána", false, "Error", formRaz);
-                return;
-            }
-
-            bool ok = Init();
-            if (!ok) 
-            {
-                popisStavuRaznice = DejPopisStavu();
-
-                lblStatus.Text = "Chyba komunikace: " + popisStavuRaznice.stavText.ToString();
-                Globalni.Nastroje.LogMessage("Init(), Chyba komunikace: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);                
-            }
-
-            popisStavuRaznice = DejPopisStavu();
-            if (popisStavuRaznice.nStatusId != 3) //chyba, řízení vypnuto
-            {
-                MessageBox.Show("Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("Init(), Raznice není připravena: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
-                return;
-            }
-
-            string txt = "";
-            DozCount = 0;
-            lblCount2.Text = "0";            
-
-            // razba ze souboru TAB3 a nebo bez TAB2
-            if (DozFile)
-            {
-                // ze souboru TAB3
-                DozStr = LoadFile(txtFile.Text);    // 05019017;1 Vachata
-                
-                if (!(DozStr == null))
-                {
-                    int locDozPozice = 0;
-
-                    // vynulovat vstupy
-                    lblCount2.Text = "0";    
-
-
-                    // tiskne se vse nebo jenom podmnozina 
-                    if (txtRazitOdDoz.Text.Trim().Length > 0)
-                        if (JeTamCisloDozimetru(txtRazitOdDoz.Text.Replace(" ", "").Trim()))
-                        {
-                            locDozPozice = DozPozice-1;
-                            if (locDozPozice < 0)
-                                locDozPozice = 0;
-                        }
-                        else
-                            return;
-    
-                             
-                    RozeberDozStr(locDozPozice);
-                    DozMaxCount = DozStr.Length;
-                    txt = lblDozNum.Text;
-
-                }
-                else 
-                { 
-                    MessageBox.Show("Nelze načíst soubor", Globalni.Parametry.aplikace.ToString(),MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    Globalni.Nastroje.LogMessage("StartN(), Nelze načíst soubor: " + txtFile.Text.ToString(), false, "Error", formRaz);
-                    return; 
-                }
-            }
-            else
-            {
-                // bez souboru TAB2
-            }
-
-            // prvni doz, dalsi se resi pres timer2 ...
-            if (DozFile)
-            {
-                // razeni pres soubor TAB3
-                bool vysledek = false;
-                bool jaktisk = false;
-
-                 // tiskne se vse nebo jenom podmnozina ?
-                 if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0))
-                 {
-                     // tisknu az z timeru2
-                     System.Threading.Thread.Sleep(1000);
-                     timer2.Enabled = true;
-                 }
-                 else
-                 {
-                    #region razba a pak tisk dozimetru OLD
-                    //if (chkRazitDozimetry.Checked == true)
-                    // {
-                    //     Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
-                    //     vysledek = StartText(txt, txt.Length);
-
-                    // }
-                    // else
-                    //     vysledek = true;
-
-                    //if (vysledek == true)
-                    //{
-                    //    if (chkTiskSoubor.Checked == true)
-                    //    {
-                    //        string numZdroj = lblDozNum.Text.ToString().Trim();
-                    //        string nameZdroj = lblDozPopis.Text.ToString().Trim();
-                    //        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
-
-                    //        //jaktisk = Tisk(nameZdroj, numZdroj, false, true);
-                    //        jaktisk = Tisk(nameZdroj, nameZdrojEAN, false, true);
-                    //    }
-                    //    else
-                    //        jaktisk = true;
-
-                    //    if (jaktisk == true)
-                    //    {
-                    //        System.Threading.Thread.Sleep(1000);
-                    //        timer2.Enabled = true;
-                    //    }
-                    //}
-                    #endregion
-
-                    // ponovu se nastavi co tisknout a posle se na razbu kde se zaroven i tiskne
-                    #region razbaV2 s tiskem dozimetru NEW
-
-                    popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
-                    popisStavuRaznice = DejPopisStavu();
-                    if ((popisStavuRaznice.nStatusId != 3)) //chyba, řízení vypnuto
-                    {
-                        MessageBox.Show("StartN(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Globalni.Nastroje.LogMessage("StartN(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
-                        vysledek = false;
-                    }
-
-                    if (chkRazitDozimetry.Checked == true)
-                    {
-                        Globalni.Nastroje.LogMessage("StartN(), StartText(txt, txt.Length): " + txt.ToString(), false, "Error", formRaz);
-
-
-                        //string numZdroj = lblDozNum.Text.ToString().Trim();
-                        string nameZdroj = lblDozPopis.Text.ToString().Trim();
-                        string nameZdrojEAN = lblDozPopisEAN.Text.ToString().Trim();
-
-                        vysledek = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
-
-
-
-                    }
-                    else
-                        vysledek = true;
-
-                    // tisk dalsich dozimetru pres timer
-                    if (vysledek == true)
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                        timer2.Enabled = true;
-                    }
-                    #endregion
-                }
-            }
-            else
-            {
-                // toto je obsolete, vubec se neposti varianta VyrazitN dozimetru z TAB2
-                #region Obsolete VyrazitN dozimetru z TAB2
-                // tisk prvniho
-                // ok = StartText(txt, txt.Length);
-
-                // poslu na raznici a do tisku
-                // parametry tady nepouzivam, hodnoty si zjistim az v telu procedury
-                bool vysledekRaz = NaRazitDozV2(txt_numDoz: txt, txt_nameZdroj: lblDozPopis.Text.ToString().Trim(), txt_numZdroj: lblDozNum.Text.ToString().Trim(), txtTyp.Text.ToString());
-                if (!vysledekRaz) 
-                { 
-                    lblStatus.Text = "Chyba komunikace";
-                    Globalni.Nastroje.LogMessage("StartN(), lblStatus.Text: " + lblStatus.Text.ToString(), false, "Error", formRaz);
-
-                }
-                else
-                {
-                    // spustim cyklus pro dozimetry - at nactenych ze souboru nebo ze zalozky 1
-                    timer2.Enabled = true;
-                }
-                #endregion
-            }
-        }
 
         /// <summary>
         /// Vyrazeni dozimetru ze souboru TAB3 
@@ -679,54 +491,6 @@ namespace Raznice
 
         }
 
-        public string ErrString(int Err)
-        {
-            if ((Err > 200) && (Err < 300)) { Err = 200; }
-            if ((Err > 400) && (Err < 500)) { Err = 400; }
-            if ((Err > 500) && (Err < 600)) { Err = 500; }
-
-            switch (Err)
-            {
-                case 100:
-                    return "Chyba inicializace motoru";
-                case 101:
-                    return "Chyba komunikace s motorem";
-                case 102:
-                    return "Došly dozimetry";
-                case 103:
-                    return "Raznice není připravena";
-                case 104:
-                    return "Chyba komunikace s razicí jednotkou";
-                case 106:
-                    return "Zaseknutý dozimetr";
-                case 107:
-                    return "Central STOP";
-                case 108:
-                    return "Uživatelský STOP";
-                case 109:
-                    return "Zaseknutý píst";
-                case 200:
-                    return "Chyba zapisování textu do razicí jednotky";
-                case 300:
-                    return "Chyba vybírání masky v razicí jednotce";
-                case 400:
-                    return "Watchdog – zaseknutí programu";
-                case 500:
-                    return "Chyba motoru";
-                default:
-                    return "";
-            }
-        }
-
-        public string InsertSpace(string txt)
-        {
-            return txt;
-            /*
-            txt = txt.Insert(4, " ");
-            txt = txt.Insert(1, " ");
-            return txt;
-             */ 
-        }
 
         #region ImportDLL
 
@@ -818,32 +582,32 @@ namespace Raznice
             return true;
         }
         ////////////////////////////        
-        public bool ReadStatus(ref int nStatus)
+        public bool ReadStatus(ref short nStatus)
         {
             //nStatus = 3;
             Item itm = (Item)cbStatut.SelectedItem;
             //int selectedIndex = cbStatut.SelectedIndex;
             //cbStatut.Items[selectedIndex];
-            nStatus = itm.Value;
+            nStatus = (short)itm.Value;
 
             return true;
         }
 
-        public bool ReadInfo(ref int nInfo)
+        public bool ReadInfo(ref short nInfo)
         {
             //nInfo = 2;
             Item itm = (Item)cbInfo.SelectedItem;
             int selectedIndex = cbInfo.SelectedIndex;
-            nInfo = itm.Value;
+            nInfo = (short)itm.Value;
 
             return true;
         }
 
-        public bool ReadError(ref int nError)
+        public bool ReadError(ref short nError)
         {
             //nError = 0;
             Item itm = (Item)cbError.SelectedItem;
-            nError = itm.Value;
+            nError = (short)itm.Value;
 
             return true;
         }
@@ -907,122 +671,122 @@ namespace Raznice
         }
 
 
-        #region stare fce, jen aby to nervalo zatim
-        //simulace fci z Raznice.dll
+        //#region stare fce, jen aby to nervalo zatim
+        ////simulace fci z Raznice.dll
 
-        public bool IsReady(ref bool Status)
-        {
-            Status = true;
-            return true;
-        }
+        //public bool IsReady(ref bool Status)
+        //{
+        //    Status = true;
+        //    return true;
+        //}
 
-        public bool IsDone(ref bool done, ref int Err, ref int Mark)
-        {
-            done = true;
-            Err = 0;
-            Mark = 0;
-            return true;
-        }
+        //public bool IsDone(ref bool done, ref int Err, ref int Mark)
+        //{
+        //    done = true;
+        //    Err = 0;
+        //    Mark = 0;
+        //    return true;
+        //}
 
 
-        public bool StartText([MarshalAs(UnmanagedType.LPStr)] string text, int len)
-        {
-            //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Globalni.Nastroje.LogMessage("StartText:" + text.Trim(), false, "Information", formRaz);
-            //return true;
-            Random random = new Random();
-            double r = random.NextDouble();
-            //int a = (int)r;
-            return (r < 0.5 ? false : true);
-        }
+        //public bool StartText([MarshalAs(UnmanagedType.LPStr)] string text, int len)
+        //{
+        //    //MessageBox.Show("StartText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    Globalni.Nastroje.LogMessage("StartText:" + text.Trim(), false, "Information", formRaz);
+        //    //return true;
+        //    Random random = new Random();
+        //    double r = random.NextDouble();
+        //    //int a = (int)r;
+        //    return (r < 0.5 ? false : true);
+        //}
 
-        public bool Run()
-        {
-            return true;
-        }
+        //public bool Run()
+        //{
+        //    return true;
+        //}
 
-        public bool Stop()
-        {
-            // tohle se pouziva 
+        //public bool Stop()
+        //{
+        //    // tohle se pouziva 
 
-            return true;
-        }
+        //    return true;
+        //}
 
-        public bool SendText([MarshalAs(UnmanagedType.LPStr)] string text, int len)
-        {
-            //MessageBox.Show("SendText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Globalni.Nastroje.LogMessage("SendText:" + text.Trim(), false, "Information", formRaz);
-            return true;
-        }
+        //public bool SendText([MarshalAs(UnmanagedType.LPStr)] string text, int len)
+        //{
+        //    //MessageBox.Show("SendText:" + text.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    Globalni.Nastroje.LogMessage("SendText:" + text.Trim(), false, "Information", formRaz);
+        //    return true;
+        //}
 
-        public bool Mask([MarshalAs(UnmanagedType.LPStr)] string text, int len)
-        {
-            Globalni.Nastroje.LogMessage("Mask:" + text.Trim(), false, "Information", formRaz);
-            return true;
-        }
+        //public bool Mask([MarshalAs(UnmanagedType.LPStr)] string text, int len)
+        //{
+        //    Globalni.Nastroje.LogMessage("Mask:" + text.Trim(), false, "Information", formRaz);
+        //    return true;
+        //}
 
-        public bool PrintCode39([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
-        {
-            return true;
-        }
+        //public bool PrintCode39([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
+        //{
+        //    return true;
+        //}
 
-        public bool PrintEAN8([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
-        {
-            //MessageBox.Show("PrintEAN8:" + name.Trim() + ", " + number.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Globalni.Nastroje.LogMessage("PrintEAN8:" + name.Trim() + ", " + number.Trim(), false, "Information", formRaz);
-            return true;
-        }
+        //public bool PrintEAN8([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
+        //{
+        //    //MessageBox.Show("PrintEAN8:" + name.Trim() + ", " + number.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    Globalni.Nastroje.LogMessage("PrintEAN8:" + name.Trim() + ", " + number.Trim(), false, "Information", formRaz);
+        //    return true;
+        //}
 
-        public bool PrintEAN13([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
-        {
-            //MessageBox.Show("PrintEAN13:" + name.Trim() + ", " + number.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Globalni.Nastroje.LogMessage("PrintEAN13:" + name.Trim() + ", " + number.Trim(), false, "Information", formRaz);
-            return true;
-        }
+        //public bool PrintEAN13([MarshalAs(UnmanagedType.LPStr)] string number, int len, string name, int len2)
+        //{
+        //    //MessageBox.Show("PrintEAN13:" + name.Trim() + ", " + number.Trim(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    Globalni.Nastroje.LogMessage("PrintEAN13:" + name.Trim() + ", " + number.Trim(), false, "Information", formRaz);
+        //    return true;
+        //}
 
-        public bool SetIP(byte IP1, byte IP2, byte IP3, byte IP4)
-        {
-            byte[] IPs;
-            IPs = new byte[4];
-            IPs[0] = IP1;
-            IPs[1] = IP2;
-            IPs[2] = IP3;
-            IPs[3] = IP4;
+        //public bool SetIP(byte IP1, byte IP2, byte IP3, byte IP4)
+        //{
+        //    byte[] IPs;
+        //    IPs = new byte[4];
+        //    IPs[0] = IP1;
+        //    IPs[1] = IP2;
+        //    IPs[2] = IP3;
+        //    IPs[3] = IP4;
 
-            /*
-            string strIPs = "";
-            strIPs = Encoding.GetEncoding("windows-1250").GetString(IPs);
-            */
+        //    /*
+        //    string strIPs = "";
+        //    strIPs = Encoding.GetEncoding("windows-1250").GetString(IPs);
+        //    */
 
-            Globalni.Nastroje.LogMessage("SetIP: " + IP1.ToString() + "." + IP2.ToString() + "." + IP3.ToString() + "." + IP4.ToString(), false, "Information", formRaz);
-            return true;
-        }
+        //    Globalni.Nastroje.LogMessage("SetIP: " + IP1.ToString() + "." + IP2.ToString() + "." + IP3.ToString() + "." + IP4.ToString(), false, "Information", formRaz);
+        //    return true;
+        //}
 
-        public bool PistonUp()
-        {
-            return true;
-        }
+        //public bool PistonUp()
+        //{
+        //    return true;
+        //}
 
-        public bool PistonDown()
-        {
-            return true;
-        }
+        //public bool PistonDown()
+        //{
+        //    return true;
+        //}
 
-        public bool Eject()
-        {
-            return true;
-        }
+        //public bool Eject()
+        //{
+        //    return true;
+        //}
 
-        public bool ClearInput()
-        {
-            return true;
-        }
+        //public bool ClearInput()
+        //{
+        //    return true;
+        //}
 
-        public void Disconnect()
-        {
+        //public void Disconnect()
+        //{
 
-        }
-        #endregion
+        //}
+        //#endregion
 
 #endif
 
@@ -1106,16 +870,15 @@ namespace Raznice
                 toolTip1.SetToolTip(this.lblEANPopis_radek_2, (tisk_z_pole_prijmeni == true ? "Kontrukce pro štítek dozimetru z pole 'Příjmení'" : "Kontrukce pro štítek dozimetru z pole 'Tisk řádek_2'"));
 
 #if DLL
-                cbInit.Visible = false;
-                cbStatut.Visible = false;
-                cbInfo.Visible = false;
-                cbError.Visible = false;
+                // zneviditelnim ovladani simulace
+                groupBoxSimulace.Visible = false;
+
+                // zneviditelnim STOP/RUN
+                groupBoxManualOvladani.Visible = false;
 
 #else
-                cbInit.Visible = true;
-                cbStatut.Visible = true;
-                cbInfo.Visible = true;
-                cbError.Visible = true;
+                // zviditelnim ovladani simulace
+                groupBoxSimulace.Visible = true;
 
                 // pro simulaci navrat stavu atd.
                 cbInit.Items.Add(new Item("Ok", 1));
@@ -1147,8 +910,9 @@ namespace Raznice
                 cbInfo.Items.Add(new Item("HOTOVO, přesun do základní polohy", 14));
                 cbInfo.Items.Add(new Item("Řízení vypnuto", 15));
                 cbInfo.SelectedIndex = 14;
-
-                cbError.Items.Add(new Item("Procesorová jednotka zastavena", 0));
+                
+                cbError.Items.Add(new Item("Bez chyby", 0));
+                cbError.Items.Add(new Item("Procesorová jednotka zastavena", 1));
                 cbError.Items.Add(new Item("Řízení vypnuto", 8));
                 cbError.Items.Add(new Item("Ochrany přemostěny", 9));
                 cbError.Items.Add(new Item("ESTOP zmáčknut", 10));
@@ -1196,12 +960,12 @@ namespace Raznice
                     popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
                     popisStavuRaznice = DejPopisStavu();
                     if ((popisStavuRaznice.nStatusId == 3)) //zařízení zapnuto
-                        //this.chkReady.Checked = true;
-                        ;
+                        this.chkReady.Checked = true;
                     else
                     {
-                        //this.chkReady.Checked = false;
+                        this.chkReady.Checked = false;
                         MessageBox.Show("Load Init(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Globalni.Nastroje.LogMessage("Load Init(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
                     }
 
                     txtRazitDoz.Text = "";
@@ -1213,7 +977,7 @@ namespace Raznice
                     //txtRazitOdDoz.Mask = "00 000 000";
 
                     timer1.Enabled = true;
-                    this.chkReady.Checked = true;
+                    //this.chkReady.Checked = true;
                 }
             }
             catch
@@ -1228,7 +992,7 @@ namespace Raznice
         {
             Globalni.Nastroje.LogMessage("Stop", false, "Information", formRaz);
             timer1.Enabled = false;
-            timer2.Enabled = false;
+
             try
             {
                 //Disconnect();
@@ -1838,203 +1602,7 @@ namespace Raznice
 
               
         }
-
-        /// <summary>
-        /// Vrati, zda jsou vsechny dozimetry, co se maji razit, vyrazeny
-        /// </summary>
-        /// <returns></returns>
-        private bool vseVyrazeno()
-        {
-            if ((DozCount >= DozMaxCount) || (DozCount == 0))
-                return true;
-            else
-                return false;
-        }
-
-        /// <summary>
-        /// Nabira dozimetry ze seznamu souboru TAB3, jednotlive z TAB2 se uz netiskne
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        [Obsolete]
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            string txtDoz = "";
-            string txtName = "";
-            string txtEAN = "";
-            string numZdroj = "";
-            string nameZdroj = "";
-            bool done = false;
-            bool ready = false;
-            bool ok = false;
-            int err = 0, mark = 0;
-            Vlastnosti.popisStavuRaznice popisStavuRaznice = null;
-
-            popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
-            popisStavuRaznice = DejPopisStavu();
-
-            ok = (popisStavuRaznice.nStatusId == 3);
-            //bool ok = IsDone(ref done, ref err, ref mark);
-            if (!ok)
-            {
-                timer2.Enabled = false;
-                MessageBox.Show("Ztráta spojení s raznicí, stav: " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Globalni.Nastroje.LogMessage("timer2_Tick, Ztráta spojení s raznicí, stav: " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
-                return;
-            }
-            if (done)
-            {
-                if (err == 0)
-                {
-                    DozCount += 1;
-#region DozFile
-                    if (DozFile)
-                    {
-                        // tiskne se vse nebo jenom podmnozina ?
-                        if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0)
-                            &&
-                                (!((DozCount >= DozPozice)
-                                &&
-                                //(DozCount <= (DozPozice + int.Parse(txtRazitDoz.Text.Replace(" ", "").Trim()) - 1))))
-                                //(DozCount <= (DozPozice + int.Parse(txtRazitDoz.Text.Replace(" ", "").Trim()) + 1))))
-                                (DozCount <= (DozPozice + int.Parse(txtRazitDoz.Text.Replace(" ", "").Trim()) ))))
-                            )
-                        {
-                            if ((err > 0) || (DozCount >= DozMaxCount))
-                            {
-                                timer2.Enabled = false;
-                                return;
-                            }
-                            // vynechavam razeni, nejsem v intervalu
-                            lblStatus.Text = "Skip dozimetru";
-                            Globalni.Nastroje.LogMessage("timer2_Tick, Skip dozimetru", false, "Information", formRaz);
-                            return;
-                        }
-                        else
-                        {
-                            DozVyrazeno += 1;
-                        }
-
-                        lblCount2.Text = DozCount.ToString();
-
-
-                        if (DozCount < DozStr.Length)
-                        {
-                            RozeberDozStr(DozCount);
-                        }
-                        else
-                        {
-                            RozeberDozStr(0);
-                        }
-/*
-
-                        if (DozCount < DozStr.Length) 
-                            lblDozNum.Text = DozStr[DozCount];
-                        else 
-                            lblDozNum.Text = DozStr[0];
-*/
-                    }
-#endregion
-                    else
-#region Jednotlive - nepouziva se
-                    {
-                        // nepouziva se
-                        DozNum += 1;
-                        txtText.Text = DozNum.ToString();
-                    }
-#endregion
-                }
-
-                if ((err > 0) || (DozCount >= DozMaxCount))
-                {
-                    timer2.Enabled = false;
-                    return;
-                }
-
-
-
-                if (DozFile)
-                {
-                    RozeberDozStr(DozCount);
-                    txtDoz = lblDozNum.Text;
-                    txtName = lblDozPopis.Text;
-                    txtEAN = lblDozPopisEAN.Text;
-                }
-                else
-                {
-                    // nepouziva se
-                    txtDoz = InsertSpace(DozNum.ToString());
-                }
-
-
-                //pokud je zadano omezeni intervalu dozimetru k tisku
-                
-
-                int i = 0;
-                bool vysledek = false;
-                // priznak, ze se ma vubec provadet razeni
-                if (chkRazitDozimetry.Checked == true)
-                {
-                    Globalni.Nastroje.LogMessage("timer2_Tick, StartText(txtDoz, txtDoz.Length)" + txtDoz.ToString(), false, "Information", formRaz);
-
-                    numZdroj = txtDoz.ToString().Trim();
-                    nameZdroj = txtName.ToString().Trim(); 
-                    vysledek = NaRazitDozV2(txtDoz, nameZdroj, txtEAN, txtTyp.Text.ToString());
-                }
-                else
-                    vysledek = true;
-
-                while (!vysledek)
-                {
-                    numZdroj = txtDoz.ToString().Trim();
-                    nameZdroj = txtName.ToString().Trim();
-                    vysledek = NaRazitDozV2(txtDoz, nameZdroj, txtEAN, txtTyp.Text.ToString());
-
-                    i++;
-                    if (i > 3)
-                    {
-                        timer2.Enabled = false;
-                        MessageBox.Show("Ztráta spojení s raznicí", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Globalni.Nastroje.LogMessage("timer2_Tick, Ztráta spojení s raznicí", false, "Error", formRaz);
-                        return;
-                    }
-                    System.Threading.Thread.Sleep(100);
-                }
-
-#region old tisk
-                //if (vysledek == true)
-                //{
-                //    if (chkTiskSoubor.Checked == true)
-                //    {
-                //        // Unicode Character 'NO-BREAK SPACE' (U+00A0)
-                //        //string name = "doc.\u00A0Pepa Novák, CSc.";
-                //        //string num = "4 948 17";
-
-                //        //string name = "";
-                //        //string num = "";
-                //        string numZdroj = "";
-                //        string nameZdroj = "";
-                //        //string namePrvniRadek = "";
-                //        //string nameDruhyRadek = "";
-
-                //        // 2A_MM_PPP_DDD
-                //        // Vejsada
-                //        // 0PPPDDD
-
-                //        numZdroj = txtDoz.ToString().Trim();
-                //        nameZdroj = txtName.ToString().Trim(); 
-
-                //        // tisk ze souboru
-                //        //Tisk(nameZdroj, numZdroj, false, true);                        
-                //        Tisk(nameZdroj, txtEAN, false, true);
-
-
-                //    }
-                //}
-#endregion
-            }
-        }
-
+  
 #endregion
 
         private void txtSarze_LostFocus(object sender, EventArgs e)
@@ -2284,74 +1852,6 @@ namespace Raznice
             return jakTisk;
         }
 
-        private bool Tisk(string popisek_stitek /*1A_06_130/2_203 Michlova*/, string cislo_ean /*106151302203*/, bool hlasitChybu, bool VolnyTisk)
-        {
-            bool jakTisk = false;
-            string nameZdroj = "";
-            string numZdroj = "";
-
-            //1A Michlova
-            //050190002
-
-            // od 05.04.2016 obsahuje i cislo oddeleni: 0PPPDDD--> 0PPPODDD
-            // Vejsada
-            // 0PPPDDD
-
-
-            nameZdroj = popisek_stitek.Trim(); //1A_06_130/2_203 Michlova
-            numZdroj = cislo_ean.Trim();       //106151302203
-
-            if (!VolnyTisk)
-            {
-                if ((numZdroj.Length != 12) && (hlasitChybu))
-                    MessageBox.Show("Číslo pro konstrukci EAN kódu: '" + numZdroj.ToString() + "' musí být dlouhé 12 znaků.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (numZdroj.Length != 12)
-                {
-                    Globalni.Nastroje.LogMessage("Tisk PrintEAN13, Číslo pro konstrukci EAN kódu musí být dlouhé 12 znaků, numZdroj:" + numZdroj.ToString(), false, "Error", formRaz);
-                    return false;
-                }
-
-                //1A_06_130/2_203
-                if ((nameZdroj.Length < 15) && (hlasitChybu))
-                    MessageBox.Show("Text štítku dozimetru '" + numZdroj.ToString() + "' musí být minimálně 15 znaků dlouhý.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // pokud je mensi, doplnim na 15 pozice - je mozne tisknout jen cislo dozimetru beze jmena
-                if (nameZdroj.Length < 15)
-                {
-                    Globalni.Nastroje.LogMessage("Tisk PrintEAN13, Text štítku dozimetru musí být minimálně 15 naků dlouhý., numZdroj:" + nameZdroj.ToString(), false, "Warning", formRaz);
-                    nameZdroj = nameZdroj.PadLeft(15, '0');
-                }
-            }
-            else
-            {
-                // doplnim zleva na 12 znaku pro EAN13
-                if (numZdroj.Length != 12)
-                {
-                    numZdroj = numZdroj.PadLeft(12, '0');
-                }
-            }
-
-            if (nameZdroj.Length > 30)
-                nameZdroj = nameZdroj.Substring(0, 30);
-
-
-            Globalni.Nastroje.LogMessage("Tisk PrintEAN13 num:" + numZdroj.ToString() + ", name: " + nameZdroj.ToString(), false, "Information", formRaz);
-            jakTisk = PrintEAN13(numZdroj, numZdroj.Length, nameZdroj, nameZdroj.Length);
-
-            if (jakTisk == true)
-            {
-                lblStatus.Text = "Tisk EAN13 ok";
-                //toolStripStatusLabel.Text = "Tisk EAN13 ok";
-            }
-            else
-            {
-                lblStatus.Text = "Chyba tisku EAN13";
-                toolStripStatusLabel.Text = "Chyba tisku EAN13";
-                if (hlasitChybu)
-                    MessageBox.Show("Chyba tisku EAN13", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            Globalni.Nastroje.LogMessage("Tisk PrintEAN13 " + lblStatus.Text, false, "Information", formRaz);
-            return jakTisk;
-        }
 
 #endregion
 
@@ -2375,26 +1875,61 @@ namespace Raznice
         } 
              
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {            
             try
             {
-                if (e.ColumnIndex == indexOf(dataGridView1,"Nacist")) // button Nacist
-                    //dataGridView1.Columns[e.ColumnIndex].Name = "Nacist";
-                    
-
+                if (e.ColumnIndex == indexOf(dataGridView1, "Vyrazit")) // chkbox Vyrazit                    
                 {
+                    int rowindex = dataGridView1.CurrentCell.RowIndex;
+                    int columnindex = dataGridView1.CurrentCell.ColumnIndex;
+
+                    string a = dataGridView1.Rows[rowindex].Cells[columnindex].Value.ToString();
+
+                    int id_cispod = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Id_Cispod"), e.RowIndex].Value.ToString());
+                    int vyrazit = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Vyrazit"), e.RowIndex].Value.ToString());
+
+                    if (vyrazit == 1)
+                        vyrazit = 0;
+                    else
+                        vyrazit = 1;
+                    dataGridView1.DataSource = "";
+
+
+                    DataTable ResultSet = UpdateGRPDataVyrazit(id_cispod, vyrazit);
+                    NastavDataGrid(dataGridView1);
+                    dataGridView1.DataSource = ResultSet;
+
+                    dataGridView1.Rows[rowindex].Selected = true;
+                    dataGridView1.CurrentCell = dataGridView1.Rows[rowindex].Cells[0];
+ 
+                }
+
+                if (e.ColumnIndex == indexOf(dataGridView1,"Nacist")) // button Nacist    
+                                
+                {
+                    lblPodnikuProVyrazeni.Text = "0";
+
+                    int rowindex = dataGridView1.CurrentCell.RowIndex;
+                    int columnindex = dataGridView1.CurrentCell.ColumnIndex;
+                    //string a = dataGridView1.Rows[rowindex].Cells[columnindex].Value.ToString();
+
+                    int id_cispod = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Id_Cispod"), e.RowIndex].Value.ToString());
                     int zpracovano = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Zpracovano"), e.RowIndex].Value.ToString());
+                    int vyrazit = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Vyrazit"), e.RowIndex].Value.ToString());
+
                     if (zpracovano == 1)
                     {
                         //MessageBox.Show("Uz je zpracovano");
                         string cpd = dataGridView1[indexOf(dataGridView1, "cpd"), e.RowIndex].Value.ToString();
                         string cod = dataGridView1[indexOf(dataGridView1, "cod"), e.RowIndex].Value.ToString();  
 
-                        DialogResult result = MessageBox.Show("Pro podnik "+cpd+"/"+cod+" je již vše naraženo. \r\nPokračovat?", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("Pro podnik "+cpd+"/"+cod+" je již vše naraženo. \r\nPokračovat? Odebrat označení?", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         switch (result)
                         {
                             case DialogResult.Yes:
                                 {
+                                    // odeznacit zpracovano, aby doslo k vyberu
+                                    DataTable ResultSetUpdate = UpdateGRPData(id_cispod, zpracovano: 0);
                                     break;
                                 }
                             case DialogResult.No:
@@ -2404,21 +1939,20 @@ namespace Raznice
                                 }
                         }
                     }
-
-                    
+                    // v pripade, ze neni oznaceno k vyrazeni
+                    if (vyrazit == 0)
+                    {
+                        DataTable ResultSetUpdateVyrazit = UpdateGRPDataVyrazit(id_cispod, vyrazit: 1);
+                    }
                     
                     //int id_cispod = dataGridView1.Columns[5];
                     //DataGridViewRow row = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex];
 
-                    int rowindex = dataGridView1.CurrentCell.RowIndex;
-                    int columnindex = dataGridView1.CurrentCell.ColumnIndex;
-
-                    string a = dataGridView1.Rows[rowindex].Cells[columnindex].Value.ToString();
-
-                    int id_cispod = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Id_Cispod"), e.RowIndex].Value.ToString());                    
+                  
 
                     dataGridView1.DataSource = "";
-                                       
+
+
                     //DataTable ResultSet = UpdateGRPData(id_cispod);                    
                     DataTable ResultSet = GetGRPData();
                     NastavDataGrid(dataGridView1);
@@ -2427,8 +1961,10 @@ namespace Raznice
                     dataGridView1.Rows[rowindex].Selected = true;
                     dataGridView1.CurrentCell = dataGridView1.Rows[rowindex].Cells[0];
 
+
+                    // nactu pro vsechny podniky, oznacene Vyrazit
                     dataGridView2.DataSource = "";
-                    DataTable ResultSetCDZ = GetDOZData(id_cispod);
+                    DataTable ResultSetCDZ = GetDOZData();
                     NastavDataGrid(dataGridView2);
                     dataGridView2.DataSource = ResultSetCDZ;
 
@@ -2446,6 +1982,9 @@ namespace Raznice
                     string Tisk_mesic = (dataGridView2[indexOf(dataGridView2, "RP_MESIC"), 0]).Value.ToString();
 
                     NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
+
+                    List<int> seznamId_Cispod = DejSeznamPodnikuProVyrazeni();
+                    lblPodnikuProVyrazeni.Text = seznamId_Cispod.Count().ToString();
                 }
             }
 
@@ -2524,7 +2063,7 @@ namespace Raznice
             {
                 //string mySQL = @"SELECT * FROM 20141015__46B0JSL4X";  // dbf table name
 
-                string mySQL = @"SELECT cpd, cod, kolik, zpracovano, id_cispod FROM " + dbFileName + " ORDER BY cpd, cod";
+                string mySQL = @"SELECT Vyrazit, cpd, cod, kolik, zpracovano, id_cispod FROM " + dbFileName + " ORDER BY cpd, cod";
 
                 OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
                 OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
@@ -2538,7 +2077,7 @@ namespace Raznice
             return ResultSet;
         }
 
-        public DataTable GetDOZData(int id_cispod)
+        public DataTable GetDOZData()
         {
             DataTable ResultSet = new DataTable();
             //DataSet ds = new DataSet();
@@ -2561,14 +2100,20 @@ namespace Raznice
             if (yourConnectionHandler.State == ConnectionState.Open)
             {
                 //string mySQL = @"SELECT * FROM 20141015__46B0JSL4X";  // dbf table name
-                string fileName = dbFileName.Replace("GRP_", "");
-                string mySQL = @"SELECT cpd, cod, Cdz, Prijmeni, Tisk_1, Tisk_2, zpracovano, id_seznam, id_cispod, SLOB, RP_ROK, RP_MESIC FROM " + fileName + " where id_cispod = ? ORDER BY cpd, cod, cdz";
+                string fileGRPName = dbFileName;
+                string fileName = dbFileName.ToUpper().Replace("GRP_", "");
+                //string mySQL = @"SELECT cpd, cod, Cdz, Prijmeni, Tisk_1, Tisk_2, zpracovano, id_seznam, id_cispod, SLOB, RP_ROK, RP_MESIC FROM " + fileName + " where id_cispod = ? ORDER BY cpd, cod, cdz";
+                //string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
+                string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
+                    " JOIN " + fileGRPName +" b ON a.id_cispod = b.id_cispod "+
+                    " where (b.Vyrazit = 1 and b.Zpracovano = 0) ";
+                    //" where id_cispod = ? ORDER BY cpd, cod, cdz";
 
                 OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
-                OleDbParameter NewParm = new OleDbParameter("id_cispod", id_cispod);
-                NewParm.DbType = DbType.Int32;
-                // (or other data type, such as DbType.String, DbType.DateTime, etc)
-                MyQuery.Parameters.Add(NewParm);
+                //OleDbParameter NewParm = new OleDbParameter("id_cispod", id_cispod);
+                //NewParm.DbType = DbType.Int32;
+                //// (or other data type, such as DbType.String, DbType.DateTime, etc)
+                //MyQuery.Parameters.Add(NewParm);
 
                 OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
 
@@ -2588,7 +2133,7 @@ namespace Raznice
             return ResultSet;
         }
 
-        public DataTable UpdateGRPData(int id_cispod)
+        public DataTable UpdateGRPData(int id_cispod, int zpracovano)
         {
             DataTable ResultSet = new DataTable();
             //DataSet ds = new DataSet();
@@ -2612,7 +2157,7 @@ namespace Raznice
             {
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "update " + dbFileName + " set zpracovano = 1 where id_cispod = ?";
+                cmd.CommandText = "update " + dbFileName + " set zpracovano = "+ zpracovano.ToString()+ " where id_cispod = ?";
 
                 // Now, add the parameters in the same order as the "place-holders" are in above command
                 OleDbParameter NewParm = new OleDbParameter("id_cispod", id_cispod);
@@ -2658,6 +2203,81 @@ namespace Raznice
             return ResultSet;
         }
 
+        /// <summary>
+        /// Oznaci nebo odeznaci podnik k razeni 
+        /// </summary>
+        /// <param name="id_cispod"></param>
+        /// <param name="vyrazit"></param>
+        /// <returns></returns>
+        public DataTable UpdateGRPDataVyrazit(int id_cispod, int vyrazit)
+        {
+            DataTable ResultSet = new DataTable();
+            //DataSet ds = new DataSet();
+            string filepath = Path.GetDirectoryName(dbFileName);
+            if (!filepath.EndsWith("\\"))
+                filepath += "\\";
+
+            OleDbConnection yourConnectionHandler = new OleDbConnection(
+                 //@"Provider=VFPOLEDB.1;Data Source=c:\temp\abc\");
+                 @"Provider=VFPOLEDB.1;Data Source=" + filepath);
+
+            // if including the full dbc (database container) reference, just tack that on
+            //      OleDbConnection yourConnectionHandler = new OleDbConnection(
+            //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
+
+
+            // Open the connection, and if open successfully, you can try to query it
+            yourConnectionHandler.Open();
+
+            if (yourConnectionHandler.State == ConnectionState.Open)
+            {
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "update " + dbFileName + " set Vyrazit = "+ vyrazit.ToString() + " where id_cispod = ?";
+
+                // Now, add the parameters in the same order as the "place-holders" are in above command
+                OleDbParameter NewParm = new OleDbParameter("id_cispod", id_cispod);
+                NewParm.DbType = DbType.Int32;
+                // (or other data type, such as DbType.String, DbType.DateTime, etc)
+                cmd.Parameters.Add(NewParm);
+                /*
+                // Now, on to the next set of parameters...
+                NewParm = new OleDbParameter("ParmForAnotherField", NewValueForAnotherField);
+                NewParm.DbType = DbType.String;
+                MyUpdate.Parameters.Add(NewParm);
+
+                // finally the last one...
+                NewParm = new OleDbParameter("ParmForYourKeyField", CurrentKeyValue);
+                NewParm.DbType = DbType.Int32;
+                MyUpdate.Parameters.Add(NewParm);
+
+
+                cmd.Parameters.AddWithValue("@var1", id_cispod);
+                 */
+                cmd.Connection = yourConnectionHandler;
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+
+                string mySQL = @"SELECT vyrazit, cpd, cod, kolik, zpracovano, id_cispod FROM " + dbFileName + " ORDER BY cpd, cod";
+
+                OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
+                OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
+
+                DA.Fill(ResultSet);
+                //DA.Fill(ds);
+
+                /*
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    Console.WriteLine(dr.ItemArray[1].ToString());
+                }
+                 */
+                yourConnectionHandler.Close();
+            }
+
+            //return ds;
+            return ResultSet;
+        }
         public int UpdateDOZData(int id_seznam)
         {
             int kolikZazn = -1;
@@ -2669,7 +2289,7 @@ namespace Raznice
             OleDbConnection yourConnectionHandler = new OleDbConnection(
                  @"Provider=VFPOLEDB.1;Data Source=" + filepath);
 
-            string fileName = dbFileName.Replace("GRP_", "");
+            string fileName = dbFileName.ToUpper().Replace("GRP_", "");
 
             // Open the connection, and if open successfully, you can try to query it
             yourConnectionHandler.Open();
@@ -2747,7 +2367,7 @@ namespace Raznice
             if (yourConnectionHandler.State == ConnectionState.Open)
             {
                 //string mySQL = @"SELECT * FROM 20141015__46B0JSL4X";  // dbf table name
-                string fileName = dbFileName.Replace("GRP_", "");
+                string fileName = dbFileName.ToUpper().Replace("GRP_", "");
                 string mySQL = @"SELECT COUNT(id_Doz) AS KolikDoz FROM " + fileName + " where id_cispod = ? ";
 
                 OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
@@ -2805,6 +2425,67 @@ namespace Raznice
                 vysledek = false;
             }            
 
+            return vysledek;
+        }
+
+        /// <summary>
+        /// Vrati seznam id_Cispod z gridu2, ktere jsou plnnne vyrazene
+        /// </summary>
+        /// <returns></returns>
+        public List<int> DejSeznamPodnikuProVyrazeni()
+        {
+            DataTable ResultSet = new DataTable();
+            List<int> vysledek = new List<int>();
+            //DataSet ds = new DataSet();
+
+            string filepath = Path.GetDirectoryName(dbFileName);
+            if (!filepath.EndsWith("\\"))
+                filepath += "\\";
+            OleDbConnection yourConnectionHandler = new OleDbConnection(
+                //@"Provider=VFPOLEDB.1;Data Source=c:\temp\abc\");
+                @"Provider=VFPOLEDB.1;Data Source=" + filepath);
+
+            // if including the full dbc (database container) reference, just tack that on
+            //      OleDbConnection yourConnectionHandler = new OleDbConnection(
+            //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
+
+
+            // Open the connection, and if open successfully, you can try to query it
+            yourConnectionHandler.Open();
+
+            if (yourConnectionHandler.State == ConnectionState.Open)
+            {
+                //string mySQL = @"SELECT * FROM 20141015__46B0JSL4X";  // dbf table name
+                string fileGRPName = dbFileName;
+                string fileName = dbFileName.ToUpper().Replace("GRP_", "");
+
+                string mySQL = @"SELECT a.id_cispod FROM " + fileName + " a " +
+                     " JOIN " + fileGRPName + " b ON a.id_cispod = b.id_cispod " +
+                     " where (b.Vyrazit = 1) " +
+                     " GROUP BY a.id_cispod";
+
+                OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
+                //OleDbParameter NewParm = new OleDbParameter("id_cispod", id_cispod);
+                //NewParm.DbType = DbType.Int32;
+                //// (or other data type, such as DbType.String, DbType.DateTime, etc)
+                //MyQuery.Parameters.Add(NewParm);
+
+                OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
+
+                DA.Fill(ResultSet);
+                //DA.Fill(ds);
+
+                
+                foreach (DataRow dr in ResultSet.Rows)
+                {
+                    //Console.WriteLine(dr.ItemArray[1].ToString());
+                    vysledek.Add(int.Parse(dr.ItemArray[0].ToString()));
+                }
+                
+                yourConnectionHandler.Close();
+            }
+
+            //return ds;
             return vysledek;
         }
 
@@ -2931,123 +2612,7 @@ namespace Raznice
             return vysledek;
         }
 
-        /// <summary>
-        /// Vyrazeni na raznici a tisk (puvodni)
-        /// </summary>
-        /// <param name="Tisk_radek_1"></param>
-        /// <param name="Tisk_radek_2"></param>
-        /// <returns></returns>
-        public bool NaRazitDoz(string Tisk_radek_1, string Tisk_radek_2)
-        {
-            // vyrazeni a tisk jednoho dozimetru
-            bool vysledek = false;
-            bool jaktisk = false;
-            int i = 0;
-
-            bool ready = false; 
-            bool done = false;
-            int Err = 0;
-            int Mark = 0;
-            int kolikrat = 0;
-            bool konecRazeni = false;
-
-            if (chkRazitDozimetryTab.Checked == true)
-            {
-                // pokus nekolikrat za sebou
-                while (!konecRazeni)
-                {
-                    kolikrat++;
-                    Globalni.Nastroje.LogMessage("NaRazitDoz(), kolikrat: " + kolikrat.ToString() + "x ", false, "Information", formRaz);
-                    
-
-                    // a zkola ven ?
-                    if (kolikrat > 6)
-                        konecRazeni = true;
-
-                    // otestuju si, zda se da vubec razit film
-                    // 1. je ukoncena razba?
-                    bool ok = IsDone(ref done, ref Err, ref Mark);
-                    if (!ok)
-                    {
-                        Globalni.Nastroje.LogMessage("NaRazitDoz(), IsDone: Ztráta spojení s raznicí", false, "Error", formRaz);
-                        Cekej(5);
-                        continue;
-                    }
-
-                    if (done == true)
-                    {
-                        // 2. je vse ready, pripraveno k dalsi razbe?
-                        ok = IsReady(ref ready);                        
-                        if (!ok)
-                        {
-                            Globalni.Nastroje.LogMessage("NaRazitDoz(), IsReady: Chyba komunikace", false, "Error", formRaz);
-                            Cekej(5);
-                            continue;
-                        }
-
-                        if (ready == true)
-                        {
-                            Globalni.Nastroje.LogMessage("NaRazitDoz(), StartText(lblDozimetrRazba.Text, lblDozimetrRazba.Text.Length): " + lblDozimetrRazba.Text.ToString(), false, "Information", formRaz);
-                            vysledek = StartText(lblDozimetrRazba.Text, lblDozimetrRazba.Text.Length);
-                        }
-
-                        if (vysledek == true)
-                            konecRazeni = true;
-
-                        while (!vysledek)
-                        {
-                            vysledek = StartText(lblDozimetrRazba.Text, lblDozimetrRazba.Text.Length);
-                            i++;
-                            if (i > 3)
-                            {
-                                Globalni.Nastroje.LogMessage("NaRazitDoz(), while (!vysledek), Ztráta spojení s raznicí: " + i.ToString() + "x ", false, "Error", formRaz);
-                                vysledek = false;
-                                konecRazeni = true;
-                                break; // a ven z cyklu: while (!vysledek)
-                            }
-                            Cekej(5);        
-
-                        }
-                        
-                    }
-
-                    Cekej(5);
-                } // while (!konecRazeni)
-            }
-            else
-                vysledek = true;
-
-
-            if (vysledek == true)
-            {
-                if (chkTiskSouborTab.Checked == true)
-                {
-                    string nameZdroj = lblStitekTisk.Text.ToString().Trim();    // Stitek horni
-                    string numZdroj = lblStitekTiskEan.Text.ToString().Trim();  // EAN  
-                    
-
-                    Globalni.Nastroje.LogMessage("NaRazitDoz(), Tisk(nameZdroj, numZdroj, false): " + nameZdroj.ToString() + ", " + numZdroj.ToString(), false, "Information", formRaz);
-                    jaktisk = Tisk(nameZdroj, numZdroj, false, false);
-
-                    if (jaktisk != true)
-                    {
-                        Globalni.Nastroje.LogMessage("NaRazitDoz(), Chyba při tisku, Tisk(nameZdroj, numZdroj, false): " + nameZdroj.ToString() + ", " + numZdroj.ToString(), false, "Error", formRaz);
-                    }
-
-                }
-                else
-                    jaktisk = true;
-            }
-            else
-            {
-                toolStripStatusLabel.Text = "Chyba při ražení filmu";
-                Globalni.Nastroje.LogMessage("NaRazitDoz(), Chyba při ražení filmu, vysledek StartText() == false: " + lblDozimetrRazba.Text.ToString(), false, "Error", formRaz);
-            }
-
-
-
-            return (vysledek && jaktisk);
-        }
+       
 
 
         /// <summary>
@@ -3299,9 +2864,9 @@ namespace Raznice
         public Vlastnosti.popisStavuRaznice DejPopisStavu()
         {
             Vlastnosti.popisStavuRaznice popisStavu = new Vlastnosti.popisStavuRaznice();
-            int nStatus = -1;
-            int nInfo = -1;
-            int nError = -1;
+            short nStatus = -1;
+            short nInfo = -1;
+            short nError = -1;
             popisStavu.stavText = "";
             try
             {
@@ -3546,13 +3111,39 @@ namespace Raznice
                 MessageBox.Show("Není co razit ....", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            
+
+            #region Kontrola
             if (txtSarze.Text.Replace(" ", "") == String.Empty)
             {
                 MessageBox.Show("Šarže filmu není zadána", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Globalni.Nastroje.LogMessage("cmdVyrazit_Click, Šarže filmu není zadána", false, "Error", formRaz);
                 return;
             }
+            // kontrola na velikost filmu
+            if (txtTyp.Text == String.Empty)
+            {
+                MessageBox.Show("Typ filmu není zadán", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return;
+
+            }
+            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3")
+            {
+                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return;
+
+            }            
+
+            int nTyp = 0;
+            if (!int.TryParse(txtTyp.Text, out nTyp))
+            {
+                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTyp.Focus();
+                return;
+
+            }
+            #endregion
 
             if (!Init())
             {
@@ -3668,41 +3259,56 @@ namespace Raznice
                 MessageBox.Show("Vše vyraženo ....", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
- 
+
             // po orazeni vsech dozimetru 
             // pokud jsou vsechny dozimetry v pod/odd na Zpracovano = 1, pak i podnik na Zpracovano = 1
-            bool testZpracovaniVsechDoz = KontrolaZpracovaniDOZData(id_cispod);
-            if (testZpracovaniVsechDoz == true) 
+            int rowindex = dataGridView1.CurrentCell.RowIndex;
+            int columnindex = dataGridView1.CurrentCell.ColumnIndex;
+
+            // seznam id_cispod v gridu2
+            List<int> seznamId_Cispod = DejSeznamPodnikuProVyrazeni();
+
+            foreach (int id in seznamId_Cispod)
             {
-                Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), testZpracovaniVsechDoz: OK", false, "Information", formRaz);
-                // podnik na  Zpracovano = 1 nastavit
-                int rowindex = dataGridView1.CurrentCell.RowIndex;
-                int columnindex = dataGridView1.CurrentCell.ColumnIndex;
-
-                dataGridView1.DataSource = "";
-                DataTable ResultSet = UpdateGRPData(id_cispod);                    
-                NastavDataGrid(dataGridView1);
-                dataGridView1.DataSource = ResultSet;
-
-                dataGridView1.Rows[rowindex].Selected = true;
-                dataGridView1.CurrentCell = dataGridView1.Rows[rowindex].Cells[0];
-
-                dataGridView2.DataSource = "";
-                DataTable ResultSetCDZ = GetDOZData(id_cispod);
-                NastavDataGrid(dataGridView2);
-                dataGridView2.DataSource = ResultSetCDZ;
-
-                //dataGridView2.Rows[0].Selected = true;
-               //dataGridView2.CurrentCell = dataGridView1.Rows[0].Cells[0];
-
-
+                bool testZpracovaniVsechDoz = KontrolaZpracovaniDOZData(id);
+                if (testZpracovaniVsechDoz == true)
+                {
+                    Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), testZpracovaniVsechDoz pro Id_Cispod = "+ id.ToString()+ ": OK", false, "Information", formRaz);
+                    // podnik na  Zpracovano = 1 nastavit
+                    DataTable ResultSetUpdate = UpdateGRPData(id, zpracovano: 1);
+                }
+                else
+                    Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), testZpracovaniVsechDoz pro Id_Cispod = " + id.ToString() + ": NE", false, "Information", formRaz);
             }
-            else
-                Globalni.Nastroje.LogMessage("cmdVyrazit_Click(), testZpracovaniVsechDoz: NE", false, "Information", formRaz);
 
 
-            dataGridView2.Rows[rowindexDoz].Selected = true;
-            dataGridView2.CurrentCell = dataGridView2.Rows[rowindexDoz].Cells[0];
+            dataGridView1.DataSource = "";
+            DataTable ResultSet = GetGRPData();
+            NastavDataGrid(dataGridView1);
+            dataGridView1.DataSource = ResultSet;
+
+            dataGridView1.Rows[rowindex].Selected = true;
+            dataGridView1.CurrentCell = dataGridView1.Rows[rowindex].Cells[0];
+
+            dataGridView2.DataSource = "";
+            DataTable ResultSetCDZ = GetDOZData();
+            NastavDataGrid(dataGridView2);
+            dataGridView2.DataSource = ResultSetCDZ;
+
+
+            try
+            {
+                dataGridView2.Rows[rowindexDoz].Selected = true;
+                dataGridView2.CurrentCell = dataGridView2.Rows[rowindexDoz].Cells[0];
+            }
+            catch
+            {
+                if (dataGridView2.Rows.Count != 0)
+                {
+                    dataGridView2.Rows[0].Selected = true;
+                    dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
+                }
+            }
 
             vProcesuRazeni = false;
         }
@@ -3713,12 +3319,20 @@ namespace Raznice
             {
                 case "dataGridView1":
                     {
-                        dataGridView1.Columns[0].DataPropertyName = "CPD";
-                        dataGridView1.Columns[1].DataPropertyName = "COD";
-                        dataGridView1.Columns[2].DataPropertyName = "kolik";
-                        dataGridView1.Columns[3].DataPropertyName = "zpracovano"; // checkbox
-                        dataGridView1.Columns[4].DataPropertyName = ""; // command button
-                        dataGridView1.Columns[5].DataPropertyName = "id_cispod";
+                        //dataGridView1.Columns[0].DataPropertyName = "CPD";
+                        //dataGridView1.Columns[1].DataPropertyName = "COD";
+                        //dataGridView1.Columns[2].DataPropertyName = "kolik";
+                        //dataGridView1.Columns[3].DataPropertyName = "zpracovano"; // checkbox
+                        //dataGridView1.Columns[4].DataPropertyName = ""; // command button
+                        //dataGridView1.Columns[5].DataPropertyName = "id_cispod";
+
+                        dataGridView1.Columns[0].DataPropertyName = "Vyrazit"; // checkbox
+                        dataGridView1.Columns[1].DataPropertyName = "CPD";
+                        dataGridView1.Columns[2].DataPropertyName = "COD";
+                        dataGridView1.Columns[3].DataPropertyName = "kolik";
+                        dataGridView1.Columns[4].DataPropertyName = "zpracovano"; // checkbox
+                        dataGridView1.Columns[5].DataPropertyName = ""; // command button
+                        dataGridView1.Columns[6].DataPropertyName = "id_cispod";
                         break;
                     }
                 case "dataGridView2":
@@ -3774,7 +3388,6 @@ namespace Raznice
     
         }
 
-
-
+   
     }
 }
