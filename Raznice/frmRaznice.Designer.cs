@@ -46,10 +46,9 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.chkReady = new System.Windows.Forms.CheckBox();
             this.chkDone = new System.Windows.Forms.CheckBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxManualOvladani = new System.Windows.Forms.GroupBox();
             this.btnStop = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtTyp = new System.Windows.Forms.MaskedTextBox();
@@ -86,12 +85,6 @@
             this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pocet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zpracovano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Nacist = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Id_Cispod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -154,11 +147,20 @@
             this.cbInit = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cbFinishOK = new System.Windows.Forms.ComboBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSimulace = new System.Windows.Forms.GroupBox();
+            this.Vyrazit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pocet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zpracovano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Nacist = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Id_Cispod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblPodnikuProVyrazeni = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxManualOvladani.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -172,7 +174,7 @@
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxSimulace.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -242,11 +244,7 @@
             this.chkDone.TabIndex = 18;
             this.chkDone.Text = "ražba dokončena";
             this.chkDone.UseVisualStyleBackColor = true;
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 400;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.chkDone.Visible = false;
             // 
             // groupBox1
             // 
@@ -270,15 +268,15 @@
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
-            // groupBox2
+            // groupBoxManualOvladani
             // 
-            this.groupBox2.Controls.Add(this.btnStop);
-            this.groupBox2.Location = new System.Drawing.Point(762, 132);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(153, 139);
-            this.groupBox2.TabIndex = 26;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Manuální ovládání";
+            this.groupBoxManualOvladani.Controls.Add(this.btnStop);
+            this.groupBoxManualOvladani.Location = new System.Drawing.Point(762, 132);
+            this.groupBoxManualOvladani.Name = "groupBoxManualOvladani";
+            this.groupBoxManualOvladani.Size = new System.Drawing.Size(153, 139);
+            this.groupBoxManualOvladani.TabIndex = 26;
+            this.groupBoxManualOvladani.TabStop = false;
+            this.groupBoxManualOvladani.Text = "Manuální ovládání";
             // 
             // btnStop
             // 
@@ -353,11 +351,13 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(750, 518);
+            this.tabControl1.Size = new System.Drawing.Size(748, 521);
             this.tabControl1.TabIndex = 34;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.lblPodnikuProVyrazeni);
             this.tabPage3.Controls.Add(this.cmdOdeznacitVse);
             this.tabPage3.Controls.Add(this.cmdOznacitVse);
             this.tabPage3.Controls.Add(this.chkPtatSePredRazbou);
@@ -378,7 +378,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(742, 492);
+            this.tabPage3.Size = new System.Drawing.Size(740, 495);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Z tabulky";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -715,6 +715,7 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Vyrazit,
             this.Cpd,
             this.Cod,
             this.Pocet,
@@ -742,62 +743,9 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(339, 151);
+            this.dataGridView1.Size = new System.Drawing.Size(373, 151);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Cpd
-            // 
-            this.Cpd.HeaderText = "Cpd";
-            this.Cpd.MinimumWidth = 6;
-            this.Cpd.Name = "Cpd";
-            this.Cpd.ReadOnly = true;
-            this.Cpd.Width = 40;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Cod";
-            this.Cod.MinimumWidth = 6;
-            this.Cod.Name = "Cod";
-            this.Cod.ReadOnly = true;
-            this.Cod.Width = 40;
-            // 
-            // Pocet
-            // 
-            this.Pocet.HeaderText = "Počet";
-            this.Pocet.MinimumWidth = 6;
-            this.Pocet.Name = "Pocet";
-            this.Pocet.ReadOnly = true;
-            this.Pocet.Width = 50;
-            // 
-            // Zpracovano
-            // 
-            this.Zpracovano.HeaderText = "Zpracováno";
-            this.Zpracovano.MinimumWidth = 6;
-            this.Zpracovano.Name = "Zpracovano";
-            this.Zpracovano.ReadOnly = true;
-            this.Zpracovano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Zpracovano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Zpracovano.Width = 70;
-            // 
-            // Nacist
-            // 
-            this.Nacist.HeaderText = "Načíst";
-            this.Nacist.MinimumWidth = 6;
-            this.Nacist.Name = "Nacist";
-            this.Nacist.ReadOnly = true;
-            this.Nacist.Text = "Otevřít";
-            this.Nacist.UseColumnTextForButtonValue = true;
-            this.Nacist.Width = 65;
-            // 
-            // Id_Cispod
-            // 
-            this.Id_Cispod.HeaderText = "Id_Cispod";
-            this.Id_Cispod.MinimumWidth = 6;
-            this.Id_Cispod.Name = "Id_Cispod";
-            this.Id_Cispod.ReadOnly = true;
-            this.Id_Cispod.Visible = false;
-            this.Id_Cispod.Width = 110;
             // 
             // groupBox7
             // 
@@ -1057,7 +1005,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(742, 492);
+            this.tabPage2.Size = new System.Drawing.Size(740, 495);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ze souboru";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1285,10 +1233,11 @@
             // 
             // listBoxLog
             // 
+            this.listBoxLog.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxLog.FormattingEnabled = true;
             this.listBoxLog.Location = new System.Drawing.Point(12, 18);
             this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(655, 472);
+            this.listBoxLog.Size = new System.Drawing.Size(724, 472);
             this.listBoxLog.TabIndex = 29;
             // 
             // groupBox8
@@ -1322,7 +1271,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 58);
+            this.label4.Location = new System.Drawing.Point(19, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 60;
@@ -1399,24 +1348,102 @@
             this.cbFinishOK.Size = new System.Drawing.Size(121, 21);
             this.cbFinishOK.TabIndex = 67;
             // 
-            // groupBox3
+            // groupBoxSimulace
             // 
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.cbInfo);
-            this.groupBox3.Controls.Add(this.cbFinishOK);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.cbError);
-            this.groupBox3.Controls.Add(this.cbInit);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.cbStatut);
-            this.groupBox3.Location = new System.Drawing.Point(767, 385);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(153, 227);
-            this.groupBox3.TabIndex = 34;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Simulace ovládání";
+            this.groupBoxSimulace.Controls.Add(this.label19);
+            this.groupBoxSimulace.Controls.Add(this.cbInfo);
+            this.groupBoxSimulace.Controls.Add(this.cbFinishOK);
+            this.groupBoxSimulace.Controls.Add(this.label7);
+            this.groupBoxSimulace.Controls.Add(this.label8);
+            this.groupBoxSimulace.Controls.Add(this.label9);
+            this.groupBoxSimulace.Controls.Add(this.cbError);
+            this.groupBoxSimulace.Controls.Add(this.cbInit);
+            this.groupBoxSimulace.Controls.Add(this.label4);
+            this.groupBoxSimulace.Controls.Add(this.cbStatut);
+            this.groupBoxSimulace.Location = new System.Drawing.Point(767, 385);
+            this.groupBoxSimulace.Name = "groupBoxSimulace";
+            this.groupBoxSimulace.Size = new System.Drawing.Size(153, 227);
+            this.groupBoxSimulace.TabIndex = 34;
+            this.groupBoxSimulace.TabStop = false;
+            this.groupBoxSimulace.Text = "Simulace ovládání";
+            // 
+            // Vyrazit
+            // 
+            this.Vyrazit.HeaderText = "Vyrazit";
+            this.Vyrazit.Name = "Vyrazit";
+            this.Vyrazit.ReadOnly = true;
+            this.Vyrazit.Width = 40;
+            // 
+            // Cpd
+            // 
+            this.Cpd.HeaderText = "Cpd";
+            this.Cpd.MinimumWidth = 6;
+            this.Cpd.Name = "Cpd";
+            this.Cpd.ReadOnly = true;
+            this.Cpd.Width = 40;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Cod";
+            this.Cod.MinimumWidth = 6;
+            this.Cod.Name = "Cod";
+            this.Cod.ReadOnly = true;
+            this.Cod.Width = 40;
+            // 
+            // Pocet
+            // 
+            this.Pocet.HeaderText = "Počet";
+            this.Pocet.MinimumWidth = 6;
+            this.Pocet.Name = "Pocet";
+            this.Pocet.ReadOnly = true;
+            this.Pocet.Width = 50;
+            // 
+            // Zpracovano
+            // 
+            this.Zpracovano.HeaderText = "Zpracováno";
+            this.Zpracovano.MinimumWidth = 6;
+            this.Zpracovano.Name = "Zpracovano";
+            this.Zpracovano.ReadOnly = true;
+            this.Zpracovano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Zpracovano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Zpracovano.Width = 70;
+            // 
+            // Nacist
+            // 
+            this.Nacist.HeaderText = "Načíst";
+            this.Nacist.MinimumWidth = 6;
+            this.Nacist.Name = "Nacist";
+            this.Nacist.ReadOnly = true;
+            this.Nacist.Text = "Otevřít";
+            this.Nacist.UseColumnTextForButtonValue = true;
+            this.Nacist.Width = 65;
+            // 
+            // Id_Cispod
+            // 
+            this.Id_Cispod.HeaderText = "Id_Cispod";
+            this.Id_Cispod.MinimumWidth = 6;
+            this.Id_Cispod.Name = "Id_Cispod";
+            this.Id_Cispod.ReadOnly = true;
+            this.Id_Cispod.Visible = false;
+            this.Id_Cispod.Width = 110;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(635, 194);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 76;
+            this.label2.Text = "Podniků:";
+            // 
+            // lblPodnikuProVyrazeni
+            // 
+            this.lblPodnikuProVyrazeni.AutoSize = true;
+            this.lblPodnikuProVyrazeni.Location = new System.Drawing.Point(695, 194);
+            this.lblPodnikuProVyrazeni.Name = "lblPodnikuProVyrazeni";
+            this.lblPodnikuProVyrazeni.Size = new System.Drawing.Size(13, 13);
+            this.lblPodnikuProVyrazeni.TabIndex = 77;
+            this.lblPodnikuProVyrazeni.Text = "0";
             // 
             // frmRaznice
             // 
@@ -1427,10 +1454,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxManualOvladani);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBoxSimulace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRaznice";
@@ -1443,7 +1470,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
+            this.groupBoxManualOvladani.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1462,8 +1489,8 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxSimulace.ResumeLayout(false);
+            this.groupBoxSimulace.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1477,10 +1504,9 @@
         private System.Windows.Forms.CheckBox chkReady;
         private System.Windows.Forms.CheckBox chkDone;
         private System.Windows.Forms.ToolStripStatusLabel lblMark;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxManualOvladani;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripDropDownButton btnReconnect;
@@ -1547,12 +1573,6 @@
         private System.Windows.Forms.Button btnStartFromFile;
         private System.Windows.Forms.MaskedTextBox txtTyp;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cpd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pocet;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano;
-        private System.Windows.Forms.DataGridViewButtonColumn Nacist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oddeleni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cdz;
@@ -1575,7 +1595,7 @@
         private System.Windows.Forms.ComboBox cbInit;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cbFinishOK;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxSimulace;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtJmeno;
@@ -1588,6 +1608,15 @@
         private System.Windows.Forms.TextBox txtPodnik;
         private System.Windows.Forms.TextBox txtDozimetr;
         private System.Windows.Forms.TextBox txtOddeleni;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Vyrazit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cpd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pocet;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano;
+        private System.Windows.Forms.DataGridViewButtonColumn Nacist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPodnikuProVyrazeni;
     }
 }
 
