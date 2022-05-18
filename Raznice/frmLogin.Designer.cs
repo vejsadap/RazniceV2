@@ -41,7 +41,7 @@
             // 
             // cmdVysledek
             // 
-            this.cmdVysledek.Location = new System.Drawing.Point(20, 91);
+            this.cmdVysledek.Location = new System.Drawing.Point(20, 94);
             this.cmdVysledek.Name = "cmdVysledek";
             this.cmdVysledek.Size = new System.Drawing.Size(75, 23);
             this.cmdVysledek.TabIndex = 0;
@@ -52,7 +52,7 @@
             // cmdNo
             // 
             this.cmdNo.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.cmdNo.Location = new System.Drawing.Point(126, 91);
+            this.cmdNo.Location = new System.Drawing.Point(126, 94);
             this.cmdNo.Name = "cmdNo";
             this.cmdNo.Size = new System.Drawing.Size(75, 23);
             this.cmdNo.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 116);
+            this.ClientSize = new System.Drawing.Size(233, 130);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmdNo);
