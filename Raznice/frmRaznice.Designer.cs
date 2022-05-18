@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRaznice));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
@@ -57,6 +57,10 @@
             this.lblSarze = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cmdOdeznacitVseVyrazit = new System.Windows.Forms.Button();
+            this.cmdOznacitVseVyrazit = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblDozimetruVyrazit = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPodnikuProVyrazeni = new System.Windows.Forms.Label();
             this.cmdOdeznacitVse = new System.Windows.Forms.Button();
@@ -74,26 +78,7 @@
             this.cmdVyrazit = new System.Windows.Forms.Button();
             this.cmdOtevritPlan = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Oddeleni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cdz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prijmeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tisk_radek_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tisk_radek_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zpracovano_doz = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Id_Cispod_doz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_seznam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Vyrazit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pocet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zpracovano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Nacist = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Id_Cispod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -142,8 +127,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblDozPopis = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.listBoxLog = new System.Windows.Forms.ListBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.listBoxLog = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.cbStatut = new System.Windows.Forms.ComboBox();
@@ -157,6 +142,26 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cbFinishOK = new System.Windows.Forms.ComboBox();
             this.groupBoxSimulace = new System.Windows.Forms.GroupBox();
+            this.cbTypFilmu = new System.Windows.Forms.ComboBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Oddeleni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cdz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prijmeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tisk_radek_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tisk_radek_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zpracovano_doz = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id_Cispod_doz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_seznam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vyrazit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pocet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zpracovano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Nacist = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Id_Cispod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -294,6 +299,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cbTypFilmu);
             this.groupBox4.Controls.Add(this.txtTyp);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.txtSarze);
@@ -308,12 +314,13 @@
             // 
             // txtTyp
             // 
-            this.txtTyp.Location = new System.Drawing.Point(202, 17);
+            this.txtTyp.Location = new System.Drawing.Point(320, 16);
             this.txtTyp.Mask = "0";
             this.txtTyp.Name = "txtTyp";
             this.txtTyp.Size = new System.Drawing.Size(21, 20);
             this.txtTyp.TabIndex = 59;
             this.txtTyp.Text = "2";
+            this.txtTyp.Visible = false;
             // 
             // label3
             // 
@@ -357,6 +364,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.cmdOdeznacitVseVyrazit);
+            this.tabPage3.Controls.Add(this.cmdOznacitVseVyrazit);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.lblDozimetruVyrazit);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.lblPodnikuProVyrazeni);
             this.tabPage3.Controls.Add(this.cmdOdeznacitVse);
@@ -384,10 +395,54 @@
             this.tabPage3.Text = "Z tabulky";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cmdOdeznacitVseVyrazit
+            // 
+            this.cmdOdeznacitVseVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdOdeznacitVseVyrazit.Image")));
+            this.cmdOdeznacitVseVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdOdeznacitVseVyrazit.Location = new System.Drawing.Point(602, 4);
+            this.cmdOdeznacitVseVyrazit.Name = "cmdOdeznacitVseVyrazit";
+            this.cmdOdeznacitVseVyrazit.Size = new System.Drawing.Size(96, 28);
+            this.cmdOdeznacitVseVyrazit.TabIndex = 81;
+            this.cmdOdeznacitVseVyrazit.Text = "Odeznačit";
+            this.cmdOdeznacitVseVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdOdeznacitVseVyrazit.UseVisualStyleBackColor = true;
+            this.cmdOdeznacitVseVyrazit.Click += new System.EventHandler(this.cmdOdeznacitVseVyrazit_Click);
+            // 
+            // cmdOznacitVseVyrazit
+            // 
+            this.cmdOznacitVseVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdOznacitVseVyrazit.Image")));
+            this.cmdOznacitVseVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdOznacitVseVyrazit.Location = new System.Drawing.Point(500, 3);
+            this.cmdOznacitVseVyrazit.Name = "cmdOznacitVseVyrazit";
+            this.cmdOznacitVseVyrazit.Size = new System.Drawing.Size(96, 28);
+            this.cmdOznacitVseVyrazit.TabIndex = 80;
+            this.cmdOznacitVseVyrazit.Text = "Vše Vyrazit";
+            this.cmdOznacitVseVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdOznacitVseVyrazit.UseVisualStyleBackColor = true;
+            this.cmdOznacitVseVyrazit.Click += new System.EventHandler(this.cmdOznacitVseVyrazit_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(635, 234);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 78;
+            this.label5.Text = "Vyrazit:";
+            // 
+            // lblDozimetruVyrazit
+            // 
+            this.lblDozimetruVyrazit.AutoSize = true;
+            this.lblDozimetruVyrazit.Location = new System.Drawing.Point(695, 234);
+            this.lblDozimetruVyrazit.Name = "lblDozimetruVyrazit";
+            this.lblDozimetruVyrazit.Size = new System.Drawing.Size(13, 13);
+            this.lblDozimetruVyrazit.TabIndex = 79;
+            this.lblDozimetruVyrazit.Text = "0";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(635, 194);
+            this.label2.Location = new System.Drawing.Point(635, 204);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 76;
@@ -396,7 +451,7 @@
             // lblPodnikuProVyrazeni
             // 
             this.lblPodnikuProVyrazeni.AutoSize = true;
-            this.lblPodnikuProVyrazeni.Location = new System.Drawing.Point(695, 194);
+            this.lblPodnikuProVyrazeni.Location = new System.Drawing.Point(695, 204);
             this.lblPodnikuProVyrazeni.Name = "lblPodnikuProVyrazeni";
             this.lblPodnikuProVyrazeni.Size = new System.Drawing.Size(13, 13);
             this.lblPodnikuProVyrazeni.TabIndex = 77;
@@ -430,7 +485,7 @@
             // 
             // chkPtatSePredRazbou
             // 
-            this.chkPtatSePredRazbou.Location = new System.Drawing.Point(640, 281);
+            this.chkPtatSePredRazbou.Location = new System.Drawing.Point(638, 302);
             this.chkPtatSePredRazbou.Name = "chkPtatSePredRazbou";
             this.chkPtatSePredRazbou.Size = new System.Drawing.Size(84, 34);
             this.chkPtatSePredRazbou.TabIndex = 72;
@@ -440,7 +495,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(635, 210);
+            this.label17.Location = new System.Drawing.Point(635, 219);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(54, 13);
             this.label17.TabIndex = 70;
@@ -449,7 +504,7 @@
             // lblVyrazenoTab
             // 
             this.lblVyrazenoTab.AutoSize = true;
-            this.lblVyrazenoTab.Location = new System.Drawing.Point(695, 210);
+            this.lblVyrazenoTab.Location = new System.Drawing.Point(695, 219);
             this.lblVyrazenoTab.Name = "lblVyrazenoTab";
             this.lblVyrazenoTab.Size = new System.Drawing.Size(13, 13);
             this.lblVyrazenoTab.TabIndex = 71;
@@ -516,7 +571,7 @@
             this.chkRazitDozimetryTab.AutoSize = true;
             this.chkRazitDozimetryTab.Checked = true;
             this.chkRazitDozimetryTab.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRazitDozimetryTab.Location = new System.Drawing.Point(640, 240);
+            this.chkRazitDozimetryTab.Location = new System.Drawing.Point(638, 261);
             this.chkRazitDozimetryTab.Name = "chkRazitDozimetryTab";
             this.chkRazitDozimetryTab.Size = new System.Drawing.Size(92, 17);
             this.chkRazitDozimetryTab.TabIndex = 60;
@@ -529,7 +584,7 @@
             this.chkTiskSouborTab.Checked = true;
             this.chkTiskSouborTab.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkTiskSouborTab.Enabled = false;
-            this.chkTiskSouborTab.Location = new System.Drawing.Point(640, 258);
+            this.chkTiskSouborTab.Location = new System.Drawing.Point(638, 279);
             this.chkTiskSouborTab.Name = "chkTiskSouborTab";
             this.chkTiskSouborTab.Size = new System.Drawing.Size(82, 17);
             this.chkTiskSouborTab.TabIndex = 59;
@@ -567,16 +622,16 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Lime;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lime;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -591,147 +646,45 @@
             this.SLOB,
             this.RP_ROK,
             this.RP_MESIC});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Location = new System.Drawing.Point(4, 165);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.ShowEditingIcon = false;
             this.dataGridView2.Size = new System.Drawing.Size(620, 326);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cpd";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 40;
-            // 
-            // Oddeleni
-            // 
-            this.Oddeleni.HeaderText = "Cod";
-            this.Oddeleni.MinimumWidth = 6;
-            this.Oddeleni.Name = "Oddeleni";
-            this.Oddeleni.ReadOnly = true;
-            this.Oddeleni.Width = 40;
-            // 
-            // Cdz
-            // 
-            this.Cdz.HeaderText = "CDZ";
-            this.Cdz.MinimumWidth = 6;
-            this.Cdz.Name = "Cdz";
-            this.Cdz.ReadOnly = true;
-            this.Cdz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Cdz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cdz.Width = 50;
-            // 
-            // Prijmeni
-            // 
-            this.Prijmeni.HeaderText = "Přijmení";
-            this.Prijmeni.MinimumWidth = 6;
-            this.Prijmeni.Name = "Prijmeni";
-            this.Prijmeni.ReadOnly = true;
-            this.Prijmeni.Width = 125;
-            // 
-            // Tisk_radek_1
-            // 
-            this.Tisk_radek_1.HeaderText = "Tisk řádek 1";
-            this.Tisk_radek_1.MinimumWidth = 6;
-            this.Tisk_radek_1.Name = "Tisk_radek_1";
-            this.Tisk_radek_1.ReadOnly = true;
-            this.Tisk_radek_1.Width = 125;
-            // 
-            // Tisk_radek_2
-            // 
-            this.Tisk_radek_2.HeaderText = "Tisk řádek 2";
-            this.Tisk_radek_2.MinimumWidth = 6;
-            this.Tisk_radek_2.Name = "Tisk_radek_2";
-            this.Tisk_radek_2.ReadOnly = true;
-            // 
-            // Zpracovano_doz
-            // 
-            this.Zpracovano_doz.HeaderText = "Zpracováno";
-            this.Zpracovano_doz.MinimumWidth = 6;
-            this.Zpracovano_doz.Name = "Zpracovano_doz";
-            this.Zpracovano_doz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Zpracovano_doz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Zpracovano_doz.Width = 70;
-            // 
-            // Id_Cispod_doz
-            // 
-            this.Id_Cispod_doz.HeaderText = "Id_Cispod";
-            this.Id_Cispod_doz.MinimumWidth = 6;
-            this.Id_Cispod_doz.Name = "Id_Cispod_doz";
-            this.Id_Cispod_doz.ReadOnly = true;
-            this.Id_Cispod_doz.Visible = false;
-            this.Id_Cispod_doz.Width = 125;
-            // 
-            // ID_seznam
-            // 
-            this.ID_seznam.HeaderText = "ID_seznam";
-            this.ID_seznam.MinimumWidth = 6;
-            this.ID_seznam.Name = "ID_seznam";
-            this.ID_seznam.ReadOnly = true;
-            this.ID_seznam.Visible = false;
-            this.ID_seznam.Width = 125;
-            // 
-            // SLOB
-            // 
-            this.SLOB.HeaderText = "SLOB";
-            this.SLOB.MinimumWidth = 6;
-            this.SLOB.Name = "SLOB";
-            this.SLOB.ReadOnly = true;
-            this.SLOB.Visible = false;
-            this.SLOB.Width = 125;
-            // 
-            // RP_ROK
-            // 
-            this.RP_ROK.HeaderText = "RP_ROK";
-            this.RP_ROK.MinimumWidth = 6;
-            this.RP_ROK.Name = "RP_ROK";
-            this.RP_ROK.ReadOnly = true;
-            this.RP_ROK.Visible = false;
-            this.RP_ROK.Width = 125;
-            // 
-            // RP_MESIC
-            // 
-            this.RP_MESIC.HeaderText = "RP_MESIC";
-            this.RP_MESIC.MinimumWidth = 6;
-            this.RP_MESIC.Name = "RP_MESIC";
-            this.RP_MESIC.ReadOnly = true;
-            this.RP_MESIC.Visible = false;
-            this.RP_MESIC.Width = 125;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Vyrazit,
@@ -741,90 +694,31 @@
             this.Zpracovano,
             this.Nacist,
             this.Id_Cispod});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Location = new System.Drawing.Point(4, 6);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(376, 155);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Vyrazit
-            // 
-            this.Vyrazit.HeaderText = "Vyrazit";
-            this.Vyrazit.Name = "Vyrazit";
-            this.Vyrazit.ReadOnly = true;
-            this.Vyrazit.Width = 40;
-            // 
-            // Cpd
-            // 
-            this.Cpd.HeaderText = "Cpd";
-            this.Cpd.MinimumWidth = 6;
-            this.Cpd.Name = "Cpd";
-            this.Cpd.ReadOnly = true;
-            this.Cpd.Width = 40;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Cod";
-            this.Cod.MinimumWidth = 6;
-            this.Cod.Name = "Cod";
-            this.Cod.ReadOnly = true;
-            this.Cod.Width = 40;
-            // 
-            // Pocet
-            // 
-            this.Pocet.HeaderText = "Počet";
-            this.Pocet.MinimumWidth = 6;
-            this.Pocet.Name = "Pocet";
-            this.Pocet.ReadOnly = true;
-            this.Pocet.Width = 50;
-            // 
-            // Zpracovano
-            // 
-            this.Zpracovano.HeaderText = "Zpracováno";
-            this.Zpracovano.MinimumWidth = 6;
-            this.Zpracovano.Name = "Zpracovano";
-            this.Zpracovano.ReadOnly = true;
-            this.Zpracovano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Zpracovano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Zpracovano.Width = 70;
-            // 
-            // Nacist
-            // 
-            this.Nacist.HeaderText = "Načíst";
-            this.Nacist.MinimumWidth = 6;
-            this.Nacist.Name = "Nacist";
-            this.Nacist.ReadOnly = true;
-            this.Nacist.Text = "Otevřít";
-            this.Nacist.UseColumnTextForButtonValue = true;
-            this.Nacist.Width = 65;
-            // 
-            // Id_Cispod
-            // 
-            this.Id_Cispod.HeaderText = "Id_Cispod";
-            this.Id_Cispod.MinimumWidth = 6;
-            this.Id_Cispod.Name = "Id_Cispod";
-            this.Id_Cispod.ReadOnly = true;
-            this.Id_Cispod.Visible = false;
-            this.Id_Cispod.Width = 110;
             // 
             // groupBox7
             // 
@@ -1309,15 +1203,6 @@
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // listBoxLog
-            // 
-            this.listBoxLog.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.Location = new System.Drawing.Point(6, 13);
-            this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(719, 472);
-            this.listBoxLog.TabIndex = 29;
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.listBoxLog);
@@ -1327,6 +1212,15 @@
             this.groupBox8.TabIndex = 30;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Log";
+            // 
+            // listBoxLog
+            // 
+            this.listBoxLog.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listBoxLog.FormattingEnabled = true;
+            this.listBoxLog.Location = new System.Drawing.Point(6, 13);
+            this.listBoxLog.Name = "listBoxLog";
+            this.listBoxLog.Size = new System.Drawing.Size(719, 472);
+            this.listBoxLog.TabIndex = 29;
             // 
             // label6
             // 
@@ -1340,6 +1234,7 @@
             // 
             // cbStatut
             // 
+            this.cbStatut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatut.DropDownWidth = 242;
             this.cbStatut.FormattingEnabled = true;
             this.cbStatut.Location = new System.Drawing.Point(19, 74);
@@ -1367,6 +1262,7 @@
             // 
             // cbInfo
             // 
+            this.cbInfo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInfo.DropDownWidth = 242;
             this.cbInfo.FormattingEnabled = true;
             this.cbInfo.Location = new System.Drawing.Point(19, 114);
@@ -1385,6 +1281,7 @@
             // 
             // cbError
             // 
+            this.cbError.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbError.DropDownWidth = 242;
             this.cbError.FormattingEnabled = true;
             this.cbError.Location = new System.Drawing.Point(19, 154);
@@ -1403,6 +1300,7 @@
             // 
             // cbInit
             // 
+            this.cbInit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInit.DropDownWidth = 121;
             this.cbInit.FormattingEnabled = true;
             this.cbInit.Location = new System.Drawing.Point(19, 34);
@@ -1421,6 +1319,7 @@
             // 
             // cbFinishOK
             // 
+            this.cbFinishOK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFinishOK.FormattingEnabled = true;
             this.cbFinishOK.Location = new System.Drawing.Point(19, 194);
             this.cbFinishOK.Name = "cbFinishOK";
@@ -1445,6 +1344,188 @@
             this.groupBoxSimulace.TabIndex = 34;
             this.groupBoxSimulace.TabStop = false;
             this.groupBoxSimulace.Text = "Simulace ovládání";
+            // 
+            // cbTypFilmu
+            // 
+            this.cbTypFilmu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTypFilmu.DropDownWidth = 200;
+            this.cbTypFilmu.FormattingEnabled = true;
+            this.cbTypFilmu.Location = new System.Drawing.Point(193, 15);
+            this.cbTypFilmu.Name = "cbTypFilmu";
+            this.cbTypFilmu.Size = new System.Drawing.Size(121, 21);
+            this.cbTypFilmu.TabIndex = 69;
+            this.cbTypFilmu.SelectedIndexChanged += new System.EventHandler(this.cbTypFilmu_SelectedIndexChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cpd";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // Oddeleni
+            // 
+            this.Oddeleni.HeaderText = "Cod";
+            this.Oddeleni.MinimumWidth = 6;
+            this.Oddeleni.Name = "Oddeleni";
+            this.Oddeleni.ReadOnly = true;
+            this.Oddeleni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Oddeleni.Width = 40;
+            // 
+            // Cdz
+            // 
+            this.Cdz.HeaderText = "CDZ";
+            this.Cdz.MinimumWidth = 6;
+            this.Cdz.Name = "Cdz";
+            this.Cdz.ReadOnly = true;
+            this.Cdz.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cdz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cdz.Width = 50;
+            // 
+            // Prijmeni
+            // 
+            this.Prijmeni.HeaderText = "Přijmení";
+            this.Prijmeni.MinimumWidth = 6;
+            this.Prijmeni.Name = "Prijmeni";
+            this.Prijmeni.ReadOnly = true;
+            this.Prijmeni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Prijmeni.Width = 130;
+            // 
+            // Tisk_radek_1
+            // 
+            this.Tisk_radek_1.HeaderText = "Tisk řádek 1";
+            this.Tisk_radek_1.MinimumWidth = 6;
+            this.Tisk_radek_1.Name = "Tisk_radek_1";
+            this.Tisk_radek_1.ReadOnly = true;
+            this.Tisk_radek_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tisk_radek_1.Width = 115;
+            // 
+            // Tisk_radek_2
+            // 
+            this.Tisk_radek_2.HeaderText = "Tisk řádek 2";
+            this.Tisk_radek_2.MinimumWidth = 6;
+            this.Tisk_radek_2.Name = "Tisk_radek_2";
+            this.Tisk_radek_2.ReadOnly = true;
+            this.Tisk_radek_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tisk_radek_2.Width = 110;
+            // 
+            // Zpracovano_doz
+            // 
+            this.Zpracovano_doz.HeaderText = "Zpracováno";
+            this.Zpracovano_doz.MinimumWidth = 6;
+            this.Zpracovano_doz.Name = "Zpracovano_doz";
+            this.Zpracovano_doz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Zpracovano_doz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Zpracovano_doz.Width = 70;
+            // 
+            // Id_Cispod_doz
+            // 
+            this.Id_Cispod_doz.HeaderText = "Id_Cispod";
+            this.Id_Cispod_doz.MinimumWidth = 6;
+            this.Id_Cispod_doz.Name = "Id_Cispod_doz";
+            this.Id_Cispod_doz.ReadOnly = true;
+            this.Id_Cispod_doz.Visible = false;
+            this.Id_Cispod_doz.Width = 125;
+            // 
+            // ID_seznam
+            // 
+            this.ID_seznam.HeaderText = "ID_seznam";
+            this.ID_seznam.MinimumWidth = 6;
+            this.ID_seznam.Name = "ID_seznam";
+            this.ID_seznam.ReadOnly = true;
+            this.ID_seznam.Visible = false;
+            this.ID_seznam.Width = 125;
+            // 
+            // SLOB
+            // 
+            this.SLOB.HeaderText = "SLOB";
+            this.SLOB.MinimumWidth = 6;
+            this.SLOB.Name = "SLOB";
+            this.SLOB.ReadOnly = true;
+            this.SLOB.Visible = false;
+            this.SLOB.Width = 125;
+            // 
+            // RP_ROK
+            // 
+            this.RP_ROK.HeaderText = "RP_ROK";
+            this.RP_ROK.MinimumWidth = 6;
+            this.RP_ROK.Name = "RP_ROK";
+            this.RP_ROK.ReadOnly = true;
+            this.RP_ROK.Visible = false;
+            this.RP_ROK.Width = 125;
+            // 
+            // RP_MESIC
+            // 
+            this.RP_MESIC.HeaderText = "RP_MESIC";
+            this.RP_MESIC.MinimumWidth = 6;
+            this.RP_MESIC.Name = "RP_MESIC";
+            this.RP_MESIC.ReadOnly = true;
+            this.RP_MESIC.Visible = false;
+            this.RP_MESIC.Width = 125;
+            // 
+            // Vyrazit
+            // 
+            this.Vyrazit.HeaderText = "Vyrazit";
+            this.Vyrazit.Name = "Vyrazit";
+            this.Vyrazit.ReadOnly = true;
+            this.Vyrazit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Vyrazit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Vyrazit.Width = 40;
+            // 
+            // Cpd
+            // 
+            this.Cpd.HeaderText = "Cpd";
+            this.Cpd.MinimumWidth = 6;
+            this.Cpd.Name = "Cpd";
+            this.Cpd.ReadOnly = true;
+            this.Cpd.Width = 40;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Cod";
+            this.Cod.MinimumWidth = 6;
+            this.Cod.Name = "Cod";
+            this.Cod.ReadOnly = true;
+            this.Cod.Width = 40;
+            // 
+            // Pocet
+            // 
+            this.Pocet.HeaderText = "Počet";
+            this.Pocet.MinimumWidth = 6;
+            this.Pocet.Name = "Pocet";
+            this.Pocet.ReadOnly = true;
+            this.Pocet.Width = 50;
+            // 
+            // Zpracovano
+            // 
+            this.Zpracovano.HeaderText = "Zpracováno";
+            this.Zpracovano.MinimumWidth = 6;
+            this.Zpracovano.Name = "Zpracovano";
+            this.Zpracovano.ReadOnly = true;
+            this.Zpracovano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Zpracovano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Zpracovano.Width = 70;
+            // 
+            // Nacist
+            // 
+            this.Nacist.HeaderText = "Načíst";
+            this.Nacist.MinimumWidth = 6;
+            this.Nacist.Name = "Nacist";
+            this.Nacist.ReadOnly = true;
+            this.Nacist.Text = "Otevřít";
+            this.Nacist.UseColumnTextForButtonValue = true;
+            this.Nacist.Width = 65;
+            // 
+            // Id_Cispod
+            // 
+            this.Id_Cispod.HeaderText = "Id_Cispod";
+            this.Id_Cispod.MinimumWidth = 6;
+            this.Id_Cispod.Name = "Id_Cispod";
+            this.Id_Cispod.ReadOnly = true;
+            this.Id_Cispod.Visible = false;
+            this.Id_Cispod.Width = 110;
             // 
             // frmRaznice
             // 
@@ -1575,18 +1656,6 @@
         private System.Windows.Forms.Button btnStartFromFile;
         private System.Windows.Forms.MaskedTextBox txtTyp;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Oddeleni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cdz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prijmeni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tisk_radek_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tisk_radek_2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano_doz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod_doz;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_seznam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SLOB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RP_ROK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RP_MESIC;
         private System.Windows.Forms.ComboBox cbStatut;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
@@ -1610,6 +1679,25 @@
         private System.Windows.Forms.TextBox txtPodnik;
         private System.Windows.Forms.TextBox txtDozimetr;
         private System.Windows.Forms.TextBox txtOddeleni;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPodnikuProVyrazeni;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblDozimetruVyrazit;
+        private System.Windows.Forms.Button cmdOdeznacitVseVyrazit;
+        private System.Windows.Forms.Button cmdOznacitVseVyrazit;
+        private System.Windows.Forms.ComboBox cbTypFilmu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Oddeleni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cdz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prijmeni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tisk_radek_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tisk_radek_2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano_doz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod_doz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_seznam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SLOB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RP_ROK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RP_MESIC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Vyrazit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cpd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
@@ -1617,8 +1705,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano;
         private System.Windows.Forms.DataGridViewButtonColumn Nacist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblPodnikuProVyrazeni;
     }
 }
 

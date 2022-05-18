@@ -896,7 +896,14 @@ namespace Raznice
 
                 toolTip1.SetToolTip(this.lblDozPopisTab, (tisk_z_pole_prijmeni == true ? "Kontrukce pro text dozimetru z pole 'Příjmení'" : "Kontrukce pro štítek dozimetru z pole 'Tisk řádek_2'"));
                 toolTip1.SetToolTip(this.lblEANPopis_radek_2, (tisk_z_pole_prijmeni == true ? "Kontrukce pro štítek dozimetru z pole 'Příjmení'" : "Kontrukce pro štítek dozimetru z pole 'Tisk řádek_2'"));
+                toolTip1.SetToolTip(this.cmdOznacitVseVyrazit, "Označení všech podniků jako 'Vyrazit'");
+                toolTip1.SetToolTip(this.cmdOdeznacitVseVyrazit, "Odeznačení všech podniků jako 'Vyrazit'");
 
+                //typ filmu (1=malý, 2=velký, 3=velký s otočeným tiskem)
+                cbTypFilmu.Items.Add(new Item("1 - malý", 1));
+                cbTypFilmu.Items.Add(new Item("2 - velký", 2));
+                cbTypFilmu.Items.Add(new Item("3 - velký s otočeným tiskem", 3));
+                cbTypFilmu.SelectedIndex = 1;
 #if DLL
                 // zneviditelnim ovladani simulace
                 groupBoxSimulace.Visible = false;
@@ -1047,29 +1054,38 @@ namespace Raznice
         /// <param name="ready"></param>
         private void EnablingReady(bool ready)
         {
-            //btnSendText.Enabled = ready;
-            btnStart.Enabled = ready;
-            btnStartFromFile.Enabled = ready;            
             //chkReady.Checked = ready;
-            // zalozka Z tabulky
-            cmdVyrazit.Enabled = ready;
-            // nastaveni masky - ready + prava
-            //btnMask.Enabled = Vlastnosti.allowEdit && ready;
+            txtSarze.Enabled = ready;
+            cbTypFilmu.Enabled = ready;
+
+            // zalozka Z tabulky            
+            cmdOtevritPlan.Enabled = ready;
+            cmdOznacitVseVyrazit.Enabled = ready;
+            cmdOdeznacitVseVyrazit.Enabled = ready;
+            dataGridView1.Enabled = ready;
+            dataGridView1.UseWaitCursor = !ready;
+
+            cmdVyrazit.Enabled = ready; // vyrazit
+
+            // zalozka Postupna
+            btnStart.Enabled = ready;   // vyrazit dozimetr
+
+            // zalozka Ze souboru
+            btnStartFromFile.Enabled = ready; // vyrazit ze souboru
+            btnLoadFile.Enabled = ready;
+
+
         }
 
         /// <summary>
-        /// Nastaveni Done - hotovo a zpristupneni tl. nacist soubor
+        /// Nastaveni Done - hotovo 
         /// </summary>
         /// <param name="ready"></param>
         private void EnablingDone(bool ready)
         {
-            //btnUp.Enabled = ready;
-            //btnDown.Enabled = ready;
             chkDone.Checked = ready;
-            btnLoadFile.Enabled = ready;
-            //cmdOtevritPlan.Enabled = ready;
-            // nastaveni IP - ready + prava
-            //btnSetIP.Enabled = Vlastnosti.allowEdit && ready;
+            //btnLoadFile.Enabled = ready;
+
         }
 
   
@@ -1913,7 +1929,7 @@ namespace Raznice
                     int rowindex = dataGridView1.CurrentCell.RowIndex;
                     int columnindex = dataGridView1.CurrentCell.ColumnIndex;
 
-                    string a = dataGridView1.Rows[rowindex].Cells[columnindex].Value.ToString();
+                    //string a = dataGridView1.Rows[rowindex].Cells[columnindex].Value.ToString();
 
                     int id_cispod = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Id_Cispod"), e.RowIndex].Value.ToString());
                     int vyrazit = Int32.Parse(dataGridView1[indexOf(dataGridView1, "Vyrazit"), e.RowIndex].Value.ToString());
@@ -1922,15 +1938,15 @@ namespace Raznice
                         vyrazit = 0;
                     else
                         vyrazit = 1;
-                    dataGridView1.DataSource = "";
+                    //dataGridView1.DataSource = "";
 
-
+                    dataGridView1[indexOf(dataGridView1, "Vyrazit"), e.RowIndex].Value = vyrazit;
                     DataTable ResultSet = UpdateGRPDataVyrazit(id_cispod, vyrazit);
-                    NastavDataGrid(dataGridView1);
-                    dataGridView1.DataSource = ResultSet;
+                    //NastavDataGrid(dataGridView1);
+                    //dataGridView1.DataSource = ResultSet;
 
-                    dataGridView1.Rows[rowindex].Selected = true;
-                    dataGridView1.CurrentCell = dataGridView1.Rows[rowindex].Cells[0];
+                    //dataGridView1.Rows[rowindex].Selected = true;
+                    //dataGridView1.CurrentCell = dataGridView1.Rows[rowindex].Cells[0];
  
                 }
 
@@ -1973,12 +1989,20 @@ namespace Raznice
                     if (vyrazit == 0)
                     {
                         DataTable ResultSetUpdateVyrazit = UpdateGRPDataVyrazit(id_cispod, vyrazit: 1);
+                        dataGridView1[indexOf(dataGridView1, "Vyrazit"), e.RowIndex].Value = 1;
                     }
-                    
-                    //int id_cispod = dataGridView1.Columns[5];
-                    //DataGridViewRow row = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex];
 
-                  
+                    ////zapsat pro vsechny zaznamy "Vyrazit" do tabulky, jak je v gridu
+                    //foreach (DataGridViewRow row in dataGridView1.Rows)
+                    //{
+                    //    decimal hodnotaVyrazit = 0;
+                    //    hodnotaVyrazit = (decimal)row.Cells[indexOf(dataGridView1, "Vyrazit")].Value;
+                        
+                    //    if (hodnotaVyrazit == 1)
+                    //        UpdateGRPDataVyrazit(id_cispod, vyrazit: 1);
+
+                    //}
+
 
                     dataGridView1.DataSource = "";
 
@@ -2015,6 +2039,7 @@ namespace Raznice
 
                     List<int> seznamId_Cispod = DejSeznamPodnikuProVyrazeni();
                     lblPodnikuProVyrazeni.Text = seznamId_Cispod.Count().ToString();
+                    lblDozimetruVyrazit.Text = GetDozDataZpracovat().ToString();
                 }
             }
 
@@ -2238,7 +2263,8 @@ namespace Raznice
                 string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
                     " JOIN " + fileGRPName +" b ON a.id_cispod = b.id_cispod "+
                     " where (b.Vyrazit = 1 ) ";
-                //" where id_cispod = ? ORDER BY cpd, cod, cdz"; and b.Zpracovano = 0
+                //" where id_cispod = ? ORDER BY cpd, cod, cdz";
+                //and b.Zpracovano = 0
 
                 OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
                 //OleDbParameter NewParm = new OleDbParameter("id_cispod", id_cispod);
@@ -2262,6 +2288,22 @@ namespace Raznice
 
             //return ds;
             return ResultSet;
+        }
+
+        public int GetDozDataZpracovat()
+        {
+            int kolikZpracovat = 0;
+            // cyklus pres vsechny oznacene filmy k razeni
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                int hodnotaZpracovano = Int32.Parse((row.Cells[indexOf(dataGridView2, "Zpracovano_doz")].Value != System.DBNull.Value ? row.Cells[indexOf(dataGridView2, "Zpracovano_doz")].Value.ToString() : "0"));
+
+                if (hodnotaZpracovano == 0) // kdyz je Zpracovano = 0, tak se jeste nerazil dozimetr
+                {
+                    kolikZpracovat++;                    
+                }
+            }
+            return kolikZpracovat;
         }
 
         public DataTable UpdateGRPData(int id_cispod, int zpracovano)
@@ -2408,6 +2450,41 @@ namespace Raznice
 
             //return ds;
             return ResultSet;
+        }
+
+        public bool UpdateGRPDataVyrazitAll(int vyrazit)
+        {
+            DataTable ResultSet = new DataTable();
+            //DataSet ds = new DataSet();
+            string filepath = Path.GetDirectoryName(dbFileName);
+            if (!filepath.EndsWith("\\"))
+                filepath += "\\";
+
+            OleDbConnection yourConnectionHandler = new OleDbConnection(
+                 //@"Provider=VFPOLEDB.1;Data Source=c:\temp\abc\");
+                 @"Provider=VFPOLEDB.1;Data Source=" + filepath);
+
+            // if including the full dbc (database container) reference, just tack that on
+            //      OleDbConnection yourConnectionHandler = new OleDbConnection(
+            //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
+
+
+            // Open the connection, and if open successfully, you can try to query it
+            yourConnectionHandler.Open();
+
+            if (yourConnectionHandler.State == ConnectionState.Open)
+            {
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "update " + dbFileName + " set Vyrazit = " + vyrazit.ToString() ;
+                
+                cmd.Connection = yourConnectionHandler;
+                cmd.ExecuteNonQuery();
+         
+                yourConnectionHandler.Close();
+            }
+
+            return true;
         }
         public int UpdateDOZData(int id_seznam)
         {
@@ -3205,13 +3282,6 @@ namespace Raznice
             {
                 case "dataGridView1":
                     {
-                        //dataGridView1.Columns[0].DataPropertyName = "CPD";
-                        //dataGridView1.Columns[1].DataPropertyName = "COD";
-                        //dataGridView1.Columns[2].DataPropertyName = "kolik";
-                        //dataGridView1.Columns[3].DataPropertyName = "zpracovano"; // checkbox
-                        //dataGridView1.Columns[4].DataPropertyName = ""; // command button
-                        //dataGridView1.Columns[5].DataPropertyName = "id_cispod";
-
                         dataGridView1.Columns[0].DataPropertyName = "Vyrazit"; // checkbox
                         dataGridView1.Columns[1].DataPropertyName = "CPD";
                         dataGridView1.Columns[2].DataPropertyName = "COD";
@@ -3572,5 +3642,34 @@ namespace Raznice
             return (vysledekSendText && vysledekFinish);
         }
 
+        private void cmdOznacitVseVyrazit_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Cells[indexOf(dataGridView1, "Vyrazit")].Value = 1;
+            }
+
+            if (dataGridView1.Rows.Count > 0)
+                UpdateGRPDataVyrazitAll(vyrazit: 1);
+        }
+
+        private void cmdOdeznacitVseVyrazit_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Cells[indexOf(dataGridView1, "Vyrazit")].Value = 0;
+            }
+
+            if (dataGridView1.Rows.Count > 0)
+                UpdateGRPDataVyrazitAll(vyrazit: 0);
+        }
+
+        private void cbTypFilmu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            short typFilmu = 0;
+            Item itm = (Item)cbTypFilmu.SelectedItem;
+            typFilmu = (short)itm.Value;
+            txtTyp.Text = typFilmu.ToString();
+        }
     }
 }
