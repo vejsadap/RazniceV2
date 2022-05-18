@@ -30,7 +30,6 @@ namespace Raznice.Globalni
         /// <summary>
         /// z jakeho pole ae pouzije konstrukce pro tisk stitku
         /// </summary>
-
         public static bool tisk_z_pole_prijmeni
         {
             get
@@ -38,15 +37,69 @@ namespace Raznice.Globalni
                 return (Int32.Parse(DejHodnotuParametru("tisk_z_pole_prijmeni")) == 1 ? true : false) ;
             }
         }
-        #endregion
+
+		/// <summary>
+		/// kolikrat probehne pokus o nastaveni textu na raznici
+		/// </summary>
+		public static int koleckoSendTextKolikrat
+		{
+			get
+			{
+				return Int32.Parse(DejHodnotuParametru("koleckoSendTextKolikrat"));
+			}
+		}
+
+		/// <summary>
+		/// kolik sec se pocka, po zavolani Reset(), pri neuspechu zapisu textu na dozimetr
+		/// </summary>
+		public static int cekejPoReset
+		{
+			get
+			{
+				return Int32.Parse(DejHodnotuParametru("cekejPoReset"));
+			}
+		}
+		/// <summary>
+		/// kolik sec se pocka, po zavolani Start(), pri zapisu textu na dozimetr
+		/// </summary>
+		public static int cekejPoStart
+		{
+			get
+			{
+				return Int32.Parse(DejHodnotuParametru("cekejPoStart"));
+			}
+		}
+
+		/// <summary>
+		/// kolikrat probehne pokus o zjisteni konce tisku dozimetru raznici
+		/// </summary>
+		public static int koleckoFinishKolikrat
+		{
+			get
+			{
+				return Int32.Parse(DejHodnotuParametru("koleckoFinishKolikrat"));
+			}
+		}
+
+		/// <summary>
+		/// kolik sec se pocka, nez se zavola dalsi pokus cteni ReadFinishOK()
+		/// </summary>
+		public static int cekejPredReadFinishOK
+		{
+			get
+			{
+				return Int32.Parse(DejHodnotuParametru("cekejPredReadFinishOK"));
+			}
+		}
+		#endregion
 
 
-        #region Neveøejný kód
-        #region Vlastnosti
-        /// <summary>
+		#region Neveøejný kód
+		#region Vlastnosti
+		/// <summary>
 		/// Urèuje relativní cestu k XML souboru s parametry
 		/// </summary>
-        private const string PARAMETRY_XML_RELATIVNI_CESTA = "ParametryAplikace.xml";
+		private const string PARAMETRY_XML_RELATIVNI_CESTA = "ParametryAplikace.xml";
 		/// <summary>
 		/// Uchovává seznam parametrù naètený z XML dokumentu
 		/// </summary>

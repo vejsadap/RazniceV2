@@ -2,4 +2,12 @@
 <parametry>
   <parametr nazev="aplikace" hodnota="Raznice" />
   <parametr nazev="tisk_z_pole_prijmeni" hodnota="1" />
+  
+  <parametr nazev="koleckoSendTextKolikrat" hodnota="6" />
+  <parametr nazev="cekejPoReset" hodnota="1" />
+  <parametr nazev="cekejPoStart" hodnota="1" />
+  
+  <parametr nazev="koleckoFinishKolikrat" hodnota="3" />
+  <parametr nazev="cekejPredReadFinishOK" hodnota="2" />
+  
 </parametry>
