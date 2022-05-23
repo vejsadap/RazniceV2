@@ -3548,13 +3548,10 @@ namespace Raznice
             // vyrazeni a tisk jednoho dozimetru
             bool vysledekSendText = false;
             bool vysledekFinish = false;
-           
-
-
+            bool vysledekKoleckoCekejNaZpracovaniDozimetru = false;
             Vlastnosti.popisStavuRaznice popisStavuRaznice = null;
             bool lOk = false;
-            int koleckoFinish = 0;
-            
+            int koleckoFinish = 0;            
             int koleckoCekejNaZpracovaniDozimetru = 0;
 
             Globalni.Nastroje.LogMessage("NaRazitDozV2(), start", false, "Information", formRaz);
@@ -3603,8 +3600,10 @@ namespace Raznice
                             break;
 
                         case 3:
+                            // Status 3: automatika zapnuta a zařízení připraven pro nový příkaz od PC
                             // vse OK, ukoncujeme cyklus  jede se dal na konec razeni a cteni ReadFinish()
                             koleckoCekejNaZpracovaniDozimetru = koleckoCekejNaZpracovaniDozimetruKolikrat + 1;
+                            vysledekKoleckoCekejNaZpracovaniDozimetru = true;
                             break;
 
                         default:
@@ -3648,8 +3647,10 @@ namespace Raznice
                 } // while (!koleckoSendText)
                 Globalni.Nastroje.LogMessage("NaRazitDozV2, stop koleckoCekejNaZpracovaniDozimetru", false, "Information", formRaz);
 
-                Globalni.Nastroje.LogMessage("NaRazitDozV2, vysledekSendText: " + (vysledekSendText?"true":"false"), false, "Information", formRaz);
-                if (vysledekSendText)
+                Globalni.Nastroje.LogMessage("NaRazitDozV2, vysledekSendText: " + (vysledekSendText ? "true" :  "false"), false, "Information", formRaz);
+                Globalni.Nastroje.LogMessage("NaRazitDozV2, vysledekKoleckoCekejNaZpracovaniDozimetru: " + (vysledekKoleckoCekejNaZpracovaniDozimetru ? "true" : "false"), false, "Information", formRaz);
+                
+                if (vysledekSendText && vysledekKoleckoCekejNaZpracovaniDozimetru) 
                 {
                     Globalni.Nastroje.LogMessage("NaRazitDozV2, start koleckoFinish", false, "Information", formRaz);
                     // tady uz mam naslapnuto na uspech, cekam az dojede film na konec ...
@@ -3717,12 +3718,14 @@ namespace Raznice
             }
             else
             {
+                // neni oznaceno chkRazitDozimetryTab.Checked == true || chkRazitDozimetry.Checked == true
                 vysledekSendText = true;
                 vysledekFinish = true;
+                vysledekKoleckoCekejNaZpracovaniDozimetru = true;
             }
 
 
-            if (vysledekSendText && vysledekFinish)
+            if (vysledekSendText && vysledekKoleckoCekejNaZpracovaniDozimetru && vysledekFinish)
             {
                 // zmacnuti STOP cudle
                 if (!vProcesuRazeni)
@@ -3742,7 +3745,7 @@ namespace Raznice
 
 
             Globalni.Nastroje.LogMessage("NaRazitDozV2(), stop: " + ((vysledekSendText && vysledekFinish) ? "true" : "false"), false, "Information", formRaz);
-            return (vysledekSendText && vysledekFinish);
+            return (vysledekSendText && vysledekKoleckoCekejNaZpracovaniDozimetru && vysledekFinish);
         }
 
         private void cmdOznacitVseVyrazit_Click(object sender, EventArgs e)
