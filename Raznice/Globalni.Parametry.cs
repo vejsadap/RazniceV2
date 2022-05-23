@@ -39,13 +39,13 @@ namespace Raznice.Globalni
         }
 
 		/// <summary>
-		/// kolikrat probehne pokus o nastaveni textu na raznici
+		/// kolikrat probehne pokus o stavu na raznici, nez se to vzda
 		/// </summary>
-		public static int koleckoSendTextKolikrat
+		public static int koleckoCekejNaZpracovaniDozimetruKolikrat
 		{
 			get
 			{
-				return Int32.Parse(DejHodnotuParametru("koleckoSendTextKolikrat"));
+				return Int32.Parse(DejHodnotuParametru("koleckoCekejNaZpracovaniDozimetruKolikrat"));
 			}
 		}
 
@@ -91,6 +91,18 @@ namespace Raznice.Globalni
 				return Int32.Parse(DejHodnotuParametru("cekejPredReadFinishOK"));
 			}
 		}
+
+		/// <summary>
+		/// kolikrat probehne pokus o Start raznice
+		/// </summary>
+		public static int koleckoStartKolikrat
+		{
+			get
+			{
+				return Int32.Parse(DejHodnotuParametru("koleckoStartKolikrat"));
+			}
+		}
+
 		#endregion
 
 
