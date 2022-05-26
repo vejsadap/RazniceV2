@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <parametry>
   <parametr nazev="aplikace" hodnota="Raznice" />
-  <parametr nazev="tisk_z_pole_prijmeni" hodnota="1" />
+  <parametr nazev="tisk_z_pole_prijmeni" hodnota="1" /> <!--0, 1-->
+
+  <parametr nazev="koleckoStartKolikrat" hodnota="4" />
+  <parametr nazev="cekejPoStart" hodnota="1" />	
+	
+  <parametr nazev="koleckoCekejNaZpracovaniDozimetruKolikrat" hodnota="20" />
+  <parametr nazev="cekejPoReset" hodnota="2" />
   
-  <parametr nazev="koleckoSendTextKolikrat" hodnota="6" />
-  <parametr nazev="cekejPoReset" hodnota="1" />
-  <parametr nazev="cekejPoStart" hodnota="1" />
-  
-  <parametr nazev="koleckoFinishKolikrat" hodnota="4" />
+  <parametr nazev="koleckoFinishKolikrat" hodnota="10" />
   <parametr nazev="cekejPredReadFinishOK" hodnota="2" />
+	
   
 </parametry>
