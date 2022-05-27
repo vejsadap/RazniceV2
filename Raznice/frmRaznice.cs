@@ -83,6 +83,7 @@ namespace Raznice
         /// kolikrat probehne pokus o start
         /// </summary>
         int koleckoStartKolikrat = 0;
+        bool odstranDiakritiku = false;
 
 
         private class Item
@@ -837,6 +838,7 @@ namespace Raznice
             koleckoFinishKolikrat = Globalni.Parametry.koleckoFinishKolikrat;
             cekejPredReadFinishOK = Globalni.Parametry.cekejPredReadFinishOK;
             koleckoStartKolikrat = Globalni.Parametry.koleckoStartKolikrat;
+            odstranDiakritiku = Globalni.Parametry.odstranDiakritiku;
 
             // v pripade storna u loginu
             if (Vlastnosti.exit == true)
@@ -1713,11 +1715,25 @@ namespace Raznice
             return text;
         }
 
+        /// <summary>
+        /// ostraneni diakritiky ze stringu
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string OdstranDiakritiku(string str)
+        {
+            string result = Regex.Replace(str.Normalize(NormalizationForm.FormD), "[^A-Za-z| ]", String.Empty);
+            return result;
+        }
+
         private string Decodecharset(string str)
         {
+            if (odstranDiakritiku)
+                str = OdstranDiakritiku(str);
+
             //charset Base64
             str = Regex.Replace(str, @"=\?[uUtTfF]+-8\?[bB]\?([a-zA-Z0-9]+={0,2})\?=",
-                       delegate(Match match)
+                       delegate (Match match)
                        {
                            var bytes = Convert.FromBase64String(match.Groups[1].Value);
                            return Encoding.UTF8.GetString(bytes);
@@ -1725,28 +1741,28 @@ namespace Raznice
 
             //charset iso-8859-1
             str = Regex.Replace(str, @"=\?[iIsSoO]+-8859-1\?[qQ]\?(.+)\?=",
-                       delegate(Match match)
+                       delegate (Match match)
                        {
                            return DecodeISO8859_1(match.Groups[1].Value);
                        });
 
             //charset iso-8859-2
             str = Regex.Replace(str, @"=\?[iIsSoO]+-8859-2\?[qQ]\?(.+)\?=",
-                       delegate(Match match)
+                       delegate (Match match)
                        {
                            return DecodeISO8859_1(match.Groups[1].Value);
                        });
 
             //charset windows-1250
             str = Regex.Replace(str, @"=\?[wWiInNdDoOwWsS]+-1250\?[qQ]\?(.+)\?=",
-                       delegate(Match match)
+                       delegate (Match match)
                        {
                            return DecodeWindows1250(match.Groups[1].Value);
                        });
 
             //charset utf8
             str = Regex.Replace(str, @"=\?[uUtTfF]+-8\?[qQ]\?(.+)\?=",
-                       delegate(Match match)
+                       delegate (Match match)
                        {
 
                            return DecodeUTF8(match.Groups[1].Value);
