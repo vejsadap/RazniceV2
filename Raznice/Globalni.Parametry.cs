@@ -38,6 +38,18 @@ namespace Raznice.Globalni
             }
         }
 
+		
+		/// <summary>
+		/// odstrani diakritiku ze stringu urceneho pro tisk
+		/// </summary>
+		public static bool odstranDiakritiku
+		{
+			get
+			{
+				return (Int32.Parse(DejHodnotuParametru("odstranDiakritiku")) == 1 ? true : false);
+			}
+		}
+
 		/// <summary>
 		/// kolikrat probehne pokus o stavu na raznici, nez se to vzda
 		/// </summary>
