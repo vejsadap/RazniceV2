@@ -1722,7 +1722,7 @@ namespace Raznice
         /// <returns></returns>
         private string OdstranDiakritiku(string str)
         {
-            string result = Regex.Replace(str.Normalize(NormalizationForm.FormD), "[^A-Za-z| ]", String.Empty);
+            string result = Regex.Replace(str.Normalize(NormalizationForm.FormD), "[^A-Za-z0-9\\._| ]" /*[^A-Za-z| ]*/, String.Empty);
             return result;
         }
 
