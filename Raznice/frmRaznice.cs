@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Data.OleDb;
 
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Raznice
 {
@@ -49,6 +50,7 @@ namespace Raznice
         string dbFileName = "";     // jmeno dbf souboru s razicim planem
 
         frmRaznice formRaz;         // nastaveny object formu ve Form_Load pro parametr zasilani LogMessage
+        frmIntro fIntro;
         bool tisk_z_pole_prijmeni;  // jake pole (prijmeni nebo Tisk_2) z tabulky se pouzije pro tisk stitku
 
         int DozNum;                 // číslo dozimetru
@@ -847,6 +849,10 @@ namespace Raznice
                 Application.Exit();
             }
 
+            // intro form v extra vlakne
+            Thread introInicializace = new Thread(new ThreadStart(ThreadProc));
+            introInicializace.Start();
+
 
             // test na Provider=VFPOLEDB.1
             try
@@ -865,6 +871,7 @@ namespace Raznice
             }
             catch
             {
+                introInicializace.Abort();
                 MessageBox.Show("Nenalezen Provider=VFPOLEDB.1", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Globalni.Nastroje.LogMessage("Nenalezen Provider=VFPOLEDB.1", false, "Warning", formRaz);
                 this.cmdOtevritPlan.Enabled = false;
@@ -918,7 +925,8 @@ namespace Raznice
                 groupBoxManualOvladani.Visible = true;
 
 #else
-                this.Text = this.Text + " Simulace DLL";
+                this.Text = this.Text + " - Simulace DLL";
+                this.lblNapis.Text = this.lblNapis.Text + " - Simulace DLL";
                 // zviditelnim ovladani simulace
                 groupBoxSimulace.Visible = true;
 
@@ -991,6 +999,7 @@ namespace Raznice
                     //popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
                     //popisStavuRaznice = DejPopisStavu();
 
+                    introInicializace.Abort();
                     MessageBox.Show("Chyba při inicializování komunikace s PLC", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Globalni.Nastroje.LogMessage("Chyba při inicializování komunikace s PLC", false, "Error", formRaz);
                     //this.Close();
@@ -1005,6 +1014,7 @@ namespace Raznice
                         this.chkReady.Checked = true;
                     else
                     {
+                        introInicializace.Abort();
                         this.chkReady.Checked = false;
                         MessageBox.Show("Load Init(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Globalni.Nastroje.LogMessage("Load Init(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
@@ -1024,10 +1034,16 @@ namespace Raznice
             }
             catch
             {
+           
+                introInicializace.Abort();
                 MessageBox.Show("Nebyla nalezena knihovna RazniceV2.dll", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Globalni.Nastroje.LogMessage("Nebyla nalezena knihovna RazniceV2.dll", false, "Error", formRaz);
+                //fIntro.Hide();
+                //fIntro.Dispose();
                 this.Close();
             }
+            if (introInicializace != null)
+                introInicializace.Abort();       
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -3807,6 +3823,21 @@ namespace Raznice
             Item itm = (Item)cbTypFilmu.SelectedItem;
             typFilmu = (short)itm.Value;
             txtTyp.Text = typFilmu.ToString();
+        }
+
+        public void ThreadProc()
+        {
+            try
+            {
+                fIntro = new frmIntro();
+                fIntro.ShowDialog();
+                fIntro.Refresh();
+            }
+            catch
+            {
+                ;
+            }
+            
         }
     }
 }
