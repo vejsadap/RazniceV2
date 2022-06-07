@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Raznice
 {
     static class Program
-    {
+    {      
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -31,6 +32,8 @@ namespace Raznice
                     Vlastnosti.exit = true;
 
                 }
+
+
                 Application.Run(new frmRaznice());
                 
                 
@@ -49,7 +52,7 @@ namespace Raznice
 
 
         }
-
+        
         static void c_ThresholdReached(object sender, EventArgs e)
         {
             Console.WriteLine("The threshold was reached.");
