@@ -849,6 +849,9 @@ namespace Raznice
                 Application.Exit();
             }
 
+#if NODLL
+            MessageBox.Show("V režimu Simulace DLL.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+#endif
             // intro form v extra vlakne
             Thread introInicializace = new Thread(new ThreadStart(ThreadProc));
             introInicializace.Start();
@@ -871,7 +874,7 @@ namespace Raznice
             }
             catch
             {
-                introInicializace.Abort();
+                //introInicializace.Abort();
                 MessageBox.Show("Nenalezen Provider=VFPOLEDB.1", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Globalni.Nastroje.LogMessage("Nenalezen Provider=VFPOLEDB.1", false, "Warning", formRaz);
                 this.cmdOtevritPlan.Enabled = false;
@@ -928,7 +931,7 @@ namespace Raznice
                 this.Text = this.Text + " - Simulace DLL";
                 this.lblNapis.Text = this.lblNapis.Text + " - Simulace DLL";
                 // zviditelnim ovladani simulace
-                groupBoxSimulace.Visible = true;
+                groupBoxSimulace.Visible = true;                
 
                 // pro simulaci navrat stavu atd.
                 cbInit.Items.Add(new Item("Ok", 1));
