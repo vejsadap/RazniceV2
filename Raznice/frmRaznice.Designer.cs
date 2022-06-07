@@ -79,26 +79,7 @@
             this.cmdVyrazit = new System.Windows.Forms.Button();
             this.cmdOtevritPlan = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Oddeleni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cdz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prijmeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tisk_radek_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tisk_radek_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zpracovano_doz = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Id_Cispod_doz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_seznam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Vyrazit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pocet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zpracovano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Nacist = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Id_Cispod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -162,6 +143,25 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cbFinishOK = new System.Windows.Forms.ComboBox();
             this.groupBoxSimulace = new System.Windows.Forms.GroupBox();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Oddeleni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cdz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prijmeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tisk_radek_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tisk_radek_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zpracovano_doz = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id_Cispod_doz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_seznam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vyrazit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pocet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zpracovano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Nacist = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Id_Cispod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -682,115 +682,6 @@
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cpd";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.Width = 40;
-            // 
-            // Oddeleni
-            // 
-            this.Oddeleni.HeaderText = "Cod";
-            this.Oddeleni.MinimumWidth = 6;
-            this.Oddeleni.Name = "Oddeleni";
-            this.Oddeleni.ReadOnly = true;
-            this.Oddeleni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Oddeleni.Width = 40;
-            // 
-            // Cdz
-            // 
-            this.Cdz.HeaderText = "CDZ";
-            this.Cdz.MinimumWidth = 6;
-            this.Cdz.Name = "Cdz";
-            this.Cdz.ReadOnly = true;
-            this.Cdz.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cdz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cdz.Width = 50;
-            // 
-            // Prijmeni
-            // 
-            this.Prijmeni.HeaderText = "Přijmení";
-            this.Prijmeni.MinimumWidth = 6;
-            this.Prijmeni.Name = "Prijmeni";
-            this.Prijmeni.ReadOnly = true;
-            this.Prijmeni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Prijmeni.Width = 130;
-            // 
-            // Tisk_radek_1
-            // 
-            this.Tisk_radek_1.HeaderText = "Tisk řádek 1";
-            this.Tisk_radek_1.MinimumWidth = 6;
-            this.Tisk_radek_1.Name = "Tisk_radek_1";
-            this.Tisk_radek_1.ReadOnly = true;
-            this.Tisk_radek_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tisk_radek_1.Width = 115;
-            // 
-            // Tisk_radek_2
-            // 
-            this.Tisk_radek_2.HeaderText = "Tisk řádek 2";
-            this.Tisk_radek_2.MinimumWidth = 6;
-            this.Tisk_radek_2.Name = "Tisk_radek_2";
-            this.Tisk_radek_2.ReadOnly = true;
-            this.Tisk_radek_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tisk_radek_2.Width = 110;
-            // 
-            // Zpracovano_doz
-            // 
-            this.Zpracovano_doz.HeaderText = "Zpracováno";
-            this.Zpracovano_doz.MinimumWidth = 6;
-            this.Zpracovano_doz.Name = "Zpracovano_doz";
-            this.Zpracovano_doz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Zpracovano_doz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Zpracovano_doz.Width = 70;
-            // 
-            // Id_Cispod_doz
-            // 
-            this.Id_Cispod_doz.HeaderText = "Id_Cispod";
-            this.Id_Cispod_doz.MinimumWidth = 6;
-            this.Id_Cispod_doz.Name = "Id_Cispod_doz";
-            this.Id_Cispod_doz.ReadOnly = true;
-            this.Id_Cispod_doz.Visible = false;
-            this.Id_Cispod_doz.Width = 125;
-            // 
-            // ID_seznam
-            // 
-            this.ID_seznam.HeaderText = "ID_seznam";
-            this.ID_seznam.MinimumWidth = 6;
-            this.ID_seznam.Name = "ID_seznam";
-            this.ID_seznam.ReadOnly = true;
-            this.ID_seznam.Visible = false;
-            this.ID_seznam.Width = 125;
-            // 
-            // SLOB
-            // 
-            this.SLOB.HeaderText = "SLOB";
-            this.SLOB.MinimumWidth = 6;
-            this.SLOB.Name = "SLOB";
-            this.SLOB.ReadOnly = true;
-            this.SLOB.Visible = false;
-            this.SLOB.Width = 125;
-            // 
-            // RP_ROK
-            // 
-            this.RP_ROK.HeaderText = "RP_ROK";
-            this.RP_ROK.MinimumWidth = 6;
-            this.RP_ROK.Name = "RP_ROK";
-            this.RP_ROK.ReadOnly = true;
-            this.RP_ROK.Visible = false;
-            this.RP_ROK.Width = 125;
-            // 
-            // RP_MESIC
-            // 
-            this.RP_MESIC.HeaderText = "RP_MESIC";
-            this.RP_MESIC.MinimumWidth = 6;
-            this.RP_MESIC.Name = "RP_MESIC";
-            this.RP_MESIC.ReadOnly = true;
-            this.RP_MESIC.Visible = false;
-            this.RP_MESIC.Width = 125;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -839,68 +730,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(376, 155);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Vyrazit
-            // 
-            this.Vyrazit.HeaderText = "Vyrazit";
-            this.Vyrazit.Name = "Vyrazit";
-            this.Vyrazit.ReadOnly = true;
-            this.Vyrazit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Vyrazit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Vyrazit.Width = 40;
-            // 
-            // Cpd
-            // 
-            this.Cpd.HeaderText = "Cpd";
-            this.Cpd.MinimumWidth = 6;
-            this.Cpd.Name = "Cpd";
-            this.Cpd.ReadOnly = true;
-            this.Cpd.Width = 40;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Cod";
-            this.Cod.MinimumWidth = 6;
-            this.Cod.Name = "Cod";
-            this.Cod.ReadOnly = true;
-            this.Cod.Width = 40;
-            // 
-            // Pocet
-            // 
-            this.Pocet.HeaderText = "Počet";
-            this.Pocet.MinimumWidth = 6;
-            this.Pocet.Name = "Pocet";
-            this.Pocet.ReadOnly = true;
-            this.Pocet.Width = 50;
-            // 
-            // Zpracovano
-            // 
-            this.Zpracovano.HeaderText = "Zpracováno";
-            this.Zpracovano.MinimumWidth = 6;
-            this.Zpracovano.Name = "Zpracovano";
-            this.Zpracovano.ReadOnly = true;
-            this.Zpracovano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Zpracovano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Zpracovano.Width = 70;
-            // 
-            // Nacist
-            // 
-            this.Nacist.HeaderText = "Načíst";
-            this.Nacist.MinimumWidth = 6;
-            this.Nacist.Name = "Nacist";
-            this.Nacist.ReadOnly = true;
-            this.Nacist.Text = "Otevřít";
-            this.Nacist.UseColumnTextForButtonValue = true;
-            this.Nacist.Width = 65;
-            // 
-            // Id_Cispod
-            // 
-            this.Id_Cispod.HeaderText = "Id_Cispod";
-            this.Id_Cispod.MinimumWidth = 6;
-            this.Id_Cispod.Name = "Id_Cispod";
-            this.Id_Cispod.ReadOnly = true;
-            this.Id_Cispod.Visible = false;
-            this.Id_Cispod.Width = 110;
             // 
             // groupBox7
             // 
@@ -1526,6 +1355,182 @@
             this.groupBoxSimulace.TabIndex = 34;
             this.groupBoxSimulace.TabStop = false;
             this.groupBoxSimulace.Text = "Simulace ovládání";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cpd";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // Oddeleni
+            // 
+            this.Oddeleni.HeaderText = "Cod";
+            this.Oddeleni.MinimumWidth = 6;
+            this.Oddeleni.Name = "Oddeleni";
+            this.Oddeleni.ReadOnly = true;
+            this.Oddeleni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Oddeleni.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Oddeleni.Width = 40;
+            // 
+            // Cdz
+            // 
+            this.Cdz.HeaderText = "CDZ";
+            this.Cdz.MinimumWidth = 6;
+            this.Cdz.Name = "Cdz";
+            this.Cdz.ReadOnly = true;
+            this.Cdz.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cdz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cdz.Width = 50;
+            // 
+            // Prijmeni
+            // 
+            this.Prijmeni.HeaderText = "Přijmení";
+            this.Prijmeni.MinimumWidth = 6;
+            this.Prijmeni.Name = "Prijmeni";
+            this.Prijmeni.ReadOnly = true;
+            this.Prijmeni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Prijmeni.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Prijmeni.Width = 130;
+            // 
+            // Tisk_radek_1
+            // 
+            this.Tisk_radek_1.HeaderText = "Tisk řádek 1";
+            this.Tisk_radek_1.MinimumWidth = 6;
+            this.Tisk_radek_1.Name = "Tisk_radek_1";
+            this.Tisk_radek_1.ReadOnly = true;
+            this.Tisk_radek_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tisk_radek_1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tisk_radek_1.Width = 115;
+            // 
+            // Tisk_radek_2
+            // 
+            this.Tisk_radek_2.HeaderText = "Tisk řádek 2";
+            this.Tisk_radek_2.MinimumWidth = 6;
+            this.Tisk_radek_2.Name = "Tisk_radek_2";
+            this.Tisk_radek_2.ReadOnly = true;
+            this.Tisk_radek_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tisk_radek_2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tisk_radek_2.Width = 110;
+            // 
+            // Zpracovano_doz
+            // 
+            this.Zpracovano_doz.HeaderText = "Zpracováno";
+            this.Zpracovano_doz.MinimumWidth = 6;
+            this.Zpracovano_doz.Name = "Zpracovano_doz";
+            this.Zpracovano_doz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Zpracovano_doz.Width = 70;
+            // 
+            // Id_Cispod_doz
+            // 
+            this.Id_Cispod_doz.HeaderText = "Id_Cispod";
+            this.Id_Cispod_doz.MinimumWidth = 6;
+            this.Id_Cispod_doz.Name = "Id_Cispod_doz";
+            this.Id_Cispod_doz.ReadOnly = true;
+            this.Id_Cispod_doz.Visible = false;
+            this.Id_Cispod_doz.Width = 125;
+            // 
+            // ID_seznam
+            // 
+            this.ID_seznam.HeaderText = "ID_seznam";
+            this.ID_seznam.MinimumWidth = 6;
+            this.ID_seznam.Name = "ID_seznam";
+            this.ID_seznam.ReadOnly = true;
+            this.ID_seznam.Visible = false;
+            this.ID_seznam.Width = 125;
+            // 
+            // SLOB
+            // 
+            this.SLOB.HeaderText = "SLOB";
+            this.SLOB.MinimumWidth = 6;
+            this.SLOB.Name = "SLOB";
+            this.SLOB.ReadOnly = true;
+            this.SLOB.Visible = false;
+            this.SLOB.Width = 125;
+            // 
+            // RP_ROK
+            // 
+            this.RP_ROK.HeaderText = "RP_ROK";
+            this.RP_ROK.MinimumWidth = 6;
+            this.RP_ROK.Name = "RP_ROK";
+            this.RP_ROK.ReadOnly = true;
+            this.RP_ROK.Visible = false;
+            this.RP_ROK.Width = 125;
+            // 
+            // RP_MESIC
+            // 
+            this.RP_MESIC.HeaderText = "RP_MESIC";
+            this.RP_MESIC.MinimumWidth = 6;
+            this.RP_MESIC.Name = "RP_MESIC";
+            this.RP_MESIC.ReadOnly = true;
+            this.RP_MESIC.Visible = false;
+            this.RP_MESIC.Width = 125;
+            // 
+            // Vyrazit
+            // 
+            this.Vyrazit.HeaderText = "Vyrazit";
+            this.Vyrazit.Name = "Vyrazit";
+            this.Vyrazit.ReadOnly = true;
+            this.Vyrazit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Vyrazit.Width = 40;
+            // 
+            // Cpd
+            // 
+            this.Cpd.HeaderText = "Cpd";
+            this.Cpd.MinimumWidth = 6;
+            this.Cpd.Name = "Cpd";
+            this.Cpd.ReadOnly = true;
+            this.Cpd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cpd.Width = 40;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Cod";
+            this.Cod.MinimumWidth = 6;
+            this.Cod.Name = "Cod";
+            this.Cod.ReadOnly = true;
+            this.Cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cod.Width = 40;
+            // 
+            // Pocet
+            // 
+            this.Pocet.HeaderText = "Počet";
+            this.Pocet.MinimumWidth = 6;
+            this.Pocet.Name = "Pocet";
+            this.Pocet.ReadOnly = true;
+            this.Pocet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Pocet.Width = 50;
+            // 
+            // Zpracovano
+            // 
+            this.Zpracovano.HeaderText = "Zpracováno";
+            this.Zpracovano.MinimumWidth = 6;
+            this.Zpracovano.Name = "Zpracovano";
+            this.Zpracovano.ReadOnly = true;
+            this.Zpracovano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Zpracovano.Width = 70;
+            // 
+            // Nacist
+            // 
+            this.Nacist.HeaderText = "Načíst";
+            this.Nacist.MinimumWidth = 6;
+            this.Nacist.Name = "Nacist";
+            this.Nacist.ReadOnly = true;
+            this.Nacist.Text = "Otevřít";
+            this.Nacist.UseColumnTextForButtonValue = true;
+            this.Nacist.Width = 65;
+            // 
+            // Id_Cispod
+            // 
+            this.Id_Cispod.HeaderText = "Id_Cispod";
+            this.Id_Cispod.MinimumWidth = 6;
+            this.Id_Cispod.Name = "Id_Cispod";
+            this.Id_Cispod.ReadOnly = true;
+            this.Id_Cispod.Visible = false;
+            this.Id_Cispod.Width = 110;
             // 
             // frmRaznice
             // 

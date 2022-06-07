@@ -1722,7 +1722,7 @@ namespace Raznice
         /// <returns></returns>
         private string OdstranDiakritiku(string str)
         {
-            string result = Regex.Replace(str.Normalize(NormalizationForm.FormD), "[^A-Za-z| ]", String.Empty);
+            string result = Regex.Replace(str.Normalize(NormalizationForm.FormD), "[^A-Za-z0-9\\._| ]" /*[^A-Za-z| ]*/, String.Empty);
             return result;
         }
 
@@ -1945,6 +1945,9 @@ namespace Raznice
         {            
             try
             {
+                if (e.RowIndex == -1)
+                    return;
+
                 if (e.ColumnIndex == indexOf(dataGridView1, "Vyrazit")) // chkbox Vyrazit                    
                 {
                     int rowindex = dataGridView1.CurrentCell.RowIndex;
@@ -2073,18 +2076,30 @@ namespace Raznice
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            string Tisk_radek_1 = (dataGridView2[indexOf(dataGridView2, "Tisk_radek_1"), e.RowIndex]).Value.ToString();
-            string Tisk_radek_2 = (dataGridView2[indexOf(dataGridView2, "Tisk_radek_2"), e.RowIndex]).Value.ToString();
-            string Tisk_prijmeni = (dataGridView2[indexOf(dataGridView2, "PRIJMENI"), e.RowIndex]).Value.ToString();
-            // 05.04.2016 doplneno tisk COD do eanu, zmena eanu z EAN8 na EAN13
-            string Tisk_cod = (dataGridView2[indexOf(dataGridView2, "Oddeleni"), 0]).Value.ToString();
-            string Tisk_slob = (dataGridView2[indexOf(dataGridView2, "SLOB"), 0]).Value.ToString();
-            string Tisk_rok = (dataGridView2[indexOf(dataGridView2, "RP_ROK"), 0]).Value.ToString();
-            string Tisk_mesic = (dataGridView2[indexOf(dataGridView2, "RP_MESIC"), 0]).Value.ToString();
+            try
+            {
+                if (e.RowIndex == -1)
+                    return;
 
 
-            NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
+                string Tisk_radek_1 = (dataGridView2[indexOf(dataGridView2, "Tisk_radek_1"), e.RowIndex]).Value.ToString();
+                string Tisk_radek_2 = (dataGridView2[indexOf(dataGridView2, "Tisk_radek_2"), e.RowIndex]).Value.ToString();
+                string Tisk_prijmeni = (dataGridView2[indexOf(dataGridView2, "PRIJMENI"), e.RowIndex]).Value.ToString();
+                // 05.04.2016 doplneno tisk COD do eanu, zmena eanu z EAN8 na EAN13
+                string Tisk_cod = (dataGridView2[indexOf(dataGridView2, "Oddeleni"), 0]).Value.ToString();
+                string Tisk_slob = (dataGridView2[indexOf(dataGridView2, "SLOB"), 0]).Value.ToString();
+                string Tisk_rok = (dataGridView2[indexOf(dataGridView2, "RP_ROK"), 0]).Value.ToString();
+                string Tisk_mesic = (dataGridView2[indexOf(dataGridView2, "RP_MESIC"), 0]).Value.ToString();
+
+
+                NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
+            }
+            catch (Exception ex)
+            {
+                string chyba = "Source:" + ex.Source.ToString() + ", Message:" + ex.Message.ToString() + ", Data:" + ex.Data.ToString();
+                Globalni.Nastroje.LogMessage("Raznice: " + chyba, false, "Error", formRaz);
+
+            }
         }
 
         private void cmdOtevritPlan_Click(object sender, EventArgs e)
