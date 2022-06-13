@@ -2317,7 +2317,8 @@ namespace Raznice
                 //string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
                 string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
                     " JOIN " + fileGRPName +" b ON a.id_cispod = b.id_cispod "+
-                    " where (b.Vyrazit = 1 ) ";
+                    " WHERE (b.Vyrazit = 1 ) "+
+                    " ORDER BY a.cpd, a.cod, a.Cdz";
                 //" where id_cispod = ? ORDER BY cpd, cod, cdz";
                 //and b.Zpracovano = 0
 
