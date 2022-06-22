@@ -282,6 +282,13 @@
         KlouVtkAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="cmdExportPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAAFZJREFUOE/NjEkOACAIA/n/p91SEHGLctCJPajT0t+EdHJwPcc1wOXrEdeAFJnT
+        EdeAlHMY9QZtjpYF9QZtjBZXgd5jxVmgt1iphBn8oVaxwi6oPYcoAhm5u0WQ+iHfAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="cmdOdeznacitVseVyrazit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

@@ -905,6 +905,7 @@ namespace Raznice
                 toolTip1.SetToolTip(this.cmdOznacitVse, "Označení všech dozimetrů jako 'Zpracováno'");
                 toolTip1.SetToolTip(this.cmdOdeznacitVse, "Odeznačení všech dozimetrů jako 'Zpracováno'");
                 toolTip1.SetToolTip(this.cmdVyrazit, "Vyražení všech dozimetrů neoznačených jako 'Zpracováno'");
+                toolTip1.SetToolTip(this.cmdExportPlan, "Export razicího plánu do verze 1.0");
 
                 toolTip1.SetToolTip(this.chkPtatSePredRazbou, "Před každým vyražením dozimetru se musí potvrdit jeho vyražení");
                 toolTip1.SetToolTip(this.chkRazitDozimetryTab, "Pokud je vybráno, dozimetr se orazí");
@@ -3842,6 +3843,54 @@ namespace Raznice
                 ;
             }
             
+        }
+
+        private void cmdExportPlan_Click(object sender, EventArgs e)
+        {
+            string filepath = Path.GetDirectoryName(dbFileName);
+            if (!filepath.EndsWith("\\"))
+                filepath += "\\";
+
+            // ted musim zmenit file, na puvodni strukturu 
+            string dbfileOldVersionName = dbFileName.ToUpper().Replace("GRP_", "GRP_V1_");
+
+            if (File.Exists(dbfileOldVersionName))
+            {
+                MessageBox.Show("Soubor s ver. 1.0 " + dbfileOldVersionName + " již existuje.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            OleDbConnection yourConnectionHandler = new OleDbConnection(
+                //@"Provider=VFPOLEDB.1;Data Source=c:\temp\abc\");
+                @"Provider=VFPOLEDB.1;Data Source=" + filepath);
+
+            // if including the full dbc (database container) reference, just tack that on
+            //      OleDbConnection yourConnectionHandler = new OleDbConnection(
+            //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
+
+
+            // Open the connection, and if open successfully, you can try to query it
+            yourConnectionHandler.Open();
+
+            //File.Move(dbFileName, dbfileOldVersionName);
+
+                // Open the connection, and if open successfully, you can try to query it
+            yourConnectionHandler.Open();
+
+            if (yourConnectionHandler.State == ConnectionState.Open)
+            {
+                string mySQL = @"SELECT cpd, cod, kolik, zpracovano, id_cispod FROM " + dbFileName + " INTO TABLE " + dbfileOldVersionName + "";
+
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = mySQL;
+
+                cmd.Connection = yourConnectionHandler;
+                cmd.ExecuteNonQuery();
+            }
+
+            yourConnectionHandler.Close();
+
         }
     }
 }
