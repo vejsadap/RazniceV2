@@ -58,6 +58,7 @@
             this.lblSarze = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cmdExportPlan = new System.Windows.Forms.Button();
             this.cmdOdeznacitVseVyrazit = new System.Windows.Forms.Button();
             this.cmdOznacitVseVyrazit = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -375,6 +376,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.cmdExportPlan);
             this.tabPage3.Controls.Add(this.cmdOdeznacitVseVyrazit);
             this.tabPage3.Controls.Add(this.cmdOznacitVseVyrazit);
             this.tabPage3.Controls.Add(this.label5);
@@ -406,13 +408,26 @@
             this.tabPage3.Text = "Z tabulky";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cmdExportPlan
+            // 
+            this.cmdExportPlan.Image = ((System.Drawing.Image)(resources.GetObject("cmdExportPlan.Image")));
+            this.cmdExportPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdExportPlan.Location = new System.Drawing.Point(669, 4);
+            this.cmdExportPlan.Name = "cmdExportPlan";
+            this.cmdExportPlan.Size = new System.Drawing.Size(66, 28);
+            this.cmdExportPlan.TabIndex = 82;
+            this.cmdExportPlan.Text = "Export";
+            this.cmdExportPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdExportPlan.UseVisualStyleBackColor = true;
+            this.cmdExportPlan.Click += new System.EventHandler(this.cmdExportPlan_Click);
+            // 
             // cmdOdeznacitVseVyrazit
             // 
             this.cmdOdeznacitVseVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdOdeznacitVseVyrazit.Image")));
             this.cmdOdeznacitVseVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOdeznacitVseVyrazit.Location = new System.Drawing.Point(602, 4);
+            this.cmdOdeznacitVseVyrazit.Location = new System.Drawing.Point(569, 4);
             this.cmdOdeznacitVseVyrazit.Name = "cmdOdeznacitVseVyrazit";
-            this.cmdOdeznacitVseVyrazit.Size = new System.Drawing.Size(96, 28);
+            this.cmdOdeznacitVseVyrazit.Size = new System.Drawing.Size(81, 28);
             this.cmdOdeznacitVseVyrazit.TabIndex = 81;
             this.cmdOdeznacitVseVyrazit.Text = "Odeznačit";
             this.cmdOdeznacitVseVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -423,9 +438,9 @@
             // 
             this.cmdOznacitVseVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdOznacitVseVyrazit.Image")));
             this.cmdOznacitVseVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOznacitVseVyrazit.Location = new System.Drawing.Point(500, 3);
+            this.cmdOznacitVseVyrazit.Location = new System.Drawing.Point(486, 4);
             this.cmdOznacitVseVyrazit.Name = "cmdOznacitVseVyrazit";
-            this.cmdOznacitVseVyrazit.Size = new System.Drawing.Size(96, 28);
+            this.cmdOznacitVseVyrazit.Size = new System.Drawing.Size(81, 28);
             this.cmdOznacitVseVyrazit.TabIndex = 80;
             this.cmdOznacitVseVyrazit.Text = "Vše Vyrazit";
             this.cmdOznacitVseVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -622,7 +637,7 @@
             this.cmdOtevritPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdOtevritPlan.Location = new System.Drawing.Point(385, 4);
             this.cmdOtevritPlan.Name = "cmdOtevritPlan";
-            this.cmdOtevritPlan.Size = new System.Drawing.Size(95, 28);
+            this.cmdOtevritPlan.Size = new System.Drawing.Size(88, 28);
             this.cmdOtevritPlan.TabIndex = 5;
             this.cmdOtevritPlan.Text = "Otevřít plán";
             this.cmdOtevritPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1710,6 +1725,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano;
         private System.Windows.Forms.DataGridViewButtonColumn Nacist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod;
+        private System.Windows.Forms.Button cmdExportPlan;
     }
 }
 
