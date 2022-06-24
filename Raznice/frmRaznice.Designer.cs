@@ -197,21 +197,22 @@
             this.lblMark,
             this.btnReconnect,
             this.toolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 613);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 760);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(931, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1241, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            this.lblStatus.Size = new System.Drawing.Size(0, 16);
             // 
             // lblMark
             // 
             this.lblMark.Name = "lblMark";
-            this.lblMark.Size = new System.Drawing.Size(0, 17);
+            this.lblMark.Size = new System.Drawing.Size(0, 16);
             // 
             // btnReconnect
             // 
@@ -228,15 +229,16 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
             // 
             // chkReady
             // 
             this.chkReady.AutoSize = true;
             this.chkReady.Enabled = false;
-            this.chkReady.Location = new System.Drawing.Point(21, 19);
+            this.chkReady.Location = new System.Drawing.Point(28, 23);
+            this.chkReady.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkReady.Name = "chkReady";
-            this.chkReady.Size = new System.Drawing.Size(115, 17);
+            this.chkReady.Size = new System.Drawing.Size(141, 20);
             this.chkReady.TabIndex = 17;
             this.chkReady.Text = "připraveno k ražbě";
             this.chkReady.UseVisualStyleBackColor = true;
@@ -245,9 +247,10 @@
             // 
             this.chkDone.AutoSize = true;
             this.chkDone.Enabled = false;
-            this.chkDone.Location = new System.Drawing.Point(21, 42);
+            this.chkDone.Location = new System.Drawing.Point(28, 52);
+            this.chkDone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkDone.Name = "chkDone";
-            this.chkDone.Size = new System.Drawing.Size(109, 17);
+            this.chkDone.Size = new System.Drawing.Size(134, 20);
             this.chkDone.TabIndex = 18;
             this.chkDone.Text = "ražba dokončena";
             this.chkDone.UseVisualStyleBackColor = true;
@@ -257,9 +260,11 @@
             // 
             this.groupBox1.Controls.Add(this.chkReady);
             this.groupBox1.Controls.Add(this.chkDone);
-            this.groupBox1.Location = new System.Drawing.Point(767, 49);
+            this.groupBox1.Location = new System.Drawing.Point(1023, 60);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(153, 77);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(204, 95);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stav raznice";
@@ -268,9 +273,10 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(767, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(1023, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(153, 42);
+            this.pictureBox1.Size = new System.Drawing.Size(204, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -278,9 +284,11 @@
             // groupBoxManualOvladani
             // 
             this.groupBoxManualOvladani.Controls.Add(this.btnStop);
-            this.groupBoxManualOvladani.Location = new System.Drawing.Point(767, 132);
+            this.groupBoxManualOvladani.Location = new System.Drawing.Point(1023, 162);
+            this.groupBoxManualOvladani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxManualOvladani.Name = "groupBoxManualOvladani";
-            this.groupBoxManualOvladani.Size = new System.Drawing.Size(153, 139);
+            this.groupBoxManualOvladani.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxManualOvladani.Size = new System.Drawing.Size(204, 171);
             this.groupBoxManualOvladani.TabIndex = 26;
             this.groupBoxManualOvladani.TabStop = false;
             this.groupBoxManualOvladani.Text = "Manuální ovládání";
@@ -290,9 +298,10 @@
             this.btnStop.BackColor = System.Drawing.Color.Red;
             this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnStop.ForeColor = System.Drawing.Color.White;
-            this.btnStop.Location = new System.Drawing.Point(18, 19);
+            this.btnStop.Location = new System.Drawing.Point(24, 23);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(112, 38);
+            this.btnStop.Size = new System.Drawing.Size(149, 47);
             this.btnStop.TabIndex = 33;
             this.btnStop.Text = "STOP";
             this.btnStop.UseVisualStyleBackColor = false;
@@ -306,9 +315,11 @@
             this.groupBox4.Controls.Add(this.txtSarze);
             this.groupBox4.Controls.Add(this.lblSarze);
             this.groupBox4.Controls.Add(this.tabControl1);
-            this.groupBox4.Location = new System.Drawing.Point(0, 46);
+            this.groupBox4.Location = new System.Drawing.Point(0, 57);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(756, 566);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(1008, 697);
             this.groupBox4.TabIndex = 29;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Ražba";
@@ -318,18 +329,20 @@
             this.cbTypFilmu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTypFilmu.DropDownWidth = 200;
             this.cbTypFilmu.FormattingEnabled = true;
-            this.cbTypFilmu.Location = new System.Drawing.Point(193, 15);
+            this.cbTypFilmu.Location = new System.Drawing.Point(257, 18);
+            this.cbTypFilmu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTypFilmu.Name = "cbTypFilmu";
-            this.cbTypFilmu.Size = new System.Drawing.Size(121, 21);
+            this.cbTypFilmu.Size = new System.Drawing.Size(160, 24);
             this.cbTypFilmu.TabIndex = 69;
             this.cbTypFilmu.SelectedIndexChanged += new System.EventHandler(this.cbTypFilmu_SelectedIndexChanged);
             // 
             // txtTyp
             // 
-            this.txtTyp.Location = new System.Drawing.Point(320, 16);
+            this.txtTyp.Location = new System.Drawing.Point(427, 20);
+            this.txtTyp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTyp.Mask = "0";
             this.txtTyp.Name = "txtTyp";
-            this.txtTyp.Size = new System.Drawing.Size(21, 20);
+            this.txtTyp.Size = new System.Drawing.Size(27, 22);
             this.txtTyp.TabIndex = 59;
             this.txtTyp.Text = "2";
             this.txtTyp.Visible = false;
@@ -337,18 +350,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(144, 20);
+            this.label3.Location = new System.Drawing.Point(192, 25);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 58;
             this.label3.Text = "Typ filmu:";
             // 
             // txtSarze
             // 
-            this.txtSarze.Location = new System.Drawing.Point(66, 16);
+            this.txtSarze.Location = new System.Drawing.Point(88, 20);
+            this.txtSarze.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSarze.Mask = "?";
             this.txtSarze.Name = "txtSarze";
-            this.txtSarze.Size = new System.Drawing.Size(21, 20);
+            this.txtSarze.Size = new System.Drawing.Size(27, 22);
             this.txtSarze.TabIndex = 55;
             this.txtSarze.Text = "A";
             this.txtSarze.LostFocus += new System.EventHandler(this.txtSarze_LostFocus);
@@ -356,9 +371,10 @@
             // lblSarze
             // 
             this.lblSarze.AutoSize = true;
-            this.lblSarze.Location = new System.Drawing.Point(8, 20);
+            this.lblSarze.Location = new System.Drawing.Point(11, 25);
+            this.lblSarze.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSarze.Name = "lblSarze";
-            this.lblSarze.Size = new System.Drawing.Size(61, 13);
+            this.lblSarze.Size = new System.Drawing.Size(75, 16);
             this.lblSarze.TabIndex = 54;
             this.lblSarze.Text = "Šarže filmu:";
             // 
@@ -368,10 +384,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(6, 42);
+            this.tabControl1.Location = new System.Drawing.Point(8, 52);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(748, 521);
+            this.tabControl1.Size = new System.Drawing.Size(997, 641);
             this.tabControl1.TabIndex = 34;
             // 
             // tabPage3
@@ -400,21 +417,24 @@
             this.tabPage3.Controls.Add(this.dataGridView2);
             this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Controls.Add(this.groupBox7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(740, 495);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Size = new System.Drawing.Size(989, 612);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Z tabulky";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // cmdExportPlan
             // 
+            this.cmdExportPlan.Enabled = false;
             this.cmdExportPlan.Image = ((System.Drawing.Image)(resources.GetObject("cmdExportPlan.Image")));
             this.cmdExportPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdExportPlan.Location = new System.Drawing.Point(669, 4);
+            this.cmdExportPlan.Location = new System.Drawing.Point(892, 5);
+            this.cmdExportPlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdExportPlan.Name = "cmdExportPlan";
-            this.cmdExportPlan.Size = new System.Drawing.Size(66, 28);
+            this.cmdExportPlan.Size = new System.Drawing.Size(88, 34);
             this.cmdExportPlan.TabIndex = 82;
             this.cmdExportPlan.Text = "Export";
             this.cmdExportPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -425,9 +445,10 @@
             // 
             this.cmdOdeznacitVseVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdOdeznacitVseVyrazit.Image")));
             this.cmdOdeznacitVseVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOdeznacitVseVyrazit.Location = new System.Drawing.Point(569, 4);
+            this.cmdOdeznacitVseVyrazit.Location = new System.Drawing.Point(759, 5);
+            this.cmdOdeznacitVseVyrazit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOdeznacitVseVyrazit.Name = "cmdOdeznacitVseVyrazit";
-            this.cmdOdeznacitVseVyrazit.Size = new System.Drawing.Size(81, 28);
+            this.cmdOdeznacitVseVyrazit.Size = new System.Drawing.Size(108, 34);
             this.cmdOdeznacitVseVyrazit.TabIndex = 81;
             this.cmdOdeznacitVseVyrazit.Text = "Odeznačit";
             this.cmdOdeznacitVseVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -438,9 +459,10 @@
             // 
             this.cmdOznacitVseVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdOznacitVseVyrazit.Image")));
             this.cmdOznacitVseVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOznacitVseVyrazit.Location = new System.Drawing.Point(486, 4);
+            this.cmdOznacitVseVyrazit.Location = new System.Drawing.Point(648, 5);
+            this.cmdOznacitVseVyrazit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOznacitVseVyrazit.Name = "cmdOznacitVseVyrazit";
-            this.cmdOznacitVseVyrazit.Size = new System.Drawing.Size(81, 28);
+            this.cmdOznacitVseVyrazit.Size = new System.Drawing.Size(108, 34);
             this.cmdOznacitVseVyrazit.TabIndex = 80;
             this.cmdOznacitVseVyrazit.Text = "Vše Vyrazit";
             this.cmdOznacitVseVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -450,36 +472,40 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(635, 234);
+            this.label5.Location = new System.Drawing.Point(847, 288);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(50, 16);
             this.label5.TabIndex = 78;
             this.label5.Text = "Vyrazit:";
             // 
             // lblDozimetruVyrazit
             // 
             this.lblDozimetruVyrazit.AutoSize = true;
-            this.lblDozimetruVyrazit.Location = new System.Drawing.Point(695, 234);
+            this.lblDozimetruVyrazit.Location = new System.Drawing.Point(927, 288);
+            this.lblDozimetruVyrazit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozimetruVyrazit.Name = "lblDozimetruVyrazit";
-            this.lblDozimetruVyrazit.Size = new System.Drawing.Size(13, 13);
+            this.lblDozimetruVyrazit.Size = new System.Drawing.Size(14, 16);
             this.lblDozimetruVyrazit.TabIndex = 79;
             this.lblDozimetruVyrazit.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(635, 204);
+            this.label2.Location = new System.Drawing.Point(847, 251);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(59, 16);
             this.label2.TabIndex = 76;
             this.label2.Text = "Podniků:";
             // 
             // lblPodnikuProVyrazeni
             // 
             this.lblPodnikuProVyrazeni.AutoSize = true;
-            this.lblPodnikuProVyrazeni.Location = new System.Drawing.Point(695, 204);
+            this.lblPodnikuProVyrazeni.Location = new System.Drawing.Point(927, 251);
+            this.lblPodnikuProVyrazeni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPodnikuProVyrazeni.Name = "lblPodnikuProVyrazeni";
-            this.lblPodnikuProVyrazeni.Size = new System.Drawing.Size(13, 13);
+            this.lblPodnikuProVyrazeni.Size = new System.Drawing.Size(14, 16);
             this.lblPodnikuProVyrazeni.TabIndex = 77;
             this.lblPodnikuProVyrazeni.Text = "0";
             // 
@@ -487,9 +513,10 @@
             // 
             this.cmdOdeznacitVse.Image = ((System.Drawing.Image)(resources.GetObject("cmdOdeznacitVse.Image")));
             this.cmdOdeznacitVse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOdeznacitVse.Location = new System.Drawing.Point(635, 375);
+            this.cmdOdeznacitVse.Location = new System.Drawing.Point(847, 462);
+            this.cmdOdeznacitVse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOdeznacitVse.Name = "cmdOdeznacitVse";
-            this.cmdOdeznacitVse.Size = new System.Drawing.Size(96, 28);
+            this.cmdOdeznacitVse.Size = new System.Drawing.Size(128, 34);
             this.cmdOdeznacitVse.TabIndex = 74;
             this.cmdOdeznacitVse.Text = "Odeznačit";
             this.cmdOdeznacitVse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -500,9 +527,10 @@
             // 
             this.cmdOznacitVse.Image = ((System.Drawing.Image)(resources.GetObject("cmdOznacitVse.Image")));
             this.cmdOznacitVse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOznacitVse.Location = new System.Drawing.Point(635, 346);
+            this.cmdOznacitVse.Location = new System.Drawing.Point(847, 426);
+            this.cmdOznacitVse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOznacitVse.Name = "cmdOznacitVse";
-            this.cmdOznacitVse.Size = new System.Drawing.Size(96, 28);
+            this.cmdOznacitVse.Size = new System.Drawing.Size(128, 34);
             this.cmdOznacitVse.TabIndex = 73;
             this.cmdOznacitVse.Text = "Označit vše";
             this.cmdOznacitVse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -511,9 +539,10 @@
             // 
             // chkPtatSePredRazbou
             // 
-            this.chkPtatSePredRazbou.Location = new System.Drawing.Point(638, 302);
+            this.chkPtatSePredRazbou.Location = new System.Drawing.Point(851, 372);
+            this.chkPtatSePredRazbou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkPtatSePredRazbou.Name = "chkPtatSePredRazbou";
-            this.chkPtatSePredRazbou.Size = new System.Drawing.Size(84, 34);
+            this.chkPtatSePredRazbou.Size = new System.Drawing.Size(112, 42);
             this.chkPtatSePredRazbou.TabIndex = 72;
             this.chkPtatSePredRazbou.Text = "ptát se před ražením";
             this.chkPtatSePredRazbou.UseVisualStyleBackColor = true;
@@ -521,18 +550,20 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(635, 219);
+            this.label17.Location = new System.Drawing.Point(847, 270);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(54, 13);
+            this.label17.Size = new System.Drawing.Size(67, 16);
             this.label17.TabIndex = 70;
             this.label17.Text = "Vyraženo:";
             // 
             // lblVyrazenoTab
             // 
             this.lblVyrazenoTab.AutoSize = true;
-            this.lblVyrazenoTab.Location = new System.Drawing.Point(695, 219);
+            this.lblVyrazenoTab.Location = new System.Drawing.Point(927, 270);
+            this.lblVyrazenoTab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVyrazenoTab.Name = "lblVyrazenoTab";
-            this.lblVyrazenoTab.Size = new System.Drawing.Size(13, 13);
+            this.lblVyrazenoTab.Size = new System.Drawing.Size(14, 16);
             this.lblVyrazenoTab.TabIndex = 71;
             this.lblVyrazenoTab.Text = "0";
             // 
@@ -541,9 +572,10 @@
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(643, 87);
+            this.pictureBox3.Location = new System.Drawing.Point(857, 107);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(71, 28);
+            this.pictureBox3.Size = new System.Drawing.Size(95, 34);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 69;
             this.pictureBox3.TabStop = false;
@@ -552,9 +584,10 @@
             // 
             this.lblEANPopis_radek_2.BackColor = System.Drawing.Color.White;
             this.lblEANPopis_radek_2.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblEANPopis_radek_2.Location = new System.Drawing.Point(629, 68);
+            this.lblEANPopis_radek_2.Location = new System.Drawing.Point(839, 84);
+            this.lblEANPopis_radek_2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEANPopis_radek_2.Name = "lblEANPopis_radek_2";
-            this.lblEANPopis_radek_2.Size = new System.Drawing.Size(99, 18);
+            this.lblEANPopis_radek_2.Size = new System.Drawing.Size(132, 22);
             this.lblEANPopis_radek_2.TabIndex = 68;
             this.lblEANPopis_radek_2.Text = "Horak";
             this.lblEANPopis_radek_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -563,9 +596,10 @@
             // 
             this.lblDozPopis_radek_1.BackColor = System.Drawing.Color.White;
             this.lblDozPopis_radek_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDozPopis_radek_1.Location = new System.Drawing.Point(630, 134);
+            this.lblDozPopis_radek_1.Location = new System.Drawing.Point(840, 165);
+            this.lblDozPopis_radek_1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozPopis_radek_1.Name = "lblDozPopis_radek_1";
-            this.lblDozPopis_radek_1.Size = new System.Drawing.Size(99, 18);
+            this.lblDozPopis_radek_1.Size = new System.Drawing.Size(132, 22);
             this.lblDozPopis_radek_1.TabIndex = 67;
             this.lblDozPopis_radek_1.Text = "04373123";
             this.lblDozPopis_radek_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -574,9 +608,10 @@
             // 
             this.lblEANPopis_radek_1.BackColor = System.Drawing.Color.White;
             this.lblEANPopis_radek_1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblEANPopis_radek_1.Location = new System.Drawing.Point(623, 48);
+            this.lblEANPopis_radek_1.Location = new System.Drawing.Point(831, 59);
+            this.lblEANPopis_radek_1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEANPopis_radek_1.Name = "lblEANPopis_radek_1";
-            this.lblEANPopis_radek_1.Size = new System.Drawing.Size(112, 18);
+            this.lblEANPopis_radek_1.Size = new System.Drawing.Size(149, 22);
             this.lblEANPopis_radek_1.TabIndex = 66;
             this.lblEANPopis_radek_1.Text = "1D_04_373/1_123";
             this.lblEANPopis_radek_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -586,9 +621,10 @@
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(620, 44);
+            this.pictureBox2.Location = new System.Drawing.Point(827, 54);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(117, 112);
+            this.pictureBox2.Size = new System.Drawing.Size(155, 137);
             this.pictureBox2.TabIndex = 65;
             this.pictureBox2.TabStop = false;
             // 
@@ -597,9 +633,10 @@
             this.chkRazitDozimetryTab.AutoSize = true;
             this.chkRazitDozimetryTab.Checked = true;
             this.chkRazitDozimetryTab.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRazitDozimetryTab.Location = new System.Drawing.Point(638, 261);
+            this.chkRazitDozimetryTab.Location = new System.Drawing.Point(851, 321);
+            this.chkRazitDozimetryTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkRazitDozimetryTab.Name = "chkRazitDozimetryTab";
-            this.chkRazitDozimetryTab.Size = new System.Drawing.Size(92, 17);
+            this.chkRazitDozimetryTab.Size = new System.Drawing.Size(114, 20);
             this.chkRazitDozimetryTab.TabIndex = 60;
             this.chkRazitDozimetryTab.Text = "razit dozimetry";
             this.chkRazitDozimetryTab.UseVisualStyleBackColor = true;
@@ -610,9 +647,10 @@
             this.chkTiskSouborTab.Checked = true;
             this.chkTiskSouborTab.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkTiskSouborTab.Enabled = false;
-            this.chkTiskSouborTab.Location = new System.Drawing.Point(638, 279);
+            this.chkTiskSouborTab.Location = new System.Drawing.Point(851, 343);
+            this.chkTiskSouborTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkTiskSouborTab.Name = "chkTiskSouborTab";
-            this.chkTiskSouborTab.Size = new System.Drawing.Size(82, 17);
+            this.chkTiskSouborTab.Size = new System.Drawing.Size(100, 20);
             this.chkTiskSouborTab.TabIndex = 59;
             this.chkTiskSouborTab.Text = "tisk popisků";
             this.chkTiskSouborTab.UseVisualStyleBackColor = true;
@@ -622,9 +660,10 @@
             // 
             this.cmdVyrazit.Image = ((System.Drawing.Image)(resources.GetObject("cmdVyrazit.Image")));
             this.cmdVyrazit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdVyrazit.Location = new System.Drawing.Point(635, 163);
+            this.cmdVyrazit.Location = new System.Drawing.Point(847, 201);
+            this.cmdVyrazit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdVyrazit.Name = "cmdVyrazit";
-            this.cmdVyrazit.Size = new System.Drawing.Size(96, 28);
+            this.cmdVyrazit.Size = new System.Drawing.Size(128, 34);
             this.cmdVyrazit.TabIndex = 6;
             this.cmdVyrazit.Text = "Vyrazit ";
             this.cmdVyrazit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -635,9 +674,10 @@
             // 
             this.cmdOtevritPlan.Image = ((System.Drawing.Image)(resources.GetObject("cmdOtevritPlan.Image")));
             this.cmdOtevritPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdOtevritPlan.Location = new System.Drawing.Point(385, 4);
+            this.cmdOtevritPlan.Location = new System.Drawing.Point(513, 5);
+            this.cmdOtevritPlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOtevritPlan.Name = "cmdOtevritPlan";
-            this.cmdOtevritPlan.Size = new System.Drawing.Size(88, 28);
+            this.cmdOtevritPlan.Size = new System.Drawing.Size(117, 34);
             this.cmdOtevritPlan.TabIndex = 5;
             this.cmdOtevritPlan.Text = "Otevřít plán";
             this.cmdOtevritPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -680,7 +720,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView2.Location = new System.Drawing.Point(4, 165);
+            this.dataGridView2.Location = new System.Drawing.Point(5, 203);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -693,7 +734,7 @@
             this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.ShowEditingIcon = false;
-            this.dataGridView2.Size = new System.Drawing.Size(620, 326);
+            this.dataGridView2.Size = new System.Drawing.Size(827, 401);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -841,7 +882,8 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 7);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -855,13 +897,14 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(376, 155);
+            this.dataGridView1.Size = new System.Drawing.Size(501, 191);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Vyrazit
             // 
             this.Vyrazit.HeaderText = "Vyrazit";
+            this.Vyrazit.MinimumWidth = 6;
             this.Vyrazit.Name = "Vyrazit";
             this.Vyrazit.ReadOnly = true;
             this.Vyrazit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -932,9 +975,11 @@
             this.groupBox7.Controls.Add(this.lblDozNumTab_bezCOD);
             this.groupBox7.Controls.Add(this.label20);
             this.groupBox7.Controls.Add(this.lblDozPopisTab);
-            this.groupBox7.Location = new System.Drawing.Point(385, 33);
+            this.groupBox7.Location = new System.Drawing.Point(513, 41);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(355, 129);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Size = new System.Drawing.Size(473, 159);
             this.groupBox7.TabIndex = 75;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Dozimetr";
@@ -942,54 +987,60 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(4, 79);
+            this.label25.Location = new System.Drawing.Point(5, 97);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(67, 13);
+            this.label25.Size = new System.Drawing.Size(81, 16);
             this.label25.TabIndex = 70;
             this.label25.Text = "Tisk EAN13:";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(4, 60);
+            this.label24.Location = new System.Drawing.Point(5, 74);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(60, 13);
+            this.label24.Size = new System.Drawing.Size(70, 16);
             this.label24.TabIndex = 69;
             this.label24.Text = "Tisk štítek:";
             // 
             // lblStitekTiskEan
             // 
             this.lblStitekTiskEan.AutoSize = true;
-            this.lblStitekTiskEan.Location = new System.Drawing.Point(83, 79);
+            this.lblStitekTiskEan.Location = new System.Drawing.Point(111, 97);
+            this.lblStitekTiskEan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStitekTiskEan.Name = "lblStitekTiskEan";
-            this.lblStitekTiskEan.Size = new System.Drawing.Size(10, 13);
+            this.lblStitekTiskEan.Size = new System.Drawing.Size(11, 16);
             this.lblStitekTiskEan.TabIndex = 68;
             this.lblStitekTiskEan.Text = "-";
             // 
             // lblStitekTisk
             // 
             this.lblStitekTisk.AutoSize = true;
-            this.lblStitekTisk.Location = new System.Drawing.Point(83, 60);
+            this.lblStitekTisk.Location = new System.Drawing.Point(111, 74);
+            this.lblStitekTisk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStitekTisk.Name = "lblStitekTisk";
-            this.lblStitekTisk.Size = new System.Drawing.Size(10, 13);
+            this.lblStitekTisk.Size = new System.Drawing.Size(11, 16);
             this.lblStitekTisk.TabIndex = 67;
             this.lblStitekTisk.Text = "-";
             // 
             // lblDozimetrRazba
             // 
             this.lblDozimetrRazba.AutoSize = true;
-            this.lblDozimetrRazba.Location = new System.Drawing.Point(83, 37);
+            this.lblDozimetrRazba.Location = new System.Drawing.Point(111, 46);
+            this.lblDozimetrRazba.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozimetrRazba.Name = "lblDozimetrRazba";
-            this.lblDozimetrRazba.Size = new System.Drawing.Size(10, 13);
+            this.lblDozimetrRazba.Size = new System.Drawing.Size(11, 16);
             this.lblDozimetrRazba.TabIndex = 66;
             this.lblDozimetrRazba.Text = "-";
             // 
             // lblDozNumTab_bezCOD
             // 
             this.lblDozNumTab_bezCOD.AutoSize = true;
-            this.lblDozNumTab_bezCOD.Location = new System.Drawing.Point(83, 96);
+            this.lblDozNumTab_bezCOD.Location = new System.Drawing.Point(111, 118);
+            this.lblDozNumTab_bezCOD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozNumTab_bezCOD.Name = "lblDozNumTab_bezCOD";
-            this.lblDozNumTab_bezCOD.Size = new System.Drawing.Size(10, 13);
+            this.lblDozNumTab_bezCOD.Size = new System.Drawing.Size(11, 16);
             this.lblDozNumTab_bezCOD.TabIndex = 65;
             this.lblDozNumTab_bezCOD.Text = "-";
             this.lblDozNumTab_bezCOD.Visible = false;
@@ -997,27 +1048,30 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(4, 37);
+            this.label20.Location = new System.Drawing.Point(5, 46);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(82, 13);
+            this.label20.Size = new System.Drawing.Size(101, 16);
             this.label20.TabIndex = 61;
             this.label20.Text = "Číslo dozimetru:";
             // 
             // lblDozPopisTab
             // 
             this.lblDozPopisTab.AutoSize = true;
-            this.lblDozPopisTab.Location = new System.Drawing.Point(95, 54);
+            this.lblDozPopisTab.Location = new System.Drawing.Point(127, 66);
+            this.lblDozPopisTab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozPopisTab.Name = "lblDozPopisTab";
-            this.lblDozPopisTab.Size = new System.Drawing.Size(0, 13);
+            this.lblDozPopisTab.Size = new System.Drawing.Size(0, 16);
             this.lblDozPopisTab.TabIndex = 64;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(740, 495);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Size = new System.Drawing.Size(989, 612);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Postupná";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1039,9 +1093,11 @@
             this.groupBox5.Controls.Add(this.txtPodnik);
             this.groupBox5.Controls.Add(this.txtDozimetr);
             this.groupBox5.Controls.Add(this.txtOddeleni);
-            this.groupBox5.Location = new System.Drawing.Point(6, 9);
+            this.groupBox5.Location = new System.Drawing.Point(8, 11);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(672, 194);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Size = new System.Drawing.Size(896, 239);
             this.groupBox5.TabIndex = 51;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Postupné ražení dozimetrů";
@@ -1049,17 +1105,19 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(385, 79);
+            this.label28.Location = new System.Drawing.Point(513, 97);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.Size = new System.Drawing.Size(48, 16);
             this.label28.TabIndex = 73;
             this.label28.Text = "Jméno";
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(155, 154);
+            this.btnStart.Location = new System.Drawing.Point(207, 190);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(112, 24);
+            this.btnStart.Size = new System.Drawing.Size(149, 30);
             this.btnStart.TabIndex = 34;
             this.btnStart.Text = "Vyrazit dozimetr";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -1067,120 +1125,134 @@
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(156, 42);
+            this.txtText.Location = new System.Drawing.Point(208, 52);
+            this.txtText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(100, 20);
+            this.txtText.Size = new System.Drawing.Size(132, 22);
             this.txtText.TabIndex = 35;
             this.txtText.Text = "05019002";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 42);
+            this.label1.Location = new System.Drawing.Point(32, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(101, 16);
             this.label1.TabIndex = 41;
             this.label1.Text = "Číslo dozimetru:";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(266, 79);
+            this.label27.Location = new System.Drawing.Point(355, 97);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(111, 13);
+            this.label27.Size = new System.Drawing.Size(136, 16);
             this.label27.TabIndex = 72;
             this.label27.Text = "Podnik/Odd/Dozimetr";
             // 
             // txtJmeno
             // 
-            this.txtJmeno.Location = new System.Drawing.Point(388, 95);
+            this.txtJmeno.Location = new System.Drawing.Point(517, 117);
+            this.txtJmeno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtJmeno.Name = "txtJmeno";
-            this.txtJmeno.Size = new System.Drawing.Size(100, 20);
+            this.txtJmeno.Size = new System.Drawing.Size(132, 22);
             this.txtJmeno.TabIndex = 63;
             this.txtJmeno.Text = "Vejsada";
             // 
             // txtObdobi
             // 
-            this.txtObdobi.Location = new System.Drawing.Point(155, 95);
+            this.txtObdobi.Location = new System.Drawing.Point(207, 117);
+            this.txtObdobi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObdobi.Name = "txtObdobi";
-            this.txtObdobi.Size = new System.Drawing.Size(18, 20);
+            this.txtObdobi.Size = new System.Drawing.Size(23, 22);
             this.txtObdobi.TabIndex = 65;
             this.txtObdobi.Text = "3";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(192, 79);
+            this.label26.Location = new System.Drawing.Point(256, 97);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(62, 13);
+            this.label26.Size = new System.Drawing.Size(72, 16);
             this.label26.TabIndex = 71;
             this.label26.Text = "Měsíc/Rok";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(22, 98);
+            this.label13.Location = new System.Drawing.Point(29, 121);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 13);
+            this.label13.Size = new System.Drawing.Size(149, 16);
             this.label13.TabIndex = 64;
             this.label13.Text = "Text na štítek dozimetru:";
             // 
             // txtMesic
             // 
-            this.txtMesic.Location = new System.Drawing.Point(195, 95);
+            this.txtMesic.Location = new System.Drawing.Point(260, 117);
+            this.txtMesic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMesic.Name = "txtMesic";
-            this.txtMesic.Size = new System.Drawing.Size(27, 20);
+            this.txtMesic.Size = new System.Drawing.Size(35, 22);
             this.txtMesic.TabIndex = 66;
             this.txtMesic.Text = "05";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(152, 79);
+            this.label18.Location = new System.Drawing.Point(203, 97);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.Size = new System.Drawing.Size(52, 16);
             this.label18.TabIndex = 62;
             this.label18.Text = "Období";
             // 
             // txtRok
             // 
-            this.txtRok.Location = new System.Drawing.Point(228, 95);
+            this.txtRok.Location = new System.Drawing.Point(304, 117);
+            this.txtRok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRok.Name = "txtRok";
-            this.txtRok.Size = new System.Drawing.Size(27, 20);
+            this.txtRok.Size = new System.Drawing.Size(35, 22);
             this.txtRok.TabIndex = 67;
             this.txtRok.Text = "16";
             // 
             // txtPodnik
             // 
-            this.txtPodnik.Location = new System.Drawing.Point(269, 95);
+            this.txtPodnik.Location = new System.Drawing.Point(359, 117);
+            this.txtPodnik.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPodnik.Name = "txtPodnik";
-            this.txtPodnik.Size = new System.Drawing.Size(37, 20);
+            this.txtPodnik.Size = new System.Drawing.Size(48, 22);
             this.txtPodnik.TabIndex = 68;
             this.txtPodnik.Text = "320";
             // 
             // txtDozimetr
             // 
-            this.txtDozimetr.Location = new System.Drawing.Point(334, 95);
+            this.txtDozimetr.Location = new System.Drawing.Point(445, 117);
+            this.txtDozimetr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDozimetr.Name = "txtDozimetr";
-            this.txtDozimetr.Size = new System.Drawing.Size(37, 20);
+            this.txtDozimetr.Size = new System.Drawing.Size(48, 22);
             this.txtDozimetr.TabIndex = 70;
             this.txtDozimetr.Text = "320";
             // 
             // txtOddeleni
             // 
-            this.txtOddeleni.Location = new System.Drawing.Point(311, 95);
+            this.txtOddeleni.Location = new System.Drawing.Point(415, 117);
+            this.txtOddeleni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOddeleni.Name = "txtOddeleni";
-            this.txtOddeleni.Size = new System.Drawing.Size(18, 20);
+            this.txtOddeleni.Size = new System.Drawing.Size(23, 22);
             this.txtOddeleni.TabIndex = 69;
             this.txtOddeleni.Text = "9";
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(740, 495);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Size = new System.Drawing.Size(989, 612);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ze souboru";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1206,9 +1278,11 @@
             this.groupBox6.Controls.Add(this.chkTiskSoubor);
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.lblDozPopis);
-            this.groupBox6.Location = new System.Drawing.Point(6, 9);
+            this.groupBox6.Location = new System.Drawing.Point(8, 11);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(667, 219);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Size = new System.Drawing.Size(889, 270);
             this.groupBox6.TabIndex = 61;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Ražení dozimetrů pomocí textového souboru";
@@ -1217,9 +1291,10 @@
             // 
             this.btnStartFromFile.Image = ((System.Drawing.Image)(resources.GetObject("btnStartFromFile.Image")));
             this.btnStartFromFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStartFromFile.Location = new System.Drawing.Point(19, 117);
+            this.btnStartFromFile.Location = new System.Drawing.Point(25, 144);
+            this.btnStartFromFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStartFromFile.Name = "btnStartFromFile";
-            this.btnStartFromFile.Size = new System.Drawing.Size(122, 28);
+            this.btnStartFromFile.Size = new System.Drawing.Size(163, 34);
             this.btnStartFromFile.TabIndex = 42;
             this.btnStartFromFile.Text = "Vyrazit ze souboru";
             this.btnStartFromFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1230,9 +1305,10 @@
             // 
             this.btnLoadFile.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadFile.Image")));
             this.btnLoadFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoadFile.Location = new System.Drawing.Point(432, 117);
+            this.btnLoadFile.Location = new System.Drawing.Point(576, 144);
+            this.btnLoadFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(67, 28);
+            this.btnLoadFile.Size = new System.Drawing.Size(89, 34);
             this.btnLoadFile.TabIndex = 44;
             this.btnLoadFile.Text = "Otevřít";
             this.btnLoadFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1242,45 +1318,50 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(19, 54);
+            this.label29.Location = new System.Drawing.Point(25, 66);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(177, 13);
+            this.label29.Size = new System.Drawing.Size(212, 16);
             this.label29.TabIndex = 62;
             this.label29.Text = "Text štítku následujícího dozimetru:";
             // 
             // lblDozPopisEAN
             // 
             this.lblDozPopisEAN.AutoSize = true;
-            this.lblDozPopisEAN.Location = new System.Drawing.Point(203, 79);
+            this.lblDozPopisEAN.Location = new System.Drawing.Point(271, 97);
+            this.lblDozPopisEAN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozPopisEAN.Name = "lblDozPopisEAN";
-            this.lblDozPopisEAN.Size = new System.Drawing.Size(10, 13);
+            this.lblDozPopisEAN.Size = new System.Drawing.Size(11, 16);
             this.lblDozPopisEAN.TabIndex = 61;
             this.lblDozPopisEAN.Text = "-";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(559, 127);
+            this.label16.Location = new System.Drawing.Point(745, 156);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 13);
+            this.label16.Size = new System.Drawing.Size(56, 16);
             this.label16.TabIndex = 59;
             this.label16.Text = "Celkem:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 79);
+            this.label12.Location = new System.Drawing.Point(25, 97);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(172, 13);
+            this.label12.Size = new System.Drawing.Size(210, 16);
             this.label12.TabIndex = 49;
             this.label12.Text = "Text EAN následujícího dozimetru:";
             // 
             // lblCelkem
             // 
             this.lblCelkem.AutoSize = true;
-            this.lblCelkem.Location = new System.Drawing.Point(619, 127);
+            this.lblCelkem.Location = new System.Drawing.Point(825, 156);
+            this.lblCelkem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCelkem.Name = "lblCelkem";
-            this.lblCelkem.Size = new System.Drawing.Size(13, 13);
+            this.lblCelkem.Size = new System.Drawing.Size(14, 16);
             this.lblCelkem.TabIndex = 60;
             this.lblCelkem.Text = "0";
             // 
@@ -1289,76 +1370,85 @@
             this.chkRazitDozimetry.AutoSize = true;
             this.chkRazitDozimetry.Checked = true;
             this.chkRazitDozimetry.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkRazitDozimetry.Location = new System.Drawing.Point(146, 168);
+            this.chkRazitDozimetry.Location = new System.Drawing.Point(195, 207);
+            this.chkRazitDozimetry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkRazitDozimetry.Name = "chkRazitDozimetry";
-            this.chkRazitDozimetry.Size = new System.Drawing.Size(92, 17);
+            this.chkRazitDozimetry.Size = new System.Drawing.Size(114, 20);
             this.chkRazitDozimetry.TabIndex = 58;
             this.chkRazitDozimetry.Text = "razit dozimetry";
             this.chkRazitDozimetry.UseVisualStyleBackColor = true;
             // 
             // txtFile
             // 
-            this.txtFile.Location = new System.Drawing.Point(145, 120);
+            this.txtFile.Location = new System.Drawing.Point(193, 148);
+            this.txtFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(281, 20);
+            this.txtFile.Size = new System.Drawing.Size(373, 22);
             this.txtFile.TabIndex = 43;
             // 
             // txtRazitDoz
             // 
-            this.txtRazitDoz.Location = new System.Drawing.Point(352, 144);
+            this.txtRazitDoz.Location = new System.Drawing.Point(469, 177);
+            this.txtRazitDoz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRazitDoz.Name = "txtRazitDoz";
-            this.txtRazitDoz.Size = new System.Drawing.Size(40, 20);
+            this.txtRazitDoz.Size = new System.Drawing.Size(52, 22);
             this.txtRazitDoz.TabIndex = 56;
             // 
             // txtRazitOdDoz
             // 
-            this.txtRazitOdDoz.Location = new System.Drawing.Point(146, 144);
+            this.txtRazitOdDoz.Location = new System.Drawing.Point(195, 177);
+            this.txtRazitOdDoz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRazitOdDoz.Name = "txtRazitOdDoz";
-            this.txtRazitOdDoz.Size = new System.Drawing.Size(92, 20);
+            this.txtRazitOdDoz.Size = new System.Drawing.Size(121, 22);
             this.txtRazitOdDoz.TabIndex = 57;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(19, 28);
+            this.label10.Location = new System.Drawing.Point(25, 34);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(150, 13);
+            this.label10.Size = new System.Drawing.Size(183, 16);
             this.label10.TabIndex = 45;
             this.label10.Text = "Číslo následujícího dozimetru:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(266, 147);
+            this.label15.Location = new System.Drawing.Point(355, 181);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 13);
+            this.label15.Size = new System.Drawing.Size(106, 16);
             this.label15.TabIndex = 56;
             this.label15.Text = "Počet dozimetrů:";
             // 
             // lblDozNum
             // 
             this.lblDozNum.AutoSize = true;
-            this.lblDozNum.Location = new System.Drawing.Point(203, 28);
+            this.lblDozNum.Location = new System.Drawing.Point(271, 34);
+            this.lblDozNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozNum.Name = "lblDozNum";
-            this.lblDozNum.Size = new System.Drawing.Size(10, 13);
+            this.lblDozNum.Size = new System.Drawing.Size(11, 16);
             this.lblDozNum.TabIndex = 46;
             this.lblDozNum.Text = "-";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(46, 147);
+            this.label14.Location = new System.Drawing.Point(61, 181);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.Size = new System.Drawing.Size(117, 16);
             this.label14.TabIndex = 54;
             this.label14.Text = "Razit od dozimetru";
             // 
             // lblCount2
             // 
             this.lblCount2.AutoSize = true;
-            this.lblCount2.Location = new System.Drawing.Point(619, 112);
+            this.lblCount2.Location = new System.Drawing.Point(825, 138);
+            this.lblCount2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCount2.Name = "lblCount2";
-            this.lblCount2.Size = new System.Drawing.Size(13, 13);
+            this.lblCount2.Size = new System.Drawing.Size(14, 16);
             this.lblCount2.TabIndex = 48;
             this.lblCount2.Text = "0";
             // 
@@ -1368,9 +1458,10 @@
             this.chkTiskSoubor.Checked = true;
             this.chkTiskSoubor.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkTiskSoubor.Enabled = false;
-            this.chkTiskSoubor.Location = new System.Drawing.Point(146, 186);
+            this.chkTiskSoubor.Location = new System.Drawing.Point(195, 229);
+            this.chkTiskSoubor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkTiskSoubor.Name = "chkTiskSoubor";
-            this.chkTiskSoubor.Size = new System.Drawing.Size(82, 17);
+            this.chkTiskSoubor.Size = new System.Drawing.Size(100, 20);
             this.chkTiskSoubor.TabIndex = 51;
             this.chkTiskSoubor.Text = "tisk popisků";
             this.chkTiskSoubor.UseVisualStyleBackColor = true;
@@ -1379,28 +1470,31 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(559, 112);
+            this.label11.Location = new System.Drawing.Point(745, 138);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 13);
+            this.label11.Size = new System.Drawing.Size(67, 16);
             this.label11.TabIndex = 47;
             this.label11.Text = "Vyraženo:";
             // 
             // lblDozPopis
             // 
             this.lblDozPopis.AutoSize = true;
-            this.lblDozPopis.Location = new System.Drawing.Point(203, 54);
+            this.lblDozPopis.Location = new System.Drawing.Point(271, 66);
+            this.lblDozPopis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDozPopis.Name = "lblDozPopis";
-            this.lblDozPopis.Size = new System.Drawing.Size(10, 13);
+            this.lblDozPopis.Size = new System.Drawing.Size(11, 16);
             this.lblDozPopis.TabIndex = 50;
             this.lblDozPopis.Text = "-";
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.groupBox8);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(740, 495);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Size = new System.Drawing.Size(989, 612);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1408,9 +1502,11 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.listBoxLog);
-            this.groupBox8.Location = new System.Drawing.Point(6, 9);
+            this.groupBox8.Location = new System.Drawing.Point(8, 11);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(730, 488);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Size = new System.Drawing.Size(973, 601);
             this.groupBox8.TabIndex = 30;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Log";
@@ -1419,18 +1515,21 @@
             // 
             this.listBoxLog.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBoxLog.FormattingEnabled = true;
-            this.listBoxLog.Location = new System.Drawing.Point(6, 13);
+            this.listBoxLog.ItemHeight = 17;
+            this.listBoxLog.Location = new System.Drawing.Point(8, 16);
+            this.listBoxLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxLog.Name = "listBoxLog";
-            this.listBoxLog.Size = new System.Drawing.Size(719, 472);
+            this.listBoxLog.Size = new System.Drawing.Size(957, 565);
             this.listBoxLog.TabIndex = 29;
             // 
             // lblNapis
             // 
             this.lblNapis.AutoSize = true;
             this.lblNapis.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblNapis.Location = new System.Drawing.Point(5, 1);
+            this.lblNapis.Location = new System.Drawing.Point(7, 1);
+            this.lblNapis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNapis.Name = "lblNapis";
-            this.lblNapis.Size = new System.Drawing.Size(366, 42);
+            this.lblNapis.Size = new System.Drawing.Size(459, 54);
             this.lblNapis.TabIndex = 30;
             this.lblNapis.Text = "Raznice na dozimetry V2";
             // 
@@ -1439,26 +1538,29 @@
             this.cbStatut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatut.DropDownWidth = 242;
             this.cbStatut.FormattingEnabled = true;
-            this.cbStatut.Location = new System.Drawing.Point(19, 74);
+            this.cbStatut.Location = new System.Drawing.Point(25, 91);
+            this.cbStatut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbStatut.Name = "cbStatut";
-            this.cbStatut.Size = new System.Drawing.Size(121, 21);
+            this.cbStatut.Size = new System.Drawing.Size(160, 24);
             this.cbStatut.TabIndex = 31;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 58);
+            this.label4.Location = new System.Drawing.Point(25, 71);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.Size = new System.Drawing.Size(43, 16);
             this.label4.TabIndex = 60;
             this.label4.Text = "Statut:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 98);
+            this.label7.Location = new System.Drawing.Point(25, 121);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.Size = new System.Drawing.Size(31, 16);
             this.label7.TabIndex = 62;
             this.label7.Text = "Info:";
             // 
@@ -1467,17 +1569,19 @@
             this.cbInfo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInfo.DropDownWidth = 242;
             this.cbInfo.FormattingEnabled = true;
-            this.cbInfo.Location = new System.Drawing.Point(19, 114);
+            this.cbInfo.Location = new System.Drawing.Point(25, 140);
+            this.cbInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbInfo.Name = "cbInfo";
-            this.cbInfo.Size = new System.Drawing.Size(121, 21);
+            this.cbInfo.Size = new System.Drawing.Size(160, 24);
             this.cbInfo.TabIndex = 61;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 138);
+            this.label8.Location = new System.Drawing.Point(25, 170);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.Size = new System.Drawing.Size(39, 16);
             this.label8.TabIndex = 64;
             this.label8.Text = "Error:";
             // 
@@ -1486,17 +1590,19 @@
             this.cbError.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbError.DropDownWidth = 242;
             this.cbError.FormattingEnabled = true;
-            this.cbError.Location = new System.Drawing.Point(19, 154);
+            this.cbError.Location = new System.Drawing.Point(25, 190);
+            this.cbError.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbError.Name = "cbError";
-            this.cbError.Size = new System.Drawing.Size(121, 21);
+            this.cbError.Size = new System.Drawing.Size(160, 24);
             this.cbError.TabIndex = 63;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 18);
+            this.label9.Location = new System.Drawing.Point(25, 22);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(24, 13);
+            this.label9.Size = new System.Drawing.Size(26, 16);
             this.label9.TabIndex = 66;
             this.label9.Text = "Init:";
             // 
@@ -1505,17 +1611,19 @@
             this.cbInit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInit.DropDownWidth = 121;
             this.cbInit.FormattingEnabled = true;
-            this.cbInit.Location = new System.Drawing.Point(19, 34);
+            this.cbInit.Location = new System.Drawing.Point(25, 42);
+            this.cbInit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbInit.Name = "cbInit";
-            this.cbInit.Size = new System.Drawing.Size(121, 21);
+            this.cbInit.Size = new System.Drawing.Size(160, 24);
             this.cbInit.TabIndex = 65;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(19, 178);
+            this.label19.Location = new System.Drawing.Point(25, 219);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(52, 13);
+            this.label19.Size = new System.Drawing.Size(63, 16);
             this.label19.TabIndex = 68;
             this.label19.Text = "FinishOK:";
             // 
@@ -1523,9 +1631,10 @@
             // 
             this.cbFinishOK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFinishOK.FormattingEnabled = true;
-            this.cbFinishOK.Location = new System.Drawing.Point(19, 194);
+            this.cbFinishOK.Location = new System.Drawing.Point(25, 239);
+            this.cbFinishOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbFinishOK.Name = "cbFinishOK";
-            this.cbFinishOK.Size = new System.Drawing.Size(121, 21);
+            this.cbFinishOK.Size = new System.Drawing.Size(160, 24);
             this.cbFinishOK.TabIndex = 67;
             // 
             // groupBoxSimulace
@@ -1540,19 +1649,21 @@
             this.groupBoxSimulace.Controls.Add(this.cbInit);
             this.groupBoxSimulace.Controls.Add(this.label4);
             this.groupBoxSimulace.Controls.Add(this.cbStatut);
-            this.groupBoxSimulace.Location = new System.Drawing.Point(767, 385);
+            this.groupBoxSimulace.Location = new System.Drawing.Point(1023, 474);
+            this.groupBoxSimulace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxSimulace.Name = "groupBoxSimulace";
-            this.groupBoxSimulace.Size = new System.Drawing.Size(153, 227);
+            this.groupBoxSimulace.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSimulace.Size = new System.Drawing.Size(204, 279);
             this.groupBoxSimulace.TabIndex = 34;
             this.groupBoxSimulace.TabStop = false;
             this.groupBoxSimulace.Text = "Simulace ovládání";
             // 
             // frmRaznice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(931, 635);
+            this.ClientSize = new System.Drawing.Size(1241, 782);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblNapis);
             this.Controls.Add(this.groupBox4);
@@ -1562,6 +1673,7 @@
             this.Controls.Add(this.groupBoxSimulace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmRaznice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ovládání raznice";

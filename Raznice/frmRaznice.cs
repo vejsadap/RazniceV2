@@ -878,6 +878,7 @@ namespace Raznice
                 MessageBox.Show("Nenalezen Provider=VFPOLEDB.1", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Globalni.Nastroje.LogMessage("Nenalezen Provider=VFPOLEDB.1", false, "Warning", formRaz);
                 this.cmdOtevritPlan.Enabled = false;
+                this.cmdExportPlan.Enabled = false;
             }
 
 
@@ -1088,9 +1089,12 @@ namespace Raznice
             // zalozka Z tabulky            
             cmdOtevritPlan.Enabled = ready;
             cmdOznacitVseVyrazit.Enabled = ready;
-            cmdOdeznacitVseVyrazit.Enabled = ready;
+            cmdOdeznacitVseVyrazit.Enabled = ready;     
+            cmdExportPlan.Enabled = ready;
+
             dataGridView1.Enabled = ready;
             dataGridView1.UseWaitCursor = !ready;
+
 
             cmdVyrazit.Enabled = ready; // vyrazit
 
@@ -1526,8 +1530,9 @@ namespace Raznice
             //EnablingReady(true);
 
             if (btnStop.Text == "STOP") 
-            { 
+            {
                 //Stop();
+                Globalni.Nastroje.LogMessage("Zmacnuti STOP", false, "Information", formRaz);
                 vProcesuRazeni = false;
                 EnablingReady(true);
             }
@@ -2150,6 +2155,8 @@ namespace Raznice
                 dataGridView2.DataSource = "";
                 //toolStripStatusLabel.Text = "Soubor " + dbFileName + " byl načten ok.";
                 Globalni.Nastroje.LogMessage("cmdOtevritPlan_Click, Soubor " + dbFileName + " byl načten ok.", false, "Information", formRaz);
+
+                cmdExportPlan.Enabled = true;
             }
 
             else
@@ -2200,6 +2207,7 @@ namespace Raznice
                     {
                         yourConnectionHandler.Close();
 
+                        Globalni.Nastroje.LogMessage("Soubor "+ dbFileName+" neni ver. 2.0 bude převeden do formatu ver. 2.0 .", false, "Warning", formRaz);
                         // ted musim zmenit file, stary prejmenovat na OLD a znej udelat novy puvodniho jmena GRP s rozsirenou strukturou
                         string dbfileOldName = dbFileName.ToUpper().Replace("GRP_", "OLD_");
 
@@ -2218,6 +2226,8 @@ namespace Raznice
 
                             cmd.Connection = yourConnectionHandler;
                             cmd.ExecuteNonQuery();
+
+                            Globalni.Nastroje.LogMessage("Zaloha puvodniho souboru " + dbFileName + " do "+ dbfileOldName, false, "Warning", formRaz);
                         }
                     }
                     else
@@ -3856,7 +3866,8 @@ namespace Raznice
 
             if (File.Exists(dbfileOldVersionName))
             {
-                MessageBox.Show("Soubor s ver. 1.0 " + dbfileOldVersionName + " již existuje.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Globalni.Nastroje.LogMessage("Soubor s formátem ver. 1.0 " + dbfileOldVersionName + " již existuje.", false, "Error", formRaz);
+                MessageBox.Show("Soubor s formátem ver. 1.0 " + dbfileOldVersionName + " již existuje.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -3868,29 +3879,42 @@ namespace Raznice
             //      OleDbConnection yourConnectionHandler = new OleDbConnection(
             //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
 
+            try
+            {
 
-            // Open the connection, and if open successfully, you can try to query it
-            yourConnectionHandler.Open();
-
-            //File.Move(dbFileName, dbfileOldVersionName);
 
                 // Open the connection, and if open successfully, you can try to query it
-            yourConnectionHandler.Open();
+                yourConnectionHandler.Open();
 
-            if (yourConnectionHandler.State == ConnectionState.Open)
+                if (yourConnectionHandler.State == ConnectionState.Open)
+                {
+                    // prevod na ver.1, ta ma jen tato pole:
+                    string mySQL = @"SELECT cpd, cod, kolik, zpracovano, id_cispod FROM " + dbFileName + " INTO TABLE " + dbfileOldVersionName + "";
+
+                    OleDbCommand cmd = new OleDbCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = mySQL;
+
+                    cmd.Connection = yourConnectionHandler;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
             {
-                string mySQL = @"SELECT cpd, cod, kolik, zpracovano, id_cispod FROM " + dbFileName + " INTO TABLE " + dbfileOldVersionName + "";
-
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = mySQL;
-
-                cmd.Connection = yourConnectionHandler;
-                cmd.ExecuteNonQuery();
+                Globalni.Nastroje.LogMessage("Chyba během vytvářeni souboru s formátem ver. 1.0 " + dbfileOldVersionName + " Mess:" + ex.Message.ToString(), false, "Error", formRaz);
+                MessageBox.Show("Chyba během vytvářeni souboru s formátem ver. 1.0 " + dbfileOldVersionName + " .", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+             
+            }
+            finally
+            { 
+                yourConnectionHandler.Close(); 
             }
 
-            yourConnectionHandler.Close();
-
+            if (File.Exists(dbfileOldVersionName))
+            {
+                Globalni.Nastroje.LogMessage("Puvodni soubor ver. 2.0 " + dbFileName + " převeden do formatu ver. 1.0 " + dbfileOldVersionName + " .", false, "Information", formRaz);
+                MessageBox.Show("Puvodni soubor ver. 2.0 "+ dbFileName + " převeden do formatu ver. 1.0 " + dbfileOldVersionName + " .", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
