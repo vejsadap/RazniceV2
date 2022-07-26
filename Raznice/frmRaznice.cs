@@ -269,9 +269,9 @@ namespace Raznice
                 return;
 
             }
-            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3")
+            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3" && txtTyp.Text != "4" && txtTyp.Text != "5")
             {
-                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 5", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTyp.Focus();
                 return;
 
@@ -279,7 +279,7 @@ namespace Raznice
             int nTyp = 0;
             if (!int.TryParse(txtTyp.Text, out nTyp))
             {
-                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 5", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTyp.Focus();
                 return;
 
@@ -921,6 +921,8 @@ namespace Raznice
                 cbTypFilmu.Items.Add(new Item("1 - malý", 1));
                 cbTypFilmu.Items.Add(new Item("2 - velký", 2));
                 cbTypFilmu.Items.Add(new Item("3 - velký s otočeným tiskem", 3));
+                cbTypFilmu.Items.Add(new Item("4 - malý bez potisku", 4));
+                cbTypFilmu.Items.Add(new Item("5 - velký bez potisku", 5));
                 cbTypFilmu.SelectedIndex = 1;
 #if DLL
                 // zneviditelnim ovladani simulace
@@ -1146,9 +1148,9 @@ namespace Raznice
                 return false;
 
             }
-            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3")
+            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3" && txtTyp.Text != "4" && txtTyp.Text != "5")
             {
-                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 5", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTyp.Focus();
                 return false;
 
@@ -1156,7 +1158,7 @@ namespace Raznice
             int nTyp = 0;
             if (!int.TryParse(txtTyp.Text, out nTyp))
             {
-                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 5", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTyp.Focus();
                 return false;
 
@@ -3160,9 +3162,9 @@ namespace Raznice
                 return;
 
             }
-            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3")
+            if (txtTyp.Text != "1" && txtTyp.Text != "2" && txtTyp.Text != "3" && txtTyp.Text != "4" && txtTyp.Text != "5")
             {
-                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Typ filmu není zadán v intervalu 1 - 5", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTyp.Focus();
                 return;
 
@@ -3171,7 +3173,7 @@ namespace Raznice
             int nTyp = 0;
             if (!int.TryParse(txtTyp.Text, out nTyp))
             {
-                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 3", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Typ filmu není zadán korektně v intervalu 1 - 5", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTyp.Focus();
                 return;
 
@@ -3470,8 +3472,27 @@ namespace Raznice
                 var rows = nameZdroj.Split(' ');
                 if (rows != null)
                 {
-                    personalNoPrint = rows[0];
-                    namePrint = rows[1];
+                    try
+                    {
+                        if (rows.Count() >= 2)
+                        {
+                            personalNoPrint = rows[0];
+                            namePrint = rows[1];
+                        }
+                        else if (rows.Count() == 1)
+                        {
+                            if (rows[0].Length > 0)
+                                personalNoPrint = rows[0];
+
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        Globalni.Nastroje.LogMessage("NaRazitDozV2(), chyba pri rozebrani rows nameZdroj: "+ ex.Message.ToString(), false, "Error", formRaz);
+                        
+                        personalNoPrint = "";
+                        namePrint = "";
+                    }
                 }
 
 
