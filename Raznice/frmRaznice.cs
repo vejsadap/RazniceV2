@@ -427,7 +427,7 @@ namespace Raznice
                 }
 
 // --- timer
-                DozCount += 1;
+                //DozCount += 1;
 
                 // tiskne se vse nebo jenom podmnozina ?
                 if ((txtRazitOdDoz.Text.Replace(" ", "").Trim().Length > 0)
@@ -506,6 +506,8 @@ namespace Raznice
                     vProcesuRazeni = false;
                     break;
                 }
+
+                DozCount += 1;
 
             } // end while (konec)
 
@@ -1186,100 +1188,102 @@ namespace Raznice
                 return false;
             }
 
-            if (txtObdobi.Text == String.Empty)
+            // pokud se netiskne film bez popisu
+            if (nTyp <= 3)
             {
-                MessageBox.Show("Číslo období musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtObdobi.Focus();
-                return false;
-            }
-            if (txtMesic.Text == String.Empty)
-            {
-                MessageBox.Show("Číslo měsíce musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMesic.Focus();
-                return false;
-            }
-            if (txtRok.Text == String.Empty)
-            {
-                MessageBox.Show("Číslo roku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtRok.Focus();
-                return false;
-            }
-            if (txtPodnik.Text == String.Empty)
-            {
-                MessageBox.Show("Číslo podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPodnik.Focus();
-                return false;
-            }
-            if (txtOddeleni.Text == String.Empty)
-            {
-                MessageBox.Show("Číslo oddělení podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOddeleni.Focus();
-                return false;
-            }
-            if (txtDozimetr.Text == String.Empty)
-            {
-                MessageBox.Show("Číslo dozimetru musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDozimetr.Focus();
-                return false;
-            }
+                if (txtObdobi.Text == String.Empty)
+                {
+                    MessageBox.Show("Číslo období musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtObdobi.Focus();
+                    return false;
+                }
+                if (txtMesic.Text == String.Empty)
+                {
+                    MessageBox.Show("Číslo měsíce musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtMesic.Focus();
+                    return false;
+                }
+                if (txtRok.Text == String.Empty)
+                {
+                    MessageBox.Show("Číslo roku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtRok.Focus();
+                    return false;
+                }
+                if (txtPodnik.Text == String.Empty)
+                {
+                    MessageBox.Show("Číslo podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPodnik.Focus();
+                    return false;
+                }
+                if (txtOddeleni.Text == String.Empty)
+                {
+                    MessageBox.Show("Číslo oddělení podniku musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtOddeleni.Focus();
+                    return false;
+                }
+                if (txtDozimetr.Text == String.Empty)
+                {
+                    MessageBox.Show("Číslo dozimetru musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtDozimetr.Focus();
+                    return false;
+                }
 
-            //          if (txtJmeno.Text == String.Empty)
-            //          {
-            //              MessageBox.Show("Jméno musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //              return;
-            //          }
+                //          if (txtJmeno.Text == String.Empty)
+                //          {
+                //              MessageBox.Show("Jméno musí být vyplněno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //              return;
+                //          }
 
-            int numero = 0;
-            // kotrola na delku
-            if ((txtObdobi.Text.Length != 1) || !(int.TryParse(txtObdobi.Text, out numero)))
-            {
-                MessageBox.Show("Číslo období musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtObdobi.Focus();
-                return false;
-            }
-            if ((txtMesic.Text.Length != 2) || !(int.TryParse(txtMesic.Text, out numero)))
-            {
-                MessageBox.Show("Číslo měsíce musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMesic.Focus();
-                return false;
-            }
-            if ((txtRok.Text.Length != 2) || !(int.TryParse(txtRok.Text, out numero)))
-            {
-                MessageBox.Show("Číslo roku musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtRok.Focus();
-                return false;
-            }
-            if ((txtPodnik.Text.Length != 3) || !(int.TryParse(txtPodnik.Text, out numero)))
-            {
-                MessageBox.Show("Číslo podniku musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPodnik.Focus();
-                return false;
-            }
-            if ((txtOddeleni.Text.Length != 1) || !(int.TryParse(txtOddeleni.Text, out numero)))
-            {
-                MessageBox.Show("Číslo oddělení podniku musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOddeleni.Focus();
-                return false;
-            }
-            if ((txtDozimetr.Text.Length != 3) || !(int.TryParse(txtDozimetr.Text, out numero)))
-            {
-                MessageBox.Show("Číslo dozimetru musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDozimetr.Focus();
-                return false;
-            }
-
-
-            if ((txtJmeno.Text == String.Empty))
-            {
-                MessageBox.Show("Jméno musí být uvedeno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtJmeno.Focus();
-                return false;
-            }
-            if ((txtJmeno.Text.Length > 14))
-            {
-                MessageBox.Show("Jméno nesmí být delší než 14 znaků.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtJmeno.Focus();
-                return false;
+                int numero = 0;
+                // kotrola na delku
+                if ((txtObdobi.Text.Length != 1) || !(int.TryParse(txtObdobi.Text, out numero)))
+                {
+                    MessageBox.Show("Číslo období musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtObdobi.Focus();
+                    return false;
+                }
+                if ((txtMesic.Text.Length != 2) || !(int.TryParse(txtMesic.Text, out numero)))
+                {
+                    MessageBox.Show("Číslo měsíce musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtMesic.Focus();
+                    return false;
+                }
+                if ((txtRok.Text.Length != 2) || !(int.TryParse(txtRok.Text, out numero)))
+                {
+                    MessageBox.Show("Číslo roku musí být vyplněno dvěma číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtRok.Focus();
+                    return false;
+                }
+                if ((txtPodnik.Text.Length != 3) || !(int.TryParse(txtPodnik.Text, out numero)))
+                {
+                    MessageBox.Show("Číslo podniku musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPodnik.Focus();
+                    return false;
+                }
+                if ((txtOddeleni.Text.Length != 1) || !(int.TryParse(txtOddeleni.Text, out numero)))
+                {
+                    MessageBox.Show("Číslo oddělení podniku musí být vyplněno jednou číslicí.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtOddeleni.Focus();
+                    return false;
+                }
+                if ((txtDozimetr.Text.Length != 3) || !(int.TryParse(txtDozimetr.Text, out numero)))
+                {
+                    MessageBox.Show("Číslo dozimetru musí být vyplněno třemi číslicemi.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtDozimetr.Focus();
+                    return false;
+                }
+                if ((txtJmeno.Text == String.Empty))
+                {
+                    MessageBox.Show("Jméno musí být uvedeno.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtJmeno.Focus();
+                    return false;
+                }
+                if ((txtJmeno.Text.Length > 14))
+                {
+                    MessageBox.Show("Jméno nesmí být delší než 14 znaků.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtJmeno.Focus();
+                    return false;
+                }
             }
 
 #endregion
@@ -3936,6 +3940,22 @@ namespace Raznice
                 Globalni.Nastroje.LogMessage("Puvodni soubor ver. 2.0 " + dbFileName + " převeden do formatu ver. 1.0 " + dbfileOldVersionName + " .", false, "Information", formRaz);
                 MessageBox.Show("Puvodni soubor ver. 2.0 "+ dbFileName + " převeden do formatu ver. 1.0 " + dbfileOldVersionName + " .", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnVymazat_Click(object sender, EventArgs e)
+        {
+            txtObdobi.Text = "";
+            txtMesic.Text = "";
+            txtRok.Text = "";
+            txtPodnik.Text = "";
+            txtOddeleni.Text = "";
+            txtDozimetr.Text = "";
+            txtJmeno.Text = "";
+        }
+
+        private void btnVymazatDoz_Click(object sender, EventArgs e)
+        {
+            txtText.Text = "";
         }
     }
 }
