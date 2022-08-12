@@ -855,8 +855,16 @@ namespace Raznice
             MessageBox.Show("V režimu Simulace DLL.", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
 #endif
             // intro form v extra vlakne
-            Thread introInicializace = new Thread(new ThreadStart(ThreadProc));
-            introInicializace.Start();
+            Thread introInicializace = null;
+            try
+            {
+                introInicializace = new Thread(new ThreadStart(ThreadProc));
+                introInicializace.Start();
+            }
+            catch
+            {
+                introInicializace = null;
+            }
 
 
             // test na Provider=VFPOLEDB.1
@@ -1008,7 +1016,8 @@ namespace Raznice
                     //popisStavuRaznice = new Vlastnosti.popisStavuRaznice();
                     //popisStavuRaznice = DejPopisStavu();
 
-                    introInicializace.Abort();
+                    if (introInicializace != null)
+                        introInicializace.Abort();
                     MessageBox.Show("Chyba při inicializování komunikace s PLC", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Globalni.Nastroje.LogMessage("Chyba při inicializování komunikace s PLC", false, "Error", formRaz);
                     //this.Close();
@@ -1023,7 +1032,8 @@ namespace Raznice
                         this.chkReady.Checked = true;
                     else
                     {
-                        introInicializace.Abort();
+                        if (introInicializace != null)
+                            introInicializace.Abort();
                         this.chkReady.Checked = false;
                         MessageBox.Show("Load Init(): " + popisStavuRaznice.stavText.ToString(), Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Globalni.Nastroje.LogMessage("Load Init(): " + popisStavuRaznice.stavText.ToString(), false, "Error", formRaz);
@@ -1043,8 +1053,9 @@ namespace Raznice
             }
             catch
             {
-           
-                introInicializace.Abort();
+
+                if (introInicializace != null)
+                    introInicializace.Abort();
                 MessageBox.Show("Nebyla nalezena knihovna RazniceV2.dll", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Globalni.Nastroje.LogMessage("Nebyla nalezena knihovna RazniceV2.dll", false, "Error", formRaz);
                 //fIntro.Hide();
