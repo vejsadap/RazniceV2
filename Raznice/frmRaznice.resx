@@ -285,7 +285,7 @@
   <data name="cmdExportPlan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAFZJREFUOE/NjEkOACAIA/n/p91SEHGLctCJPajT0t+EdHJwPcc1wOXrEdeAFJnT
+        vwAADr8BOAVTJAAAAFZJREFUOE/NjEkOACAIA/n/p91SEHGLctCJPajT0t+EdHJwPcc1wOXrEdeAFJnT
         EdeAlHMY9QZtjpYF9QZtjBZXgd5jxVmgt1iphBn8oVaxwi6oPYcoAhm5u0WQ+iHfAAAAAElFTkSuQmCC
 </value>
   </data>
@@ -402,6 +402,9 @@
     <value>True</value>
   </metadata>
   <metadata name="RP_MESIC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="MANDDOZ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Vyrazit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

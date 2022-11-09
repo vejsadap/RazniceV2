@@ -80,18 +80,6 @@
             this.cmdVyrazit = new System.Windows.Forms.Button();
             this.cmdOtevritPlan = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Oddeleni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cdz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prijmeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tisk_radek_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tisk_radek_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zpracovano_doz = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Id_Cispod_doz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_seznam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SLOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Vyrazit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Cpd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,6 +99,8 @@
             this.lblDozPopisTab = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnVymazatDoz = new System.Windows.Forms.Button();
+            this.btnVymazat = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.txtText = new System.Windows.Forms.TextBox();
@@ -163,8 +153,20 @@
             this.label19 = new System.Windows.Forms.Label();
             this.cbFinishOK = new System.Windows.Forms.ComboBox();
             this.groupBoxSimulace = new System.Windows.Forms.GroupBox();
-            this.btnVymazat = new System.Windows.Forms.Button();
-            this.btnVymazatDoz = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Oddeleni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cdz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prijmeni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tisk_radek_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tisk_radek_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zpracovano_doz = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id_Cispod_doz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_seznam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SLOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RP_ROK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RP_MESIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MANDDOZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkMaNDDoz = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -404,7 +406,7 @@
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(740, 495);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Z tabulky";
@@ -674,7 +676,8 @@
             this.ID_seznam,
             this.SLOB,
             this.RP_ROK,
-            this.RP_MESIC});
+            this.RP_MESIC,
+            this.MANDDOZ});
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -699,119 +702,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(620, 326);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cpd";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 40;
-            // 
-            // Oddeleni
-            // 
-            this.Oddeleni.HeaderText = "Cod";
-            this.Oddeleni.MinimumWidth = 6;
-            this.Oddeleni.Name = "Oddeleni";
-            this.Oddeleni.ReadOnly = true;
-            this.Oddeleni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Oddeleni.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Oddeleni.Width = 40;
-            // 
-            // Cdz
-            // 
-            this.Cdz.HeaderText = "CDZ";
-            this.Cdz.MinimumWidth = 6;
-            this.Cdz.Name = "Cdz";
-            this.Cdz.ReadOnly = true;
-            this.Cdz.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cdz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Cdz.Width = 50;
-            // 
-            // Prijmeni
-            // 
-            this.Prijmeni.HeaderText = "Přijmení";
-            this.Prijmeni.MinimumWidth = 6;
-            this.Prijmeni.Name = "Prijmeni";
-            this.Prijmeni.ReadOnly = true;
-            this.Prijmeni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Prijmeni.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Prijmeni.Width = 130;
-            // 
-            // Tisk_radek_1
-            // 
-            this.Tisk_radek_1.HeaderText = "Tisk řádek 1";
-            this.Tisk_radek_1.MinimumWidth = 6;
-            this.Tisk_radek_1.Name = "Tisk_radek_1";
-            this.Tisk_radek_1.ReadOnly = true;
-            this.Tisk_radek_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tisk_radek_1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Tisk_radek_1.Width = 115;
-            // 
-            // Tisk_radek_2
-            // 
-            this.Tisk_radek_2.HeaderText = "Tisk řádek 2";
-            this.Tisk_radek_2.MinimumWidth = 6;
-            this.Tisk_radek_2.Name = "Tisk_radek_2";
-            this.Tisk_radek_2.ReadOnly = true;
-            this.Tisk_radek_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tisk_radek_2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Tisk_radek_2.Width = 110;
-            // 
-            // Zpracovano_doz
-            // 
-            this.Zpracovano_doz.HeaderText = "Zpracováno";
-            this.Zpracovano_doz.MinimumWidth = 6;
-            this.Zpracovano_doz.Name = "Zpracovano_doz";
-            this.Zpracovano_doz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Zpracovano_doz.Width = 70;
-            // 
-            // Id_Cispod_doz
-            // 
-            this.Id_Cispod_doz.HeaderText = "Id_Cispod";
-            this.Id_Cispod_doz.MinimumWidth = 6;
-            this.Id_Cispod_doz.Name = "Id_Cispod_doz";
-            this.Id_Cispod_doz.ReadOnly = true;
-            this.Id_Cispod_doz.Visible = false;
-            this.Id_Cispod_doz.Width = 125;
-            // 
-            // ID_seznam
-            // 
-            this.ID_seznam.HeaderText = "ID_seznam";
-            this.ID_seznam.MinimumWidth = 6;
-            this.ID_seznam.Name = "ID_seznam";
-            this.ID_seznam.ReadOnly = true;
-            this.ID_seznam.Visible = false;
-            this.ID_seznam.Width = 125;
-            // 
-            // SLOB
-            // 
-            this.SLOB.HeaderText = "SLOB";
-            this.SLOB.MinimumWidth = 6;
-            this.SLOB.Name = "SLOB";
-            this.SLOB.ReadOnly = true;
-            this.SLOB.Visible = false;
-            this.SLOB.Width = 125;
-            // 
-            // RP_ROK
-            // 
-            this.RP_ROK.HeaderText = "RP_ROK";
-            this.RP_ROK.MinimumWidth = 6;
-            this.RP_ROK.Name = "RP_ROK";
-            this.RP_ROK.ReadOnly = true;
-            this.RP_ROK.Visible = false;
-            this.RP_ROK.Width = 125;
-            // 
-            // RP_MESIC
-            // 
-            this.RP_MESIC.HeaderText = "RP_MESIC";
-            this.RP_MESIC.MinimumWidth = 6;
-            this.RP_MESIC.Name = "RP_MESIC";
-            this.RP_MESIC.ReadOnly = true;
-            this.RP_MESIC.Visible = false;
-            this.RP_MESIC.Width = 125;
             // 
             // dataGridView1
             // 
@@ -1020,7 +910,7 @@
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(740, 495);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Postupná";
@@ -1028,6 +918,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.chkMaNDDoz);
             this.groupBox5.Controls.Add(this.btnVymazatDoz);
             this.groupBox5.Controls.Add(this.btnVymazat);
             this.groupBox5.Controls.Add(this.label28);
@@ -1051,6 +942,27 @@
             this.groupBox5.TabIndex = 51;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Postupné ražení dozimetrů";
+            // 
+            // btnVymazatDoz
+            // 
+            this.btnVymazatDoz.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVymazatDoz.Location = new System.Drawing.Point(262, 40);
+            this.btnVymazatDoz.Name = "btnVymazatDoz";
+            this.btnVymazatDoz.Size = new System.Drawing.Size(75, 24);
+            this.btnVymazatDoz.TabIndex = 75;
+            this.btnVymazatDoz.Text = "Vymazat";
+            this.btnVymazatDoz.UseVisualStyleBackColor = true;
+            this.btnVymazatDoz.Click += new System.EventHandler(this.btnVymazatDoz_Click);
+            // 
+            // btnVymazat
+            // 
+            this.btnVymazat.Location = new System.Drawing.Point(494, 93);
+            this.btnVymazat.Name = "btnVymazat";
+            this.btnVymazat.Size = new System.Drawing.Size(71, 24);
+            this.btnVymazat.TabIndex = 74;
+            this.btnVymazat.Text = "Vymazat";
+            this.btnVymazat.UseVisualStyleBackColor = true;
+            this.btnVymazat.Click += new System.EventHandler(this.btnVymazat_Click);
             // 
             // label28
             // 
@@ -1103,7 +1015,7 @@
             this.txtJmeno.Name = "txtJmeno";
             this.txtJmeno.Size = new System.Drawing.Size(100, 20);
             this.txtJmeno.TabIndex = 63;
-            this.txtJmeno.Text = "Vejsada";
+            this.txtJmeno.Text = "Vejsada Petr";
             // 
             // txtObdobi
             // 
@@ -1185,7 +1097,7 @@
             this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(740, 495);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ze souboru";
@@ -1405,7 +1317,7 @@
             this.tabPage4.Controls.Add(this.groupBox8);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(740, 495);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
@@ -1554,26 +1466,135 @@
             this.groupBoxSimulace.TabStop = false;
             this.groupBoxSimulace.Text = "Simulace ovládání";
             // 
-            // btnVymazat
+            // dataGridViewTextBoxColumn1
             // 
-            this.btnVymazat.Location = new System.Drawing.Point(494, 93);
-            this.btnVymazat.Name = "btnVymazat";
-            this.btnVymazat.Size = new System.Drawing.Size(71, 24);
-            this.btnVymazat.TabIndex = 74;
-            this.btnVymazat.Text = "Vymazat";
-            this.btnVymazat.UseVisualStyleBackColor = true;
-            this.btnVymazat.Click += new System.EventHandler(this.btnVymazat_Click);
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cpd";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 40;
             // 
-            // btnVymazatDoz
+            // Oddeleni
             // 
-            this.btnVymazatDoz.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVymazatDoz.Location = new System.Drawing.Point(262, 40);
-            this.btnVymazatDoz.Name = "btnVymazatDoz";
-            this.btnVymazatDoz.Size = new System.Drawing.Size(75, 24);
-            this.btnVymazatDoz.TabIndex = 75;
-            this.btnVymazatDoz.Text = "Vymazat";
-            this.btnVymazatDoz.UseVisualStyleBackColor = true;
-            this.btnVymazatDoz.Click += new System.EventHandler(this.btnVymazatDoz_Click);
+            this.Oddeleni.HeaderText = "Cod";
+            this.Oddeleni.MinimumWidth = 6;
+            this.Oddeleni.Name = "Oddeleni";
+            this.Oddeleni.ReadOnly = true;
+            this.Oddeleni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Oddeleni.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Oddeleni.Width = 40;
+            // 
+            // Cdz
+            // 
+            this.Cdz.HeaderText = "CDZ";
+            this.Cdz.MinimumWidth = 6;
+            this.Cdz.Name = "Cdz";
+            this.Cdz.ReadOnly = true;
+            this.Cdz.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cdz.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Cdz.Width = 50;
+            // 
+            // Prijmeni
+            // 
+            this.Prijmeni.HeaderText = "Přijmení";
+            this.Prijmeni.MinimumWidth = 6;
+            this.Prijmeni.Name = "Prijmeni";
+            this.Prijmeni.ReadOnly = true;
+            this.Prijmeni.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Prijmeni.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Prijmeni.Width = 130;
+            // 
+            // Tisk_radek_1
+            // 
+            this.Tisk_radek_1.HeaderText = "Tisk řádek 1";
+            this.Tisk_radek_1.MinimumWidth = 6;
+            this.Tisk_radek_1.Name = "Tisk_radek_1";
+            this.Tisk_radek_1.ReadOnly = true;
+            this.Tisk_radek_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tisk_radek_1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tisk_radek_1.Width = 115;
+            // 
+            // Tisk_radek_2
+            // 
+            this.Tisk_radek_2.HeaderText = "Tisk řádek 2";
+            this.Tisk_radek_2.MinimumWidth = 6;
+            this.Tisk_radek_2.Name = "Tisk_radek_2";
+            this.Tisk_radek_2.ReadOnly = true;
+            this.Tisk_radek_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tisk_radek_2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tisk_radek_2.Width = 110;
+            // 
+            // Zpracovano_doz
+            // 
+            this.Zpracovano_doz.HeaderText = "Zpracováno";
+            this.Zpracovano_doz.MinimumWidth = 6;
+            this.Zpracovano_doz.Name = "Zpracovano_doz";
+            this.Zpracovano_doz.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Zpracovano_doz.Width = 70;
+            // 
+            // Id_Cispod_doz
+            // 
+            this.Id_Cispod_doz.HeaderText = "Id_Cispod";
+            this.Id_Cispod_doz.MinimumWidth = 6;
+            this.Id_Cispod_doz.Name = "Id_Cispod_doz";
+            this.Id_Cispod_doz.ReadOnly = true;
+            this.Id_Cispod_doz.Visible = false;
+            this.Id_Cispod_doz.Width = 125;
+            // 
+            // ID_seznam
+            // 
+            this.ID_seznam.HeaderText = "ID_seznam";
+            this.ID_seznam.MinimumWidth = 6;
+            this.ID_seznam.Name = "ID_seznam";
+            this.ID_seznam.ReadOnly = true;
+            this.ID_seznam.Visible = false;
+            this.ID_seznam.Width = 125;
+            // 
+            // SLOB
+            // 
+            this.SLOB.HeaderText = "SLOB";
+            this.SLOB.MinimumWidth = 6;
+            this.SLOB.Name = "SLOB";
+            this.SLOB.ReadOnly = true;
+            this.SLOB.Visible = false;
+            this.SLOB.Width = 125;
+            // 
+            // RP_ROK
+            // 
+            this.RP_ROK.HeaderText = "RP_ROK";
+            this.RP_ROK.MinimumWidth = 6;
+            this.RP_ROK.Name = "RP_ROK";
+            this.RP_ROK.ReadOnly = true;
+            this.RP_ROK.Visible = false;
+            this.RP_ROK.Width = 125;
+            // 
+            // RP_MESIC
+            // 
+            this.RP_MESIC.HeaderText = "RP_MESIC";
+            this.RP_MESIC.MinimumWidth = 6;
+            this.RP_MESIC.Name = "RP_MESIC";
+            this.RP_MESIC.ReadOnly = true;
+            this.RP_MESIC.Visible = false;
+            this.RP_MESIC.Width = 125;
+            // 
+            // MANDDOZ
+            // 
+            this.MANDDOZ.HeaderText = "MANDDOZ";
+            this.MANDDOZ.Name = "MANDDOZ";
+            this.MANDDOZ.ReadOnly = true;
+            this.MANDDOZ.Visible = false;
+            // 
+            // chkMaNDDoz
+            // 
+            this.chkMaNDDoz.AutoSize = true;
+            this.chkMaNDDoz.Location = new System.Drawing.Point(155, 121);
+            this.chkMaNDDoz.Name = "chkMaNDDoz";
+            this.chkMaNDDoz.Size = new System.Drawing.Size(101, 17);
+            this.chkMaNDDoz.TabIndex = 76;
+            this.chkMaNDDoz.Text = "má ND dozimetr";
+            this.chkMaNDDoz.UseVisualStyleBackColor = true;
             // 
             // frmRaznice
             // 
@@ -1734,6 +1755,16 @@
         private System.Windows.Forms.Button cmdOdeznacitVseVyrazit;
         private System.Windows.Forms.Button cmdOznacitVseVyrazit;
         private System.Windows.Forms.ComboBox cbTypFilmu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Vyrazit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cpd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pocet;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano;
+        private System.Windows.Forms.DataGridViewButtonColumn Nacist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod;
+        private System.Windows.Forms.Button cmdExportPlan;
+        private System.Windows.Forms.Button btnVymazat;
+        private System.Windows.Forms.Button btnVymazatDoz;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oddeleni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cdz;
@@ -1746,16 +1777,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SLOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn RP_ROK;
         private System.Windows.Forms.DataGridViewTextBoxColumn RP_MESIC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Vyrazit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cpd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pocet;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Zpracovano;
-        private System.Windows.Forms.DataGridViewButtonColumn Nacist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Cispod;
-        private System.Windows.Forms.Button cmdExportPlan;
-        private System.Windows.Forms.Button btnVymazat;
-        private System.Windows.Forms.Button btnVymazatDoz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MANDDOZ;
+        private System.Windows.Forms.CheckBox chkMaNDDoz;
     }
 }
 

@@ -1345,12 +1345,13 @@ namespace Raznice
             // 1 06 16 130 2 203
 
             // 1A_06_130/2_203
-            popisek_stitku = txtObdobi.Text.Trim() + txtSarze.Text.Trim() + '_' + // 1A
+            popisek_stitku = txtObdobi.Text.Trim() + txtSarze.Text.Trim() +  // 1A
+                             (chkMaNDDoz.Checked ? "*" : "_") +
                              txtMesic.Text.Trim() + '_' + //  06
                              txtPodnik.Text.Trim() + "/" + txtOddeleni.Text.Trim() + '_' + // 130/2
                              txtDozimetr.Text.Trim();   // 203
             // Vachata
-            popisek_stitku = popisek_stitku + " " + txtJmeno.Text.Trim();
+            popisek_stitku = popisek_stitku + " " + txtJmeno.Text.Trim().Replace(" ", "_"); // Losa Evžen -> Losa_Evžen
 
             // 106151302203
             cislo_ean = txtObdobi.Text.Trim() + // 1
@@ -2100,8 +2101,19 @@ namespace Raznice
                     string Tisk_slob = (dataGridView2[indexOf(dataGridView2, "SLOB"), 0]).Value.ToString();
                     string Tisk_rok = (dataGridView2[indexOf(dataGridView2, "RP_ROK"), 0]).Value.ToString();
                     string Tisk_mesic = (dataGridView2[indexOf(dataGridView2, "RP_MESIC"), 0]).Value.ToString();
+                    string v = (dataGridView2[indexOf(dataGridView2, "MANDDOZ"), 0]).Value.ToString();
+                    int Tisk_maNDDoz = 0;
+                    try
+                    {
+                        Tisk_maNDDoz = int.Parse(v); // 0/1
+                    }
+                    catch
+                    {
+                        Tisk_maNDDoz = 0;
+                    }
+                    
 
-                    NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
+                    NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic, Tisk_maNDDoz);
 
                     List<int> seznamId_Cispod = DejSeznamPodnikuProVyrazeni();
                     lblPodnikuProVyrazeni.Text = seznamId_Cispod.Count().ToString();
@@ -2132,9 +2144,18 @@ namespace Raznice
                 string Tisk_slob = (dataGridView2[indexOf(dataGridView2, "SLOB"), 0]).Value.ToString();
                 string Tisk_rok = (dataGridView2[indexOf(dataGridView2, "RP_ROK"), 0]).Value.ToString();
                 string Tisk_mesic = (dataGridView2[indexOf(dataGridView2, "RP_MESIC"), 0]).Value.ToString();
+                string v = (dataGridView2[indexOf(dataGridView2, "MANDDOZ"), e.RowIndex]).Value.ToString();
+                int Tisk_maNDDoz = 0;
+                try
+                {
+                    Tisk_maNDDoz = int.Parse(v); // 0/1
+                }
+                catch
+                {
+                    Tisk_maNDDoz = 0;
+                }
 
-
-                NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
+                NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic, Tisk_maNDDoz);
             }
             catch (Exception ex)
             {
@@ -2154,12 +2175,25 @@ namespace Raznice
             {
                 dbFileName = OpenDialog.FileName;
 
-                //kontrola struktury
+                //kontrola struktury 
+                // GRP file
                 if (!KontrolaGRPData())
                 {
                     MessageBox.Show("Soubor " + dbFileName + " se nepodařilo načíst", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     toolStripStatusLabel.Text = "Soubor " + dbFileName + " se nepodařilo načíst";
                     Globalni.Nastroje.LogMessage("cmdOtevritPlan_Click, Soubor " + dbFileName + " se nepodařilo načíst.", false, "Error", formRaz);
+
+                    return;
+                }
+
+                // datovy file
+                if (!KontrolaDOZData())
+                {
+                    string fileName = dbFileName.ToUpper().Replace("GRP_", "");
+
+                    MessageBox.Show("Soubor " + fileName + " se nepodařilo načíst", Globalni.Parametry.aplikace.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    toolStripStatusLabel.Text = "Soubor " + fileName + " se nepodařilo načíst";
+                    Globalni.Nastroje.LogMessage("cmdOtevritPlan_Click, Soubor " + fileName + " se nepodařilo načíst.", false, "Error", formRaz);
 
                     return;
                 }
@@ -2224,7 +2258,7 @@ namespace Raznice
                     {
                         yourConnectionHandler.Close();
 
-                        Globalni.Nastroje.LogMessage("Soubor "+ dbFileName+" neni ver. 2.0 bude převeden do formatu ver. 2.0 .", false, "Warning", formRaz);
+                        Globalni.Nastroje.LogMessage("Soubor " + dbFileName + " neni ver. 2.0 bude převeden do formatu ver. 2.0 .", false, "Warning", formRaz);
                         // ted musim zmenit file, stary prejmenovat na OLD a znej udelat novy puvodniho jmena GRP s rozsirenou strukturou
                         string dbfileOldName = dbFileName.ToUpper().Replace("GRP_", "OLD_");
 
@@ -2244,9 +2278,9 @@ namespace Raznice
                             cmd.Connection = yourConnectionHandler;
                             cmd.ExecuteNonQuery();
 
-                            Globalni.Nastroje.LogMessage("Zaloha puvodniho souboru " + dbFileName + " do "+ dbfileOldName, false, "Warning", formRaz);
+                            Globalni.Nastroje.LogMessage("Zaloha puvodniho souboru " + dbFileName + " do " + dbfileOldName, false, "Warning", formRaz);
                         }
-                    }
+                    }                       
                     else
                     {
                         // ven
@@ -2316,6 +2350,87 @@ namespace Raznice
             return ResultSet;
         }
 
+        public bool KontrolaDOZData()
+        {
+            DataTable ResultSet = new DataTable();
+            //DataSet ds = new DataSet();
+
+            string filepath = Path.GetDirectoryName(dbFileName);
+            if (!filepath.EndsWith("\\"))
+                filepath += "\\";
+            OleDbConnection yourConnectionHandler = new OleDbConnection(
+                //@"Provider=VFPOLEDB.1;Data Source=c:\temp\abc\");
+                @"Provider=VFPOLEDB.1;Data Source=" + filepath);
+
+            // if including the full dbc (database container) reference, just tack that on
+            //      OleDbConnection yourConnectionHandler = new OleDbConnection(
+            //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
+
+
+            // Open the connection, and if open successfully, you can try to query it
+            yourConnectionHandler.Open();
+
+            if (yourConnectionHandler.State == ConnectionState.Open)
+            {
+                //string mySQL = @"SELECT * FROM 20141015__46B0JSL4X";  // dbf table name
+                //string columnName = "";
+                string fileGRPName = dbFileName;
+                string fileName = dbFileName.ToUpper().Replace("GRP_", "");
+                //" where id_cispod = ? ORDER BY cpd, cod, cdz";
+                //and b.Zpracovano = 0
+
+                try
+                {
+                    string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC, a.MANDDOZ FROM " + fileName + " a ";
+
+                    OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
+                    OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
+
+                    DA.Fill(ResultSet);
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("Column 'MANDDOZ' is not found"))
+                    {
+                        yourConnectionHandler.Close();
+
+                        Globalni.Nastroje.LogMessage("Soubor " + fileName + " neni ver. 2.0 bude převeden do formatu ver. 2.0 .", false, "Warning", formRaz);
+                        // ted musim zmenit file, stary prejmenovat na OLD a znej udelat novy puvodniho jmena s rozsirenou strukturou
+                        string dbfileOldName = fileName.ToUpper().Replace(".DBF", "_OLD.DBF");
+
+                        File.Move(fileName, dbfileOldName);
+
+                        // Open the connection, and if open successfully, you can try to query it
+                        yourConnectionHandler.Open();
+
+                        if (yourConnectionHandler.State == ConnectionState.Open)
+                        {
+                            string mySQL = @"SELECT cpd, cod, Cdz, Prijmeni, Tisk_1, Tisk_2, zpracovano, id_seznam, id_cispod, SLOB, RP_ROK, RP_MESIC, 0 AS MANDDOZ FROM " + dbfileOldName + " INTO TABLE " + fileName + "";
+
+                            OleDbCommand cmd = new OleDbCommand();
+                            cmd.CommandType = CommandType.Text;
+                            cmd.CommandText = mySQL;
+
+                            cmd.Connection = yourConnectionHandler;
+                            cmd.ExecuteNonQuery();
+
+                            Globalni.Nastroje.LogMessage("Zaloha puvodniho souboru " + fileName + " do " + dbfileOldName, false, "Warning", formRaz);
+                        }
+                    }
+                    else
+                    {
+                        // ven
+                        throw;
+                    }
+
+                }
+
+                yourConnectionHandler.Close();
+            }
+            return true;
+        }
+
         public DataTable GetDOZData()
         {
             DataTable ResultSet = new DataTable();
@@ -2343,7 +2458,7 @@ namespace Raznice
                 string fileName = dbFileName.ToUpper().Replace("GRP_", "");
                 //string mySQL = @"SELECT cpd, cod, Cdz, Prijmeni, Tisk_1, Tisk_2, zpracovano, id_seznam, id_cispod, SLOB, RP_ROK, RP_MESIC FROM " + fileName + " where id_cispod = ? ORDER BY cpd, cod, cdz";
                 //string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
-                string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC FROM " + fileName + " a " +
+                string mySQL = @"SELECT a.cpd, a.cod, a.Cdz, a.Prijmeni, a.Tisk_1, a.Tisk_2, a.zpracovano, a.id_seznam, a.id_cispod, a.SLOB, a.RP_ROK, a.RP_MESIC, a.MANDDOZ FROM " + fileName + " a " +
                     " JOIN " + fileGRPName +" b ON a.id_cispod = b.id_cispod "+
                     " WHERE (b.Vyrazit = 1 ) "+
                     " ORDER BY a.cpd, a.cod, a.Cdz";
@@ -2792,7 +2907,7 @@ namespace Raznice
         /// <param name="Tisk_rok"></param>
         /// <param name="Tisk_mesic"></param>
         /// <returns></returns>
-        public bool NastavPopisDoz(string Tisk_radek_1 /*05019017*/, string Tisk_radek_2, string Tisk_Prijmeni, string Tisk_cod, string Tisk_slob, string Tisk_rok, string Tisk_mesic)        
+        public bool NastavPopisDoz(string Tisk_radek_1 /*05019017*/, string Tisk_radek_2, string Tisk_Prijmeni, string Tisk_cod, string Tisk_slob, string Tisk_rok, string Tisk_mesic, int Tisk_maNDDoz)        
         {
             // 05.04.2016 doplneno tisk COD do eanu, zmena eanu z EAN8 na EAN13
             bool vysledek = false;
@@ -2846,8 +2961,9 @@ namespace Raznice
                 numZdroj =  DozNum.TrimEnd();
                 nameZdroj = DozPopis.TrimEnd();
 
-                // 1A_06_130/2_203
-                namePrvniRadek = nameZdroj.Substring(0, 2) + '_' + // 1A
+                // 1A_06_130/2_203 nebo 1A*06_130/2_203 v pripade, ze ma pracovnik ND dozimetr
+                namePrvniRadek = nameZdroj.Substring(0, 2) +  // 1A
+                                 (Tisk_maNDDoz == 1 ? "*" : "_") +                                 
                                  numZdroj.Substring(0, 2) + '_' + //  06
                                  numZdroj.Substring(2, 3) + "/" + oddeleni + '_' + // 130/2
                                  numZdroj.Substring(6, 3);   // 203
@@ -2862,9 +2978,9 @@ namespace Raznice
                                  numZdroj.Substring(6, 3);   // 203
 
                 namePrvniRadek = namePrvniRadek.Replace(" ", "");
-                nameDruhyRadek = nameDruhyRadek.Replace(" ", "");
+                nameDruhyRadek = nameDruhyRadek.Replace(" ", "_");   // Losa Evžen -> Losa_Evžen
 
-                
+
 
                 //1A Michlova
                 //05019001
@@ -2874,7 +2990,7 @@ namespace Raznice
                 // Vejsada
                 // 0PPPDDD
 
-      
+
                 // 05.04.2016 zmena eanu z EAN8 na EAN13
 
                 lblEANPopis_radek_1.Text = namePrvniRadek;
@@ -3261,9 +3377,19 @@ namespace Raznice
                     string Tisk_slob = (row.Cells[indexOf(dataGridView2, "SLOB")]).Value.ToString();
                     string Tisk_rok = (row.Cells[indexOf(dataGridView2, "RP_ROK")]).Value.ToString();
                     string Tisk_mesic = (row.Cells[indexOf(dataGridView2, "RP_MESIC")]).Value.ToString();
+                    string v = (row.Cells[indexOf(dataGridView2, "MANDDOZ")]).Value.ToString();
+                    int Tisk_maNDDoz = 0;
+                    try
+                    {
+                        Tisk_maNDDoz = int.Parse(v); // 0/1
+                    }
+                    catch
+                    {
+                        Tisk_maNDDoz = 0;
+                    }
 
 
-                    NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic);
+                    NastavPopisDoz(Tisk_radek_1, Tisk_radek_2, Tisk_prijmeni, Tisk_cod, Tisk_slob, Tisk_rok, Tisk_mesic, Tisk_maNDDoz);
 
                     // poslu na raznici a do tisku
                     // parametry v cyklu pres tabulku nepouzivam, hodnoty si zjistim az v telu procedury
@@ -3392,6 +3518,7 @@ namespace Raznice
                         dataGridView2.Columns[9].DataPropertyName = "SLOB"; // 
                         dataGridView2.Columns[10].DataPropertyName = "RP_ROK"; // 
                         dataGridView2.Columns[11].DataPropertyName = "RP_MESIC"; // 
+                        dataGridView2.Columns[12].DataPropertyName = "MANDDOZ"; // 
                         break;
                     }
             }
