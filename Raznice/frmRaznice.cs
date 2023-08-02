@@ -162,9 +162,23 @@ namespace Raznice
                 string pom = "";
                 pom = rowArr[0].Trim('"', ' '); //10168004427 --> 10rr800o427
 
-                lblDozNum.Text = pom.Substring(0, 2) +      //10
-                                 pom.Substring(4, 3) +      //800
-                                 pom.Substring(8, 3) ;     //427
+                // 02.08.2023 v pripade maleho filmu "1 - maly" je cislo dozimetru na 6 znaku, vynecha se mesic
+                if (txtTyp.Text == "1")
+                {
+                    lblDozNum.Text = //pom.Substring(0, 2) +  //10  <<-- vynecha se mesic
+                                     pom.Substring(4, 3) +    //800
+                                     pom.Substring(8, 3);     //427
+                }
+                else
+                {
+                    lblDozNum.Text = pom.Substring(0, 2) +      //10
+                                     pom.Substring(4, 3) +      //800
+                                     pom.Substring(8, 3);     //427
+                }
+
+                //lblDozNum.Text = pom.Substring(0, 2) +      //10
+                //                 pom.Substring(4, 3) +      //800
+                //                 pom.Substring(8, 3) ;     //427
 
                 /*
                 //1 Vachata
@@ -2406,7 +2420,8 @@ namespace Raznice
 
                         if (yourConnectionHandler.State == ConnectionState.Open)
                         {
-                            string mySQL = @"SELECT cpd, cod, Cdz, Prijmeni, Tisk_1, Tisk_2, zpracovano, id_seznam, id_cispod, SLOB, RP_ROK, RP_MESIC, 0 AS MANDDOZ FROM " + dbfileOldName + " INTO TABLE " + fileName + "";
+                            // 02.08.2023 chybel sloupec ID_DOZ pri zmene formatu pro MANDDOZ
+                            string mySQL = @"SELECT cpd, cod, Cdz, Prijmeni, Tisk_1, Tisk_2, zpracovano, id_seznam, id_cispod, SLOB, RP_ROK, RP_MESIC, ID_DOZ, 0 AS MANDDOZ FROM " + dbfileOldName + " INTO TABLE " + fileName + "";
 
                             OleDbCommand cmd = new OleDbCommand();
                             cmd.CommandType = CommandType.Text;
@@ -2992,6 +3007,14 @@ namespace Raznice
 
 
                 // 05.04.2016 zmena eanu z EAN8 na EAN13
+
+                // 02.08.2023 v pripade maleho filmu "1 - maly" je cislo dozimetru na 6 znaku, vynecha se mesic
+                if (txtTyp.Text == "1")
+                {
+                    // 06130203
+                    if (lblDozNumTab_bezCOD.Text.Length > 6)
+                        lblDozNumTab_bezCOD.Text = lblDozNumTab_bezCOD.Text.Substring(2, 6); //130203
+                }
 
                 lblEANPopis_radek_1.Text = namePrvniRadek;
                 lblEANPopis_radek_2.Text = nameDruhyRadek;
@@ -4001,6 +4024,12 @@ namespace Raznice
             Item itm = (Item)cbTypFilmu.SelectedItem;
             typFilmu = (short)itm.Value;
             txtTyp.Text = typFilmu.ToString();
+
+            if (dataGridView2.Rows.Count > 0)
+            {
+                var args = new DataGridViewCellEventArgs(0, 0);
+                dataGridView2_CellContentClick(dataGridView2, args);
+            }
         }
 
         public void ThreadProc()
